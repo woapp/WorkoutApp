@@ -1,8 +1,8 @@
 module.exports = {
-  parser: '@typescript-eslint/parser', // Specifies the ESLint parser
+  parser: '@typescript-eslint/parser',
   extends: [
-    'plugin:react/recommended', // Uses the recommended rules from @eslint-plugin-react
-    'plugin:@typescript-eslint/recommended', // Uses the recommended rules from @typescript-eslint/eslint-plugin
+    'plugin:react/recommended',
+    'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended', // Enables eslint-plugin-prettier and displays prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
   ],
   plugins: ['eslint-plugin-import', 'react-hooks'],
@@ -16,7 +16,6 @@ module.exports = {
   rules: {
     '@typescript-eslint/indent': 'off',
     '@typescript-eslint/no-empty-interface': 'off',
-    '@typescript-eslint/interface-name-prefix': 'off',
     'react/prop-types': 'off',
     'no-debugger': 'error',
     'newline-before-return': 'error',
