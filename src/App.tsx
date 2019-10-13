@@ -1,12 +1,7 @@
-import {SafeAreaView, Text} from 'react-native';
-import React, {useEffect} from 'react';
+import React, { FunctionComponent } from 'react';
+import { SafeAreaView, Text } from 'react-native';
 
-export const App: any = () => {
-  const a = 2;
-
-  useEffect(() => {
-    console.log('coucou', a);
-  }, [a]);
+export const App: FunctionComponent = () => {
   return (
     <SafeAreaView>
       <Text>WorkoutApp</Text>
