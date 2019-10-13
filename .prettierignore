@@ -1,0 +1,4 @@
+node_modules
+package.json
+.history
+src/components/CountryFlag/svg
