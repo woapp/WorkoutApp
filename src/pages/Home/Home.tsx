@@ -1,21 +1,28 @@
-import React, { FunctionComponent, useContext } from 'react';
-import { View, Text } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, Button } from 'react-native';
 import { observer } from 'mobx-react-lite';
+import { TextInput } from 'react-native-gesture-handler';
 
 import styled from '../../lib/styled-components';
-import { CounterStoreContext } from '../../modules/counterStore';
-import { useStore } from '../../modules/types';
+import { useStore } from '../../modules/rootStore';
+import { userSelector } from '../../modules/user/selectors';
 
 export const Home = observer(() => {
-  const store = useContext(CounterStoreContext);
-  console.log(store.count);
-  const { user } = useStore(({ user }) => ({ user }));
+  const user = useStore(userSelector);
+  const [userName, setUserName] = useState();
   console.log(user);
 
   return (
     <Container>
       <AppTitle>Workout app</AppTitle>
+      <TextInput onChangeText={setUserName} placeholder="userName" value={userName} />
       <AppTitle>{user.name}</AppTitle>
+      <Button
+        title="Valider"
+        onPress={() => {
+          user.setName(userName);
+        }}
+      />
     </Container>
   );
 });
