@@ -1,11 +1,8 @@
 import { types } from 'mobx-state-tree';
 
-export const UserModel = types
-  .model({
-    name: types.optional(types.string, ''),
-  })
-  .actions(self => ({
-    setName(newName: string): void {
-      self.name = newName;
-    },
-  }));
+import { userModel } from './model';
+import { userActions } from './actions';
+
+export const User = types.model(userModel).actions(userActions);
+
+export const initialUser = User.create({ name: 'toto' });

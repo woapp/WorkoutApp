@@ -1,22 +1,10 @@
-import { createContext, useContext } from 'react';
+import { types } from 'mobx-state-tree';
 
-import { RootStore } from './rootModel';
+import { RootModel } from './rootModel';
+import { initialUser } from './user';
+
+export const RootStore = types.model(RootModel);
 
 export const rootStore = RootStore.create({
-  user: { name: 'toto' },
+  user: initialUser,
 });
-
-const StoreContext = createContext(rootStore);
-export const StoreProvider = StoreContext.Provider;
-
-export type RootStoreType = typeof rootStore;
-
-export const useStore = <T>(selector?: (store: RootStoreType) => T): T | RootStoreType => {
-  const store = useContext(StoreContext);
-
-  if (typeof selector !== 'undefined') {
-    return selector(store);
-  }
-
-  return store;
-};
