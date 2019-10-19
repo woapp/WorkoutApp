@@ -6,7 +6,11 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "lint": "yarn eslint:check && yarn pretty:list && yarn ts:check",
+    "pretty:list": "yarn prettier --list-different './**/*.{ts,tsx}'",
+    "eslint:check": "eslint .",
+    "ts:check": "tsc"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.1",
