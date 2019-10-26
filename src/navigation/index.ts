@@ -11,4 +11,6 @@ export const stackNavigation = createStackNavigator({
   },
 });
 
+// TODO: remove @ts-ignore
+//@ts-ignore
 export const AppContainer = createAppContainer(stackNavigation);

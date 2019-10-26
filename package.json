@@ -6,7 +6,11 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "lint": "yarn eslint:check && yarn pretty:list && yarn ts:check",
+    "pretty:list": "yarn prettier --list-different './**/*.{ts,tsx}'",
+    "eslint:check": "eslint .",
+    "ts:check": "tsc"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.1",
@@ -45,6 +49,7 @@
     "jest": "^24.9.0",
     "metro-react-native-babel-preset": "^0.56.0",
     "prettier": "^1.18.2",
+    "react-native-testing-library": "^1.11.1",
     "react-test-renderer": "16.9.0",
     "typescript": "^3.6.3"
   },
