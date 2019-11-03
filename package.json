@@ -2,6 +2,7 @@
   "name": "WorkoutApp",
   "version": "0.0.1",
   "private": true,
+  "license": "MIT",
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
@@ -10,7 +11,8 @@
     "lint": "yarn eslint:check && yarn pretty:list && yarn ts:check",
     "pretty:list": "yarn prettier --list-different './**/*.{ts,tsx}'",
     "eslint:check": "eslint .",
-    "ts:check": "tsc"
+    "ts:check": "tsc",
+    "generate": "plop"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.1",
@@ -48,6 +50,7 @@
     "eslint-plugin-react-hooks": "^2.1.2",
     "jest": "^24.9.0",
     "metro-react-native-babel-preset": "^0.56.0",
+    "plop": "^2.5.2",
     "prettier": "^1.18.2",
     "react-native-testing-library": "^1.11.1",
     "react-test-renderer": "16.9.0",

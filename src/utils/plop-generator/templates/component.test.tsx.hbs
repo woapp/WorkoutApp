@@ -1,0 +1,11 @@
+import React from 'react';
+import { render } from 'react-native-testing-library';
+
+import { {{pascalCase name}} } from '../{{pascalCase name}}';
+
+describe('[Component] {{pascalCase name}}', () => {
+  it('should render correctly', () => {
+    const component = render(<{{pascalCase name}} />);
+    expect(component).toMatchSnapshot();
+  });
+});
