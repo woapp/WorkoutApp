@@ -1,3 +1,6 @@
 export enum Routes {
-  Home = 'Home',
+  TrainingPlan = 'TrainingPlan',
+  History = 'History',
+  Trainings = 'Trainings',
+  Statistics = 'Statistics',
 }
