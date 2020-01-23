@@ -3,11 +3,13 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import React from 'react';
+import { Platform } from 'react-native';
 
 import { History } from '../pages/History';
 import { Statistics } from '../pages/Statistics';
 import { TrainingPlan } from '../pages/TrainingPlan';
 import { Trainings } from '../pages/Trainings';
+import { Watch } from '../pages/Watch';
 
 import { Routes } from './routes';
 
@@ -35,12 +37,19 @@ const StatisticsNavigator = createStackNavigator({
   },
 });
 
+const WatchNavigator = createStackNavigator({
+  [Routes.Watch]: {
+    screen: Watch,
+  },
+});
+
 const TabNavigator = createBottomTabNavigator(
   {
     Home: HomeNavigator,
     History: HistoryNavigator,
     Configurator: ConfiguratorNavigator,
     Statistics: StatisticsNavigator,
+    ...(Platform.OS === 'ios' ? { Watch: WatchNavigator } : {}),
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -59,6 +68,9 @@ const TabNavigator = createBottomTabNavigator(
             break;
           case 'Statistics':
             iconName = `ios-stats`;
+            break;
+          case 'Watch':
+            iconName = `ios-watch`;
             break;
         }
 
