@@ -4,89 +4,36 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import React from 'react';
 
-import { Routes } from './routes';
-
 import { History } from '../pages/History';
 import { Statistics } from '../pages/Statistics';
 import { TrainingPlan } from '../pages/TrainingPlan';
 import { Trainings } from '../pages/Trainings';
-import {} from 'react-navigation';
 
-const HomeNavigator = createStackNavigator(
-  {
-    [Routes.TrainingPlan]: {
-      screen: TrainingPlan,
-    },
-  },
-  {
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: '#1C1B21',
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-      },
-    },
-  }
-);
+import { Routes } from './routes';
 
-const HistoryNavigator = createStackNavigator(
-  {
-    [Routes.History]: {
-      screen: History,
-    },
+const HomeNavigator = createStackNavigator({
+  [Routes.TrainingPlan]: {
+    screen: TrainingPlan,
   },
-  {
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: '#1C1B21',
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-      },
-    },
-  }
-);
+});
 
-const ConfiguratorNavigator = createStackNavigator(
-  {
-    [Routes.Trainings]: {
-      screen: Trainings,
-    },
+const HistoryNavigator = createStackNavigator({
+  [Routes.History]: {
+    screen: History,
   },
-  {
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: '#1C1B21',
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-      },
-    },
-  }
-);
+});
 
-const StatisticsNavigator = createStackNavigator(
-  {
-    [Routes.Statistics]: {
-      screen: Statistics,
-    },
+const ConfiguratorNavigator = createStackNavigator({
+  [Routes.Trainings]: {
+    screen: Trainings,
   },
-  {
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: '#1C1B21',
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-      },
-    },
-  }
-);
+});
+
+const StatisticsNavigator = createStackNavigator({
+  [Routes.Statistics]: {
+    screen: Statistics,
+  },
+});
 
 const TabNavigator = createBottomTabNavigator(
   {
@@ -97,9 +44,8 @@ const TabNavigator = createBottomTabNavigator(
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
-      tabBarIcon: ({ tintColor }) => {
+      tabBarIcon: ({ tintColor }): React.ReactElement => {
         const { routeName } = navigation.state;
-        console.log(routeName);
         let iconName = '';
         switch (routeName) {
           case 'Home':
@@ -115,7 +61,7 @@ const TabNavigator = createBottomTabNavigator(
             iconName = `ios-stats`;
             break;
         }
-        // You can return any component that you like here!
+
         return <Ionicons name={iconName} size={30} color={tintColor} />;
       },
     }),
@@ -130,6 +76,22 @@ const TabNavigator = createBottomTabNavigator(
   }
 );
 
-// TODO: remove @ts-ignore
-//@ts-ignore
-export const AppContainer = createAppContainer(TabNavigator);
+const RootNavigator = createStackNavigator(
+  {
+    Root: TabNavigator,
+  },
+  {
+    headerMode: 'none',
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: '#1C1B21',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    },
+  }
+);
+
+export const AppContainer = createAppContainer(RootNavigator);

@@ -14,6 +14,7 @@ module.exports = {
     },
   },
   rules: {
+    'react/display-name': 'off',
     '@typescript-eslint/indent': 'off',
     '@typescript-eslint/no-empty-interface': 'off',
     'react/prop-types': 'off',
