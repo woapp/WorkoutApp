@@ -4,7 +4,7 @@ import { ThemeProps as BasicThemeProps } from 'styled-components';
 import { theme } from '../styles/theme';
 import { Override } from '../lib/types';
 
-export interface IThemeProps extends BasicThemeProps<typeof theme> {}
+export interface ThemeProps extends BasicThemeProps<typeof theme> {}
 
 // to prevent the use of 'styled.' instead of 'styled(...)' that creates errors with react-native-web
 type StyledComponents<T extends object> = Override<
