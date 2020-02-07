@@ -3,7 +3,7 @@ import { View, Text, Button } from 'react-native';
 import { observer } from 'mobx-react-lite';
 import { TextInput } from 'react-native-gesture-handler';
 
-import styled from '../../lib/styled-components';
+import styled from '../../utils/styled-components';
 import { useStore } from '../../utils/hooks/useStore';
 import { userSelector } from '../../modules/user/selectors';
 
