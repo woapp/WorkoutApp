@@ -2,7 +2,8 @@ import * as styledComponents from 'styled-components/native';
 import { ThemeProps as BasicThemeProps } from 'styled-components';
 
 import { theme } from '../styles/theme';
-import { Override } from '../lib/types';
+
+import { Override } from './types';
 
 export interface ThemeProps extends BasicThemeProps<typeof theme> {}
 
