@@ -20,10 +20,10 @@ export const pageGenerator: PlopGenerator = {
       path: './src/pages/{{pascalCase name}}/index.ts',
       templateFile: 'src/utils/plop-generator/templates/index.ts.hbs',
     } as AddActionConfig,
-    {
-      type: 'add',
-      path: './src/pages/{{pascalCase name}}/__test__/{{pascalCase name}}.test.tsx',
-      templateFile: 'src/utils/plop-generator/templates/page.test.tsx.hbs',
-    } as AddActionConfig,
+    // {
+    //   type: 'add',
+    //   path: './src/pages/{{pascalCase name}}/__test__/{{pascalCase name}}.test.tsx',
+    //   templateFile: 'src/utils/plop-generator/templates/page.test.tsx.hbs',
+    // } as AddActionConfig,
   ],
 };

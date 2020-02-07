@@ -20,10 +20,10 @@ export const componentGenerator: PlopGenerator = {
       path: './src/components/{{pascalCase name}}/index.ts',
       templateFile: 'src/utils/plop-generator/templates/index.ts.hbs',
     } as AddActionConfig,
-    {
-      type: 'add',
-      path: './src/components/{{pascalCase name}}/__test__/{{pascalCase name}}.test.tsx',
-      templateFile: 'src/utils/plop-generator/templates/component.test.tsx.hbs',
-    } as AddActionConfig,
+    // {
+    //   type: 'add',
+    //   path: './src/components/{{pascalCase name}}/__test__/{{pascalCase name}}.test.tsx',
+    //   templateFile: 'src/utils/plop-generator/templates/component.test.tsx.hbs',
+    // } as AddActionConfig,
   ],
 };
