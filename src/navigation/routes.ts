@@ -1,12 +1,9 @@
 export enum Routes {
-  TrainingPlan = 'TrainingPlan',
   History = 'History',
+  Home = 'Home',
   Trainings = 'Trainings',
-  Statistics = 'Statistics',
-  Watch = 'Watch',
 }
 
-export const TrainingPlanRoutes = [Routes.TrainingPlan];
+export const TrainingPlanRoutes = [Routes.Home];
 export const HistoryRoutes = [Routes.History];
 export const TrainingsRoutes = [Routes.Trainings];
-export const StatisticsRoutes = [Routes.Statistics];

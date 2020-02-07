@@ -3,19 +3,16 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import React from 'react';
-import { Platform } from 'react-native';
 
 import { History } from '../pages/History';
-import { Statistics } from '../pages/Statistics';
-import { TrainingPlan } from '../pages/TrainingPlan';
+import { Home } from '../pages/Home';
 import { Trainings } from '../pages/Trainings';
-import { Watch } from '../pages/Watch';
 
 import { Routes } from './routes';
 
 const HomeNavigator = createStackNavigator({
-  [Routes.TrainingPlan]: {
-    screen: TrainingPlan,
+  [Routes.Home]: {
+    screen: Home,
   },
 });
 
@@ -31,25 +28,11 @@ const ConfiguratorNavigator = createStackNavigator({
   },
 });
 
-const StatisticsNavigator = createStackNavigator({
-  [Routes.Statistics]: {
-    screen: Statistics,
-  },
-});
-
-const WatchNavigator = createStackNavigator({
-  [Routes.Watch]: {
-    screen: Watch,
-  },
-});
-
 const TabNavigator = createBottomTabNavigator(
   {
-    Home: HomeNavigator,
     History: HistoryNavigator,
+    Home: HomeNavigator,
     Configurator: ConfiguratorNavigator,
-    Statistics: StatisticsNavigator,
-    ...(Platform.OS === 'ios' ? { Watch: WatchNavigator } : {}),
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -57,20 +40,14 @@ const TabNavigator = createBottomTabNavigator(
         const { routeName } = navigation.state;
         let iconName = '';
         switch (routeName) {
-          case 'Home':
-            iconName = `ios-home`;
-            break;
           case 'History':
             iconName = `ios-calendar`;
             break;
+          case 'Home':
+            iconName = `ios-home`;
+            break;
           case 'Configurator':
             iconName = `ios-fitness`;
-            break;
-          case 'Statistics':
-            iconName = `ios-stats`;
-            break;
-          case 'Watch':
-            iconName = `ios-watch`;
             break;
         }
 
