@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 import { NavigationStackScreenProps } from 'react-navigation-stack';
 
 import styled from '../../utils/styled-components';
-import { RoundButton } from '../../components/RoundButton';
+import { ActionButton } from '../../components/ActionButton';
 import { ExercisesList } from '../../components/ExercisesList';
 import { Routes } from '../../navigation/routes';
 
@@ -19,9 +19,9 @@ export const WorkoutEditor = observer(({ navigation }: NavigationStackScreenProp
     <Container>
       <NameInput value={workout.name} placeholder="Entraînement" onChangeText={workout.setName} />
       <ExercisesList workout={workout} />
-      <RoundButtonContainer>
-        <RoundButton onPress={navigateToAddExercisesScreen} />
-      </RoundButtonContainer>
+      <ActionButtonContainer>
+        <ActionButton onPress={navigateToAddExercisesScreen} title="+" />
+      </ActionButtonContainer>
     </Container>
   );
 });
@@ -41,7 +41,7 @@ const NameInput = styled.TextInput(props => ({
   margin: props.theme.margin.x2,
 }));
 
-const RoundButtonContainer = styled.View(props => ({
+const ActionButtonContainer = styled.View(props => ({
   position: 'absolute',
   bottom: props.theme.margin.x2,
   right: props.theme.margin.x2,

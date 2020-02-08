@@ -9,6 +9,8 @@ import { useStore } from '../../utils/hooks/useStore';
 import styled from '../../utils/styled-components';
 import { colors } from '../../styles/colors';
 import { WorkoutType } from '../../modules/workout';
+import { ActionButton } from '../../components/ActionButton';
+import { Routes } from '../../navigation/routes';
 
 export const AddExercises: FunctionComponent = observer(() => {
   const exercises = useStore(exercisesSelector);
@@ -44,21 +46,23 @@ export const AddExercises: FunctionComponent = observer(() => {
     );
   };
 
+  const navigateToCreateExercisePage = () => navigation.navigate(Routes.CreateExercise);
+
   return (
     <Container>
-      <Header>
-        <ButtonContainer />
-        <Title>Exercices</Title>
-        <ButtonContainer onPress={closeModal}>
-          <CloseButton>X</CloseButton>
-        </ButtonContainer>
-      </Header>
-      <FlatList
-        data={exercises}
-        renderItem={renderItem}
-        keyExtractor={item => item.id}
-        style={{ backgroundColor: colors.white }}
-      />
+      <FlatListContainer>
+        <FlatList
+          data={exercises}
+          renderItem={renderItem}
+          style={{ backgroundColor: colors.white }}
+          keyExtractor={item => item.id}
+        />
+
+        <ActionButtonContainer>
+          <ActionButton title="Nouvel exercice" onPress={navigateToCreateExercisePage} />
+        </ActionButtonContainer>
+      </FlatListContainer>
+
       <ValidateButton onPress={closeModal}>
         <ValidateButtonTitle>Valider</ValidateButtonTitle>
       </ValidateButton>
@@ -71,31 +75,6 @@ const Container = styled.SafeAreaView(props => ({
   backgroundColor: props.theme.colors.black,
 }));
 
-const Header = styled.View(props => ({
-  flexDirection: 'row',
-  backgroundColor: props.theme.colors.black,
-  justifyContent: 'space-between',
-  alignItems: 'center',
-}));
-
-const Title = styled.Text(props => ({
-  fontSize: 24,
-  fontWeight: 'bold',
-  color: props.theme.colors.white,
-  textAlign: 'center',
-  padding: props.theme.margin.x2,
-}));
-
-const CloseButton = styled.Text(props => ({
-  fontSize: 24,
-  fontWeight: 'bold',
-  color: props.theme.colors.white,
-}));
-
-const ButtonContainer = styled.TouchableOpacity(props => ({
-  margin: props.theme.margin.x2,
-}));
-
 const ValidateButton = styled.TouchableOpacity(props => ({
   padding: props.theme.margin.x2,
   backgroundColor: props.theme.colors.black,
@@ -106,4 +85,15 @@ const ValidateButtonTitle = styled.Text(props => ({
   fontWeight: 'bold',
   color: props.theme.colors.white,
   textAlign: 'center',
+}));
+
+const FlatListContainer = styled.View({
+  flex: 1,
+});
+
+const ActionButtonContainer = styled.View(props => ({
+  width: '100%',
+  alignItems: 'center',
+  position: 'absolute',
+  bottom: props.theme.margin.x2,
 }));
