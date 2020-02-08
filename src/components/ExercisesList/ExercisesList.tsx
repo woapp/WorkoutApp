@@ -1,19 +1,16 @@
 import React, { FunctionComponent } from 'react';
 import { FlatList } from 'react-native';
 
+import { WorkoutType } from '../../modules/workout';
 import { ExercisesListItem } from '../ExercisesListItem';
 
-export const ExercisesList: FunctionComponent<{
-  exercices: [
-    {
-      exercise: { name: string };
-      sets: [{ weight: number; nbReps: number }];
-    }
-  ];
-}> = ({ exercices }) => {
-  const renderItem = ({ item }) => <ExercisesListItem {...item} />;
+interface Props {
+  workout: WorkoutType;
+}
 
-  return (
-    <FlatList data={exercices} renderItem={renderItem} keyExtractor={(_, index) => `${index}`} />
-  );
+export const ExercisesList: FunctionComponent<Props> = ({ workout }) => {
+  const renderItem = ({ item }) => <ExercisesListItem {...item} />;
+  // console.log(workout.exercises);
+
+  return <FlatList data={[]} renderItem={renderItem} keyExtractor={(_, index) => `${index}`} />;
 };

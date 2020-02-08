@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Alert } from 'react-native';
+import { NavigationStackScreenProps } from 'react-navigation-stack';
+import { observer } from 'mobx-react-lite';
 
 import { createWorkout } from '../../modules/workout/constructor';
 import styled from '../../utils/styled-components';
 import { RoundButton } from '../../components/RoundButton';
 import { ExercisesList } from '../../components/ExercisesList';
 
-export const WorkoutEditor: React.FC = () => {
-  const workout = createWorkout();
-  const [name, setName] = useState('');
+export const WorkoutEditor = observer(({ navigation }: NavigationStackScreenProps) => {
+  const workout = navigation.getParam('workout');
 
   return (
     <Container>
-      <NameInput value={name} placeholder="Entraînement" onChangeText={setName} />
+      <NameInput value={workout.name} placeholder="Entraînement" onChangeText={workout.setName} />
       <ExercisesList workout={workout} />
       <RoundButtonContainer>
         <RoundButton
@@ -23,7 +24,7 @@ export const WorkoutEditor: React.FC = () => {
       </RoundButtonContainer>
     </Container>
   );
-};
+});
 
 const Container = styled.View({
   flex: 1,

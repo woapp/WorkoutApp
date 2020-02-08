@@ -7,7 +7,7 @@ import { Routes } from '../../navigation/routes';
 
 export const WorkoutItem: FunctionComponent<{ workout: WorkoutType }> = ({ workout }) => {
   const navigation = useNavigation();
-  const navigateToWorkoutEditor = () => navigation.navigate(Routes.WorkoutEditor);
+  const navigateToWorkoutEditor = () => navigation.navigate(Routes.WorkoutEditor, { workout });
 
   return (
     <Container onPress={navigateToWorkoutEditor}>
