@@ -23,6 +23,7 @@
     "strict": true,
     "target": "esnext",
     "skipLibCheck": true,
+    "noImplicitReturns": true,
     "noUnusedLocals": true
   },
   "exclude": [
