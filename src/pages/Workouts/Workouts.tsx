@@ -1,16 +1,20 @@
-import React, { FunctionComponent } from 'react';
-import { Alert } from 'react-native';
+import React from 'react';
+import { NavigationStackScreenProps } from 'react-navigation-stack';
 
 import styled from '../../utils/styled-components';
 import { RoundButton } from '../../components/RoundButton';
+import { Routes } from '../..//navigation/routes';
 
-type WorkoutsProps = {};
-
-export const Workouts: FunctionComponent<WorkoutsProps> = () => {
+export const Workouts: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
   return (
     <Container>
       <RoundButtonContainer>
-        <RoundButton onPress={() => Alert.alert('Add a workout')} />
+        <RoundButton
+          onPress={() => {
+            console.log(navigation);
+            navigation.navigate(Routes.WorkoutEditor);
+          }}
+        />
       </RoundButtonContainer>
     </Container>
   );

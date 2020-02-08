@@ -2,6 +2,7 @@ export enum Routes {
   History = 'History',
   Home = 'Home',
   Workouts = 'Workouts',
+  WorkoutEditor = 'WorkoutEditor',
   WorkoutsNavigator = 'WorkoutsNavigator',
 }
 
