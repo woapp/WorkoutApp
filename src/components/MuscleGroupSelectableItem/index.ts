@@ -1,0 +1,1 @@
+export { MuscleGroupSelectableItem } from './MuscleGroupSelectableItem';

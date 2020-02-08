@@ -4,6 +4,8 @@ export enum Routes {
   Workouts = 'Workouts',
   WorkoutEditor = 'WorkoutEditor',
   AddExercises = 'AddExercises',
+  CreateExercise = 'CreateExercise',
+  ExercisesNavigator = 'ExercisesNavigator',
   WorkoutsNavigator = 'WorkoutsNavigator',
   HomeNavigator = 'HomeNavigator',
   HistoryNavigator = 'HistoryNavigator',

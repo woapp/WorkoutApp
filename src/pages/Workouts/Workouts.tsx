@@ -5,10 +5,10 @@ import { observer } from 'mobx-react-lite';
 
 import { createWorkout } from '../../modules/workout/constructor';
 import { useStore } from '../../utils/hooks/useStore';
-import styled from '../../utils/styled-components';
-import { RoundButton } from '../../components/RoundButton';
+import { ActionButton } from '../../components/ActionButton';
 import { Routes } from '../..//navigation/routes';
 import { WorkoutItem } from '../../components/WorkoutItem';
+import styled from '../../utils/styled-components';
 
 export const Workouts = observer(({ navigation }: NavigationStackScreenProps) => {
   const { workouts, addWorkout, removeWorkout } = useStore();
@@ -28,9 +28,9 @@ export const Workouts = observer(({ navigation }: NavigationStackScreenProps) =>
   return (
     <Container>
       <FlatList data={workouts} renderItem={renderWorkoutItem} keyExtractor={item => item.id} />
-      <RoundButtonContainer>
-        <RoundButton onPress={onAddWorkout} />
-      </RoundButtonContainer>
+      <ActionButtonContainer>
+        <ActionButton onPress={onAddWorkout} title="+" />
+      </ActionButtonContainer>
     </Container>
   );
 });
@@ -39,7 +39,7 @@ const Container = styled.View({
   flex: 1,
 });
 
-const RoundButtonContainer = styled.View(props => ({
+const ActionButtonContainer = styled.View(props => ({
   position: 'absolute',
   bottom: props.theme.margin.x2,
   right: props.theme.margin.x2,

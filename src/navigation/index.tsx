@@ -1,15 +1,14 @@
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
-import { AddExercises } from '../pages/AddExercises';
-
 import { Routes } from './routes';
 import { TabNavigator } from './TabNavigator';
+import { ExercisesNavigator } from './ExercisesNavigator';
 
 const RootNavigator = createStackNavigator(
   {
     [Routes.TabNavigator]: TabNavigator,
-    [Routes.AddExercises]: AddExercises,
+    [Routes.ExercisesNavigator]: ExercisesNavigator,
   },
   {
     mode: 'modal',

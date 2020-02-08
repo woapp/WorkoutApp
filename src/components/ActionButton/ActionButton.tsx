@@ -2,28 +2,27 @@ import React from 'react';
 
 import styled from '../../utils/styled-components';
 
-const BUTTON_DIAMETER = 50;
-
-interface RoundedButtonProps {
+interface ActionButtonProps {
   onPress: () => void;
+  title: string;
 }
 
-export const RoundButton: React.FC<RoundedButtonProps> = ({ onPress }) => (
+export const ActionButton: React.FC<ActionButtonProps> = ({ onPress, title }) => (
   <Container onPress={onPress}>
-    <Plus>+</Plus>
+    <Title>{title}</Title>
   </Container>
 );
 
 const Container = styled.TouchableOpacity(props => ({
-  height: BUTTON_DIAMETER,
-  width: BUTTON_DIAMETER,
-  borderRadius: BUTTON_DIAMETER / 2,
+  borderRadius: 25,
   backgroundColor: props.theme.colors.green,
   justifyContent: 'center',
   alignItems: 'center',
+  paddingHorizontal: props.theme.margin.x2,
+  paddingVertical: props.theme.margin.x1,
 }));
 
-const Plus = styled.Text(props => ({
+const Title = styled.Text(props => ({
   color: props.theme.colors.white,
   fontWeight: 'bold',
   fontSize: 24,
