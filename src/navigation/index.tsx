@@ -30,30 +30,26 @@ const HistoryNavigator = createStackNavigator({
 
 const TabNavigator = createBottomTabNavigator(
   {
-    History: HistoryNavigator,
-    Home: HomeNavigator,
-    Workouts: WorkoutsNavigator,
+    [Routes.HistoryNavigator]: {
+      screen: HistoryNavigator,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => <Ionicons name="ios-calendar" size={30} color={tintColor} />,
+      },
+    },
+    [Routes.HomeNavigator]: {
+      screen: HomeNavigator,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => <Ionicons name="ios-home" size={30} color={tintColor} />,
+      },
+    },
+    [Routes.WorkoutsNavigator]: {
+      screen: WorkoutsNavigator,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => <Ionicons name="ios-fitness" size={30} color={tintColor} />,
+      },
+    },
   },
   {
-    defaultNavigationOptions: ({ navigation }) => ({
-      tabBarIcon: ({ tintColor }): React.ReactElement => {
-        const { routeName } = navigation.state;
-        let iconName = '';
-        switch (routeName) {
-          case 'History':
-            iconName = `ios-calendar`;
-            break;
-          case 'Home':
-            iconName = `ios-home`;
-            break;
-          case 'Workouts':
-            iconName = `ios-fitness`;
-            break;
-        }
-
-        return <Ionicons name={iconName} size={30} color={tintColor} />;
-      },
-    }),
     tabBarOptions: {
       showLabel: false,
       activeTintColor: '#FFDB7C',

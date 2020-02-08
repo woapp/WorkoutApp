@@ -4,6 +4,8 @@ export enum Routes {
   Workouts = 'Workouts',
   WorkoutEditor = 'WorkoutEditor',
   WorkoutsNavigator = 'WorkoutsNavigator',
+  HomeNavigator = 'HomeNavigator',
+  HistoryNavigator = 'HistoryNavigator',
 }
 
 export const HomeRoutes = [Routes.Home];

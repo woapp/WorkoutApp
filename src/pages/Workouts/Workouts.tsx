@@ -19,13 +19,14 @@ export const Workouts: React.FC<NavigationStackScreenProps> = ({ navigation }) =
     },
   ];
 
+  const renderWorkoutItem = ({ item }) => <WorkoutItem {...item} />;
+
   return (
     <Container>
-      <FlatList data={DATA} renderItem={({ item }) => <WorkoutItem {...item} />} />
+      <FlatList data={DATA} renderItem={renderWorkoutItem} />
       <RoundButtonContainer>
         <RoundButton
           onPress={() => {
-            console.log(navigation);
             navigation.navigate(Routes.WorkoutEditor);
           }}
         />
