@@ -1,11 +1,11 @@
 import { types } from 'mobx-state-tree';
 
-import { WorkoutModel } from './workouts/model';
-import { ExerciseModel } from './exercises/model';
-import { WorkoutDoneModel } from './history/model';
+import { Workout } from './workout';
+import { Exercise } from './exercise';
+import { WorkoutDone } from './workoutDone';
 
 export const RootModel = {
-  workouts: types.array(WorkoutModel),
-  exercises: types.array(ExerciseModel),
-  history: types.array(WorkoutDoneModel),
+  workouts: types.array(Workout),
+  exercises: types.array(Exercise),
+  history: types.array(WorkoutDone),
 };
