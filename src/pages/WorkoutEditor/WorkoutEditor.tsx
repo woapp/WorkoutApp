@@ -6,6 +6,7 @@ import styled from '../../utils/styled-components';
 import { ActionButton } from '../../components/ActionButton';
 import { ExercisesList } from '../../components/ExercisesList';
 import { Routes } from '../../navigation/routes';
+import { NameInput } from '../../components/NameInput';
 
 export const WorkoutEditor = observer(({ navigation }: NavigationStackScreenProps) => {
   const workout = navigation.getParam('workout');
@@ -29,17 +30,6 @@ export const WorkoutEditor = observer(({ navigation }: NavigationStackScreenProp
 const Container = styled.View({
   flex: 1,
 });
-
-const NameInput = styled.TextInput(props => ({
-  borderColor: props.theme.colors.lightGrey,
-  borderRadius: 20,
-  borderWidth: 2,
-  padding: props.theme.margin.x1,
-  textAlign: 'center',
-  fontWeight: 'bold',
-  fontSize: 20,
-  margin: props.theme.margin.x2,
-}));
 
 const ActionButtonContainer = styled.View(props => ({
   position: 'absolute',
