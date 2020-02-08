@@ -11,11 +11,13 @@ import { Routes } from '../..//navigation/routes';
 import { WorkoutItem } from '../../components/WorkoutItem';
 
 export const Workouts = observer(({ navigation }: NavigationStackScreenProps) => {
-  const { workouts, addWorkout } = useStore(store => store);
+  const { workouts, addWorkout, removeWorkout } = useStore(store => store);
 
   workouts.map(w => console.log(w.name));
 
-  const renderWorkoutItem = ({ item }) => <WorkoutItem workout={item} />;
+  const renderWorkoutItem = ({ item }) => (
+    <WorkoutItem workout={item} deleteWorkout={removeWorkout} />
+  );
 
   const onAddWorkout = () => {
     const newWorkout = createWorkout();

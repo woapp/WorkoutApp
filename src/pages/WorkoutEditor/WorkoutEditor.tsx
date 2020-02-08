@@ -8,8 +8,12 @@ import { ExercisesList } from '../../components/ExercisesList';
 import { Routes } from '../../navigation/routes';
 
 export const WorkoutEditor = observer(({ navigation }: NavigationStackScreenProps) => {
-  const navigateToAddExercisesScreen = () => navigation.navigate(Routes.AddExercises);
   const workout = navigation.getParam('workout');
+  const navigateToAddExercisesScreen = () =>
+    navigation.navigate(Routes.AddExercises, {
+      workout,
+    });
+  console.log('workout.exercises', workout.exercises); // TODO: used to force watch on workout.exercises, find better way
 
   return (
     <Container>

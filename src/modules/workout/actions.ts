@@ -12,8 +12,9 @@ export const workoutActions = (self: ModelInstanceTypeProps<typeof WorkoutModel>
   addExercise(exercise: ExerciseType): void {
     self.exercises.push(createExerciseSets(exercise));
   },
-  // @typescript-eslint/no-empty-function
-  // removeExercise(exercise: ExerciseType): void {
-  //   self.exercises.remove({ exercise, sets: [] });
-  // },
+  removeExercise(exerciseToRemove: ExerciseType): void {
+    self.exercises = self.exercises.filter(
+      exerciseSets => exerciseSets.exercise.id !== exerciseToRemove.id
+    );
+  },
 });
