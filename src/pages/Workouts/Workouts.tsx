@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, View, Text } from 'react-native';
+import { FlatList } from 'react-native';
 import { NavigationStackScreenProps } from 'react-navigation-stack';
 
 import styled from '../../utils/styled-components';
