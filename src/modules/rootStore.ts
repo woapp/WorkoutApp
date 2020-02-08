@@ -1,4 +1,5 @@
 import { types } from 'mobx-state-tree';
+import makeInspectable from 'mobx-devtools-mst';
 
 import { RootModel } from './rootModel';
 import { rootActions } from './actions';
@@ -10,3 +11,5 @@ export const rootStore = RootStore.create({
   exercises: [],
   history: [],
 });
+
+makeInspectable(rootStore);
