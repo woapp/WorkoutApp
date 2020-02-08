@@ -15,6 +15,12 @@ e1.setMuscleGroups([MuscleGroup.Abs]);
 const e2 = createExercise();
 e2.setName('Squat');
 e2.setMuscleGroups([MuscleGroup.Legs, MuscleGroup.Calves]);
+const e3 = createExercise();
+e3.setName('Push up');
+e3.setMuscleGroups([MuscleGroup.Chest, MuscleGroup.Triceps]);
+const e4 = createExercise();
+e4.setName('Curl biceps');
+e4.setMuscleGroups([MuscleGroup.Biceps]);
 
 const w1 = createWorkout();
 w1.setName('My super workout');
@@ -27,7 +33,7 @@ w2.addExercise(e1);
 
 export const rootStore = RootStore.create({
   workouts: [w1, w2],
-  exercises: [e1, e2],
+  exercises: [e1, e2, e3, e4],
   history: [],
 });
 
