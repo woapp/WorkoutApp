@@ -16,6 +16,8 @@ export const ExercisesList: FunctionComponent<Props> = ({ workout }) => {
       data={workout.exercises}
       renderItem={renderItem}
       keyExtractor={(_, index) => `${index}`}
+      // eslint-disable-next-line react-native/no-inline-styles
+      contentContainerStyle={{ paddingBottom: 250 }} // TODO: remove and find find a way for scrollview to be aware of keyboard
     />
   );
 };
