@@ -17,7 +17,11 @@ export const Workouts: React.FC<NavigationStackScreenProps> = ({ navigation }) =
 
   return (
     <Container>
-      <FlatList data={workouts} renderItem={renderWorkoutItem} />
+      <FlatList
+        data={workouts}
+        renderItem={renderWorkoutItem}
+        keyExtractor={item => `${item.id}`}
+      />
       <RoundButtonContainer>
         <RoundButton onPress={onEditWorkout} />
       </RoundButtonContainer>
