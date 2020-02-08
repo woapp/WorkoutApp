@@ -8,16 +8,40 @@ import { exercisesSelector } from '../../modules/selectors';
 import { useStore } from '../../utils/hooks/useStore';
 import styled from '../../utils/styled-components';
 import { colors } from '../../styles/colors';
+import { WorkoutType } from '../../modules/workout';
 
 export const AddExercises: FunctionComponent = observer(() => {
   const exercises = useStore(exercisesSelector);
   const navigation = useNavigation();
+  const workout: WorkoutType = navigation.getParam('workout');
+  console.log('workoutExercises', workout.exercises); // TODO: used to force watch on workout.exercises, find better way
 
   const closeModal = () => navigation.goBack();
 
-  const renderItem = ({ item }) => (
-    <ExercicesToAddListItem name={item.name} checked="checked" onPress={() => {}} />
-  );
+  const isExerciseInWorkout = exerciseId =>
+    workout.exercises.reduce(
+      (previousValue, currentValue) => currentValue.exercise.id === exerciseId || previousValue,
+      false
+    );
+
+  const renderItem = ({ item }) => {
+    const isChecked = isExerciseInWorkout(item.id);
+    const addExerciseToWorkout = () => {
+      console.log('add');
+      workout.addExercise(item);
+    };
+    const removeExerciseFromWorkout = () => {
+      console.log('remove');
+      workout.removeExercise(item);
+    };
+    return (
+      <ExercicesToAddListItem
+        name={item.name}
+        checked={isChecked ? 'checked' : 'unchecked'}
+        onPress={isChecked ? removeExerciseFromWorkout : addExerciseToWorkout}
+      />
+    );
+  };
 
   return (
     <Container>
@@ -31,6 +55,7 @@ export const AddExercises: FunctionComponent = observer(() => {
       <FlatList
         data={exercises}
         renderItem={renderItem}
+        keyExtractor={item => item.id}
         style={{ backgroundColor: colors.white }}
       />
       <ValidateButton onPress={closeModal}>
