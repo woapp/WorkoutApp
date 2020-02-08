@@ -11,7 +11,7 @@ import { Routes } from '../..//navigation/routes';
 import { WorkoutItem } from '../../components/WorkoutItem';
 
 export const Workouts = observer(({ navigation }: NavigationStackScreenProps) => {
-  const { workouts, addWorkout, removeWorkout } = useStore(store => store);
+  const { workouts, addWorkout, removeWorkout } = useStore();
 
   workouts.map(w => console.log(w.name));
 

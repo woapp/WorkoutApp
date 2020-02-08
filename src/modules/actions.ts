@@ -21,12 +21,15 @@ export const rootActions = (self: ModelInstanceTypeProps<typeof RootModel>) => (
     self.workouts.remove(workout);
   },
   finishWorkout(workout: WorkoutType): void {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { id, ...workoutInformation } = workout;
     // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-    // @ts-ignore    );
+    // @ts-ignore
+    const workoutObject = workout.toJSON();
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { id, ...workoutData } = workoutObject;
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
     const finishedWorkout = WorkoutDone.create({
-      ...workoutInformation,
+      ...workoutData,
       date: Date.now(),
       id: generateId(),
     });
