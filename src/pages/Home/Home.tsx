@@ -8,7 +8,7 @@ export const Home: FunctionComponent = () => {
   const { finishWorkout, workouts } = useStore();
 
   return (
-    <View style={{ flex: 1 }}>
+    <View>
       <NotYetImplemented pageTitle="Home" />
       <Button
         title="J'ai fini mon workout !"

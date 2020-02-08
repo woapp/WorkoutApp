@@ -34,6 +34,7 @@ export const AddExercises: FunctionComponent = observer(() => {
       console.log('remove');
       workout.removeExercise(item);
     };
+
     return (
       <ExercicesToAddListItem
         name={item.name}
