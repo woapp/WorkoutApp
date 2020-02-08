@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react';
+import { Image } from 'react-native';
 
 import { MuscleGroup } from '../../modules/types';
 import images from '../../assets/images';
@@ -56,7 +57,14 @@ export const MuscleGroupIcon: FunctionComponent<MuscleGroupIconProps> = ({
 
   return (
     <Container size={size} isSelected={isSelected}>
-      <MuscleGroupImage source={icon} size={size} />
+      <Image
+        source={icon}
+        // eslint-disable-next-line react-native/no-inline-styles
+        style={{ flex: 1 }}
+        width={size * 0.58}
+        height={size / 2}
+        resizeMode="contain"
+      />
     </Container>
   );
 };
@@ -72,13 +80,5 @@ const Container = styled.View<{ isSelected: boolean; size: number }>(props => ({
   opacity: !props.isSelected ? 0.2 : undefined,
   overflow: 'hidden',
 }));
-
-const MuscleGroupImage = styled.Image.attrs<{ size: number }>(props => ({
-  resizeMode: 'contain',
-  height: props.size / 2,
-  width: props.size / 2,
-}))<{ size: number }>({
-  flex: 1,
-});
 
 const EmptyView = styled.View({ flex: 1, backgroundColor: colors.lightGrey });

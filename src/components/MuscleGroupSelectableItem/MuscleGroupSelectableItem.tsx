@@ -8,7 +8,7 @@ import { MuscleGroup } from '../../modules/types';
 interface MuscleGroupSelectableItemProps {
   title?: string;
   muscleGroup: MuscleGroup;
-  onPress: () => void;
+  onPress?: () => void;
   isSelected: boolean;
   disabled?: boolean;
   iconSize: number;

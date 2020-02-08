@@ -36,6 +36,7 @@ export const AddExercises: FunctionComponent<NavigationStackScreenProps> = obser
       return (
         <ExercicesToAddListItem
           name={item.name}
+          mainMuscleGroup={item.mainMuscleGroup}
           checked={isChecked ? 'checked' : 'unchecked'}
           onPress={isChecked ? removeExerciseFromWorkout : addExerciseToWorkout}
         />
@@ -61,9 +62,7 @@ export const AddExercises: FunctionComponent<NavigationStackScreenProps> = obser
           <FlatList
             data={exercises}
             renderItem={renderItem}
-            style={{
-              backgroundColor: colors.white,
-            }}
+            style={{ backgroundColor: colors.white }}
             keyExtractor={item => item.id}
           />
           <ActionButtonContainer>

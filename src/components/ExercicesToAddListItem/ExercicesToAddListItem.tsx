@@ -9,24 +9,28 @@ interface ExercicesToAddListItemProps {
   name: string;
   checked: 'checked' | 'unchecked' | 'indeterminate';
   onPress: () => void;
+  mainMuscleGroup?: MuscleGroup;
 }
 
 export const ExercicesToAddListItem: FunctionComponent<ExercicesToAddListItemProps> = ({
   checked,
   onPress,
   name,
+  mainMuscleGroup,
 }) => (
   <Container onPress={onPress}>
     <Row>
       <Checkbox color="#000000" uncheckedColor="#000000" status={checked} />
       <Name>{name}</Name>
     </Row>
-    <MuscleGroupSelectableItem
-      muscleGroup={MuscleGroup.Back}
-      isSelected={checked === 'checked'}
-      disabled
-      iconSize={50}
-    />
+    {mainMuscleGroup && (
+      <MuscleGroupSelectableItem
+        muscleGroup={mainMuscleGroup}
+        isSelected={checked === 'checked'}
+        disabled
+        iconSize={60}
+      />
+    )}
   </Container>
 );
 
@@ -34,6 +38,8 @@ const Container = styled.TouchableOpacity(props => ({
   padding: props.theme.margin.x2,
   flexDirection: 'row',
   alignItems: 'center',
+  alignContent: 'center',
+
   justifyContent: 'space-between',
 }));
 
