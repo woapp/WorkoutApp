@@ -50,7 +50,7 @@ const TabNavigator = createBottomTabNavigator(
     },
   },
   {
-    initialRouteName: Routes.Home,
+    initialRouteName: Routes.WorkoutsNavigator,
     tabBarOptions: {
       showLabel: false,
       activeTintColor: '#FFDB7C',
