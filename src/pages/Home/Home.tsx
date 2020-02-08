@@ -3,5 +3,5 @@ import React, { FunctionComponent } from 'react';
 import { NotYetImplemented } from '../../components/NotYetImplemented';
 
 export const Home: FunctionComponent = () => {
-  return <NotYetImplemented pageTitle="TrainingPlan" />;
+  return <NotYetImplemented pageTitle="Home" />;
 };

@@ -6,25 +6,34 @@ import React from 'react';
 
 import { History } from '../pages/History';
 import { Home } from '../pages/Home';
-import { Trainings } from '../pages/Trainings';
+import { Workouts } from '../pages/Workouts';
 
 import { Routes } from './routes';
 
 const HomeNavigator = createStackNavigator({
   [Routes.Home]: {
     screen: Home,
+    navigationOptions: {
+      title: 'Accueil',
+    },
   },
 });
 
 const HistoryNavigator = createStackNavigator({
   [Routes.History]: {
     screen: History,
+    navigationOptions: {
+      title: 'Historique',
+    },
   },
 });
 
 const ConfiguratorNavigator = createStackNavigator({
-  [Routes.Trainings]: {
-    screen: Trainings,
+  [Routes.Workouts]: {
+    screen: Workouts,
+    navigationOptions: {
+      title: 'Entraînements',
+    },
   },
 });
 
