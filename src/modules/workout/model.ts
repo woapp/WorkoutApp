@@ -1,7 +1,7 @@
 import { types } from 'mobx-state-tree';
 
 import { MuscleGroup } from '../types';
-import { Exercise } from '../exercises';
+import { Exercise } from '../exercise';
 
 export const WorkoutModel = {
   name: types.string,
