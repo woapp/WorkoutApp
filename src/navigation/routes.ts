@@ -2,6 +2,7 @@ export enum Routes {
   History = 'History',
   Home = 'Home',
   Workouts = 'Workouts',
+  WorkoutsNavigator = 'WorkoutsNavigator',
 }
 
 export const HomeRoutes = [Routes.Home];

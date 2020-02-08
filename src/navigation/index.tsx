@@ -6,9 +6,9 @@ import React from 'react';
 
 import { History } from '../pages/History';
 import { Home } from '../pages/Home';
-import { Workouts } from '../pages/Workouts';
 
 import { Routes } from './routes';
+import { WorkoutsNavigator } from './WorkoutsNavigator';
 
 const HomeNavigator = createStackNavigator({
   [Routes.Home]: {
@@ -28,20 +28,11 @@ const HistoryNavigator = createStackNavigator({
   },
 });
 
-const ConfiguratorNavigator = createStackNavigator({
-  [Routes.Workouts]: {
-    screen: Workouts,
-    navigationOptions: {
-      title: 'Entraînements',
-    },
-  },
-});
-
 const TabNavigator = createBottomTabNavigator(
   {
     History: HistoryNavigator,
     Home: HomeNavigator,
-    Configurator: ConfiguratorNavigator,
+    Workouts: WorkoutsNavigator,
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -55,7 +46,7 @@ const TabNavigator = createBottomTabNavigator(
           case 'Home':
             iconName = `ios-home`;
             break;
-          case 'Configurator':
+          case 'Workouts':
             iconName = `ios-fitness`;
             break;
         }
