@@ -1,5 +1,4 @@
-import { types } from 'mobx-state-tree';
-import { number, Instance } from 'mobx-state-tree/dist/internal';
+import { types, Instance } from 'mobx-state-tree';
 
 import { MuscleGroup } from '../types';
 import { ExerciseModel } from '../exercises/model';
@@ -13,8 +12,8 @@ export const WorkoutModel = types.model({
       exercise: types.reference(ExerciseModel),
       sets: types.array(
         types.model({
-          weight: number,
-          nbReps: number,
+          weight: types.number,
+          nbReps: types.number,
         })
       ),
     })
