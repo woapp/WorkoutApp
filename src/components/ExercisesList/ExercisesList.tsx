@@ -10,7 +10,12 @@ interface Props {
 
 export const ExercisesList: FunctionComponent<Props> = ({ workout }) => {
   const renderItem = ({ item }) => <ExercisesListItem {...item} />;
-  // console.log(workout.exercises);
 
-  return <FlatList data={[]} renderItem={renderItem} keyExtractor={(_, index) => `${index}`} />;
+  return (
+    <FlatList
+      data={workout.exercises}
+      renderItem={renderItem}
+      keyExtractor={(_, index) => `${index}`}
+    />
+  );
 };
