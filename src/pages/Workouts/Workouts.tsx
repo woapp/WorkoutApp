@@ -1,33 +1,37 @@
 import React from 'react';
 import { FlatList } from 'react-native';
 import { NavigationStackScreenProps } from 'react-navigation-stack';
+import { observer } from 'mobx-react-lite';
 
-import { workoutsSelector } from '../../modules/selectors';
+import { createWorkout } from '../../modules/workout/constructor';
 import { useStore } from '../../utils/hooks/useStore';
 import styled from '../../utils/styled-components';
 import { RoundButton } from '../../components/RoundButton';
 import { Routes } from '../..//navigation/routes';
 import { WorkoutItem } from '../../components/WorkoutItem';
 
-export const Workouts: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
-  const workouts = useStore(workoutsSelector);
+export const Workouts = observer(({ navigation }: NavigationStackScreenProps) => {
+  const { workouts, addWorkout } = useStore(store => store);
+
+  workouts.map(w => console.log(w.name));
 
   const renderWorkoutItem = ({ item }) => <WorkoutItem workout={item} />;
-  const onEditWorkout = () => navigation.navigate(Routes.WorkoutEditor);
+
+  const onAddWorkout = () => {
+    const newWorkout = createWorkout();
+    addWorkout(newWorkout);
+    navigation.navigate(Routes.WorkoutEditor, { workout: newWorkout });
+  };
 
   return (
     <Container>
-      <FlatList
-        data={workouts}
-        renderItem={renderWorkoutItem}
-        keyExtractor={item => `${item.id}`}
-      />
+      <FlatList data={workouts} renderItem={renderWorkoutItem} keyExtractor={item => item.id} />
       <RoundButtonContainer>
-        <RoundButton onPress={onEditWorkout} />
+        <RoundButton onPress={onAddWorkout} />
       </RoundButtonContainer>
     </Container>
   );
-};
+});
 
 const Container = styled.View({
   flex: 1,
