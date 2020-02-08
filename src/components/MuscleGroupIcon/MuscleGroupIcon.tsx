@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react';
-import { Image } from 'react-native';
 
 import { MuscleGroup } from '../../modules/types';
 import images from '../../assets/images';
@@ -9,11 +8,13 @@ import styled from '../../utils/styled-components';
 interface MuscleGroupIconProps {
   muscleGroup: MuscleGroup;
   isSelected: boolean;
+  size: number;
 }
 
 export const MuscleGroupIcon: FunctionComponent<MuscleGroupIconProps> = ({
   muscleGroup,
   isSelected,
+  size,
 }) => {
   let icon = null;
   switch (muscleGroup) {
@@ -47,28 +48,37 @@ export const MuscleGroupIcon: FunctionComponent<MuscleGroupIconProps> = ({
   }
   if (icon === null) {
     return (
-      <Container isSelected={false}>
+      <Container size={size} isSelected={false}>
         <EmptyView />
       </Container>
     );
   }
 
   return (
-    <Container isSelected={isSelected}>
-      <Image source={icon} />
+    <Container size={size} isSelected={isSelected}>
+      <MuscleGroupImage source={icon} size={size} />
     </Container>
   );
 };
 
-const Container = styled.View<{ isSelected: boolean }>(props => ({
-  width: 80,
-  height: 80,
+const Container = styled.View<{ isSelected: boolean; size: number }>(props => ({
+  width: props.size,
+  height: props.size,
   borderRadius: 40,
   borderColor: props.theme.colors.lightGrey,
   borderWidth: 2,
   alignItems: 'center',
   justifyContent: 'center',
   opacity: !props.isSelected ? 0.2 : undefined,
+  overflow: 'hidden',
 }));
+
+const MuscleGroupImage = styled.Image.attrs<{ size: number }>(props => ({
+  resizeMode: 'contain',
+  height: props.size / 2,
+  width: props.size / 2,
+}))<{ size: number }>({
+  flex: 1,
+});
 
 const EmptyView = styled.View({ flex: 1, backgroundColor: colors.lightGrey });
