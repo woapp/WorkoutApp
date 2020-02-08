@@ -50,6 +50,7 @@ const TabNavigator = createBottomTabNavigator(
     },
   },
   {
+    initialRouteName: Routes.Home,
     tabBarOptions: {
       showLabel: false,
       activeTintColor: '#FFDB7C',
