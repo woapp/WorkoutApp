@@ -3,6 +3,9 @@ import { Alert } from 'react-native';
 
 import styled from '../../utils/styled-components';
 import { RoundButton } from '../../components/RoundButton';
+import { ExercisesList } from '../../components/ExercisesList';
+
+const EXERCISES = [{ exercise: { name: 'first exercise' }, sets: [{ weight: 80, nbReps: 10 }] }];
 
 export const WorkoutEditor: React.FC = () => {
   const [name, setName] = useState('');
@@ -10,6 +13,7 @@ export const WorkoutEditor: React.FC = () => {
   return (
     <Container>
       <NameInput value={name} placeholder="Entraînement" onChangeText={setName} />
+      <ExercisesList exercices={EXERCISES} />
       <RoundButtonContainer>
         <RoundButton
           onPress={() => {
@@ -23,7 +27,6 @@ export const WorkoutEditor: React.FC = () => {
 
 const Container = styled.View(props => ({
   flex: 1,
-  padding: props.theme.margin.x2,
 }));
 
 const NameInput = styled.TextInput(props => ({
@@ -34,6 +37,7 @@ const NameInput = styled.TextInput(props => ({
   textAlign: 'center',
   fontWeight: 'bold',
   fontSize: 20,
+  margin: props.theme.margin.x2,
 }));
 
 const RoundButtonContainer = styled.View(props => ({
