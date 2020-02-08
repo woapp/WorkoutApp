@@ -31,4 +31,5 @@ const MuscleGroupTitle = styled.Text(props => ({
   fontSize: 15,
   textAlign: 'center',
   marginTop: props.theme.margin.x1,
+  marginBottom: props.theme.margin.x4,
 }));

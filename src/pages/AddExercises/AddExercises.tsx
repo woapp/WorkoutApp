@@ -3,8 +3,9 @@ import { FlatList } from 'react-native-gesture-handler';
 import { observer } from 'mobx-react-lite';
 import { useNavigation } from 'react-navigation-hooks';
 
+import { ExerciseType } from '../../modules/exercise';
+import { createExercise } from '../../modules/exercise/constructor';
 import { ExercicesToAddListItem } from '../../components/ExercicesToAddListItem';
-import { exercisesSelector } from '../../modules/selectors';
 import { useStore } from '../../utils/hooks/useStore';
 import styled from '../../utils/styled-components';
 import { colors } from '../../styles/colors';
@@ -13,10 +14,11 @@ import { ActionButton } from '../../components/ActionButton';
 import { Routes } from '../../navigation/routes';
 
 export const AddExercises: FunctionComponent = observer(() => {
-  const exercises = useStore(exercisesSelector);
+  const { exercises, addExercise } = useStore();
   const navigation = useNavigation();
   const workout: WorkoutType = navigation.getParam('workout');
   console.log('workoutExercises', workout.exercises); // TODO: used to force watch on workout.exercises, find better way
+  console.log('exercises', exercises); // TODO: used to force watch on workout.exercises, find better way
 
   const closeModal = () => navigation.goBack();
 
@@ -28,14 +30,8 @@ export const AddExercises: FunctionComponent = observer(() => {
 
   const renderItem = ({ item }) => {
     const isChecked = isExerciseInWorkout(item.id);
-    const addExerciseToWorkout = () => {
-      console.log('add');
-      workout.addExercise(item);
-    };
-    const removeExerciseFromWorkout = () => {
-      console.log('remove');
-      workout.removeExercise(item);
-    };
+    const addExerciseToWorkout = () => workout.addExercise(item);
+    const removeExerciseFromWorkout = () => workout.removeExercise(item);
 
     return (
       <ExercicesToAddListItem
@@ -46,7 +42,15 @@ export const AddExercises: FunctionComponent = observer(() => {
     );
   };
 
-  const navigateToCreateExercisePage = () => navigation.navigate(Routes.CreateExercise);
+  const validateExerciseCreation = (newExercise: ExerciseType) => {
+    addExercise(newExercise);
+    workout.addExercise(newExercise);
+  };
+
+  const onCreateExercise = () => {
+    const newExercise = createExercise();
+    navigation.navigate(Routes.CreateExercise, { exercise: newExercise, validateExerciseCreation });
+  };
 
   return (
     <Container>
@@ -54,12 +58,14 @@ export const AddExercises: FunctionComponent = observer(() => {
         <FlatList
           data={exercises}
           renderItem={renderItem}
-          style={{ backgroundColor: colors.white }}
+          style={{
+            backgroundColor: colors.white,
+          }}
           keyExtractor={item => item.id}
         />
 
         <ActionButtonContainer>
-          <ActionButton title="Nouvel exercice" onPress={navigateToCreateExercisePage} />
+          <ActionButton title="Nouvel exercice" onPress={onCreateExercise} />
         </ActionButtonContainer>
       </FlatListContainer>
 
