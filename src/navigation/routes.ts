@@ -2,6 +2,10 @@ export enum Routes {
   History = 'History',
   Home = 'Home',
   Workouts = 'Workouts',
+  WorkoutEditor = 'WorkoutEditor',
+  WorkoutsNavigator = 'WorkoutsNavigator',
+  HomeNavigator = 'HomeNavigator',
+  HistoryNavigator = 'HistoryNavigator',
 }
 
 export const HomeRoutes = [Routes.Home];

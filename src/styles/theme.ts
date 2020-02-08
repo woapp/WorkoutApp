@@ -1,6 +1,9 @@
+import { colors } from './colors';
+
 const BASE_SPACING = 8;
 
 export const theme = {
+  colors,
   margin: {
     x1: BASE_SPACING,
     x2: 2 * BASE_SPACING,

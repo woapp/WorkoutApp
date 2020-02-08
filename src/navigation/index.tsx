@@ -6,9 +6,9 @@ import React from 'react';
 
 import { History } from '../pages/History';
 import { Home } from '../pages/Home';
-import { Workouts } from '../pages/Workouts';
 
 import { Routes } from './routes';
+import { WorkoutsNavigator } from './WorkoutsNavigator';
 
 const HomeNavigator = createStackNavigator({
   [Routes.Home]: {
@@ -28,41 +28,28 @@ const HistoryNavigator = createStackNavigator({
   },
 });
 
-const ConfiguratorNavigator = createStackNavigator({
-  [Routes.Workouts]: {
-    screen: Workouts,
-    navigationOptions: {
-      title: 'Entraînements',
-    },
-  },
-});
-
 const TabNavigator = createBottomTabNavigator(
   {
-    History: HistoryNavigator,
-    Home: HomeNavigator,
-    Configurator: ConfiguratorNavigator,
+    [Routes.HistoryNavigator]: {
+      screen: HistoryNavigator,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => <Ionicons name="ios-calendar" size={30} color={tintColor} />,
+      },
+    },
+    [Routes.HomeNavigator]: {
+      screen: HomeNavigator,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => <Ionicons name="ios-home" size={30} color={tintColor} />,
+      },
+    },
+    [Routes.WorkoutsNavigator]: {
+      screen: WorkoutsNavigator,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => <Ionicons name="ios-fitness" size={30} color={tintColor} />,
+      },
+    },
   },
   {
-    defaultNavigationOptions: ({ navigation }) => ({
-      tabBarIcon: ({ tintColor }): React.ReactElement => {
-        const { routeName } = navigation.state;
-        let iconName = '';
-        switch (routeName) {
-          case 'History':
-            iconName = `ios-calendar`;
-            break;
-          case 'Home':
-            iconName = `ios-home`;
-            break;
-          case 'Configurator':
-            iconName = `ios-fitness`;
-            break;
-        }
-
-        return <Ionicons name={iconName} size={30} color={tintColor} />;
-      },
-    }),
     tabBarOptions: {
       showLabel: false,
       activeTintColor: '#FFDB7C',
