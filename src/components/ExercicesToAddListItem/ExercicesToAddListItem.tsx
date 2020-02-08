@@ -39,7 +39,6 @@ const Container = styled.TouchableOpacity(props => ({
   flexDirection: 'row',
   alignItems: 'center',
   alignContent: 'center',
-
   justifyContent: 'space-between',
 }));
 
