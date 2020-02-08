@@ -8,7 +8,7 @@ import { Routes } from '../../navigation/routes';
 
 interface Props {
   workout: WorkoutType;
-  deleteWorkout: (workout: WorkoutType) => void;
+  deleteWorkout?: (workout: WorkoutType) => void;
 }
 
 export const WorkoutItem: FunctionComponent<Props> = ({ workout, deleteWorkout }) => {
@@ -19,12 +19,16 @@ export const WorkoutItem: FunctionComponent<Props> = ({ workout, deleteWorkout }
   const showDeleteAlert = () => {
     Alert.alert('', 'Voulez-vous supprimer ce workout ?', [
       { text: 'Annuler', onPress: () => {} },
-      { text: 'Supprimer', onPress: () => deleteWorkout(workout), style: 'destructive' },
+      {
+        text: 'Supprimer',
+        onPress: () => deleteWorkout && deleteWorkout(workout),
+        style: 'destructive',
+      },
     ]);
   };
 
   return (
-    <Container onPress={navigateToWorkoutEditor} onLongPress={showDeleteAlert}>
+    <Container onPress={navigateToWorkoutEditor} onLongPress={deleteWorkout && showDeleteAlert}>
       <Name>{workout.name}</Name>
       <Exercises>{workout.nbExercises} exercices</Exercises>
     </Container>
