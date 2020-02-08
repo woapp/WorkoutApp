@@ -1,10 +1,8 @@
-import { types, Instance } from 'mobx-state-tree';
+import { types } from 'mobx-state-tree';
 
-import { WorkoutModel } from '../workouts/model';
+import { Workout } from '../workouts';
 
-export const WorkoutDoneModel = types.model({
-  workout: types.reference(WorkoutModel),
+export const WorkoutDoneModel = {
+  workout: types.reference(Workout),
   date: types.Date,
-});
-
-export interface Exercise extends Instance<typeof WorkoutDoneModel> {}
+};
