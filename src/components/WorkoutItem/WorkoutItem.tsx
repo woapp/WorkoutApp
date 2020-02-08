@@ -8,7 +8,7 @@ import { Routes } from '../../navigation/routes';
 
 interface Props {
   workout: WorkoutType;
-  deleteWorkout?: (workout: WorkoutType) => void;
+  deleteWorkout: (workout: WorkoutType) => void;
 }
 
 export const WorkoutItem: FunctionComponent<Props> = ({ workout, deleteWorkout }) => {
@@ -21,14 +21,14 @@ export const WorkoutItem: FunctionComponent<Props> = ({ workout, deleteWorkout }
       { text: 'Annuler', onPress: () => {} },
       {
         text: 'Supprimer',
-        onPress: () => deleteWorkout && deleteWorkout(workout),
+        onPress: () => deleteWorkout(workout),
         style: 'destructive',
       },
     ]);
   };
 
   return (
-    <Container onPress={navigateToWorkoutEditor} onLongPress={deleteWorkout && showDeleteAlert}>
+    <Container onPress={navigateToWorkoutEditor} onLongPress={showDeleteAlert}>
       <Name>{workout.name}</Name>
       <Exercises>{workout.nbExercises} exercices</Exercises>
     </Container>
