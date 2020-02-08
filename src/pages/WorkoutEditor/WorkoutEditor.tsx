@@ -1,13 +1,14 @@
 import React from 'react';
-import { Alert } from 'react-native';
-import { NavigationStackScreenProps } from 'react-navigation-stack';
 import { observer } from 'mobx-react-lite';
+import { NavigationStackScreenProps } from 'react-navigation-stack';
 
 import styled from '../../utils/styled-components';
 import { RoundButton } from '../../components/RoundButton';
 import { ExercisesList } from '../../components/ExercisesList';
+import { Routes } from '../../navigation/routes';
 
 export const WorkoutEditor = observer(({ navigation }: NavigationStackScreenProps) => {
+  const navigateToAddExercisesScreen = () => navigation.navigate(Routes.AddExercises);
   const workout = navigation.getParam('workout');
 
   return (
@@ -15,11 +16,7 @@ export const WorkoutEditor = observer(({ navigation }: NavigationStackScreenProp
       <NameInput value={workout.name} placeholder="Entraînement" onChangeText={workout.setName} />
       <ExercisesList workout={workout} />
       <RoundButtonContainer>
-        <RoundButton
-          onPress={() => {
-            Alert.alert('add a new exercise');
-          }}
-        />
+        <RoundButton onPress={navigateToAddExercisesScreen} />
       </RoundButtonContainer>
     </Container>
   );

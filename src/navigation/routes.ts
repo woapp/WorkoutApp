@@ -3,9 +3,11 @@ export enum Routes {
   Home = 'Home',
   Workouts = 'Workouts',
   WorkoutEditor = 'WorkoutEditor',
+  AddExercises = 'AddExercises',
   WorkoutsNavigator = 'WorkoutsNavigator',
   HomeNavigator = 'HomeNavigator',
   HistoryNavigator = 'HistoryNavigator',
+  TabNavigator = 'TabNavigator',
 }
 
 export const HomeRoutes = [Routes.Home];
