@@ -2,34 +2,24 @@ import React from 'react';
 import { FlatList } from 'react-native';
 import { NavigationStackScreenProps } from 'react-navigation-stack';
 
+import { workoutsSelector } from '../../modules/selectors';
+import { useStore } from '../../utils/hooks/useStore';
 import styled from '../../utils/styled-components';
 import { RoundButton } from '../../components/RoundButton';
 import { Routes } from '../..//navigation/routes';
-import { MuscleGroup } from '../../modules/types';
 import { WorkoutItem } from '../../components/WorkoutItem';
 
 export const Workouts: React.FC<NavigationStackScreenProps> = ({ navigation }) => {
-  const DATA = [
-    { name: 'My awesome workout', muscleGroups: [MuscleGroup.Biceps], id: 123, exercises: [] },
-    {
-      name: 'Leg Day',
-      muscleGroups: [MuscleGroup.Legs, MuscleGroup.Calves],
-      id: 124,
-      exercises: [],
-    },
-  ];
+  const workouts = useStore(workoutsSelector);
 
-  const renderWorkoutItem = ({ item }) => <WorkoutItem {...item} />;
+  const renderWorkoutItem = ({ item }) => <WorkoutItem workout={item} />;
+  const onEditWorkout = () => navigation.navigate(Routes.WorkoutEditor);
 
   return (
     <Container>
-      <FlatList data={DATA} renderItem={renderWorkoutItem} />
+      <FlatList data={workouts} renderItem={renderWorkoutItem} />
       <RoundButtonContainer>
-        <RoundButton
-          onPress={() => {
-            navigation.navigate(Routes.WorkoutEditor);
-          }}
-        />
+        <RoundButton onPress={onEditWorkout} />
       </RoundButtonContainer>
     </Container>
   );

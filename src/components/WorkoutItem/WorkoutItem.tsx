@@ -3,11 +3,11 @@ import React, { FunctionComponent } from 'react';
 import styled from '../../utils/styled-components';
 import { WorkoutType } from '../../modules/workout';
 
-export const WorkoutItem: FunctionComponent<WorkoutType> = props => {
+export const WorkoutItem: FunctionComponent<{ workout: WorkoutType }> = ({ workout }) => {
   return (
     <Container>
-      <Name>{props.name}</Name>
-      <Exercises>{props.exercises.length} exercices</Exercises>
+      <Name>{workout.name}</Name>
+      <Exercises>{workout.nbExercises} exercices</Exercises>
     </Container>
   );
 };
