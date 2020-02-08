@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import { Alert } from 'react-native';
 
+import { createWorkout } from '../../modules/workout/constructor';
 import styled from '../../utils/styled-components';
 import { RoundButton } from '../../components/RoundButton';
 import { ExercisesList } from '../../components/ExercisesList';
 
-const EXERCISES = [{ exercise: { name: 'first exercise' }, sets: [{ weight: 80, nbReps: 10 }] }];
-
 export const WorkoutEditor: React.FC = () => {
+  const workout = createWorkout();
   const [name, setName] = useState('');
 
   return (
     <Container>
       <NameInput value={name} placeholder="Entraînement" onChangeText={setName} />
-      <ExercisesList exercices={EXERCISES} />
+      <ExercisesList workout={workout} />
       <RoundButtonContainer>
         <RoundButton
           onPress={() => {
