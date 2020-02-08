@@ -25,9 +25,9 @@ export const WorkoutEditor: React.FC = () => {
   );
 };
 
-const Container = styled.View(props => ({
+const Container = styled.View({
   flex: 1,
-}));
+});
 
 const NameInput = styled.TextInput(props => ({
   borderColor: props.theme.colors.lightGrey,
