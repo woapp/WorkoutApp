@@ -7,7 +7,7 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "lint": "eslint src --ext .js,.ts,.tsx --no-ignore --max-warnings=0 && yarn ts:check",
     "lint:fix": "prettier --write './**/*.{ts,tsx}' && eslint --fix src --ext .js,.ts,.tsx",
     "pretty:list": "yarn prettier --list-different './**/*.{ts,tsx}'",
