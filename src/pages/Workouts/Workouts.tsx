@@ -4,7 +4,6 @@ import { NavigationStackScreenProps } from 'react-navigation-stack';
 import { observer } from 'mobx-react-lite';
 
 import { createWorkout } from '../../modules/workout/constructor';
-import { workoutsSelector, storeSelector } from '../../modules/selectors';
 import { useStore } from '../../utils/hooks/useStore';
 import styled from '../../utils/styled-components';
 import { RoundButton } from '../../components/RoundButton';
@@ -12,23 +11,21 @@ import { Routes } from '../..//navigation/routes';
 import { WorkoutItem } from '../../components/WorkoutItem';
 
 export const Workouts = observer(({ navigation }: NavigationStackScreenProps) => {
-  const store = useStore(storeSelector);
+  const { workouts, addWorkout } = useStore(store => store);
+
+  workouts.map(w => console.log(w.name));
 
   const renderWorkoutItem = ({ item }) => <WorkoutItem workout={item} />;
 
   const onAddWorkout = () => {
     const newWorkout = createWorkout();
-    store.addWorkout(newWorkout);
+    addWorkout(newWorkout);
     navigation.navigate(Routes.WorkoutEditor, { workout: newWorkout });
   };
 
   return (
     <Container>
-      <FlatList
-        data={store.workouts}
-        renderItem={renderWorkoutItem}
-        keyExtractor={item => `${item.id}`}
-      />
+      <FlatList data={workouts} renderItem={renderWorkoutItem} keyExtractor={item => item.id} />
       <RoundButtonContainer>
         <RoundButton onPress={onAddWorkout} />
       </RoundButtonContainer>
