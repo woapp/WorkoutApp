@@ -3,7 +3,6 @@ import { Alert } from 'react-native';
 import { NavigationStackScreenProps } from 'react-navigation-stack';
 import { observer } from 'mobx-react-lite';
 
-import { createWorkout } from '../../modules/workout/constructor';
 import styled from '../../utils/styled-components';
 import { RoundButton } from '../../components/RoundButton';
 import { ExercisesList } from '../../components/ExercisesList';

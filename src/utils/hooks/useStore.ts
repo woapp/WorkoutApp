@@ -1,10 +1,12 @@
 import { useContext } from 'react';
 
-import { SelectorFunction } from '../../modules/types';
+import { SelectorFunction, RootStoreType } from '../../modules/types';
 import { StoreContext } from '../../modules/provider';
 
-export const useStore = <T>(selector: SelectorFunction<T>): T => {
+export const useStore = <T>(selector: SelectorFunction<T>): T | RootStoreType => {
   const store = useContext(StoreContext);
 
-  return selector(store);
+  if (selector) return selector(store);
+
+  return store;
 };
