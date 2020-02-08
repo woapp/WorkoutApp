@@ -1,40 +1,58 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useState } from 'react';
+import { TouchableOpacity, View } from 'react-native';
 
 import { ExerciseType } from '../../modules/exercise';
 import styled from '../../utils/styled-components';
 import { MuscleGroupSelectableItem } from '../MuscleGroupSelectableItem';
+import { SetsEditor } from '../SetsEditor';
 
 interface ExerciseListItemProps {
   exercise: ExerciseType;
   sets: [{ weight: number; nbReps: number }];
 }
 
-export const ExercisesListItem: FunctionComponent<ExerciseListItemProps> = ({ exercise, sets }) => (
-  <Container>
-    <Column>
-      <Name>{exercise.name}</Name>
-      <Sets>{`${sets.length} séries`}</Sets>
-    </Column>
-    {exercise.mainMuscleGroup && (
-      <MuscleGroupSelectableItem
-        muscleGroup={exercise.mainMuscleGroup}
-        isSelected
-        disabled
-        iconSize={60}
-      />
-    )}
-  </Container>
-);
+export const ExercisesListItem: FunctionComponent<ExerciseListItemProps> = ({ exercise, sets }) => {
+  const [isExtended, setIsExtended] = useState(false);
+  const toggleItem = () => setIsExtended(!isExtended);
+
+  return (
+    <Container>
+      <Row>
+        <NameContainer onPress={toggleItem}>
+          <Name>{exercise.name}</Name>
+        </NameContainer>
+        {exercise.mainMuscleGroup && (
+          <MuscleGroupSelectableItem
+            muscleGroup={exercise.mainMuscleGroup}
+            isSelected
+            disabled
+            iconSize={60}
+          />
+        )}
+      </Row>
+
+      {!isExtended ? (
+        <TouchableOpacity onPress={toggleItem}>
+          <Sets>{`${sets.length} séries`}</Sets>
+        </TouchableOpacity>
+      ) : (
+        <SetsEditor />
+      )}
+    </Container>
+  );
+};
 
 const Container = styled.View(props => ({
   padding: props.theme.margin.x2,
   borderBottomColor: props.theme.colors.lightGrey,
   borderBottomWidth: 1,
-  flexDirection: 'row',
-  alignItems: 'center',
-  alignContent: 'center',
+  flexDirection: 'column',
   justifyContent: 'space-between',
 }));
+
+const NameContainer = styled.TouchableOpacity({
+  flex: 1,
+});
 
 const Name = styled.Text({
   fontWeight: 'bold',
@@ -48,4 +66,8 @@ const Sets = styled.Text({
 const Column = styled.View({
   flexDirection: 'column',
   justifyContent: 'flex-start',
+});
+
+const Row = styled.View({
+  flexDirection: 'row',
 });
