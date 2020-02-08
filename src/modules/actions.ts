@@ -1,9 +1,11 @@
 import { ModelInstanceTypeProps } from 'mobx-state-tree';
 
+import { generateId } from '../utils/services/generateId';
+
 import { RootModel } from './rootModel';
 import { ExerciseType } from './exercise';
 import { WorkoutType } from './workout';
-import { WorkoutDoneType } from './workoutDone';
+import { WorkoutDone } from './workoutDone';
 
 export const rootActions = (self: ModelInstanceTypeProps<typeof RootModel>) => ({
   addExercise(exercise: ExerciseType): void {
@@ -18,7 +20,19 @@ export const rootActions = (self: ModelInstanceTypeProps<typeof RootModel>) => (
   removeWorkout(workout: WorkoutType): void {
     self.workouts.remove(workout);
   },
-  addWorkoutDone(workoutDone: WorkoutDoneType): void {
-    self.history.push(workoutDone);
+  finishWorkout(workout: WorkoutType): void {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+    const workoutObject = workout.toJSON();
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { id, ...workoutData } = workoutObject;
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+    const finishedWorkout = WorkoutDone.create({
+      ...workoutData,
+      date: Date.now(),
+      id: generateId(),
+    });
+    self.history.push(finishedWorkout);
   },
 });

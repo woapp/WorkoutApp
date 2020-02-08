@@ -9,8 +9,6 @@ export const exerciseActions = (self: ModelInstanceTypeProps<typeof ExerciseMode
     self.name = newName;
   },
   setMuscleGroups(muscleGroups: MuscleGroup[]): void {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-    // @ts-ignore
-    self.muscleGroups = muscleGroups;
+    self.muscleGroups.replace(muscleGroups);
   },
 });

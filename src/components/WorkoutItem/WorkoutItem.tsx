@@ -19,7 +19,11 @@ export const WorkoutItem: FunctionComponent<Props> = ({ workout, deleteWorkout }
   const showDeleteAlert = () => {
     Alert.alert('', 'Voulez-vous supprimer ce workout ?', [
       { text: 'Annuler', onPress: () => {} },
-      { text: 'Supprimer', onPress: () => deleteWorkout(workout), style: 'destructive' },
+      {
+        text: 'Supprimer',
+        onPress: () => deleteWorkout(workout),
+        style: 'destructive',
+      },
     ]);
   };
 

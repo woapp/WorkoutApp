@@ -1,8 +1,12 @@
 import { types } from 'mobx-state-tree';
 
-import { Workout } from '../workout';
+import { MuscleGroup } from '../types';
+import { ExerciseSets } from '../exerciseSets';
 
 export const WorkoutDoneModel = {
-  workout: types.reference(Workout),
+  name: types.string,
+  muscleGroups: types.array(types.enumeration<MuscleGroup>(Object.values(MuscleGroup))),
+  exercises: types.array(ExerciseSets),
   date: types.Date,
+  id: types.identifier,
 };
