@@ -1,17 +1,17 @@
 import React, { FunctionComponent, useState } from 'react';
 import { TouchableOpacity, View } from 'react-native';
 
-import { ExerciseType } from '../../modules/exercise';
+import { ExerciseSetsType } from '../../modules/exerciseSets';
 import styled from '../../utils/styled-components';
 import { MuscleGroupSelectableItem } from '../MuscleGroupSelectableItem';
 import { SetsEditor } from '../SetsEditor';
 
 interface ExerciseListItemProps {
-  exercise: ExerciseType;
-  sets: [{ weight: number; nbReps: number }];
+  exerciseSets: ExerciseSetsType;
 }
 
-export const ExercisesListItem: FunctionComponent<ExerciseListItemProps> = ({ exercise, sets }) => {
+export const ExercisesListItem: FunctionComponent<ExerciseListItemProps> = ({ exerciseSets }) => {
+  const { exercise, sets } = exerciseSets;
   const [isExtended, setIsExtended] = useState(false);
   const toggleItem = () => setIsExtended(!isExtended);
 
@@ -36,7 +36,7 @@ export const ExercisesListItem: FunctionComponent<ExerciseListItemProps> = ({ ex
           <Sets>{`${sets.length} séries`}</Sets>
         </TouchableOpacity>
       ) : (
-        <SetsEditor />
+        <SetsEditor exerciseSets={exerciseSets} />
       )}
     </Container>
   );
@@ -61,11 +61,6 @@ const Name = styled.Text({
 
 const Sets = styled.Text({
   fontSize: 18,
-});
-
-const Column = styled.View({
-  flexDirection: 'column',
-  justifyContent: 'flex-start',
 });
 
 const Row = styled.View({

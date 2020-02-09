@@ -1,39 +1,33 @@
-import React, { FunctionComponent, useState } from 'react';
-import { View, Alert } from 'react-native';
+import React, { FunctionComponent } from 'react';
+import { View } from 'react-native';
+import { observer } from 'mobx-react-lite';
 
+import { ExerciseSetsType } from '../../modules/exerciseSets';
 import { Set } from '../Set/Set';
 import { AddSet } from '../AddSet';
 
-type SetsEditorProps = {};
+interface Props {
+  exerciseSets: ExerciseSetsType;
+}
 
-export const SetsEditor: FunctionComponent<SetsEditorProps> = () => {
-  const [reps, setReps] = useState(0);
-  const [weight, setWeight] = useState(0);
+export const SetsEditor: FunctionComponent<Props> = observer(({ exerciseSets }) => {
+  const onAddNewSet = () => exerciseSets.addNewSet();
+  const onSetNbReps = setRank => nbReps => exerciseSets.setNbReps(setRank, nbReps);
+  const onSetWeight = setRank => weight => exerciseSets.setWeight(setRank, weight);
 
   return (
     <View>
-      <Set
-        rank={1}
-        nbReps={reps}
-        onChangeReps={setReps}
-        weight={weight}
-        onChangeWeight={setWeight}
-      />
-      <Set
-        rank={2}
-        nbReps={reps}
-        onChangeReps={setReps}
-        weight={weight}
-        onChangeWeight={setWeight}
-      />
-      <Set
-        rank={3}
-        nbReps={reps}
-        onChangeReps={setReps}
-        weight={weight}
-        onChangeWeight={setWeight}
-      />
-      <AddSet onPress={() => Alert.alert('Add new set')} />
+      {exerciseSets.sets.map((set, setRank) => (
+        <Set
+          key={setRank}
+          rank={setRank}
+          nbReps={set.nbReps}
+          onChangeReps={onSetNbReps(setRank)}
+          weight={set.weight}
+          onChangeWeight={onSetWeight(setRank)}
+        />
+      ))}
+      <AddSet onPress={onAddNewSet} />
     </View>
   );
-};
+});
