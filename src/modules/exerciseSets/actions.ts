@@ -14,7 +14,13 @@ export const exerciseSetsActions = (self: ModelInstanceTypeProps<typeof Exercise
     self.sets[setRank].weight = weight;
   },
   addNewSet() {
-    // TODO: refacto, use preivous value
-    self.sets.push({ weight: 0, nbReps: 10 });
+    let weight = 0;
+    let nbReps = 10;
+    const nbSets = self.sets.length;
+    if (nbSets > 0) {
+      weight = self.sets[nbSets - 1].weight;
+      nbReps = self.sets[nbSets - 1].nbReps;
+    }
+    self.sets.push({ weight, nbReps });
   },
 });
