@@ -18,7 +18,7 @@ export const Set: FunctionComponent<SetProps> = ({
   weight,
   onChangeWeight,
 }) => {
-  const useOnChangeWithString = (onChange: (value: number) => void) => (value: string) => {
+  const onChangeWithString = (onChange: (value: number) => void) => (value: string) => {
     const number = Number(value);
     if (!isNaN(number)) {
       onChange(number);
@@ -31,16 +31,16 @@ export const Set: FunctionComponent<SetProps> = ({
         <Text>{rank}</Text>
       </RankContainer>
       <NumberInput
-        value={`${nbReps}`}
-        onChangeText={useOnChangeWithString(onChangeReps)}
+        value={nbReps.toString()}
+        onChangeText={onChangeWithString(onChangeReps)}
         keyboardType="number-pad"
         maxLength={3}
       />
       <Label>reps</Label>
       <Separator>/</Separator>
       <NumberInput
-        value={`${weight}`}
-        onChangeText={useOnChangeWithString(onChangeWeight)}
+        value={weight.toString()}
+        onChangeText={onChangeWithString(onChangeWeight)}
         keyboardType="number-pad"
         maxLength={3}
       />

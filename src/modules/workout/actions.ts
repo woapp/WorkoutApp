@@ -13,6 +13,8 @@ export const workoutActions = (self: ModelInstanceTypeProps<typeof WorkoutModel>
     self.exercises.push(createExerciseSets(exercise));
   },
   removeExercise(exerciseToRemove: ExerciseType): void {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
     self.exercises = self.exercises.filter(
       exerciseSets => exerciseSets.exercise.id !== exerciseToRemove.id
     );

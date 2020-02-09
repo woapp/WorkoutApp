@@ -9,7 +9,7 @@ interface Props {
 }
 
 export const ExercisesList: FunctionComponent<Props> = ({ workout }) => {
-  const renderItem = ({ item }) => <ExercisesListItem {...item} />;
+  const renderItem = ({ item }) => <ExercisesListItem exerciseSets={item} />;
 
   return (
     <FlatList
