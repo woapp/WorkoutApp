@@ -6,4 +6,7 @@ export const workoutViews = (self: ModelInstanceTypeProps<typeof WorkoutModel>) 
   get nbExercises() {
     return self.exercises.length;
   },
+  get mainMuscleGroups() {
+    return self.exercises.map(exerciseSet => exerciseSet.exercise.mainMuscleGroup);
+  },
 });

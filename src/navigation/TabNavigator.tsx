@@ -29,7 +29,7 @@ export const TabNavigator = createBottomTabNavigator(
     },
   },
   {
-    initialRouteName: Routes.WorkoutsNavigator,
+    initialRouteName: Routes.HomeNavigator,
     tabBarOptions: {
       showLabel: false,
       activeTintColor: '#FFDB7C',
