@@ -11,7 +11,7 @@ interface MuscleGroupSelectableItemProps {
   onPress?: () => void;
   isSelected: boolean;
   disabled?: boolean;
-  iconSize: number;
+  iconSize?: number;
 }
 
 export const MuscleGroupSelectableItem: FunctionComponent<MuscleGroupSelectableItemProps> = ({

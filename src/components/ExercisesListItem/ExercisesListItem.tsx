@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 
 import { ExerciseSetsType } from '../../modules/exerciseSets';
 import styled from '../../utils/styled-components';

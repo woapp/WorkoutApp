@@ -15,6 +15,8 @@ export const History: FunctionComponent<IHistory> = () => {
 
   return (
     <Container>
+      {/* 
+      // @ts-ignore */}
       <FlatList data={history} renderItem={renderWorkoutItem} keyExtractor={item => item.id} />
     </Container>
   );
