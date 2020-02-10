@@ -20,6 +20,9 @@ export const rootActions = (self: ModelInstanceTypeProps<typeof RootModel>) => (
   removeWorkout(workout: WorkoutType): void {
     self.workouts.remove(workout);
   },
+  setOngoingWorkout(workout: WorkoutType): void {
+    self.ongoingWorkout = workout;
+  },
   finishWorkout(workout: WorkoutType): void {
     // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
     // @ts-ignore
@@ -34,5 +37,6 @@ export const rootActions = (self: ModelInstanceTypeProps<typeof RootModel>) => (
       id: generateId(),
     });
     self.history.push(finishedWorkout);
+    self.ongoingWorkout = undefined;
   },
 });

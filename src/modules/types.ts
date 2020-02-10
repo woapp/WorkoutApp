@@ -1,6 +1,9 @@
-import { rootStore } from './rootStore';
+import { Instance } from 'mobx-state-tree';
 
-export type RootStoreType = typeof rootStore;
+import { RootStore } from './rootStore';
+
+export interface RootStoreType extends Instance<typeof RootStore> {}
+
 export type SelectorFunction<T> = (store: RootStoreType) => T;
 
 export enum MuscleGroup {
