@@ -6,7 +6,7 @@ import styled from '../../utils/styled-components';
 import { useStore } from '../../utils/hooks/useStore';
 
 export const OngoingWorkout: FunctionComponent = observer(() => {
-  const { ongoingWorkout } = useStore();
+  const { ongoingWorkout, setOngoingWorkout } = useStore();
 
   return (
     <View>

@@ -1,12 +1,14 @@
 import { useContext } from 'react';
 
-import { SelectorFunction, RootStoreType } from '../../modules/types';
+import { RootStoreType } from '../../modules/types';
 import { StoreContext } from '../../modules/provider';
 
-export const useStore = <T>(selector?: SelectorFunction<T>): T | RootStoreType => {
+export const useStore = (): RootStoreType => {
   const store = useContext(StoreContext);
 
-  if (selector) return selector(store);
+  if (!store) {
+    throw Error('Store is null or undefined');
+  }
 
   return store;
 };
