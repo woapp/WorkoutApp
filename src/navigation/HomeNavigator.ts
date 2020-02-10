@@ -16,13 +16,13 @@ export const HomeNavigator = createStackNavigator({
   [Routes.OngoingWorkout]: {
     screen: OngoingWorkout,
     navigationOptions: {
-      title: 'Go go go!',
+      title: "Let's go!",
     },
   },
   [Routes.OngoingWorkoutExercises]: {
     screen: OngoingWorkoutExercises,
     navigationOptions: {
-      title: 'Go go go!',
+      title: 'Exercices',
     },
   },
 });
