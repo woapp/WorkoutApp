@@ -1,7 +1,8 @@
 import React, { FunctionComponent } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Alert } from 'react-native';
 import { observer } from 'mobx-react-lite';
 
+import { ActionButton } from '../../components/ActionButton';
 import styled from '../../utils/styled-components';
 import { useStore } from '../../utils/hooks/useStore';
 
@@ -17,6 +18,7 @@ export const OngoingWorkout: FunctionComponent = observer(() => {
           {ongoingWorkout.exercises.map(exerciseSet => (
             <Text key={exerciseSet.id}>{exerciseSet.exercise.name}</Text>
           ))}
+          <ActionButton onPress={() => Alert.alert('Start workout')} title="Démarrer" />
         </View>
       )}
     </View>
