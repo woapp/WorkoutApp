@@ -2,6 +2,7 @@ import React, { FunctionComponent, useRef } from 'react';
 import { View, FlatList, Dimensions } from 'react-native';
 import { observer } from 'mobx-react-lite';
 import { NavigationStackScreenProps } from 'react-navigation-stack';
+import { NavigationActions, StackActions } from 'react-navigation';
 
 import { Routes } from '../../navigation/routes';
 import styled from '../../utils/styled-components';
@@ -20,7 +21,17 @@ export const OngoingWorkoutExercises: FunctionComponent<NavigationStackScreenPro
 
     const onFinishWorkout = () => {
       ongoingWorkout && finishWorkout(ongoingWorkout);
-      navigation.navigate(Routes.History);
+      navigation.dispatch(
+        StackActions.reset({
+          index: 0,
+          actions: [
+            NavigationActions.navigate({
+              routeName: Routes.TabNavigator,
+              action: NavigationActions.navigate({ routeName: Routes.History }),
+            }),
+          ],
+        })
+      );
     };
 
     const renderWorkoutExercise = ({ item, index }: { item: ExerciseSetsType; index: number }) => {
