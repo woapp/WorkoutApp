@@ -1,5 +1,7 @@
 import { types } from 'mobx-state-tree';
 import makeInspectable from 'mobx-devtools-mst';
+import { persist } from 'mst-persist';
+import { AsyncStorage } from 'react-native';
 
 import { RootModel } from './rootModel';
 import { rootActions } from './actions';
@@ -36,5 +38,9 @@ export const rootStore = RootStore.create({
   exercises: [e1, e2, e3, e4],
   history: [],
 });
+
+persist('rootStore', rootStore, {
+  storage: AsyncStorage,
+}).then(() => console.log('rootStore has been hydrated'));
 
 makeInspectable(rootStore);
