@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity, FlatList } from 'react-native';
 import { observer } from 'mobx-react-lite';
 import { Card } from 'react-native-paper';
 import { NavigationStackScreenProps } from 'react-navigation-stack';
@@ -18,32 +18,30 @@ export const Home: FunctionComponent<NavigationStackScreenProps> = observer(({ n
     navigation.navigate(Routes.OngoingWorkout);
   };
 
-  return (
-    <View>
-      {workouts.map((workout: WorkoutType) => (
-        <WorkoutCard key={workout.id}>
-          <TouchableOpacity onPress={onSelectWorkout(workout)}>
-            <Name>{workout.name}</Name>
-            <Exercises>{workout.nbExercises} exercices</Exercises>
-            <Row>
-              {workout.mainMuscleGroups.map((muscleGroup, index) => (
-                <MuscleGroupContainer key={index}>
-                  <MuscleGroupSelectableItem
-                    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-                    // @ts-ignore
-                    muscleGroup={muscleGroup}
-                    isSelected
-                    disabled
-                    iconSize={60}
-                  />
-                </MuscleGroupContainer>
-              ))}
-            </Row>
-          </TouchableOpacity>
-        </WorkoutCard>
-      ))}
-    </View>
+  const renderWorkoutCard = ({ item: workout }: { item: WorkoutType }) => (
+    <WorkoutCard key={workout.id}>
+      <TouchableOpacity onPress={onSelectWorkout(workout)}>
+        <Name>{workout.name}</Name>
+        <Exercises>{workout.nbExercises} exercices</Exercises>
+        <Row>
+          {workout.mainMuscleGroups.map((muscleGroup, index) => (
+            <MuscleGroupContainer key={index}>
+              <MuscleGroupSelectableItem
+                // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+                // @ts-ignore
+                muscleGroup={muscleGroup}
+                isSelected
+                disabled
+                iconSize={60}
+              />
+            </MuscleGroupContainer>
+          ))}
+        </Row>
+      </TouchableOpacity>
+    </WorkoutCard>
   );
+
+  return <FlatList data={workouts} renderItem={renderWorkoutCard} keyExtractor={item => item.id} />;
 });
 
 const Name = styled.Text(props => ({
