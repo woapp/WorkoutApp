@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { useNavigation } from 'react-navigation-hooks';
 import { Alert } from 'react-native';
+import { observer } from 'mobx-react-lite';
 
 import styled from '../../utils/styled-components';
 import { WorkoutType } from '../../modules/workout';
@@ -11,7 +12,7 @@ interface Props {
   deleteWorkout: (workout: WorkoutType) => void;
 }
 
-export const WorkoutItem: FunctionComponent<Props> = ({ workout, deleteWorkout }) => {
+export const WorkoutItem: FunctionComponent<Props> = observer(({ workout, deleteWorkout }) => {
   const navigation = useNavigation();
 
   const navigateToWorkoutEditor = () => navigation.navigate(Routes.WorkoutEditor, { workout });
@@ -33,7 +34,7 @@ export const WorkoutItem: FunctionComponent<Props> = ({ workout, deleteWorkout }
       <Exercises>{workout.nbExercises} exercices</Exercises>
     </Container>
   );
-};
+});
 
 const Container = styled.TouchableOpacity(props => ({
   padding: props.theme.margin.x2,
