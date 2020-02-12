@@ -2,7 +2,6 @@ import React, { FunctionComponent } from 'react';
 import { Checkbox } from 'react-native-paper';
 import { Alert } from 'react-native';
 
-import { MuscleGroup } from '../../modules/types';
 import styled from '../../utils/styled-components';
 import { MuscleGroupSelectableItem } from '../MuscleGroupSelectableItem';
 import { useStore } from '../../utils/hooks/useStore';
