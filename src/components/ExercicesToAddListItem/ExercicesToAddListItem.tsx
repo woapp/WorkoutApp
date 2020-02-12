@@ -1,38 +1,57 @@
 import React, { FunctionComponent } from 'react';
 import { Checkbox } from 'react-native-paper';
+import { Alert } from 'react-native';
 
-import { MuscleGroup } from '../../modules/types';
 import styled from '../../utils/styled-components';
 import { MuscleGroupSelectableItem } from '../MuscleGroupSelectableItem';
+import { useStore } from '../../utils/hooks/useStore';
+import { ExerciseType } from '../../modules/exercise';
 
 interface ExercicesToAddListItemProps {
-  name: string;
   checked: 'checked' | 'unchecked' | 'indeterminate';
   onPress: () => void;
-  mainMuscleGroup?: MuscleGroup;
+  exercise: ExerciseType;
 }
 
 export const ExercicesToAddListItem: FunctionComponent<ExercicesToAddListItemProps> = ({
   checked,
   onPress,
-  name,
-  mainMuscleGroup,
-}) => (
-  <Container onPress={onPress}>
-    <Row>
-      <Checkbox color="#000000" uncheckedColor="#000000" status={checked} />
-      <Name>{name}</Name>
-    </Row>
-    {mainMuscleGroup && (
-      <MuscleGroupSelectableItem
-        muscleGroup={mainMuscleGroup}
-        isSelected={checked === 'checked'}
-        disabled
-        iconSize={60}
-      />
-    )}
-  </Container>
-);
+  exercise,
+}) => {
+  const { removeExercise } = useStore();
+
+  const showDeleteExerciseAlert = () => {
+    Alert.alert(
+      'Supprimer cet exercice ?',
+      'Attention il sera supprimé de tous vos workouts en cours',
+      [
+        { text: 'Annuler', onPress: () => {} },
+        {
+          text: 'Supprimer',
+          onPress: () => removeExercise(exercise),
+          style: 'destructive',
+        },
+      ]
+    );
+  };
+
+  return (
+    <Container onPress={onPress} onLongPress={showDeleteExerciseAlert}>
+      <Row>
+        <Checkbox color="#000000" uncheckedColor="#000000" status={checked} />
+        <Name>{exercise.name}</Name>
+      </Row>
+      {exercise.mainMuscleGroup && (
+        <MuscleGroupSelectableItem
+          muscleGroup={exercise.mainMuscleGroup}
+          isSelected={checked === 'checked'}
+          disabled
+          iconSize={60}
+        />
+      )}
+    </Container>
+  );
+};
 
 const Container = styled.TouchableOpacity(props => ({
   padding: props.theme.margin.x2,
