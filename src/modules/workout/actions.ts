@@ -2,6 +2,7 @@ import { ModelInstanceTypeProps } from 'mobx-state-tree';
 
 import { ExerciseType } from '../exercise';
 import { createExerciseSets } from '../exerciseSets/constructor';
+import { ExerciseSetsType } from '../exerciseSets';
 
 import { WorkoutModel } from './model';
 
@@ -18,5 +19,10 @@ export const workoutActions = (self: ModelInstanceTypeProps<typeof WorkoutModel>
     self.exercises = self.exercises.filter(
       exerciseSets => exerciseSets.exercise.id !== exerciseToRemove.id
     );
+  },
+  setExercises(exercises: ExerciseSetsType[]): void {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+    self.exercises = exercises;
   },
 });
