@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useState } from 'react';
-import { TouchableOpacity } from 'react-native';
 
 import { ExerciseSetsType } from '../../modules/exerciseSets';
 import styled from '../../utils/styled-components';
@@ -8,17 +7,21 @@ import { SetsEditor } from '../SetsEditor';
 
 interface ExerciseListItemProps {
   exerciseSets: ExerciseSetsType;
+  onDrag: () => void;
 }
 
-export const ExercisesListItem: FunctionComponent<ExerciseListItemProps> = ({ exerciseSets }) => {
+export const ExercisesListItem: FunctionComponent<ExerciseListItemProps> = ({
+  exerciseSets,
+  onDrag,
+}) => {
   const { exercise, sets } = exerciseSets;
   const [isExtended, setIsExtended] = useState(false);
   const toggleItem = () => setIsExtended(!isExtended);
 
   return (
-    <Container>
+    <Container onLongPress={onDrag} onPress={toggleItem}>
       <Row>
-        <NameContainer onPress={toggleItem}>
+        <NameContainer>
           <Name>{exercise.name}</Name>
         </NameContainer>
         {exercise.mainMuscleGroup && (
@@ -32,9 +35,7 @@ export const ExercisesListItem: FunctionComponent<ExerciseListItemProps> = ({ ex
       </Row>
 
       {!isExtended ? (
-        <TouchableOpacity onPress={toggleItem}>
-          <Sets>{`${sets.length} séries`}</Sets>
-        </TouchableOpacity>
+        <Sets>{`${sets.length} séries`}</Sets>
       ) : (
         <SetsEditor exerciseSets={exerciseSets} />
       )}
@@ -42,7 +43,7 @@ export const ExercisesListItem: FunctionComponent<ExerciseListItemProps> = ({ ex
   );
 };
 
-const Container = styled.View(props => ({
+const Container = styled.TouchableOpacity(props => ({
   padding: props.theme.margin.x2,
   borderBottomColor: props.theme.colors.lightGrey,
   borderBottomWidth: 1,
@@ -50,7 +51,7 @@ const Container = styled.View(props => ({
   justifyContent: 'space-between',
 }));
 
-const NameContainer = styled.TouchableOpacity({
+const NameContainer = styled.View({
   flex: 1,
 });
 
