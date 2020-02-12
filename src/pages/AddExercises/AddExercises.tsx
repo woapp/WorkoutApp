@@ -35,8 +35,7 @@ export const AddExercises: FunctionComponent<NavigationStackScreenProps> = obser
 
       return (
         <ExercicesToAddListItem
-          name={item.name}
-          mainMuscleGroup={item.mainMuscleGroup}
+          exercise={item}
           checked={isChecked ? 'checked' : 'unchecked'}
           onPress={isChecked ? removeExerciseFromWorkout : addExerciseToWorkout}
         />

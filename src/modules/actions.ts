@@ -1,4 +1,4 @@
-import { ModelInstanceTypeProps } from 'mobx-state-tree';
+import { ModelInstanceTypeProps, detach } from 'mobx-state-tree';
 
 import { generateId } from '../utils/services/generateId';
 
@@ -12,7 +12,16 @@ export const rootActions = (self: ModelInstanceTypeProps<typeof RootModel>) => (
     self.exercises.push(exercise);
   },
   removeExercise(exercise: ExerciseType): void {
-    self.exercises.remove(exercise);
+    for (const workout of self.workouts) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      // @ts-ignore
+      self.exercises = self.exercises.filter(exerciseSet => exerciseSet.exercise !== exercise);
+      for (const exerciseSet of workout.exercises) {
+        exerciseSet.exercise;
+      }
+    }
+    const exerciseDetached = detach(exercise);
+    self.archivedExercises.push(exerciseDetached);
   },
   addWorkout(workout: WorkoutType): void {
     self.workouts.push(workout);
