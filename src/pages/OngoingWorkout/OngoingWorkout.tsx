@@ -1,12 +1,15 @@
 import React, { FunctionComponent } from 'react';
-import { View, Text } from 'react-native';
 import { observer } from 'mobx-react-lite';
 import { NavigationStackScreenProps } from 'react-navigation-stack';
+import { FlatList } from 'react-native';
 
 import { Routes } from '../../navigation/routes';
 import { ActionButton } from '../../components/ActionButton';
 import styled from '../../utils/styled-components';
 import { useStore } from '../../utils/hooks/useStore';
+import { ExerciseSetsType } from '../../modules/exerciseSets';
+
+import { ExerciseItem } from './components/ExerciseItem';
 
 export const OngoingWorkout: FunctionComponent<NavigationStackScreenProps> = observer(
   ({ navigation }) => {
@@ -15,24 +18,55 @@ export const OngoingWorkout: FunctionComponent<NavigationStackScreenProps> = obs
     const onStartWorkout = () => navigation.navigate(Routes.OngoingWorkoutExercises);
 
     return (
-      <View>
+      <Container>
         {ongoingWorkout && (
-          <View>
+          <>
             <Name>{ongoingWorkout.name}</Name>
-            <Text>EXERCICES</Text>
-            {ongoingWorkout.exercises.map(exerciseSet => (
-              <Text key={exerciseSet.id}>{exerciseSet.exercise.name}</Text>
-            ))}
-            <ActionButton onPress={onStartWorkout} title="Démarrer" />
-          </View>
+            <Exercice>EXERCICES</Exercice>
+            <FlatList
+              data={ongoingWorkout.exercises}
+              renderItem={({ item, index }: { item: ExerciseSetsType; index: number }) => (
+                <ExerciseItem
+                  isFirst={index === 0}
+                  isLast={index === ongoingWorkout.nbExercises - 1}
+                  key={item.id}
+                  exerciseName={item.exercise.name}
+                  muscleGroup={item.exercise.mainMuscleGroup}
+                  nbSets={4}
+                />
+              )}
+            />
+
+            <ButtonContainer>
+              <ActionButton onPress={onStartWorkout} title="Démarrer" />
+            </ButtonContainer>
+          </>
         )}
-      </View>
+      </Container>
     );
   }
 );
 
+const Container = styled.View(props => ({
+  padding: props.theme.margin.x2,
+  flex: 1,
+}));
+
 const Name = styled.Text(props => ({
   fontWeight: 'bold',
   fontSize: 24,
+  marginBottom: props.theme.margin.x4,
+  textAlign: 'center',
+}));
+
+const Exercice = styled.Text(props => ({
+  fontWeight: 'bold',
+  fontSize: 20,
+  marginBottom: props.theme.margin.x2,
+}));
+
+const ButtonContainer = styled.View(props => ({
+  flex: 1,
+  justifyContent: 'flex-end',
   marginBottom: props.theme.margin.x2,
 }));
