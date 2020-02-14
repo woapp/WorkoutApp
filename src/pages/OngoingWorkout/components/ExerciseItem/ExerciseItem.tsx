@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react';
+import { observer } from 'mobx-react-lite';
 
 import styled from '../../../../utils/styled-components';
 import { MuscleGroup } from '../../../../modules/types';
@@ -12,28 +13,24 @@ type ExerciseItemProps = {
   nbSets: number;
 };
 
-export const ExerciseItem: FunctionComponent<ExerciseItemProps> = ({
-  isFirst,
-  isLast,
-  muscleGroup,
-  exerciseName,
-  nbSets,
-}) => {
-  return (
-    <Container>
-      <IconContainer>
-        {!isFirst && <Bar />}
-        <MuscleGroupIcon muscleGroup={muscleGroup} />
-        {!isLast && <Bar />}
-      </IconContainer>
-      <InfosContainer>
-        {!isFirst && <Spacer />}
-        <Title>{exerciseName}</Title>
-        <Sets>{nbSets} séries</Sets>
-      </InfosContainer>
-    </Container>
-  );
-};
+export const ExerciseItem: FunctionComponent<ExerciseItemProps> = observer(
+  ({ isFirst, isLast, muscleGroup, exerciseName, nbSets }) => {
+    return (
+      <Container>
+        <IconContainer>
+          {!isFirst && <Bar />}
+          <MuscleGroupIcon muscleGroup={muscleGroup} />
+          {!isLast && <Bar />}
+        </IconContainer>
+        <InfosContainer>
+          {!isFirst && <Spacer />}
+          <Title>{exerciseName}</Title>
+          <Sets>{nbSets} séries</Sets>
+        </InfosContainer>
+      </Container>
+    );
+  }
+);
 
 const Container = styled.View({
   flexDirection: 'row',
