@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react';
-import { Text } from 'react-native';
 
 import styled from '../../utils/styled-components';
 
@@ -28,7 +27,7 @@ export const Set: FunctionComponent<SetProps> = ({
   return (
     <Container pointerEvents="auto">
       <RankContainer>
-        <Text>{rank}</Text>
+        <Rank>{rank}</Rank>
       </RankContainer>
       <NumberInput
         value={nbReps.toString()}
@@ -52,34 +51,47 @@ export const Set: FunctionComponent<SetProps> = ({
 const Container = styled.View(props => ({
   flexDirection: 'row',
   alignItems: 'center',
-  padding: props.theme.margin.x1,
-  borderBottomColor: props.theme.colors.lightGrey,
-  borderBottomWidth: 1,
+  paddingHorizontal: props.theme.margin.x1,
+  paddingVertical: props.theme.margin.x3,
+  borderBottomColor: props.theme.colors.greyScale[70],
+  borderBottomWidth: 2,
 }));
 
 const RankContainer = styled.View(props => ({
   marginHorizontal: props.theme.margin.x1,
-  width: 30,
-  height: 30,
-  borderRadius: 15,
+  width: 34,
+  height: 34,
+  borderRadius: 17,
   borderWidth: 2,
-  borderColor: props.theme.colors.black,
+  borderColor: props.theme.colors.cyan,
   justifyContent: 'center',
   alignItems: 'center',
 }));
 
-const NumberInput = styled.TextInput({
+const Rank = styled.Text(props => ({
+  fontSize: 24,
+  color: props.theme.colors.greyScale[10],
+  fontWeight: 'bold',
+}));
+
+const NumberInput = styled.TextInput(props => ({
   width: 50,
-  fontSize: 20,
+  fontSize: 24,
   textAlign: 'center',
-});
+  fontWeight: 'bold',
+  color: props.theme.colors.greyScale[10],
+}));
 
-const Label = styled.Text({
-  fontSize: 20,
-});
+const Label = styled.Text(props => ({
+  fontSize: 24,
+  color: props.theme.colors.greyScale[10],
+  fontWeight: 'bold',
+}));
 
-const Separator = styled.Text({
+const Separator = styled.Text(props => ({
   fontSize: 30,
   textAlign: 'center',
+  fontWeight: 'bold',
   flex: 1,
-});
+  color: props.theme.colors.greyScale[10],
+}));

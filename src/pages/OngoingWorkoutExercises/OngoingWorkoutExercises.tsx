@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
-import { Dimensions, SafeAreaView, View, Text } from 'react-native';
+import { Dimensions, View } from 'react-native';
 import { observer } from 'mobx-react-lite';
 import { NavigationStackScreenProps } from 'react-navigation-stack';
 import { NavigationActions, StackActions } from 'react-navigation';
@@ -11,8 +11,8 @@ import styled from '../../utils/styled-components';
 import { ExerciseSetsType } from '../../modules/exerciseSets';
 import { useStore } from '../../utils/hooks/useStore';
 import { SetsEditor } from '../../components/SetsEditor';
-import { ActionButton } from '../../components/ActionButton';
 import { colors } from '../../styles/colors';
+import { Button } from '../../components/Button';
 
 export const OngoingWorkoutExercises: FunctionComponent<NavigationStackScreenProps> = observer(
   ({ navigation }) => {
@@ -48,7 +48,9 @@ export const OngoingWorkoutExercises: FunctionComponent<NavigationStackScreenPro
     return (
       <Container>
         <Carousel
+          // eslint-disable-next-line react-native/no-inline-styles
           containerCustomStyle={{ flex: 1 }}
+          // eslint-disable-next-line react-native/no-inline-styles
           slideStyle={{ flex: 1 }}
           data={ongoingWorkout.exercises.toJS()}
           renderItem={renderWorkoutExercise}
@@ -59,22 +61,23 @@ export const OngoingWorkoutExercises: FunctionComponent<NavigationStackScreenPro
           }}
         />
         <PaginationDot
-          activeDotColor={colors.blue}
+          activeDotColor={colors.cyan}
           curPage={activeExerciseIndex}
           maxPage={ongoingWorkout.exercises.length}
         />
         <ButtonContainer>
-          <ActionButton title={'Finish!'} onPress={onFinishWorkout} />
+          <Button title={'Finish!'} onPress={onFinishWorkout} />
         </ButtonContainer>
       </Container>
     );
   }
 );
 
-const Container = styled.SafeAreaView({
+const Container = styled.SafeAreaView(props => ({
   alignItems: 'center',
   flex: 1,
-});
+  backgroundColor: props.theme.colors.greyScale[90],
+}));
 
 const WorkoutExercise = styled.View({
   flex: 1,
@@ -84,8 +87,11 @@ const Name = styled.Text(props => ({
   fontWeight: 'bold',
   fontSize: 24,
   margin: props.theme.margin.x2,
+  color: props.theme.colors.white,
 }));
 
 const ButtonContainer = styled.View(props => ({
+  width: '100%',
   paddingVertical: props.theme.margin.x2,
+  paddingHorizontal: props.theme.margin.x4,
 }));
