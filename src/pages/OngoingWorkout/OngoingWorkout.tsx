@@ -24,7 +24,7 @@ export const OngoingWorkout: FunctionComponent<NavigationStackScreenProps> = obs
             <Name>{ongoingWorkout.name}</Name>
             <Exercice>EXERCICES</Exercice>
             <FlatList
-              data={ongoingWorkout.exercises}
+              data={ongoingWorkout.exercises.toJS()}
               renderItem={({ item, index }: { item: ExerciseSetsType; index: number }) => (
                 <ExerciseItem
                   isFirst={index === 0}

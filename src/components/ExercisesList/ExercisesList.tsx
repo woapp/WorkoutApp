@@ -18,7 +18,7 @@ export const ExercisesList: FunctionComponent<Props> = observer(({ workout }) =>
 
   return (
     <DraggableFlatList
-      data={workout.exercises}
+      data={workout.exercises.toJS()}
       renderItem={renderExercise}
       keyExtractor={item => item.id}
       // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
