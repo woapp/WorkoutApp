@@ -1,10 +1,10 @@
 import React, { FunctionComponent, useState } from 'react';
+import { observer } from 'mobx-react-lite';
 
 import { ExerciseSetsType } from '../../modules/exerciseSets';
 import styled from '../../utils/styled-components';
 import { MuscleGroupSelectableItem } from '../MuscleGroupSelectableItem';
 import { SetsEditor } from '../SetsEditor';
-import { observer } from 'mobx-react-lite';
 
 interface ExerciseListItemProps {
   exerciseSets: ExerciseSetsType;

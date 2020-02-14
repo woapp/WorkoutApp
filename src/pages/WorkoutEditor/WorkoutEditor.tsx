@@ -14,7 +14,6 @@ export const WorkoutEditor = observer(({ navigation }: NavigationStackScreenProp
     navigation.navigate(Routes.AddExercises, {
       workout,
     });
-  console.log('workout.exercises', workout.exercises); // TODO: used to force watch on workout.exercises, find better way
 
   return (
     <Container>
