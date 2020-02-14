@@ -4,44 +4,44 @@ import { ExerciseSetsType } from '../../modules/exerciseSets';
 import styled from '../../utils/styled-components';
 import { MuscleGroupSelectableItem } from '../MuscleGroupSelectableItem';
 import { SetsEditor } from '../SetsEditor';
+import { observer } from 'mobx-react-lite';
 
 interface ExerciseListItemProps {
   exerciseSets: ExerciseSetsType;
   onDrag: () => void;
 }
 
-export const ExercisesListItem: FunctionComponent<ExerciseListItemProps> = ({
-  exerciseSets,
-  onDrag,
-}) => {
-  const { exercise, sets } = exerciseSets;
-  const [isExtended, setIsExtended] = useState(false);
-  const toggleItem = () => setIsExtended(!isExtended);
+export const ExercisesListItem: FunctionComponent<ExerciseListItemProps> = observer(
+  ({ exerciseSets, onDrag }) => {
+    const { exercise, sets } = exerciseSets;
+    const [isExtended, setIsExtended] = useState(false);
+    const toggleItem = () => setIsExtended(!isExtended);
 
-  return (
-    <Container onLongPress={onDrag} onPress={toggleItem}>
-      <Row>
-        <NameContainer>
-          <Name>{exercise.name}</Name>
-        </NameContainer>
-        {exercise.mainMuscleGroup && (
-          <MuscleGroupSelectableItem
-            muscleGroup={exercise.mainMuscleGroup}
-            isSelected
-            disabled
-            iconSize={60}
-          />
+    return (
+      <Container onLongPress={onDrag} onPress={toggleItem}>
+        <Row>
+          <NameContainer>
+            <Name>{exercise.name}</Name>
+          </NameContainer>
+          {exercise.mainMuscleGroup && (
+            <MuscleGroupSelectableItem
+              muscleGroup={exercise.mainMuscleGroup}
+              isSelected
+              disabled
+              iconSize={60}
+            />
+          )}
+        </Row>
+
+        {!isExtended ? (
+          <Sets>{`${sets.length} séries`}</Sets>
+        ) : (
+          <SetsEditor exerciseSets={exerciseSets} />
         )}
-      </Row>
-
-      {!isExtended ? (
-        <Sets>{`${sets.length} séries`}</Sets>
-      ) : (
-        <SetsEditor exerciseSets={exerciseSets} />
-      )}
-    </Container>
-  );
-};
+      </Container>
+    );
+  }
+);
 
 const Container = styled.TouchableOpacity(props => ({
   padding: props.theme.margin.x2,
