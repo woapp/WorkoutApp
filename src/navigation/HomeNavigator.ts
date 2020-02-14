@@ -1,6 +1,5 @@
 import { createStackNavigator } from 'react-navigation-stack';
 
-import { OngoingWorkoutExercises } from '../pages/OngoingWorkoutExercises';
 import { OngoingWorkout } from '../pages/OngoingWorkout';
 import { Home } from '../pages/Home';
 
@@ -17,12 +16,6 @@ export const HomeNavigator = createStackNavigator({
     screen: OngoingWorkout,
     navigationOptions: {
       title: "Let's go!",
-    },
-  },
-  [Routes.OngoingWorkoutExercises]: {
-    screen: OngoingWorkoutExercises,
-    navigationOptions: {
-      title: 'Exercices',
     },
   },
 });
