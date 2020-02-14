@@ -20,7 +20,7 @@ export const SetsEditor: FunctionComponent<Props> = observer(({ exerciseSets }) 
       {exerciseSets.sets.map((set, setRank) => (
         <Set
           key={setRank}
-          rank={setRank}
+          rank={setRank + 1}
           nbReps={set.nbReps}
           onChangeReps={onSetNbReps(setRank)}
           weight={set.weight}

@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
-import { Dimensions, View } from 'react-native';
+import { Dimensions, View, ScrollView } from 'react-native';
 import { observer } from 'mobx-react-lite';
 import { NavigationStackScreenProps } from 'react-navigation-stack';
 import { NavigationActions, StackActions } from 'react-navigation';
@@ -38,7 +38,10 @@ export const OngoingWorkoutExercises: FunctionComponent<NavigationStackScreenPro
       return (
         <WorkoutExercise>
           <Name>{item.exercise.name}</Name>
-          <SetsEditor exerciseSets={item} />
+          {/* TODO: remove padding and find a way to handle keyboard */}
+          <ScrollView contentContainerStyle={{ paddingBottom: 250 }}>
+            <SetsEditor exerciseSets={item} />
+          </ScrollView>
         </WorkoutExercise>
       );
     };
