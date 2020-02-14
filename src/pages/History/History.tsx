@@ -13,7 +13,11 @@ export const History: FunctionComponent = observer(() => {
 
   return (
     <Container>
-      <FlatList data={history} renderItem={renderWorkoutItem} keyExtractor={item => item.id} />
+      <FlatList
+        data={history.toJS()}
+        renderItem={renderWorkoutItem}
+        keyExtractor={item => item.id}
+      />
     </Container>
   );
 });

@@ -21,5 +21,11 @@ export const Home: FunctionComponent<NavigationStackScreenProps> = observer(({ n
     <WorkoutCard key={workout.id} onSelectWorkout={onSelectWorkout} workout={workout} />
   );
 
-  return <FlatList data={workouts} renderItem={renderWorkoutCard} keyExtractor={item => item.id} />;
+  return (
+    <FlatList
+      data={workouts.toJS()}
+      renderItem={renderWorkoutCard}
+      keyExtractor={item => item.id}
+    />
+  );
 });

@@ -44,3 +44,9 @@ persist('rootStore', rootStore, {
 }).then(() => console.log('rootStore has been hydrated'));
 
 makeInspectable(rootStore);
+
+if (__DEV__) {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+  // @ts-ignore
+  global.store = rootStore;
+}

@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react';
+import { observer } from 'mobx-react-lite';
 
 import styled from '../../utils/styled-components';
 import { WorkoutDoneType } from '../../modules/workoutDone';
@@ -7,7 +8,7 @@ interface Props {
   workout: WorkoutDoneType;
 }
 
-export const WorkoutHistoryItem: FunctionComponent<Props> = ({ workout }) => {
+export const WorkoutHistoryItem: FunctionComponent<Props> = observer(({ workout }) => {
   return (
     <Container>
       <Row>
@@ -19,7 +20,7 @@ export const WorkoutHistoryItem: FunctionComponent<Props> = ({ workout }) => {
       <Exercises>{workout.exercises.length} exercices</Exercises>
     </Container>
   );
-};
+});
 
 const Container = styled.TouchableOpacity(props => ({
   padding: props.theme.margin.x2,

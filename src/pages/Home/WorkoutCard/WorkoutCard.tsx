@@ -1,6 +1,7 @@
 import { Card } from 'react-native-paper';
 import React, { FunctionComponent } from 'react';
 import { TouchableOpacity } from 'react-native';
+import { observer } from 'mobx-react-lite';
 
 import { WorkoutType } from '../../../modules/workout';
 import styled from '../../../utils/styled-components';
@@ -11,7 +12,7 @@ interface Props {
   onSelectWorkout: (workout: WorkoutType) => () => void;
 }
 
-export const WorkoutCard: FunctionComponent<Props> = ({ workout, onSelectWorkout }) => {
+export const WorkoutCard: FunctionComponent<Props> = observer(({ workout, onSelectWorkout }) => {
   return (
     <Container key={workout.id}>
       <TouchableOpacity onPress={onSelectWorkout(workout)}>
@@ -34,7 +35,7 @@ export const WorkoutCard: FunctionComponent<Props> = ({ workout, onSelectWorkout
       </TouchableOpacity>
     </Container>
   );
-};
+});
 
 const Name = styled.Text(props => ({
   fontWeight: 'bold',
