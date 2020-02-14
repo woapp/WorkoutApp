@@ -1,6 +1,8 @@
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
+import { OngoingWorkoutExercises } from '../pages/OngoingWorkoutExercises';
+
 import { Routes } from './routes';
 import { TabNavigator } from './TabNavigator';
 import { ExercisesNavigator } from './ExercisesNavigator';
@@ -9,6 +11,13 @@ const RootNavigator = createStackNavigator(
   {
     [Routes.TabNavigator]: TabNavigator,
     [Routes.ExercisesNavigator]: ExercisesNavigator,
+    [Routes.OngoingWorkoutExercises]: {
+      screen: OngoingWorkoutExercises,
+      navigationOptions: {
+        title: 'Exercices',
+        gestureEnabled: false,
+      },
+    },
   },
   {
     mode: 'modal',

@@ -9,10 +9,9 @@ interface AddSetProps {
 export const AddSet: FunctionComponent<AddSetProps> = ({ onPress }) => {
   return (
     <Container onPress={onPress}>
-      <IconContainer>
-        <Icon>+</Icon>
-      </IconContainer>
-      <Label>Ajouter une nouvelle série</Label>
+      <Label>
+        <Icon>+</Icon> Ajouter une nouvelle série
+      </Label>
     </Container>
   );
 };
@@ -20,25 +19,16 @@ export const AddSet: FunctionComponent<AddSetProps> = ({ onPress }) => {
 const Container = styled.TouchableOpacity(props => ({
   flexDirection: 'row',
   alignItems: 'center',
-  padding: props.theme.margin.x1,
-}));
-
-const IconContainer = styled.View(props => ({
-  marginHorizontal: props.theme.margin.x1,
-  width: 30,
-  height: 30,
-  borderRadius: 15,
-  borderWidth: 2,
-  borderColor: props.theme.colors.mediumGrey,
-  justifyContent: 'center',
-  alignItems: 'center',
+  paddingHorizontal: props.theme.margin.x3,
+  paddingVertical: props.theme.margin.x2,
 }));
 
 const Label = styled.Text(props => ({
-  fontSize: 15,
+  fontSize: 18,
+  fontWeight: 'bold',
   color: props.theme.colors.mediumGrey,
 }));
 
-const Icon = styled.Text(props => ({
-  color: props.theme.colors.mediumGrey,
-}));
+const Icon = styled.Text({
+  fontSize: 24,
+});
