@@ -13,7 +13,7 @@ import { ExerciseSetsType } from '../../modules/exerciseSets';
 import { useStore } from '../../utils/hooks/useStore';
 import { SetsEditor } from '../../components/SetsEditor';
 import { colors } from '../../styles/colors';
-import { Button } from '../../components/Button';
+import { PrimaryButton } from '../../components/PrimaryButton';
 
 export const OngoingWorkoutExercises: FunctionComponent<NavigationStackScreenProps> = observer(
   ({ navigation }) => {
@@ -68,7 +68,7 @@ export const OngoingWorkoutExercises: FunctionComponent<NavigationStackScreenPro
           maxPage={ongoingWorkout.exercises.length}
         />
         <ButtonContainer>
-          <Button title={'Finish!'} onPress={onFinishWorkout} />
+          <PrimaryButton title={'Finish!'} onPress={onFinishWorkout} />
         </ButtonContainer>
       </Container>
     );

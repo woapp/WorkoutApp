@@ -7,7 +7,7 @@ type ButtonProps = {
   title: string;
 };
 
-export const Button: FunctionComponent<ButtonProps> = ({ onPress, title }) => {
+export const PrimaryButton: FunctionComponent<ButtonProps> = ({ onPress, title }) => {
   return (
     <Container onPress={onPress}>
       <Title>{title}</Title>
