@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 
-import { ExerciseSetsType } from '../../modules/exerciseSets';
+import { ExerciseSetsType } from '../../mobx/exerciseSets';
 import styled from '../../utils/styled-components';
 import { MuscleGroupToggle } from '../MuscleGroupToggle';
 import { FormSets } from '../FormSets';

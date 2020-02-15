@@ -3,7 +3,7 @@ import { FlatList } from 'react-native';
 import { NavigationStackScreenProps } from 'react-navigation-stack';
 import { observer } from 'mobx-react-lite';
 
-import { createWorkout } from '../../modules/workout/constructor';
+import { createWorkout } from '../../mobx/workout/constructor';
 import { useStore } from '../../utils/hooks/useStore';
 import { ActionButton } from '../../components/ActionButton';
 import { Routes } from '../../navigation/routes';

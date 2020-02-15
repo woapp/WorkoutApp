@@ -8,7 +8,7 @@ import { Routes } from './routes';
 
 export const WorkoutsNavigator = createStackNavigator(
   {
-    [Routes.Workouts]: {
+    [Routes.MyWorkouts]: {
       screen: MyWorkouts,
       navigationOptions: {
         title: 'Entraînements',
@@ -22,7 +22,7 @@ export const WorkoutsNavigator = createStackNavigator(
     },
   },
   {
-    initialRouteName: Routes.Workouts,
+    initialRouteName: Routes.MyWorkouts,
 
     defaultNavigationOptions: {
       headerStyle: {

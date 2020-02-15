@@ -3,7 +3,7 @@ import { Image } from 'react-native';
 
 import styled from '../../../../../utils/styled-components';
 import images from '../../../../../assets/images';
-import { MuscleGroup } from '../../../../../modules/types';
+import { MuscleGroup } from '../../../../../mobx/types';
 
 const ICON_SIZE = 70;
 

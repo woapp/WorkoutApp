@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { Image } from 'react-native';
 
-import { MuscleGroup } from '../../modules/types';
+import { MuscleGroup } from '../../mobx/types';
 import images from '../../assets/images';
 import { colors } from '../../styles/colors';
 import styled from '../../utils/styled-components';

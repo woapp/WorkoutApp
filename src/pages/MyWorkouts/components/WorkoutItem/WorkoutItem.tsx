@@ -5,7 +5,7 @@ import { observer } from 'mobx-react-lite';
 
 import { TextTitle } from '../../.././../components/Texts';
 import styled from '../../../../utils/styled-components';
-import { WorkoutType } from '../../../../modules/workout';
+import { WorkoutType } from '../../../../mobx/workout';
 import { Routes } from '../../../../navigation/routes';
 
 interface Props {

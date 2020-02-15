@@ -5,7 +5,7 @@ import { Alert } from 'react-native';
 import styled from '../../utils/styled-components';
 import { MuscleGroupToggle } from '../MuscleGroupToggle';
 import { useStore } from '../../utils/hooks/useStore';
-import { ExerciseType } from '../../modules/exercise';
+import { ExerciseType } from '../../mobx/exercise';
 import { TextTitle } from '../Texts';
 
 interface ExercicesToAddListItemProps {

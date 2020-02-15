@@ -9,7 +9,7 @@ import PaginationDot from 'react-native-animated-pagination-dot';
 import { TextTitle } from '../../../components/Texts';
 import { Routes } from '../../../navigation/routes';
 import styled from '../../../utils/styled-components';
-import { ExerciseSetsType } from '../../../modules/exerciseSets';
+import { ExerciseSetsType } from '../../../mobx/exerciseSets';
 import { useStore } from '../../../utils/hooks/useStore';
 import { FormSets } from '../../../components/FormSets';
 import { colors } from '../../../styles/colors';
@@ -28,7 +28,7 @@ export const OngoingWorkout: FunctionComponent<NavigationStackScreenProps> = obs
           actions: [
             NavigationActions.navigate({
               routeName: Routes.TabNavigator,
-              action: NavigationActions.navigate({ routeName: Routes.History }),
+              action: NavigationActions.navigate({ routeName: Routes.HistoryOverview }),
             }),
           ],
         })

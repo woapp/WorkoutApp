@@ -9,7 +9,7 @@ import { PrimaryButton } from '../../../components/PrimaryButton';
 import { Spacer } from '../../../components/Spacer';
 import styled from '../../../utils/styled-components';
 import { useStore } from '../../../utils/hooks/useStore';
-import { ExerciseSetsType } from '../../../modules/exerciseSets';
+import { ExerciseSetsType } from '../../../mobx/exerciseSets';
 
 import { ExerciseItem } from './components/ExerciseItem';
 

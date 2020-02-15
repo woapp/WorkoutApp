@@ -4,7 +4,7 @@ import { observer } from 'mobx-react-lite';
 
 import { InputTitle } from '../../components/InputTitle';
 import styled from '../../utils/styled-components';
-import { MuscleGroup } from '../../modules/types';
+import { MuscleGroup } from '../../mobx/types';
 import { MuscleGroupToggle } from '../../components/MuscleGroupToggle';
 import { ActionButton } from '../../components/ActionButton';
 
