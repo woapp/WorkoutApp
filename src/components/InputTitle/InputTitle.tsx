@@ -1,6 +1,6 @@
 import styled from '../../utils/styled-components';
 
-export const NameInput = styled.TextInput(props => ({
+export const InputTitle = styled.TextInput(props => ({
   borderColor: props.theme.colors.lightGrey,
   borderRadius: 20,
   borderWidth: 2,

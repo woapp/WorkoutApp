@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { NavigationStackScreenProps } from 'react-navigation-stack';
 import { observer } from 'mobx-react-lite';
 
-import { NameInput } from '../../components/NameInput';
+import { InputTitle } from '../../components/InputTitle';
 import styled from '../../utils/styled-components';
 import { MuscleGroup } from '../../modules/types';
 import { MuscleGroupToggle } from '../../components/MuscleGroupToggle';
@@ -23,7 +23,7 @@ export const CreateExercise: FunctionComponent<NavigationStackScreenProps> = obs
 
     return (
       <Container>
-        <NameInput value={exercise.name} placeholder="Exercice" onChangeText={exercise.setName} />
+        <InputTitle value={exercise.name} placeholder="Exercice" onChangeText={exercise.setName} />
         <MuscleGroupsRow>
           {Object.values(MuscleGroup).map((muscleGroup, index) => {
             const isSelected = exercise.muscleGroups.includes(muscleGroup);
