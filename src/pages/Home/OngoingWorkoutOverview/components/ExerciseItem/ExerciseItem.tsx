@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react';
 import { observer } from 'mobx-react-lite';
 
-import styled from '../../../../utils/styled-components';
-import { MuscleGroup } from '../../../../modules/types';
+import styled from '../../../../../utils/styled-components';
+import { MuscleGroup } from '../../../../../modules/types';
 import { MuscleGroupIcon } from '../MuscleGroupIcon';
 
 type ExerciseItemProps = {

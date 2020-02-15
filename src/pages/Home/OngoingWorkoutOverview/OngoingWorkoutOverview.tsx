@@ -3,20 +3,20 @@ import { observer } from 'mobx-react-lite';
 import { NavigationStackScreenProps } from 'react-navigation-stack';
 import { FlatList } from 'react-native';
 
-import { TextTitle } from '../../components/Texts';
-import { Routes } from '../../navigation/routes';
-import { ActionButton } from '../../components/ActionButton';
-import styled from '../../utils/styled-components';
-import { useStore } from '../../utils/hooks/useStore';
-import { ExerciseSetsType } from '../../modules/exerciseSets';
+import { TextTitle } from '../../../components/Texts';
+import { Routes } from '../../../navigation/routes';
+import { ActionButton } from '../../../components/ActionButton';
+import styled from '../../../utils/styled-components';
+import { useStore } from '../../../utils/hooks/useStore';
+import { ExerciseSetsType } from '../../../modules/exerciseSets';
 
 import { ExerciseItem } from './components/ExerciseItem';
 
-export const OngoingWorkout: FunctionComponent<NavigationStackScreenProps> = observer(
+export const OngoingWorkoutOverview: FunctionComponent<NavigationStackScreenProps> = observer(
   ({ navigation }) => {
     const { ongoingWorkout } = useStore();
 
-    const onStartWorkout = () => navigation.navigate(Routes.OngoingWorkoutExercises);
+    const onStartWorkout = () => navigation.navigate(Routes.OngoingWorkout);
 
     return (
       <Container>

@@ -1,19 +1,19 @@
 import { createStackNavigator } from 'react-navigation-stack';
 
-import { OngoingWorkout } from '../pages/OngoingWorkout';
-import { Home } from '../pages/Home';
+import { OngoingWorkoutOverview } from '../pages/Home/OngoingWorkoutOverview';
+import { Dashboard } from '../pages/Home/Dashboard';
 
 import { Routes } from './routes';
 
 export const HomeNavigator = createStackNavigator({
-  [Routes.Home]: {
-    screen: Home,
+  [Routes.Dashboard]: {
+    screen: Dashboard,
     navigationOptions: {
       title: 'Accueil',
     },
   },
-  [Routes.OngoingWorkout]: {
-    screen: OngoingWorkout,
+  [Routes.OngoingWorkoutOverview]: {
+    screen: OngoingWorkoutOverview,
     navigationOptions: {
       title: "Let's go!",
     },

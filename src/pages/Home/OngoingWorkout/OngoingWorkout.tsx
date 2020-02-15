@@ -6,16 +6,16 @@ import { NavigationActions, StackActions } from 'react-navigation';
 import Carousel from 'react-native-snap-carousel';
 import PaginationDot from 'react-native-animated-pagination-dot';
 
-import { TextTitle } from '../../components/Texts';
-import { Routes } from '../../navigation/routes';
-import styled from '../../utils/styled-components';
-import { ExerciseSetsType } from '../../modules/exerciseSets';
-import { useStore } from '../../utils/hooks/useStore';
-import { SetsEditor } from '../../components/SetsEditor';
-import { colors } from '../../styles/colors';
-import { Button } from '../../components/Button';
+import { TextTitle } from '../../../components/Texts';
+import { Routes } from '../../../navigation/routes';
+import styled from '../../../utils/styled-components';
+import { ExerciseSetsType } from '../../../modules/exerciseSets';
+import { useStore } from '../../../utils/hooks/useStore';
+import { SetsEditor } from '../../../components/SetsEditor';
+import { colors } from '../../../styles/colors';
+import { Button } from '../../../components/Button';
 
-export const OngoingWorkoutExercises: FunctionComponent<NavigationStackScreenProps> = observer(
+export const OngoingWorkout: FunctionComponent<NavigationStackScreenProps> = observer(
   ({ navigation }) => {
     const { ongoingWorkout, finishWorkout } = useStore();
     const [activeExerciseIndex, setActiveExercicseIndex] = useState(0);
@@ -68,7 +68,6 @@ export const OngoingWorkoutExercises: FunctionComponent<NavigationStackScreenPro
           maxPage={ongoingWorkout.exercises.length}
         />
         <ButtonContainer>
-          <Button title={'Finish!'} onPress={onFinishWorkout} />
         </ButtonContainer>
       </Container>
     );
