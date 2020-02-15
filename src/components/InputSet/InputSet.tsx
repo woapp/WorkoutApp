@@ -10,7 +10,7 @@ type SetProps = {
   onChangeWeight: (value: number) => void;
 };
 
-export const Set: FunctionComponent<SetProps> = ({
+export const InputSet: FunctionComponent<SetProps> = ({
   rank,
   nbReps,
   onChangeReps,

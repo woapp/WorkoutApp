@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { observer } from 'mobx-react-lite';
 
 import { ExerciseSetsType } from '../../modules/exerciseSets';
-import { Set } from '../Set/Set';
+import { InputSet } from '../InputSet';
 import { NewSetButton } from '../NewSetButton';
 
 interface Props {
@@ -18,7 +18,7 @@ export const SetsEditor: FunctionComponent<Props> = observer(({ exerciseSets }) 
   return (
     <View>
       {exerciseSets.sets.map((set, setRank) => (
-        <Set
+        <InputSet
           key={setRank}
           rank={setRank + 1}
           nbReps={set.nbReps}
