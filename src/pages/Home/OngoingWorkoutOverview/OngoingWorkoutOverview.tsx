@@ -5,7 +5,7 @@ import { FlatList } from 'react-native';
 
 import { TextTitle, TextSubtitle } from '../../../components/Texts';
 import { Routes } from '../../../navigation/routes';
-import { Button } from '../../../components/Button';
+import { PrimaryButton } from '../../../components/PrimaryButton';
 import { Spacer } from '../../../components/Spacer';
 import styled from '../../../utils/styled-components';
 import { useStore } from '../../../utils/hooks/useStore';
@@ -42,7 +42,7 @@ export const OngoingWorkoutOverview: FunctionComponent<NavigationStackScreenProp
             />
 
             <ButtonContainer>
-              <Button onPress={onStartWorkout} title="Démarrer" />
+              <PrimaryButton onPress={onStartWorkout} title="Démarrer" />
             </ButtonContainer>
           </>
         )}
