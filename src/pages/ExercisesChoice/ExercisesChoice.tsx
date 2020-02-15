@@ -5,13 +5,14 @@ import { NavigationStackScreenProps } from 'react-navigation-stack';
 
 import { ExerciseType } from '../../mobx/exercise';
 import { createExercise } from '../../mobx/exercise/constructor';
-import { ExercicesToAddListItem } from '../../components/ExercicesToAddListItem';
 import { useStore } from '../../utils/hooks/useStore';
 import styled from '../../utils/styled-components';
 import { colors } from '../../styles/colors';
 import { WorkoutType } from '../../mobx/workout';
 import { ActionButton } from '../../components/ActionButton';
 import { Routes } from '../../navigation/routes';
+
+import { ExerciseItem } from './components/ExerciseItem';
 
 export const ExercisesChoice: FunctionComponent<NavigationStackScreenProps> = observer(
   ({ navigation }) => {
@@ -34,7 +35,7 @@ export const ExercisesChoice: FunctionComponent<NavigationStackScreenProps> = ob
       const removeExerciseFromWorkout = () => workout.removeExercise(item);
 
       return (
-        <ExercicesToAddListItem
+        <ExerciseItem
           exercise={item}
           checked={isChecked ? 'checked' : 'unchecked'}
           onPress={isChecked ? removeExerciseFromWorkout : addExerciseToWorkout}
