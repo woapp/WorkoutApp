@@ -1,6 +1,8 @@
 import React, { FunctionComponent } from 'react';
 import { observer } from 'mobx-react-lite';
+import { useNavigation } from 'react-navigation-hooks';
 
+import { Routes } from '../../navigation/routes';
 import styled from '../../utils/styled-components';
 import { WorkoutDoneType } from '../../modules/workoutDone';
 
@@ -9,8 +11,14 @@ interface Props {
 }
 
 export const WorkoutHistoryItem: FunctionComponent<Props> = observer(({ workout }) => {
+  const navigation = useNavigation();
+
+  const onWorkoutPress = () => {
+    navigation.navigate(Routes.HistoryDetails, { workout });
+  };
+
   return (
-    <Container>
+    <Container onPress={onWorkoutPress}>
       <Row>
         <Name>{workout.name}</Name>
         <Name>

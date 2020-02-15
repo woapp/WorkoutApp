@@ -12,6 +12,7 @@ export enum Routes {
   TabNavigator = 'TabNavigator',
   OngoingWorkout = 'OngoingWorkout',
   OngoingWorkoutExercises = 'OngoingWorkoutExercises',
+  HistoryDetails = 'HistoryDetails',
 }
 
 export const HomeRoutes = [Routes.Home];
