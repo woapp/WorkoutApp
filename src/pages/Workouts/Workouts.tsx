@@ -6,9 +6,10 @@ import { observer } from 'mobx-react-lite';
 import { createWorkout } from '../../modules/workout/constructor';
 import { useStore } from '../../utils/hooks/useStore';
 import { ActionButton } from '../../components/ActionButton';
-import { Routes } from '../..//navigation/routes';
-import { WorkoutItem } from '../../components/WorkoutItem';
+import { Routes } from '../../navigation/routes';
 import styled from '../../utils/styled-components';
+
+import { WorkoutItem } from './components/WorkoutItem';
 
 export const Workouts = observer(({ navigation }: NavigationStackScreenProps) => {
   const { workouts, addWorkout, removeWorkout } = useStore();
