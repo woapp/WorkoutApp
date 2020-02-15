@@ -3,6 +3,7 @@ import React, { FunctionComponent } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { observer } from 'mobx-react-lite';
 
+import { TextTitle } from '../../../components/Texts';
 import { WorkoutType } from '../../../modules/workout';
 import styled from '../../../utils/styled-components';
 import { MuscleGroupSelectableItem } from '../../../components/MuscleGroupSelectableItem';
@@ -16,7 +17,7 @@ export const WorkoutCard: FunctionComponent<Props> = observer(({ workout, onSele
   return (
     <Container key={workout.id}>
       <TouchableOpacity onPress={onSelectWorkout(workout)}>
-        <Name>{workout.name}</Name>
+        <TextTitle>{workout.name}</TextTitle>
         <Exercises>{workout.nbExercises} exercices</Exercises>
         <Row>
           {workout.mainMuscleGroups.map((muscleGroup, index) => (
@@ -37,14 +38,8 @@ export const WorkoutCard: FunctionComponent<Props> = observer(({ workout, onSele
   );
 });
 
-const Name = styled.Text(props => ({
-  fontWeight: 'bold',
-  fontSize: 24,
-  marginBottom: props.theme.margin.x2,
-}));
-
 const Exercises = styled.Text(props => ({
-  marginBottom: props.theme.margin.x2,
+  marginVertical: props.theme.margin.x2,
   fontSize: 18,
 }));
 

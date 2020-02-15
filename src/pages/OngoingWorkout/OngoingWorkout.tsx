@@ -3,6 +3,7 @@ import { observer } from 'mobx-react-lite';
 import { NavigationStackScreenProps } from 'react-navigation-stack';
 import { FlatList } from 'react-native';
 
+import { TextTitle } from '../../components/Texts';
 import { Routes } from '../../navigation/routes';
 import { ActionButton } from '../../components/ActionButton';
 import styled from '../../utils/styled-components';
@@ -52,9 +53,7 @@ const Container = styled.View(props => ({
   flex: 1,
 }));
 
-const Name = styled.Text(props => ({
-  fontWeight: 'bold',
-  fontSize: 24,
+const Name = styled(TextTitle)(props => ({
   marginBottom: props.theme.margin.x4,
   textAlign: 'center',
 }));
