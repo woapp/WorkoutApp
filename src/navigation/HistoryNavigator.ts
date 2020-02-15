@@ -1,13 +1,13 @@
 import { createStackNavigator } from 'react-navigation-stack';
 
-import { HistoryDetails } from '../pages/HistoryDetails';
-import { History } from '../pages/History';
+import { HistoryDetails } from '../pages/History/HistoryDetails';
+import { HistoryOverview } from '../pages/History/HistoryOverview';
 
 import { Routes } from './routes';
 
 export const HistoryNavigator = createStackNavigator({
   [Routes.History]: {
-    screen: History,
+    screen: HistoryOverview,
     navigationOptions: {
       title: 'Historique',
     },
