@@ -1,1 +1,0 @@
-export { OngoingWorkoutExercises } from './OngoingWorkoutExercises';

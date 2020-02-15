@@ -1,6 +1,6 @@
 export enum Routes {
   History = 'History',
-  Home = 'Home',
+  Dashboard = 'Dashboard',
   Workouts = 'Workouts',
   WorkoutEditor = 'WorkoutEditor',
   AddExercises = 'AddExercises',
@@ -10,11 +10,7 @@ export enum Routes {
   HomeNavigator = 'HomeNavigator',
   HistoryNavigator = 'HistoryNavigator',
   TabNavigator = 'TabNavigator',
+  OngoingWorkoutOverview = 'OngoingWorkoutOverview',
   OngoingWorkout = 'OngoingWorkout',
-  OngoingWorkoutExercises = 'OngoingWorkoutExercises',
   HistoryDetails = 'HistoryDetails',
 }
-
-export const HomeRoutes = [Routes.Home];
-export const HistoryRoutes = [Routes.History];
-export const WorkoutsRoutes = [Routes.Workouts];
