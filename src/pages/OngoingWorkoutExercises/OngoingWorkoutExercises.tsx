@@ -6,6 +6,7 @@ import { NavigationActions, StackActions } from 'react-navigation';
 import Carousel from 'react-native-snap-carousel';
 import PaginationDot from 'react-native-animated-pagination-dot';
 
+import { TextTitle } from '../../components/Texts';
 import { Routes } from '../../navigation/routes';
 import styled from '../../utils/styled-components';
 import { ExerciseSetsType } from '../../modules/exerciseSets';
@@ -51,9 +52,7 @@ export const OngoingWorkoutExercises: FunctionComponent<NavigationStackScreenPro
     return (
       <Container>
         <Carousel
-          // eslint-disable-next-line react-native/no-inline-styles
           containerCustomStyle={{ flex: 1 }}
-          // eslint-disable-next-line react-native/no-inline-styles
           slideStyle={{ flex: 1 }}
           data={ongoingWorkout.exercises.toJS()}
           renderItem={renderWorkoutExercise}
@@ -86,9 +85,7 @@ const WorkoutExercise = styled.View({
   flex: 1,
 });
 
-const Name = styled.Text(props => ({
-  fontWeight: 'bold',
-  fontSize: 24,
+const Name = styled(TextTitle)(props => ({
   margin: props.theme.margin.x2,
   color: props.theme.colors.white,
 }));

@@ -5,6 +5,7 @@ import { ExerciseSetsType } from '../../modules/exerciseSets';
 import styled from '../../utils/styled-components';
 import { MuscleGroupSelectableItem } from '../MuscleGroupSelectableItem';
 import { SetsEditor } from '../SetsEditor';
+import { TextTitle } from '../Texts';
 
 interface ExerciseListItemProps {
   exerciseSets: ExerciseSetsType;
@@ -21,7 +22,7 @@ export const ExercisesListItem: FunctionComponent<ExerciseListItemProps> = obser
       <Container onLongPress={onDrag} onPress={toggleItem}>
         <Row>
           <NameContainer>
-            <Name>{exercise.name}</Name>
+            <TextTitle>{exercise.name}</TextTitle>
           </NameContainer>
           {exercise.mainMuscleGroup && (
             <MuscleGroupSelectableItem
@@ -53,11 +54,6 @@ const Container = styled.TouchableOpacity(props => ({
 
 const NameContainer = styled.View({
   flex: 1,
-});
-
-const Name = styled.Text({
-  fontWeight: 'bold',
-  fontSize: 24,
 });
 
 const Sets = styled.Text({

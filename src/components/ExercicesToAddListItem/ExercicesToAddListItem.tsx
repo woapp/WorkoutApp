@@ -6,6 +6,7 @@ import styled from '../../utils/styled-components';
 import { MuscleGroupSelectableItem } from '../MuscleGroupSelectableItem';
 import { useStore } from '../../utils/hooks/useStore';
 import { ExerciseType } from '../../modules/exercise';
+import { TextTitle } from '../Texts';
 
 interface ExercicesToAddListItemProps {
   checked: 'checked' | 'unchecked' | 'indeterminate';
@@ -39,7 +40,7 @@ export const ExercicesToAddListItem: FunctionComponent<ExercicesToAddListItemPro
     <Container onPress={onPress} onLongPress={showDeleteExerciseAlert}>
       <Row>
         <Checkbox color="#000000" uncheckedColor="#000000" status={checked} />
-        <Name>{exercise.name}</Name>
+        <TextTitle>{exercise.name}</TextTitle>
       </Row>
       {exercise.mainMuscleGroup && (
         <MuscleGroupSelectableItem
@@ -64,9 +65,4 @@ const Container = styled.TouchableOpacity(props => ({
 const Row = styled.View({
   flexDirection: 'row',
   justifyContent: 'flex-start',
-});
-
-const Name = styled.Text({
-  fontWeight: 'bold',
-  fontSize: 24,
 });
