@@ -68,6 +68,7 @@ export const OngoingWorkout: FunctionComponent<NavigationStackScreenProps> = obs
           maxPage={ongoingWorkout.exercises.length}
         />
         <ButtonContainer>
+          <Button title={`Terminer l'entrainement`} onPress={onFinishWorkout} />
         </ButtonContainer>
       </Container>
     );

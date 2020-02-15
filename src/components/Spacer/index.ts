@@ -1,1 +1,1 @@
-export { Spacer } from './Spacer.component';
+export { Spacer } from './Spacer';

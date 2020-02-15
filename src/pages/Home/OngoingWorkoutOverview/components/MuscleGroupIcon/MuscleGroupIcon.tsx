@@ -59,8 +59,6 @@ const Container = styled.View(props => ({
   padding: props.theme.margin.x1,
   alignItems: 'center',
   justifyContent: 'center',
-  backgroundColor: props.theme.colors.lightGrey,
-  borderColor: props.theme.colors.blue,
-  borderWidth: 2,
+  backgroundColor: props.theme.colors.greyScale[70],
   borderRadius: 20,
 }));
