@@ -1,7 +1,7 @@
 import { createStackNavigator } from 'react-navigation-stack';
 
 import { ExercisesChoice } from '../pages/ExercisesChoice';
-import { CreateExercise } from '../pages/CreateExercise';
+import { NewExercise } from '../pages/NewExercise';
 import { colors } from '../styles/colors';
 
 import { Routes } from './routes';
@@ -12,8 +12,8 @@ export const ExercisesNavigator = createStackNavigator(
       screen: ExercisesChoice,
       navigationOptions: { title: 'Exercices' },
     },
-    [Routes.CreateExercise]: {
-      screen: CreateExercise,
+    [Routes.NewExercise]: {
+      screen: NewExercise,
       navigationOptions: { title: 'Nouvel exercice' },
     },
   },

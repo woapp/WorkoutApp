@@ -49,7 +49,7 @@ export const ExercisesChoice: FunctionComponent<NavigationStackScreenProps> = ob
 
     const onCreateExercise = () => {
       const newExercise = createExercise();
-      navigation.navigate(Routes.CreateExercise, {
+      navigation.navigate(Routes.NewExercise, {
         exercise: newExercise,
         validateExerciseCreation,
       });

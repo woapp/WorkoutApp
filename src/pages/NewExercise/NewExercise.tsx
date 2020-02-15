@@ -8,7 +8,7 @@ import { MuscleGroup } from '../../modules/types';
 import { MuscleGroupToggle } from '../../components/MuscleGroupToggle';
 import { ActionButton } from '../../components/ActionButton';
 
-export const CreateExercise: FunctionComponent<NavigationStackScreenProps> = observer(
+export const NewExercise: FunctionComponent<NavigationStackScreenProps> = observer(
   ({ navigation }) => {
     const exercise = navigation.getParam('exercise');
     const validateExerciseCreation = navigation.getParam('validateExerciseCreation');
