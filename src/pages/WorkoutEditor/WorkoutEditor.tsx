@@ -6,7 +6,7 @@ import styled from '../../utils/styled-components';
 import { ActionButton } from '../../components/ActionButton';
 import { ExercisesList } from '../../components/ExercisesList';
 import { Routes } from '../../navigation/routes';
-import { NameInput } from '../../components/NameInput';
+import { InputTitle } from '../../components/InputTitle';
 
 export const WorkoutEditor = observer(({ navigation }: NavigationStackScreenProps) => {
   const workout = navigation.getParam('workout');
@@ -17,7 +17,7 @@ export const WorkoutEditor = observer(({ navigation }: NavigationStackScreenProp
 
   return (
     <Container>
-      <NameInput value={workout.name} placeholder="Entraînement" onChangeText={workout.setName} />
+      <InputTitle value={workout.name} placeholder="Entraînement" onChangeText={workout.setName} />
       <ExercisesList workout={workout} />
       <ActionButtonContainer>
         <ActionButton onPress={navigateToAddExercisesScreen} title="+" />

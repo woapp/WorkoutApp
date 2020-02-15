@@ -3,7 +3,7 @@ import { Checkbox } from 'react-native-paper';
 import { Alert } from 'react-native';
 
 import styled from '../../utils/styled-components';
-import { MuscleGroupSelectableItem } from '../MuscleGroupSelectableItem';
+import { MuscleGroupToggle } from '../MuscleGroupToggle';
 import { useStore } from '../../utils/hooks/useStore';
 import { ExerciseType } from '../../modules/exercise';
 import { TextTitle } from '../Texts';
@@ -43,7 +43,7 @@ export const ExercicesToAddListItem: FunctionComponent<ExercicesToAddListItemPro
         <TextTitle>{exercise.name}</TextTitle>
       </Row>
       {exercise.mainMuscleGroup && (
-        <MuscleGroupSelectableItem
+        <MuscleGroupToggle
           muscleGroup={exercise.mainMuscleGroup}
           isSelected={checked === 'checked'}
           disabled

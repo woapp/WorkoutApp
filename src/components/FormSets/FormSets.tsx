@@ -3,14 +3,14 @@ import { View } from 'react-native';
 import { observer } from 'mobx-react-lite';
 
 import { ExerciseSetsType } from '../../modules/exerciseSets';
-import { Set } from '../Set/Set';
-import { AddSet } from '../AddSet';
+import { InputSet } from '../InputSet';
+import { NewSetButton } from '../NewSetButton';
 
 interface Props {
   exerciseSets: ExerciseSetsType;
 }
 
-export const SetsEditor: FunctionComponent<Props> = observer(({ exerciseSets }) => {
+export const FormSets: FunctionComponent<Props> = observer(({ exerciseSets }) => {
   const onAddNewSet = () => exerciseSets.addNewSet();
   const onSetNbReps = setRank => nbReps => exerciseSets.setNbReps(setRank, nbReps);
   const onSetWeight = setRank => weight => exerciseSets.setWeight(setRank, weight);
@@ -18,7 +18,7 @@ export const SetsEditor: FunctionComponent<Props> = observer(({ exerciseSets }) 
   return (
     <View>
       {exerciseSets.sets.map((set, setRank) => (
-        <Set
+        <InputSet
           key={setRank}
           rank={setRank + 1}
           nbReps={set.nbReps}
@@ -27,7 +27,7 @@ export const SetsEditor: FunctionComponent<Props> = observer(({ exerciseSets }) 
           onChangeWeight={onSetWeight(setRank)}
         />
       ))}
-      <AddSet onPress={onAddNewSet} />
+      <NewSetButton onPress={onAddNewSet} />
     </View>
   );
 });

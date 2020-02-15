@@ -11,9 +11,9 @@ import { Routes } from '../../../navigation/routes';
 import styled from '../../../utils/styled-components';
 import { ExerciseSetsType } from '../../../modules/exerciseSets';
 import { useStore } from '../../../utils/hooks/useStore';
-import { SetsEditor } from '../../../components/SetsEditor';
+import { FormSets } from '../../../components/FormSets';
 import { colors } from '../../../styles/colors';
-import { Button } from '../../../components/Button';
+import { PrimaryButton } from '../../../components/PrimaryButton';
 
 export const OngoingWorkout: FunctionComponent<NavigationStackScreenProps> = observer(
   ({ navigation }) => {
@@ -41,7 +41,7 @@ export const OngoingWorkout: FunctionComponent<NavigationStackScreenProps> = obs
           <Name>{item.exercise.name}</Name>
           {/* TODO: remove padding and find a way to handle keyboard */}
           <ScrollView contentContainerStyle={{ paddingBottom: 250 }}>
-            <SetsEditor exerciseSets={item} />
+            <FormSets exerciseSets={item} />
           </ScrollView>
         </WorkoutExercise>
       );
@@ -68,7 +68,7 @@ export const OngoingWorkout: FunctionComponent<NavigationStackScreenProps> = obs
           maxPage={ongoingWorkout.exercises.length}
         />
         <ButtonContainer>
-          <Button title={`Terminer l'entrainement`} onPress={onFinishWorkout} />
+          <PrimaryButton title={"Terminer l'entrainement"} onPress={onFinishWorkout} />
         </ButtonContainer>
       </Container>
     );
