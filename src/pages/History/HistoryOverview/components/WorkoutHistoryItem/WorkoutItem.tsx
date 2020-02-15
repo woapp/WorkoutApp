@@ -2,15 +2,15 @@ import React, { FunctionComponent } from 'react';
 import { observer } from 'mobx-react-lite';
 import { useNavigation } from 'react-navigation-hooks';
 
-import { Routes } from '../../navigation/routes';
-import styled from '../../utils/styled-components';
-import { WorkoutDoneType } from '../../modules/workoutDone';
+import { Routes } from '../../../../../navigation/routes';
+import styled from '../../../../../utils/styled-components';
+import { WorkoutDoneType } from '../../../../../modules/workoutDone';
 
 interface Props {
   workout: WorkoutDoneType;
 }
 
-export const WorkoutHistoryItem: FunctionComponent<Props> = observer(({ workout }) => {
+export const WorkoutItem: FunctionComponent<Props> = observer(({ workout }) => {
   const navigation = useNavigation();
 
   const onWorkoutPress = () => {

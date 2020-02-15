@@ -1,1 +1,0 @@
-export { WorkoutHistoryItem } from './WorkoutHistoryItem';
