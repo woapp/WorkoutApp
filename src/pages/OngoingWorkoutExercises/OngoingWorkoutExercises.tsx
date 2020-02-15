@@ -11,7 +11,7 @@ import { Routes } from '../../navigation/routes';
 import styled from '../../utils/styled-components';
 import { ExerciseSetsType } from '../../modules/exerciseSets';
 import { useStore } from '../../utils/hooks/useStore';
-import { SetsEditor } from '../../components/SetsEditor';
+import { FormSets } from '../../components/FormSets';
 import { colors } from '../../styles/colors';
 import { PrimaryButton } from '../../components/PrimaryButton';
 
@@ -41,7 +41,7 @@ export const OngoingWorkoutExercises: FunctionComponent<NavigationStackScreenPro
           <Name>{item.exercise.name}</Name>
           {/* TODO: remove padding and find a way to handle keyboard */}
           <ScrollView contentContainerStyle={{ paddingBottom: 250 }}>
-            <SetsEditor exerciseSets={item} />
+            <FormSets exerciseSets={item} />
           </ScrollView>
         </WorkoutExercise>
       );
