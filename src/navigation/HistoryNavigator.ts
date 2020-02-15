@@ -8,7 +8,7 @@ import { Routes } from './routes';
 
 export const HistoryNavigator = createStackNavigator(
   {
-    [Routes.History]: {
+    [Routes.HistoryOverview]: {
       screen: HistoryOverview,
       navigationOptions: {
         title: 'Historique',

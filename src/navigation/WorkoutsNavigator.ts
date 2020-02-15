@@ -1,14 +1,14 @@
 import { createStackNavigator } from 'react-navigation-stack';
 
-import { MyWorkouts } from '../pages/MyWorkouts';
-import { WorkoutEditor } from '../pages/WorkoutEditor';
+import { MyWorkouts } from '../pages/Configurator/MyWorkouts';
+import { WorkoutEditor } from '../pages/Configurator/WorkoutEditor';
 import { colors } from '../styles/colors';
 
 import { Routes } from './routes';
 
 export const WorkoutsNavigator = createStackNavigator(
   {
-    [Routes.Workouts]: {
+    [Routes.MyWorkouts]: {
       screen: MyWorkouts,
       navigationOptions: {
         title: 'Entraînements',
@@ -22,7 +22,7 @@ export const WorkoutsNavigator = createStackNavigator(
     },
   },
   {
-    initialRouteName: Routes.Workouts,
+    initialRouteName: Routes.MyWorkouts,
 
     defaultNavigationOptions: {
       headerStyle: {

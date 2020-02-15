@@ -3,7 +3,7 @@ import { TouchableOpacity } from 'react-native';
 
 import styled from '../../utils/styled-components';
 import { MuscleGroupIcon } from '../MuscleGroupIcon';
-import { MuscleGroup } from '../../modules/types';
+import { MuscleGroup } from '../../mobx/types';
 
 interface Props {
   title?: string;

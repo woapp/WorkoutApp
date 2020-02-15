@@ -4,7 +4,7 @@ import { useNavigation } from 'react-navigation-hooks';
 
 import { Routes } from '../../../../../navigation/routes';
 import styled from '../../../../../utils/styled-components';
-import { WorkoutDoneType } from '../../../../../modules/workoutDone';
+import { WorkoutDoneType } from '../../../../../mobx/workoutDone';
 import { TextTitle } from '../../../../../components/Texts';
 
 interface Props {

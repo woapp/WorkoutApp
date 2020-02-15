@@ -2,23 +2,19 @@ import React, { FunctionComponent } from 'react';
 import { Checkbox } from 'react-native-paper';
 import { Alert } from 'react-native';
 
-import styled from '../../utils/styled-components';
-import { MuscleGroupToggle } from '../MuscleGroupToggle';
-import { useStore } from '../../utils/hooks/useStore';
-import { ExerciseType } from '../../modules/exercise';
-import { TextTitle } from '../Texts';
+import styled from '../../../../../utils/styled-components';
+import { MuscleGroupToggle } from '../../../../../components/MuscleGroupToggle';
+import { useStore } from '../../../../../utils/hooks/useStore';
+import { ExerciseType } from '../../../../../mobx/exercise';
+import { TextTitle } from '../../../../../components/Texts';
 
-interface ExercicesToAddListItemProps {
+interface Props {
   checked: 'checked' | 'unchecked' | 'indeterminate';
   onPress: () => void;
   exercise: ExerciseType;
 }
 
-export const ExercicesToAddListItem: FunctionComponent<ExercicesToAddListItemProps> = ({
-  checked,
-  onPress,
-  exercise,
-}) => {
+export const ExerciseItem: FunctionComponent<Props> = ({ checked, onPress, exercise }) => {
   const { removeExercise } = useStore();
 
   const showDeleteExerciseAlert = () => {

@@ -1,21 +1,24 @@
 import { createStackNavigator } from 'react-navigation-stack';
 
-import { AddExercises } from '../pages/AddExercises';
-import { CreateExercise } from '../pages/CreateExercise';
+import { ExercisesChoice } from '../pages/Configurator/ExercisesChoice';
+import { NewExercise } from '../pages/Configurator/NewExercise';
 import { colors } from '../styles/colors';
 
 import { Routes } from './routes';
 
 export const ExercisesNavigator = createStackNavigator(
   {
-    [Routes.AddExercises]: { screen: AddExercises, navigationOptions: { title: 'Exercices' } },
-    [Routes.CreateExercise]: {
-      screen: CreateExercise,
+    [Routes.ExercisesChoice]: {
+      screen: ExercisesChoice,
+      navigationOptions: { title: 'Exercices' },
+    },
+    [Routes.NewExercise]: {
+      screen: NewExercise,
       navigationOptions: { title: 'Nouvel exercice' },
     },
   },
   {
-    initialRouteName: Routes.AddExercises,
+    initialRouteName: Routes.ExercisesChoice,
     defaultNavigationOptions: {
       headerTitleStyle: { color: colors.white },
       headerStyle: { backgroundColor: colors.black },

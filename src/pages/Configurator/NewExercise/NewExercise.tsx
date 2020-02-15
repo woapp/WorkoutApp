@@ -2,13 +2,13 @@ import React, { FunctionComponent } from 'react';
 import { NavigationStackScreenProps } from 'react-navigation-stack';
 import { observer } from 'mobx-react-lite';
 
-import { InputTitle } from '../../components/InputTitle';
-import styled from '../../utils/styled-components';
-import { MuscleGroup } from '../../modules/types';
-import { MuscleGroupToggle } from '../../components/MuscleGroupToggle';
-import { ActionButton } from '../../components/ActionButton';
+import { InputTitle } from '../../../components/InputTitle';
+import styled from '../../../utils/styled-components';
+import { MuscleGroup } from '../../../mobx/types';
+import { MuscleGroupToggle } from '../../../components/MuscleGroupToggle';
+import { ActionButton } from '../../../components/ActionButton';
 
-export const CreateExercise: FunctionComponent<NavigationStackScreenProps> = observer(
+export const NewExercise: FunctionComponent<NavigationStackScreenProps> = observer(
   ({ navigation }) => {
     const exercise = navigation.getParam('exercise');
     const validateExerciseCreation = navigation.getParam('validateExerciseCreation');

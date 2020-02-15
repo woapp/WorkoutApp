@@ -3,17 +3,18 @@ import { FlatList } from 'react-native-gesture-handler';
 import { observer } from 'mobx-react-lite';
 import { NavigationStackScreenProps } from 'react-navigation-stack';
 
-import { ExerciseType } from '../../modules/exercise';
-import { createExercise } from '../../modules/exercise/constructor';
-import { ExercicesToAddListItem } from '../../components/ExercicesToAddListItem';
-import { useStore } from '../../utils/hooks/useStore';
-import styled from '../../utils/styled-components';
-import { colors } from '../../styles/colors';
-import { WorkoutType } from '../../modules/workout';
-import { ActionButton } from '../../components/ActionButton';
-import { Routes } from '../../navigation/routes';
+import { ExerciseType } from '../../../mobx/exercise';
+import { createExercise } from '../../../mobx/exercise/constructor';
+import { useStore } from '../../../utils/hooks/useStore';
+import styled from '../../../utils/styled-components';
+import { colors } from '../../../styles/colors';
+import { WorkoutType } from '../../../mobx/workout';
+import { ActionButton } from '../../../components/ActionButton';
+import { Routes } from '../../../navigation/routes';
 
-export const AddExercises: FunctionComponent<NavigationStackScreenProps> = observer(
+import { ExerciseItem } from './components/ExerciseItem';
+
+export const ExercisesChoice: FunctionComponent<NavigationStackScreenProps> = observer(
   ({ navigation }) => {
     const { exercises, addExercise } = useStore();
     const workout: WorkoutType = navigation.getParam('workout');
@@ -34,7 +35,7 @@ export const AddExercises: FunctionComponent<NavigationStackScreenProps> = obser
       const removeExerciseFromWorkout = () => workout.removeExercise(item);
 
       return (
-        <ExercicesToAddListItem
+        <ExerciseItem
           exercise={item}
           checked={isChecked ? 'checked' : 'unchecked'}
           onPress={isChecked ? removeExerciseFromWorkout : addExerciseToWorkout}
@@ -49,7 +50,7 @@ export const AddExercises: FunctionComponent<NavigationStackScreenProps> = obser
 
     const onCreateExercise = () => {
       const newExercise = createExercise();
-      navigation.navigate(Routes.CreateExercise, {
+      navigation.navigate(Routes.NewExercise, {
         exercise: newExercise,
         validateExerciseCreation,
       });
