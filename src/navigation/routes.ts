@@ -1,7 +1,7 @@
 export enum Routes {
-  History = 'History',
+  HistoryOverview = 'HistoryOverview',
   Dashboard = 'Dashboard',
-  Workouts = 'Workouts',
+  MyWorkouts = 'MyWorkouts',
   WorkoutEditor = 'WorkoutEditor',
   ExercisesChoice = 'ExercisesChoice',
   NewExercise = 'NewExercise',
