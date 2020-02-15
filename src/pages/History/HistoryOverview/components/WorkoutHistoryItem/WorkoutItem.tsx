@@ -14,9 +14,7 @@ interface Props {
 export const WorkoutItem: FunctionComponent<Props> = observer(({ workout }) => {
   const navigation = useNavigation();
 
-  const onWorkoutPress = () => {
-    navigation.navigate(Routes.HistoryDetails, { workout });
-  };
+  const onWorkoutPress = () => navigation.navigate(Routes.HistoryDetails, { workout });
 
   return (
     <Container onPress={onWorkoutPress}>
