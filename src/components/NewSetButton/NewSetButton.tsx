@@ -26,7 +26,7 @@ const Container = styled.TouchableOpacity(props => ({
 const Label = styled.Text(props => ({
   fontSize: 18,
   fontWeight: 'bold',
-  color: props.theme.colors.mediumGrey,
+  color: props.theme.colors.greyScale[50],
 }));
 
 const Icon = styled.Text({

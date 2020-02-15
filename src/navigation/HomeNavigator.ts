@@ -1,21 +1,32 @@
 import { createStackNavigator } from 'react-navigation-stack';
 
-import { OngoingWorkout } from '../pages/OngoingWorkout';
-import { Home } from '../pages/Home';
+import { OngoingWorkoutOverview } from '../pages/Home/OngoingWorkoutOverview';
+import { Dashboard } from '../pages/Home/Dashboard';
+import { colors } from '../styles/colors';
 
 import { Routes } from './routes';
 
-export const HomeNavigator = createStackNavigator({
-  [Routes.Home]: {
-    screen: Home,
-    navigationOptions: {
-      title: 'Accueil',
+export const HomeNavigator = createStackNavigator(
+  {
+    [Routes.Dashboard]: {
+      screen: Dashboard,
+      navigationOptions: {
+        title: 'Accueil',
+      },
+    },
+    [Routes.OngoingWorkoutOverview]: {
+      screen: OngoingWorkoutOverview,
+      navigationOptions: {
+        title: 'Aperçu',
+      },
     },
   },
-  [Routes.OngoingWorkout]: {
-    screen: OngoingWorkout,
-    navigationOptions: {
-      title: "Let's go!",
+  {
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: colors.black,
+      },
+      headerTintColor: colors.white,
     },
-  },
-});
+  }
+);

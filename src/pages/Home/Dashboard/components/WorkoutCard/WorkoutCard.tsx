@@ -3,10 +3,10 @@ import React, { FunctionComponent } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { observer } from 'mobx-react-lite';
 
-import { TextTitle } from '../../../components/Texts';
-import { WorkoutType } from '../../../modules/workout';
-import styled from '../../../utils/styled-components';
-import { MuscleGroupToggle } from '../../../components/MuscleGroupToggle';
+import { TextTitle } from '../../../../../components/Texts';
+import { WorkoutType } from '../../../../../modules/workout';
+import styled from '../../../../../utils/styled-components';
+import { MuscleGroupToggle } from '../../../../../components/MuscleGroupToggle';
 
 interface Props {
   workout: WorkoutType;

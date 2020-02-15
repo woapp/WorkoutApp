@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react';
 import { Image } from 'react-native';
 
-import styled from '../../../../utils/styled-components';
-import images from '../../../../assets/images';
-import { MuscleGroup } from '../../../../modules/types';
+import styled from '../../../../../utils/styled-components';
+import images from '../../../../../assets/images';
+import { MuscleGroup } from '../../../../../modules/types';
 
 const ICON_SIZE = 70;
 
@@ -59,8 +59,6 @@ const Container = styled.View(props => ({
   padding: props.theme.margin.x1,
   alignItems: 'center',
   justifyContent: 'center',
-  backgroundColor: props.theme.colors.lightGrey,
-  borderColor: props.theme.colors.blue,
-  borderWidth: 2,
+  backgroundColor: props.theme.colors.greyScale[80],
   borderRadius: 20,
 }));

@@ -31,7 +31,7 @@ export const WorkoutItem: FunctionComponent<Props> = observer(({ workout }) => {
 
 const Container = styled.TouchableOpacity(props => ({
   padding: props.theme.margin.x2,
-  borderBottomColor: props.theme.colors.lightGrey,
+  borderBottomColor: props.theme.colors.greyScale[20],
   borderBottomWidth: 1,
   flex: 1,
 }));

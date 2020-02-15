@@ -72,7 +72,7 @@ const Container = styled.View<{ isSelected: boolean; size: number }>(props => ({
   width: props.size,
   height: props.size,
   borderRadius: 40,
-  borderColor: props.theme.colors.lightGrey,
+  borderColor: props.theme.colors.greyScale[20],
   borderWidth: 2,
   alignItems: 'center',
   justifyContent: 'center',
@@ -80,4 +80,4 @@ const Container = styled.View<{ isSelected: boolean; size: number }>(props => ({
   overflow: 'hidden',
 }));
 
-const EmptyView = styled.View({ flex: 1, backgroundColor: colors.lightGrey });
+const EmptyView = styled.View({ flex: 1, backgroundColor: colors.greyScale[20] });
