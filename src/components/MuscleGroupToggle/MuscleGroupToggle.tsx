@@ -5,7 +5,7 @@ import styled from '../../utils/styled-components';
 import { MuscleGroupIcon } from '../MuscleGroupIcon';
 import { MuscleGroup } from '../../modules/types';
 
-interface MuscleGroupSelectableItemProps {
+interface Props {
   title?: string;
   muscleGroup: MuscleGroup;
   onPress?: () => void;
@@ -14,7 +14,7 @@ interface MuscleGroupSelectableItemProps {
   iconSize?: number;
 }
 
-export const MuscleGroupSelectableItem: FunctionComponent<MuscleGroupSelectableItemProps> = ({
+export const MuscleGroupToggle: FunctionComponent<Props> = ({
   title,
   disabled,
   muscleGroup,

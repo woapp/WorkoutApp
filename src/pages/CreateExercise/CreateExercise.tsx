@@ -5,7 +5,7 @@ import { observer } from 'mobx-react-lite';
 import { NameInput } from '../../components/NameInput';
 import styled from '../../utils/styled-components';
 import { MuscleGroup } from '../../modules/types';
-import { MuscleGroupSelectableItem } from '../../components/MuscleGroupSelectableItem';
+import { MuscleGroupToggle } from '../../components/MuscleGroupToggle';
 import { ActionButton } from '../../components/ActionButton';
 
 export const CreateExercise: FunctionComponent<NavigationStackScreenProps> = observer(
@@ -32,7 +32,7 @@ export const CreateExercise: FunctionComponent<NavigationStackScreenProps> = obs
               : addMuscleGroup(muscleGroup);
 
             return (
-              <MuscleGroupSelectableItem
+              <MuscleGroupToggle
                 key={index}
                 muscleGroup={muscleGroup}
                 title={muscleGroup}

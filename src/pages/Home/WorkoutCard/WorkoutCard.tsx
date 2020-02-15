@@ -6,7 +6,7 @@ import { observer } from 'mobx-react-lite';
 import { TextTitle } from '../../../components/Texts';
 import { WorkoutType } from '../../../modules/workout';
 import styled from '../../../utils/styled-components';
-import { MuscleGroupSelectableItem } from '../../../components/MuscleGroupSelectableItem';
+import { MuscleGroupToggle } from '../../../components/MuscleGroupToggle';
 
 interface Props {
   workout: WorkoutType;
@@ -22,7 +22,7 @@ export const WorkoutCard: FunctionComponent<Props> = observer(({ workout, onSele
         <Row>
           {workout.mainMuscleGroups.map((muscleGroup, index) => (
             <MuscleGroupContainer key={index}>
-              <MuscleGroupSelectableItem
+              <MuscleGroupToggle
                 // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
                 // @ts-ignore
                 muscleGroup={muscleGroup}

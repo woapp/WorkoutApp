@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 
 import { ExerciseSetsType } from '../../modules/exerciseSets';
 import styled from '../../utils/styled-components';
-import { MuscleGroupSelectableItem } from '../MuscleGroupSelectableItem';
+import { MuscleGroupToggle } from '../MuscleGroupToggle';
 import { SetsEditor } from '../SetsEditor';
 import { TextTitle } from '../Texts';
 
@@ -25,7 +25,7 @@ export const ExercisesListItem: FunctionComponent<ExerciseListItemProps> = obser
             <TextTitle>{exercise.name}</TextTitle>
           </NameContainer>
           {exercise.mainMuscleGroup && (
-            <MuscleGroupSelectableItem
+            <MuscleGroupToggle
               muscleGroup={exercise.mainMuscleGroup}
               isSelected
               disabled
