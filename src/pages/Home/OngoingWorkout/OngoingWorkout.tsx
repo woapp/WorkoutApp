@@ -63,7 +63,7 @@ export const OngoingWorkout: FunctionComponent<NavigationStackScreenProps> = obs
           }}
         />
         <PaginationDot
-          activeDotColor={colors.cyan}
+          activeDotColor={colors.blue}
           curPage={activeExerciseIndex}
           maxPage={ongoingWorkout.exercises.length}
         />

@@ -2,6 +2,8 @@ import React from 'react';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
+import { colors } from '../styles/colors';
+
 import { Routes } from './routes';
 import { WorkoutsNavigator } from './WorkoutsNavigator';
 import { HistoryNavigator } from './HistoryNavigator';
@@ -32,10 +34,10 @@ export const TabNavigator = createBottomTabNavigator(
     initialRouteName: Routes.HomeNavigator,
     tabBarOptions: {
       showLabel: false,
-      activeTintColor: '#FFDB7C',
-      inactiveTintColor: 'white',
+      activeTintColor: colors.blue,
+      inactiveTintColor: colors.white,
       style: {
-        backgroundColor: '#1C1B21',
+        backgroundColor: colors.black,
       },
     },
   }

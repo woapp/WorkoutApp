@@ -46,7 +46,7 @@ export const ExercisesListItem: FunctionComponent<ExerciseListItemProps> = obser
 
 const Container = styled.TouchableOpacity(props => ({
   padding: props.theme.margin.x2,
-  borderBottomColor: props.theme.colors.lightGrey,
+  borderBottomColor: props.theme.colors.greyScale[20],
   borderBottomWidth: 1,
   flexDirection: 'column',
   justifyContent: 'space-between',

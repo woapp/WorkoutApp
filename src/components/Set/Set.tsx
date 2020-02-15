@@ -63,7 +63,7 @@ const RankContainer = styled.View(props => ({
   height: 34,
   borderRadius: 17,
   borderWidth: 2,
-  borderColor: props.theme.colors.cyan,
+  borderColor: props.theme.colors.blue,
   justifyContent: 'center',
   alignItems: 'center',
 }));

@@ -12,10 +12,6 @@ export const colors = {
     20: '#CDCDCD',
     10: '#E6E6E6', // text
   },
-  lightGrey: '#DDDDDD',
-  mediumGrey: '#888888',
-  darkGrey: '#25272E',
   green: '#65D196',
   blue: '#23B4FC',
-  cyan: '#79cac9',
 };

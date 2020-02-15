@@ -47,7 +47,7 @@ const InfosContainer = styled.View(props => ({
 const Bar = styled.View(props => ({
   height: 10,
   width: 2,
-  backgroundColor: props.theme.colors.greyScale[70],
+  backgroundColor: props.theme.colors.greyScale[80],
 }));
 
 const Spacer = styled.View({

@@ -17,7 +17,7 @@ export const Button: FunctionComponent<ButtonProps> = ({ onPress, title }) => {
 
 const Container = styled.TouchableOpacity(props => ({
   width: '100%',
-  backgroundColor: props.theme.colors.cyan,
+  backgroundColor: props.theme.colors.blue,
   borderRadius: 15,
   padding: props.theme.margin.x2,
 }));
