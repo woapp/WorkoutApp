@@ -6,7 +6,7 @@ interface AddSetProps {
   onPress: () => void;
 }
 
-export const AddSet: FunctionComponent<AddSetProps> = ({ onPress }) => {
+export const NewSetButton: FunctionComponent<AddSetProps> = ({ onPress }) => {
   return (
     <Container onPress={onPress}>
       <Label>

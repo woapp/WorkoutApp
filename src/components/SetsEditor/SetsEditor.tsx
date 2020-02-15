@@ -4,7 +4,7 @@ import { observer } from 'mobx-react-lite';
 
 import { ExerciseSetsType } from '../../modules/exerciseSets';
 import { Set } from '../Set/Set';
-import { AddSet } from '../AddSet';
+import { NewSetButton } from '../NewSetButton';
 
 interface Props {
   exerciseSets: ExerciseSetsType;
@@ -27,7 +27,7 @@ export const SetsEditor: FunctionComponent<Props> = observer(({ exerciseSets }) 
           onChangeWeight={onSetWeight(setRank)}
         />
       ))}
-      <AddSet onPress={onAddNewSet} />
+      <NewSetButton onPress={onAddNewSet} />
     </View>
   );
 });
