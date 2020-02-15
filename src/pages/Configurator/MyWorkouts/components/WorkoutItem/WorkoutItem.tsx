@@ -3,10 +3,10 @@ import { useNavigation } from 'react-navigation-hooks';
 import { Alert } from 'react-native';
 import { observer } from 'mobx-react-lite';
 
-import { TextTitle } from '../../.././../components/Texts';
-import styled from '../../../../utils/styled-components';
-import { WorkoutType } from '../../../../mobx/workout';
-import { Routes } from '../../../../navigation/routes';
+import { TextTitle } from '../../../../../components/Texts';
+import styled from '../../../../../utils/styled-components';
+import { WorkoutType } from '../../../../../mobx/workout';
+import { Routes } from '../../../../../navigation/routes';
 
 interface Props {
   workout: WorkoutType;
