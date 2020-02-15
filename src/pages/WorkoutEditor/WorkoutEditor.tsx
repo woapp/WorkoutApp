@@ -11,7 +11,7 @@ import { InputTitle } from '../../components/InputTitle';
 export const WorkoutEditor = observer(({ navigation }: NavigationStackScreenProps) => {
   const workout = navigation.getParam('workout');
   const navigateToAddExercisesScreen = () =>
-    navigation.navigate(Routes.AddExercises, {
+    navigation.navigate(Routes.ExercisesChoice, {
       workout,
     });
 

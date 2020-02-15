@@ -3,7 +3,7 @@ export enum Routes {
   Dashboard = 'Dashboard',
   Workouts = 'Workouts',
   WorkoutEditor = 'WorkoutEditor',
-  AddExercises = 'AddExercises',
+  ExercisesChoice = 'ExercisesChoice',
   CreateExercise = 'CreateExercise',
   ExercisesNavigator = 'ExercisesNavigator',
   WorkoutsNavigator = 'WorkoutsNavigator',

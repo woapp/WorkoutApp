@@ -13,7 +13,7 @@ import { WorkoutType } from '../../modules/workout';
 import { ActionButton } from '../../components/ActionButton';
 import { Routes } from '../../navigation/routes';
 
-export const AddExercises: FunctionComponent<NavigationStackScreenProps> = observer(
+export const ExercisesChoice: FunctionComponent<NavigationStackScreenProps> = observer(
   ({ navigation }) => {
     const { exercises, addExercise } = useStore();
     const workout: WorkoutType = navigation.getParam('workout');
