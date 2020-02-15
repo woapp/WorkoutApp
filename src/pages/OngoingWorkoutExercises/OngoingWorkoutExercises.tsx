@@ -52,9 +52,7 @@ export const OngoingWorkoutExercises: FunctionComponent<NavigationStackScreenPro
     return (
       <Container>
         <Carousel
-          // eslint-disable-next-line react-native/no-inline-styles
           containerCustomStyle={{ flex: 1 }}
-          // eslint-disable-next-line react-native/no-inline-styles
           slideStyle={{ flex: 1 }}
           data={ongoingWorkout.exercises.toJS()}
           renderItem={renderWorkoutExercise}

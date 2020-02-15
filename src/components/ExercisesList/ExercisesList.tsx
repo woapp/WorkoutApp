@@ -24,7 +24,6 @@ export const ExercisesList: FunctionComponent<Props> = observer(({ workout }) =>
       // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
       //@ts-ignore
       onDragEnd={onReorderExercises}
-      // eslint-disable-next-line react-native/no-inline-styles
       contentContainerStyle={{ paddingBottom: 250 }} // TODO: remove and find find a way for scrollview to be aware of keyboard
     />
   );

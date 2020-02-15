@@ -59,7 +59,6 @@ export const MuscleGroupIcon: FunctionComponent<MuscleGroupIconProps> = ({
     <Container size={size} isSelected={isSelected}>
       <Image
         source={icon}
-        // eslint-disable-next-line react-native/no-inline-styles
         style={{ flex: 1 }}
         width={size * 0.58}
         height={size / 2}
