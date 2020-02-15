@@ -1,6 +1,6 @@
 import { createStackNavigator } from 'react-navigation-stack';
 
-import { Workouts } from '../pages/Workouts';
+import { MyWorkouts } from '../pages/MyWorkouts';
 import { WorkoutEditor } from '../pages/WorkoutEditor';
 
 import { Routes } from './routes';
@@ -8,7 +8,7 @@ import { Routes } from './routes';
 export const WorkoutsNavigator = createStackNavigator(
   {
     [Routes.Workouts]: {
-      screen: Workouts,
+      screen: MyWorkouts,
       navigationOptions: {
         title: 'Entraînements',
       },
