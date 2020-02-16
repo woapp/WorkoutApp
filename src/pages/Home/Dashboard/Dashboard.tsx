@@ -2,10 +2,9 @@ import React, { FunctionComponent } from 'react';
 import { FlatList } from 'react-native';
 import { observer } from 'mobx-react-lite';
 import { NavigationStackScreenProps } from 'react-navigation-stack';
-
-import { WorkoutType } from '../../../mobx/workout';
-import { useStore } from '../../../utils/hooks/useStore';
-import { Routes } from '../../../navigation/routes';
+import { useStore } from '@woap/utils/hooks/useStore';
+import { Routes } from '@woap/navigation/routes';
+import { WorkoutType } from '@woap/mobx/workout';
 
 import { WorkoutCard } from './components/WorkoutCard/WorkoutCard';
 

@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "isolatedModules": true,
+    "lib": ["es6"],
     "module": "esnext",
     "noImplicitAny": false,
     "removeComments": true,
@@ -7,11 +9,11 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true,
-    "baseUrl": ".",
-    "types": ["jest"],
+    "baseUrl": "./",
     "paths": {
-      "src/*": ["../*"]
+      "@woap/*": ["src/*"]
     },
+    "types": ["jest"],
     "typeRoots": ["./node_modules/@types"],
     "allowJs": true,
     "allowSyntheticDefaultImports": true,

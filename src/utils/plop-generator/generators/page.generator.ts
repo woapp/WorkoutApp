@@ -1,7 +1,7 @@
 import { PlopGenerator, AddActionConfig } from 'plop';
 
 export const pageGenerator: PlopGenerator = {
-  description: 'will generate a page in src/pages',
+  description: '@woap/pages',
   prompts: [
     {
       type: 'input',
@@ -12,18 +12,18 @@ export const pageGenerator: PlopGenerator = {
   actions: [
     {
       type: 'add',
-      path: './src/pages/{{pascalCase name}}/{{pascalCase name}}.tsx',
-      templateFile: 'src/utils/plop-generator/templates/page.tsx.hbs',
+      path: '@woap/pages/{{pascalCase name}}/{{pascalCase name}}.tsx',
+      templateFile: '@woap/utils/plop-generator/templates/page.tsx.hbs',
     } as AddActionConfig,
     {
       type: 'add',
-      path: './src/pages/{{pascalCase name}}/index.ts',
-      templateFile: 'src/utils/plop-generator/templates/index.ts.hbs',
+      path: '@woap/pages/{{pascalCase name}}/index.ts',
+      templateFile: '@woap/utils/plop-generator/templates/index.ts.hbs',
     } as AddActionConfig,
     // {
     //   type: 'add',
-    //   path: './src/pages/{{pascalCase name}}/__test__/{{pascalCase name}}.test.tsx',
-    //   templateFile: 'src/utils/plop-generator/templates/page.test.tsx.hbs',
+    //   path: '@woap/pages/{{pascalCase name}}/__test__/{{pascalCase name}}.test.tsx',
+    //   templateFile: '@woap/utils/plop-generator/templates/page.test.tsx.hbs',
     // } as AddActionConfig,
   ],
 };

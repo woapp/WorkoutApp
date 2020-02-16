@@ -1,4 +1,4 @@
-import styled from '../../utils/styled-components';
+import styled from '@woap/utils/styled-components';
 
 export const TextTitle = styled.Text({
   fontWeight: 'bold',

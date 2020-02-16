@@ -1,12 +1,11 @@
 import React, { FunctionComponent } from 'react';
 import { NavigationStackScreenProps } from 'react-navigation-stack';
 import { observer } from 'mobx-react-lite';
-
-import { InputTitle } from '../../../components/InputTitle';
-import styled from '../../../utils/styled-components';
-import { MuscleGroup } from '../../../mobx/types';
-import { MuscleGroupToggle } from '../../../components/MuscleGroupToggle';
-import { ActionButton } from '../../../components/ActionButton';
+import { InputTitle } from '@woap/components/InputTitle';
+import styled from '@woap/utils/styled-components';
+import { MuscleGroupToggle } from '@woap/components/MuscleGroupToggle';
+import { ActionButton } from '@woap/components/ActionButton';
+import { MuscleGroup } from '@woap/mobx/types';
 
 export const NewExercise: FunctionComponent<NavigationStackScreenProps> = observer(
   ({ navigation }) => {

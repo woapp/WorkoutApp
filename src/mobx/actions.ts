@@ -1,11 +1,11 @@
 import { ModelInstanceTypeProps, detach } from 'mobx-state-tree';
-
-import { generateId } from '../utils/services/generateId';
+import { generateId } from '@woap/utils/services/generateId';
 
 import { RootModel } from './rootModel';
 import { ExerciseType } from './exercise';
 import { WorkoutType } from './workout';
 import { WorkoutDone } from './workoutDone';
+import { UserType } from './user';
 
 export const rootActions = (self: ModelInstanceTypeProps<typeof RootModel>) => ({
   addExercise(exercise: ExerciseType): void {
@@ -47,5 +47,8 @@ export const rootActions = (self: ModelInstanceTypeProps<typeof RootModel>) => (
     });
     self.history.push(finishedWorkout);
     self.ongoingWorkout = undefined;
+  },
+  login(user: UserType): void {
+    self.user = user;
   },
 });

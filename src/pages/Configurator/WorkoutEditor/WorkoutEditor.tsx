@@ -1,12 +1,11 @@
 import React from 'react';
 import { observer } from 'mobx-react-lite';
 import { NavigationStackScreenProps } from 'react-navigation-stack';
-
-import styled from '../../../utils/styled-components';
-import { ActionButton } from '../../../components/ActionButton';
-import { ExercisesList } from '../../../components/ExercisesList';
-import { Routes } from '../../../navigation/routes';
-import { InputTitle } from '../../../components/InputTitle';
+import styled from '@woap/utils/styled-components';
+import { ActionButton } from '@woap/components/ActionButton';
+import { ExercisesList } from '@woap/components/ExercisesList';
+import { InputTitle } from '@woap/components/InputTitle';
+import { Routes } from '@woap/navigation/routes';
 
 export const WorkoutEditor = observer(({ navigation }: NavigationStackScreenProps) => {
   const workout = navigation.getParam('workout');

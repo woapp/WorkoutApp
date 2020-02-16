@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react';
 import { View } from 'react-native';
 import { observer } from 'mobx-react-lite';
+import { ExerciseSetsType } from '@woap/mobx/exerciseSets';
 
-import { ExerciseSetsType } from '../../mobx/exerciseSets';
 import { InputSet } from '../InputSet';
 import { NewSetButton } from '../NewSetButton';
 

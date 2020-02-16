@@ -2,11 +2,10 @@ import { Card } from 'react-native-paper';
 import React, { FunctionComponent } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { observer } from 'mobx-react-lite';
-
-import { TextTitle } from '../../../../../components/Texts';
-import { WorkoutType } from '../../../../../modules/workout';
-import styled from '../../../../../utils/styled-components';
-import { MuscleGroupSelectableItem } from '../../../../../components/MuscleGroupSelectableItem';
+import { TextTitle } from '@woap/components/Texts';
+import { MuscleGroupToggle } from '@woap/components/MuscleGroupToggle';
+import styled from '@woap/utils/styled-components';
+import { WorkoutType } from '@woap/mobx/workout';
 
 interface Props {
   workout: WorkoutType;
@@ -22,7 +21,7 @@ export const WorkoutCard: FunctionComponent<Props> = observer(({ workout, onSele
         <Row>
           {workout.mainMuscleGroups.map((muscleGroup, index) => (
             <MuscleGroupContainer key={index}>
-              <MuscleGroupSelectableItem
+              <MuscleGroupToggle
                 // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
                 // @ts-ignore
                 muscleGroup={muscleGroup}

@@ -2,12 +2,11 @@ import React from 'react';
 import { FlatList } from 'react-native';
 import { NavigationStackScreenProps } from 'react-navigation-stack';
 import { observer } from 'mobx-react-lite';
-
-import { createWorkout } from '../../../mobx/workout/constructor';
-import { useStore } from '../../../utils/hooks/useStore';
-import { ActionButton } from '../../../components/ActionButton';
-import { Routes } from '../../../navigation/routes';
-import styled from '../../../utils/styled-components';
+import { ActionButton } from '@woap/components/ActionButton';
+import styled from '@woap/utils/styled-components';
+import { useStore } from '@woap/utils/hooks/useStore';
+import { Routes } from '@woap/navigation/routes';
+import { createWorkout } from '@woap/mobx/workout/constructor';
 
 import { WorkoutItem } from './components/WorkoutItem';
 

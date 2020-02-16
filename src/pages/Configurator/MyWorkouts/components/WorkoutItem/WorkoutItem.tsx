@@ -2,11 +2,10 @@ import React, { FunctionComponent } from 'react';
 import { useNavigation } from 'react-navigation-hooks';
 import { Alert } from 'react-native';
 import { observer } from 'mobx-react-lite';
-
-import { TextTitle } from '../../../../../components/Texts';
-import styled from '../../../../../utils/styled-components';
-import { WorkoutType } from '../../../../../mobx/workout';
-import { Routes } from '../../../../../navigation/routes';
+import { TextTitle } from '@woap/components/Texts';
+import styled from '@woap/utils/styled-components';
+import { Routes } from '@woap/navigation/routes';
+import { WorkoutType } from '@woap/mobx/workout';
 
 interface Props {
   workout: WorkoutType;

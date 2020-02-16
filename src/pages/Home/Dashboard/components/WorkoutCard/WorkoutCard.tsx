@@ -2,11 +2,10 @@ import { Card } from 'react-native-paper';
 import React, { FunctionComponent } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { observer } from 'mobx-react-lite';
-
-import { TextTitle } from '../../../../../components/Texts';
-import { WorkoutType } from '../../../../../mobx/workout';
-import styled from '../../../../../utils/styled-components';
-import { MuscleGroupToggle } from '../../../../../components/MuscleGroupToggle';
+import { TextTitle } from '@woap/components/Texts';
+import styled from '@woap/utils/styled-components';
+import { MuscleGroupToggle } from '@woap/components/MuscleGroupToggle';
+import { WorkoutType } from '@woap/mobx/workout';
 
 interface Props {
   workout: WorkoutType;

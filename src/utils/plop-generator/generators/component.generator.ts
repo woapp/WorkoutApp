@@ -1,7 +1,7 @@
 import { PlopGenerator, AddActionConfig } from 'plop';
 
 export const componentGenerator: PlopGenerator = {
-  description: 'will generate a component in src/components',
+  description: '@woap/components',
   prompts: [
     {
       type: 'input',
@@ -12,18 +12,18 @@ export const componentGenerator: PlopGenerator = {
   actions: [
     {
       type: 'add',
-      path: './src/components/{{pascalCase name}}/{{pascalCase name}}.tsx',
-      templateFile: 'src/utils/plop-generator/templates/component.tsx.hbs',
+      path: '@woap/components/{{pascalCase name}}/{{pascalCase name}}.tsx',
+      templateFile: '@woap/utils/plop-generator/templates/component.tsx.hbs',
     } as AddActionConfig,
     {
       type: 'add',
-      path: './src/components/{{pascalCase name}}/index.ts',
-      templateFile: 'src/utils/plop-generator/templates/index.ts.hbs',
+      path: '@woap/components/{{pascalCase name}}/index.ts',
+      templateFile: '@woap/utils/plop-generator/templates/index.ts.hbs',
     } as AddActionConfig,
     // {
     //   type: 'add',
-    //   path: './src/components/{{pascalCase name}}/__test__/{{pascalCase name}}.test.tsx',
-    //   templateFile: 'src/utils/plop-generator/templates/component.test.tsx.hbs',
+    //   path: '@woap/components/{{pascalCase name}}/__test__/{{pascalCase name}}.test.tsx',
+    //   templateFile: '@woap/utils/plop-generator/templates/component.test.tsx.hbs',
     // } as AddActionConfig,
   ],
 };

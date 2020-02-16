@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react';
 import { TouchableOpacity } from 'react-native';
+import styled from '@woap/utils/styled-components';
+import { MuscleGroup } from '@woap/mobx/types';
 
-import styled from '../../utils/styled-components';
 import { MuscleGroupIcon } from '../MuscleGroupIcon';
-import { MuscleGroup } from '../../mobx/types';
 
 interface Props {
   title?: string;

@@ -2,14 +2,13 @@ import React, { FunctionComponent } from 'react';
 import { observer } from 'mobx-react-lite';
 import { NavigationStackScreenProps } from 'react-navigation-stack';
 import { FlatList } from 'react-native';
-
-import { TextTitle, TextSubtitle } from '../../../components/Texts';
-import { Routes } from '../../../navigation/routes';
-import { PrimaryButton } from '../../../components/PrimaryButton';
-import { Spacer } from '../../../components/Spacer';
-import styled from '../../../utils/styled-components';
-import { useStore } from '../../../utils/hooks/useStore';
-import { ExerciseSetsType } from '../../../mobx/exerciseSets';
+import { TextTitle, TextSubtitle } from '@woap/components/Texts';
+import { PrimaryButton } from '@woap/components/PrimaryButton';
+import { Spacer } from '@woap/components/Spacer';
+import styled from '@woap/utils/styled-components';
+import { useStore } from '@woap/utils/hooks/useStore';
+import { Routes } from '@woap/navigation/routes';
+import { ExerciseSetsType } from '@woap/mobx/exerciseSets';
 
 import { ExerciseItem } from './components/ExerciseItem';
 

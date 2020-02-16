@@ -1,8 +1,7 @@
 import { createStackNavigator } from 'react-navigation-stack';
-
-import { ExercisesChoice } from '../pages/Configurator/ExercisesChoice';
-import { NewExercise } from '../pages/Configurator/NewExercise';
-import { colors } from '../styles/colors';
+import { ExercisesChoice } from '@woap/pages/Configurator/ExercisesChoice';
+import { NewExercise } from '@woap/pages/Configurator/NewExercise';
+import { colors } from '@woap/styles/colors';
 
 import { Routes } from './routes';
 

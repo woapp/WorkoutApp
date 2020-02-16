@@ -1,8 +1,7 @@
 import { createStackNavigator } from 'react-navigation-stack';
-
-import { OngoingWorkoutOverview } from '../pages/Home/OngoingWorkoutOverview';
-import { Dashboard } from '../pages/Home/Dashboard';
-import { colors } from '../styles/colors';
+import { OngoingWorkoutOverview } from '@woap/pages/Home/OngoingWorkoutOverview';
+import { Dashboard } from '@woap/pages/Home/Dashboard';
+import { colors } from '@woap/styles/colors';
 
 import { Routes } from './routes';
 

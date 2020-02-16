@@ -1,12 +1,11 @@
 import React, { FunctionComponent } from 'react';
 import { Checkbox } from 'react-native-paper';
 import { Alert } from 'react-native';
-
-import styled from '../../../../../utils/styled-components';
-import { MuscleGroupToggle } from '../../../../../components/MuscleGroupToggle';
-import { useStore } from '../../../../../utils/hooks/useStore';
-import { ExerciseType } from '../../../../../mobx/exercise';
-import { TextTitle } from '../../../../../components/Texts';
+import styled from '@woap/utils/styled-components';
+import { MuscleGroupToggle } from '@woap/components/MuscleGroupToggle';
+import { useStore } from '@woap/utils/hooks/useStore';
+import { TextTitle } from '@woap/components/Texts';
+import { ExerciseType } from '@woap/mobx/exercise';
 
 interface Props {
   checked: 'checked' | 'unchecked' | 'indeterminate';
