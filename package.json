@@ -13,7 +13,9 @@
     "pretty:list": "yarn prettier --list-different './**/*.{ts,tsx}'",
     "eslint:check": "eslint .",
     "ts:check": "tsc",
-    "generate": "plop"
+    "generate": "plop",
+    "lint-committed": "lint-committed",
+    "commit-formatting": "git commit -m \"🚨 Fix lint issues\" || echo \"No files to format\""
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.1",

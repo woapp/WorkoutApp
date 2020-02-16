@@ -1,0 +1,7 @@
+{
+  "**/*.+(js|json|ts|tsx)": [
+    "yarn lint:fix",
+    "git add",
+    "commit-formatting"
+  ]
+}
