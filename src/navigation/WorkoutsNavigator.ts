@@ -1,7 +1,7 @@
 import { createStackNavigator } from 'react-navigation-stack';
 
-import { MyWorkouts } from '../pages/Configurator/MyWorkouts';
-import { WorkoutEditor } from '../pages/Configurator/WorkoutEditor';
+import { MyWorkouts } from '@woap/pages/Configurator/MyWorkouts';
+import { WorkoutEditor } from '@woap/pages/Configurator/WorkoutEditor';
 import { colors } from '../styles/colors';
 
 import { Routes } from './routes';

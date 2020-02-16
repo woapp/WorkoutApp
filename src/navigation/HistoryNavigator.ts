@@ -1,7 +1,7 @@
 import { createStackNavigator } from 'react-navigation-stack';
 
-import { HistoryDetails } from '../pages/History/HistoryDetails';
-import { HistoryOverview } from '../pages/History/HistoryOverview';
+import { HistoryDetails } from '@woap/pages/History/HistoryDetails';
+import { HistoryOverview } from '@woap/pages/History/HistoryOverview';
 import { colors } from '../styles/colors';
 
 import { Routes } from './routes';
