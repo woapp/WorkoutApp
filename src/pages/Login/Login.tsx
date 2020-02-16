@@ -5,8 +5,7 @@ import auth from '@react-native-firebase/auth';
 import { NavigationStackScreenProps } from 'react-navigation-stack';
 import { PrimaryButton } from '@woap/components/PrimaryButton';
 import { TextTitle } from '@woap/components/Texts';
-
-import { Routes } from '../../navigation/routes';
+import { Routes } from '@woap/navigation/routes';
 
 export const Login: FunctionComponent<NavigationStackScreenProps> = ({ navigation }) => {
   const [email, setEmail] = useState('');

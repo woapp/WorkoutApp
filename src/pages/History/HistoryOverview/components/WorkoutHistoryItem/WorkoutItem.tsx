@@ -3,8 +3,8 @@ import { observer } from 'mobx-react-lite';
 import { useNavigation } from 'react-navigation-hooks';
 import { TextTitle } from '@woap/components/Texts';
 import styled from '@woap/utils/styled-components';
+import { Routes } from '@woap/navigation/routes';
 
-import { Routes } from '../../../../../navigation/routes';
 import { WorkoutDoneType } from '../../../../../mobx/workoutDone';
 
 interface Props {

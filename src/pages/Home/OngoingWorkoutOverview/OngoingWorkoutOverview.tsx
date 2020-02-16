@@ -7,8 +7,8 @@ import { PrimaryButton } from '@woap/components/PrimaryButton';
 import { Spacer } from '@woap/components/Spacer';
 import styled from '@woap/utils/styled-components';
 import { useStore } from '@woap/utils/hooks/useStore';
+import { Routes } from '@woap/navigation/routes';
 
-import { Routes } from '../../../navigation/routes';
 import { ExerciseSetsType } from '../../../mobx/exerciseSets';
 
 import { ExerciseItem } from './components/ExerciseItem';

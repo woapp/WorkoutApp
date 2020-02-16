@@ -5,12 +5,12 @@ import { NavigationStackScreenProps } from 'react-navigation-stack';
 import { ActionButton } from '@woap/components/ActionButton';
 import { useStore } from '@woap/utils/hooks/useStore';
 import styled from '@woap/utils/styled-components';
+import { Routes } from '@woap/navigation/routes';
 
 import { ExerciseType } from '../../../mobx/exercise';
 import { createExercise } from '../../../mobx/exercise/constructor';
 import { colors } from '../../../styles/colors';
 import { WorkoutType } from '../../../mobx/workout';
-import { Routes } from '../../../navigation/routes';
 
 import { ExerciseItem } from './components/ExerciseItem';
 

@@ -5,9 +5,9 @@ import { observer } from 'mobx-react-lite';
 import { ActionButton } from '@woap/components/ActionButton';
 import styled from '@woap/utils/styled-components';
 import { useStore } from '@woap/utils/hooks/useStore';
+import { Routes } from '@woap/navigation/routes';
 
 import { createWorkout } from '../../../mobx/workout/constructor';
-import { Routes } from '../../../navigation/routes';
 
 import { WorkoutItem } from './components/WorkoutItem';
 

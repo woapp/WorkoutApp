@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react';
 import { StatusBar } from 'react-native';
 import { ThemeProvider } from '@woap/utils/styled-components';
+import { AppContainer } from '@woap/navigation';
 
 import { theme } from './styles/theme';
-import { AppContainer } from './navigation';
 import { rootStore } from './mobx/rootStore';
 import { StoreProvider } from './mobx/provider';
 
