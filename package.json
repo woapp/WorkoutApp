@@ -15,7 +15,8 @@
     "ts:check": "tsc",
     "generate": "plop",
     "lint-committed": "lint-committed",
-    "commit-formatting": "git commit -m \"🚨 Fix lint issues\" || echo \"No files to format\""
+    "commit-formatting": "git commit -m \"🚨 Fix format issues\" || echo \"No files to format\"",
+    "commit-linting": "git commit -m \"🚨 Fix eslint issues\" || echo \"No files to fix\""
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.1",

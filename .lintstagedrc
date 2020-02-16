@@ -1,7 +1,12 @@
 {
   "**/*.+(js|json|ts|tsx)": [
-    "yarn lint:fix",
+    "prettier --write",
     "git add",
     "commit-formatting"
-  ]
+  ],
+  "**/*.+(js|ts|tsx)": [
+    "eslint --fix",
+    "git add",
+    "commit-linting"
+  ],
 }
