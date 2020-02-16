@@ -8,7 +8,6 @@ import { TextTitle } from '@woap/components/Texts';
 import { Routes } from '@woap/navigation/routes';
 import { useStore } from '@woap/utils/hooks/useStore';
 
-
 import { observer } from 'mobx-react-lite';
 
 export const Login: FunctionComponent<NavigationStackScreenProps> = observer(({ navigation }) => {
