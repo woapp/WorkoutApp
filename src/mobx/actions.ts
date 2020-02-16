@@ -36,6 +36,7 @@ export const rootActions = (self: ModelInstanceTypeProps<typeof RootModel>) => (
     // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
     // @ts-ignore
     const workoutObject = workout.toJSON();
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { id, ...workoutData } = workoutObject;
     // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
     // @ts-ignore
