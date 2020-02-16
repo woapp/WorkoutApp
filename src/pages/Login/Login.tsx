@@ -7,8 +7,9 @@ import { PrimaryButton } from '@woap/components/PrimaryButton';
 import { TextTitle } from '@woap/components/Texts';
 import { Routes } from '@woap/navigation/routes';
 import { useStore } from '@woap/utils/hooks/useStore';
+import { observer } from 'mobx-react-lite';
 
-export const Login: FunctionComponent<NavigationStackScreenProps> = ({ navigation }) => {
+export const Login: FunctionComponent<NavigationStackScreenProps> = observer(({ navigation }) => {
   const { login, user } = useStore();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -71,4 +72,4 @@ export const Login: FunctionComponent<NavigationStackScreenProps> = ({ navigatio
       )}
     </View>
   );
-};
+});

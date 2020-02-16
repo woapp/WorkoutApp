@@ -1,14 +1,16 @@
 import React, { FunctionComponent } from 'react';
 import styled from '@woap/utils/styled-components';
+import { TouchableOpacityProps } from 'react-native';
 
 type ButtonProps = {
   onPress: () => void;
   title: string;
+  style?: TouchableOpacityProps;
 };
 
-export const PrimaryButton: FunctionComponent<ButtonProps> = ({ onPress, title }) => {
+export const PrimaryButton: FunctionComponent<ButtonProps> = ({ onPress, title, style }) => {
   return (
-    <Container onPress={onPress}>
+    <Container onPress={onPress} style={style}>
       <Title>{title}</Title>
     </Container>
   );

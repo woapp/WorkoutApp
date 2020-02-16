@@ -51,4 +51,7 @@ export const rootActions = (self: ModelInstanceTypeProps<typeof RootModel>) => (
   login(user: UserType): void {
     self.user = user;
   },
+  logout(): void {
+    self.user = undefined;
+  },
 });

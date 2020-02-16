@@ -19,6 +19,7 @@
     "@react-native-community/masked-view": "^0.1.1",
     "@react-native-firebase/app": "6.3.3",
     "@react-native-firebase/auth": "6.3.3",
+    "@react-native-firebase/firestore": "6.3.3",
     "@types/react-native-snap-carousel": "^3.7.4",
     "babel-plugin-module-resolver": "4.0.0",
     "lodash": "4.17.15",
