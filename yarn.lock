@@ -993,6 +993,11 @@
   resolved "https://registry.yarnpkg.com/@react-native-firebase/auth/-/auth-6.3.3.tgz#2c975e7add7bd3f160d4a6e6abb7bae176890ed5"
   integrity sha512-c0HGz53NZ6BSzuDO8qIEc+A1Bc3P9Prw6SQ+qbDJw/Y7YGSJyiKJphXeSl65mYYsgbB2O+GrJOkNrrbc4b/5lQ==
 
+"@react-native-firebase/firestore@6.3.3":
+  version "6.3.3"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/firestore/-/firestore-6.3.3.tgz#7a9d6cdce69988d5ac9eaae21ab91f3267503cd4"
+  integrity sha512-L7pbC6CkzrddliJtif5NtNqIgcNnNZB9hU4bm/AkhSoICKjM/85RjAAxgaI/X1yhjQoA8M+j9TM9u7LiLFbK7Q==
+
 "@react-navigation/core@^3.5.1":
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/@react-navigation/core/-/core-3.5.1.tgz#7a2339fca3496979305fb3a8ab88c2ca8d8c214d"
