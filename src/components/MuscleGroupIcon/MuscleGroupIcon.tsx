@@ -2,9 +2,8 @@ import React, { FunctionComponent } from 'react';
 import { Image } from 'react-native';
 import styled from '@woap/utils/styled-components';
 import { MuscleGroup } from '@woap/mobx/types';
-
-import images from '../../assets/images';
-import { colors } from '../../styles/colors';
+import { colors } from '@woap/styles/colors';
+import images from '@woap/assets/images';
 
 interface MuscleGroupIconProps {
   muscleGroup: MuscleGroup;

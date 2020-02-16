@@ -10,7 +10,7 @@ import { ExerciseType } from '@woap/mobx/exercise';
 import { createExercise } from '@woap/mobx/exercise/constructor';
 import { WorkoutType } from '@woap/mobx/workout';
 
-import { colors } from '../../../styles/colors';
+import { colors } from '@woap/styles/colors';
 
 import { ExerciseItem } from './components/ExerciseItem';
 

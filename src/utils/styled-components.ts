@@ -1,7 +1,7 @@
 import * as styledComponents from 'styled-components/native';
 import { ThemeProps as BasicThemeProps } from 'styled-components';
 
-import { theme } from '../styles/theme';
+import { theme } from '@woap/styles/theme';
 
 import { Override } from './types';
 
