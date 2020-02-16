@@ -5,6 +5,7 @@ import { RootModel } from './rootModel';
 import { ExerciseType } from './exercise';
 import { WorkoutType } from './workout';
 import { WorkoutDone } from './workoutDone';
+import { UserType } from './user';
 
 export const rootActions = (self: ModelInstanceTypeProps<typeof RootModel>) => ({
   addExercise(exercise: ExerciseType): void {
@@ -35,7 +36,6 @@ export const rootActions = (self: ModelInstanceTypeProps<typeof RootModel>) => (
     // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
     // @ts-ignore
     const workoutObject = workout.toJSON();
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { id, ...workoutData } = workoutObject;
     // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
     // @ts-ignore
@@ -46,5 +46,8 @@ export const rootActions = (self: ModelInstanceTypeProps<typeof RootModel>) => (
     });
     self.history.push(finishedWorkout);
     self.ongoingWorkout = undefined;
+  },
+  login(user: UserType): void {
+    self.user = user;
   },
 });

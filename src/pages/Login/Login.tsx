@@ -1,20 +1,33 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useState, useEffect } from 'react';
 import { View } from 'react-native';
-import { TextInput } from 'react-native-paper';
+import { TextInput, ActivityIndicator } from 'react-native-paper';
 import auth from '@react-native-firebase/auth';
 import { NavigationStackScreenProps } from 'react-navigation-stack';
 import { PrimaryButton } from '@woap/components/PrimaryButton';
 import { TextTitle } from '@woap/components/Texts';
 import { Routes } from '@woap/navigation/routes';
+import { useStore } from '@woap/utils/hooks/useStore';
 
 export const Login: FunctionComponent<NavigationStackScreenProps> = ({ navigation }) => {
+  const { login, user } = useStore();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (user) {
+      navigation.navigate(Routes.Dashboard);
+    } else {
+      setIsLoading(false);
+    }
+  }, [navigation, user]);
 
   const onSubmitLogin = async () => {
     try {
-      const res = await auth().signInWithEmailAndPassword(email, password);
-      console.log('res', res);
+      const {
+        user: { uid: id },
+      } = await auth().signInWithEmailAndPassword(email, password);
+      login({ id, email });
       navigation.navigate(Routes.Dashboard);
     } catch (e) {
       console.error(e.message);
@@ -23,8 +36,10 @@ export const Login: FunctionComponent<NavigationStackScreenProps> = ({ navigatio
 
   const onSubmitSignup = async () => {
     try {
-      const res = await auth().createUserWithEmailAndPassword(email, password);
-      console.log('res', res);
+      const {
+        user: { uid: id },
+      } = await auth().createUserWithEmailAndPassword(email, password);
+      login({ id, email });
       navigation.navigate(Routes.Dashboard);
     } catch (e) {
       console.error(e.message);
@@ -33,16 +48,27 @@ export const Login: FunctionComponent<NavigationStackScreenProps> = ({ navigatio
 
   return (
     <View style={{ flex: 1, padding: 50, justifyContent: 'center' }}>
-      <TextTitle>Login</TextTitle>
-      <TextInput autoCapitalize="none" placeholder="Email" value={email} onChangeText={setEmail} />
-      <TextInput
-        placeholder="Mot de passe"
-        secureTextEntry
-        value={password}
-        onChangeText={setPassword}
-      />
-      <PrimaryButton title="Signup" onPress={onSubmitSignup} />
-      <PrimaryButton title="Login" onPress={onSubmitLogin} />
+      {isLoading ? (
+        <ActivityIndicator />
+      ) : (
+        <>
+          <TextTitle>Login</TextTitle>
+          <TextInput
+            autoCapitalize="none"
+            placeholder="Email"
+            value={email}
+            onChangeText={setEmail}
+          />
+          <TextInput
+            placeholder="Mot de passe"
+            secureTextEntry
+            value={password}
+            onChangeText={setPassword}
+          />
+          <PrimaryButton title="Signup" onPress={onSubmitSignup} />
+          <PrimaryButton title="Login" onPress={onSubmitLogin} />
+        </>
+      )}
     </View>
   );
 };
