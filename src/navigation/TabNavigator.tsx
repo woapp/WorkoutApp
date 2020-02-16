@@ -7,15 +7,10 @@ import { Routes } from './routes';
 import { WorkoutsNavigator } from './WorkoutsNavigator';
 import { HistoryNavigator } from './HistoryNavigator';
 import { HomeNavigator } from './HomeNavigator';
+import { ProfileNavigator } from './ProfileNavigator';
 
 export const TabNavigator = createBottomTabNavigator(
   {
-    [Routes.HistoryNavigator]: {
-      screen: HistoryNavigator,
-      navigationOptions: {
-        tabBarIcon: ({ tintColor }) => <Ionicons name="ios-calendar" size={30} color={tintColor} />,
-      },
-    },
     [Routes.HomeNavigator]: {
       screen: HomeNavigator,
       navigationOptions: {
@@ -26,6 +21,18 @@ export const TabNavigator = createBottomTabNavigator(
       screen: WorkoutsNavigator,
       navigationOptions: {
         tabBarIcon: ({ tintColor }) => <Ionicons name="ios-fitness" size={30} color={tintColor} />,
+      },
+    },
+    [Routes.HistoryNavigator]: {
+      screen: HistoryNavigator,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => <Ionicons name="ios-calendar" size={30} color={tintColor} />,
+      },
+    },
+    [Routes.ProfileNavigator]: {
+      screen: ProfileNavigator,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => <Ionicons name="ios-person" size={30} color={tintColor} />,
       },
     },
   },

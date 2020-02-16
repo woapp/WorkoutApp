@@ -5,28 +5,12 @@ import { NavigationStackScreenProps } from 'react-navigation-stack';
 import { useStore } from '@woap/utils/hooks/useStore';
 import { Routes } from '@woap/navigation/routes';
 import { WorkoutType } from '@woap/mobx/workout';
-import firestore from '@react-native-firebase/firestore';
-import { PrimaryButton } from '@woap/components/PrimaryButton';
-import styled from '@woap/utils/styled-components';
 
 import { WorkoutCard } from './components/WorkoutCard/WorkoutCard';
 
 export const Dashboard: FunctionComponent<NavigationStackScreenProps> = observer(
   ({ navigation }) => {
-    const { workouts, setOngoingWorkout, user, exercises, history } = useStore();
-
-    const onSaveData = async () => {
-      if (user) {
-        try {
-          const docRef = firestore().doc(`users/${user.id}`);
-          await firestore().runTransaction(transaction =>
-            transaction.set(docRef, { workouts, exercises, history })
-          );
-        } catch (err) {
-          console.log('err', err);
-        }
-      }
-    };
+    const { workouts, setOngoingWorkout } = useStore();
 
     const onSelectWorkout = (workout: WorkoutType) => () => {
       setOngoingWorkout(workout);
@@ -38,18 +22,11 @@ export const Dashboard: FunctionComponent<NavigationStackScreenProps> = observer
     );
 
     return (
-      <Container>
-        <FlatList
-          data={workouts.toJS()}
-          renderItem={renderWorkoutCard}
-          keyExtractor={item => item.id}
-        />
-        <PrimaryButton title="Sauvegarder mes données" onPress={onSaveData} />
-      </Container>
+      <FlatList
+        data={workouts.toJS()}
+        renderItem={renderWorkoutCard}
+        keyExtractor={item => item.id}
+      />
     );
   }
 );
-
-const Container = styled.View(({ theme }) => ({
-  padding: theme.margin.x1,
-}));
