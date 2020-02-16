@@ -5,15 +5,15 @@ import { NavigationStackScreenProps } from 'react-navigation-stack';
 import { NavigationActions, StackActions } from 'react-navigation';
 import Carousel from 'react-native-snap-carousel';
 import PaginationDot from 'react-native-animated-pagination-dot';
+import { TextTitle } from '@woap/components/Texts';
+import { PrimaryButton } from '@woap/components/PrimaryButton';
+import { FormSets } from '@woap/components/FormSets';
 
-import { TextTitle } from '../../../components/Texts';
 import { Routes } from '../../../navigation/routes';
 import styled from '../../../utils/styled-components';
 import { ExerciseSetsType } from '../../../mobx/exerciseSets';
 import { useStore } from '../../../utils/hooks/useStore';
-import { FormSets } from '../../../components/FormSets';
 import { colors } from '../../../styles/colors';
-import { PrimaryButton } from '../../../components/PrimaryButton';
 
 export const OngoingWorkout: FunctionComponent<NavigationStackScreenProps> = observer(
   ({ navigation }) => {

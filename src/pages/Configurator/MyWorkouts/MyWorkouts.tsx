@@ -2,10 +2,10 @@ import React from 'react';
 import { FlatList } from 'react-native';
 import { NavigationStackScreenProps } from 'react-navigation-stack';
 import { observer } from 'mobx-react-lite';
+import { ActionButton } from '@woap/components/ActionButton';
 
 import { createWorkout } from '../../../mobx/workout/constructor';
 import { useStore } from '../../../utils/hooks/useStore';
-import { ActionButton } from '../../../components/ActionButton';
 import { Routes } from '../../../navigation/routes';
 import styled from '../../../utils/styled-components';
 

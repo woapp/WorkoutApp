@@ -3,9 +3,9 @@ import { View } from 'react-native';
 import { TextInput } from 'react-native-paper';
 import auth from '@react-native-firebase/auth';
 import { NavigationStackScreenProps } from 'react-navigation-stack';
+import { PrimaryButton } from '@woap/components/PrimaryButton';
+import { TextTitle } from '@woap/components/Texts';
 
-import { PrimaryButton } from '../../components/PrimaryButton';
-import { TextTitle } from '../../components/Texts';
 import { Routes } from '../../navigation/routes';
 
 export const Login: FunctionComponent<NavigationStackScreenProps> = ({ navigation }) => {
