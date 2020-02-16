@@ -1,4 +1,4 @@
-import { generateId } from '../../utils/services/generateId';
+import { generateId } from '@woap/utils/services/generateId';
 import { ExerciseType } from '../exercise';
 import { ExerciseSets } from '../exerciseSets';
 

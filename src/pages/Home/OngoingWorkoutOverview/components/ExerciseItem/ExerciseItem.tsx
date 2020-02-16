@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { observer } from 'mobx-react-lite';
 
-import styled from '../../../../../utils/styled-components';
+import styled from '@woap/utils/styled-components';
 import { MuscleGroup } from '../../../../../mobx/types';
 import { MuscleGroupIcon } from '../MuscleGroupIcon';
 

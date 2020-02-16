@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react';
 import { View, Text, Image } from 'react-native';
+import styled from '@woap/utils/styled-components';
 
 import images from '../../assets/images';
-import styled from '../../utils/styled-components';
 
 type INotYetImplemented = {
   pageTitle: string;

@@ -1,9 +1,8 @@
 import React, { FunctionComponent } from 'react';
 import { FlatList } from 'react-native';
 import { observer } from 'mobx-react-lite';
-
-import { useStore } from '../../../utils/hooks/useStore';
-import styled from '../../../utils/styled-components';
+import { useStore } from '@woap/utils/hooks/useStore';
+import styled from '@woap/utils/styled-components';
 
 import { WorkoutItem } from './components/WorkoutHistoryItem';
 

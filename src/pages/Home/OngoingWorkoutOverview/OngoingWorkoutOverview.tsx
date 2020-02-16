@@ -5,10 +5,10 @@ import { FlatList } from 'react-native';
 import { TextTitle, TextSubtitle } from '@woap/components/Texts';
 import { PrimaryButton } from '@woap/components/PrimaryButton';
 import { Spacer } from '@woap/components/Spacer';
+import styled from '@woap/utils/styled-components';
+import { useStore } from '@woap/utils/hooks/useStore';
 
 import { Routes } from '../../../navigation/routes';
-import styled from '../../../utils/styled-components';
-import { useStore } from '../../../utils/hooks/useStore';
 import { ExerciseSetsType } from '../../../mobx/exerciseSets';
 
 import { ExerciseItem } from './components/ExerciseItem';

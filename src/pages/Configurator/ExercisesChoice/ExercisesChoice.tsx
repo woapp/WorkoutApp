@@ -3,11 +3,11 @@ import { FlatList } from 'react-native-gesture-handler';
 import { observer } from 'mobx-react-lite';
 import { NavigationStackScreenProps } from 'react-navigation-stack';
 import { ActionButton } from '@woap/components/ActionButton';
+import { useStore } from '@woap/utils/hooks/useStore';
+import styled from '@woap/utils/styled-components';
 
 import { ExerciseType } from '../../../mobx/exercise';
 import { createExercise } from '../../../mobx/exercise/constructor';
-import { useStore } from '../../../utils/hooks/useStore';
-import styled from '../../../utils/styled-components';
 import { colors } from '../../../styles/colors';
 import { WorkoutType } from '../../../mobx/workout';
 import { Routes } from '../../../navigation/routes';

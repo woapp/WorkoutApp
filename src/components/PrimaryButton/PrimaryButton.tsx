@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-import styled from '../../utils/styled-components';
+import styled from '@woap/utils/styled-components';
 
 type ButtonProps = {
   onPress: () => void;

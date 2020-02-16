@@ -4,9 +4,9 @@ import { TouchableOpacity } from 'react-native';
 import { observer } from 'mobx-react-lite';
 import { TextTitle } from '@woap/components/Texts';
 import { MuscleGroupSelectableItem } from '@woap/components/MuscleGroupSelectableItem';
+import styled from '@woap/utils/styled-components';
 
 import { WorkoutType } from '../../../../../modules/workout';
-import styled from '../../../../../utils/styled-components';
 
 interface Props {
   workout: WorkoutType;

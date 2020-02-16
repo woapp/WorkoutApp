@@ -1,11 +1,11 @@
 import React, { FunctionComponent } from 'react';
 import { observer } from 'mobx-react-lite';
 import { useNavigation } from 'react-navigation-hooks';
+import { TextTitle } from '@woap/components/Texts';
+import styled from '@woap/utils/styled-components';
 
 import { Routes } from '../../../../../navigation/routes';
-import styled from '../../../../../utils/styled-components';
 import { WorkoutDoneType } from '../../../../../mobx/workoutDone';
-import { TextTitle } from '@woap/components/Texts';
 
 interface Props {
   workout: WorkoutDoneType;

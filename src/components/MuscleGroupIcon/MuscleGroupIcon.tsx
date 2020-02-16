@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from 'react';
 import { Image } from 'react-native';
+import styled from '@woap/utils/styled-components';
 
 import { MuscleGroup } from '../../mobx/types';
 import images from '../../assets/images';
 import { colors } from '../../styles/colors';
-import styled from '../../utils/styled-components';
 
 interface MuscleGroupIconProps {
   muscleGroup: MuscleGroup;

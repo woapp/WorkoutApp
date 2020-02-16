@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { TouchableOpacity } from 'react-native';
+import styled from '@woap/utils/styled-components';
 
-import styled from '../../utils/styled-components';
 import { MuscleGroupIcon } from '../MuscleGroupIcon';
 import { MuscleGroup } from '../../mobx/types';
 

@@ -1,6 +1,5 @@
 import { ModelInstanceTypeProps, detach } from 'mobx-state-tree';
-
-import { generateId } from '../utils/services/generateId';
+import { generateId } from '@woap/utils/services/generateId';
 
 import { RootModel } from './rootModel';
 import { ExerciseType } from './exercise';

@@ -8,11 +8,11 @@ import PaginationDot from 'react-native-animated-pagination-dot';
 import { TextTitle } from '@woap/components/Texts';
 import { PrimaryButton } from '@woap/components/PrimaryButton';
 import { FormSets } from '@woap/components/FormSets';
+import styled from '@woap/utils/styled-components';
+import { useStore } from '@woap/utils/hooks/useStore';
 
 import { Routes } from '../../../navigation/routes';
-import styled from '../../../utils/styled-components';
 import { ExerciseSetsType } from '../../../mobx/exerciseSets';
-import { useStore } from '../../../utils/hooks/useStore';
 import { colors } from '../../../styles/colors';
 
 export const OngoingWorkout: FunctionComponent<NavigationStackScreenProps> = observer(

@@ -1,6 +1,5 @@
 import React from 'react';
-
-import styled from '../../utils/styled-components';
+import styled from '@woap/utils/styled-components';
 
 interface ActionButtonProps {
   onPress: () => void;
