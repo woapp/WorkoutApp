@@ -1,7 +1,6 @@
 import React from 'react';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
 import { colors } from '@woap/styles/colors';
 
 import { Routes } from './routes';

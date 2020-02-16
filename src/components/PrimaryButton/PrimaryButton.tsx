@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react';
-
 import styled from '@woap/utils/styled-components';
 
 type ButtonProps = {

@@ -1,6 +1,5 @@
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-
 import { OngoingWorkout } from '@woap/pages/Home/OngoingWorkout';
 import { Login } from '@woap/pages/Login';
 

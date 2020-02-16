@@ -34,7 +34,7 @@ export const Login: FunctionComponent<NavigationStackScreenProps> = ({ navigatio
   return (
     <View style={{ flex: 1, padding: 50, justifyContent: 'center' }}>
       <TextTitle>Login</TextTitle>
-      <TextInput placeholder="Email" value={email} onChangeText={setEmail} />
+      <TextInput autoCapitalize="none" placeholder="Email" value={email} onChangeText={setEmail} />
       <TextInput
         placeholder="Mot de passe"
         secureTextEntry

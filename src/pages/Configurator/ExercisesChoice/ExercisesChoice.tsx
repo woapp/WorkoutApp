@@ -9,7 +9,6 @@ import { Routes } from '@woap/navigation/routes';
 import { ExerciseType } from '@woap/mobx/exercise';
 import { createExercise } from '@woap/mobx/exercise/constructor';
 import { WorkoutType } from '@woap/mobx/workout';
-
 import { colors } from '@woap/styles/colors';
 
 import { ExerciseItem } from './components/ExerciseItem';
