@@ -1,8 +1,8 @@
 import { createStackNavigator } from 'react-navigation-stack';
 import { colors } from '@woap/styles/colors';
+import { MyProfile } from '@woap/pages/MyProfile';
 
 import { Routes } from './routes';
-import { MyProfile } from '@woap/pages/MyProfile';
 
 export const ProfileNavigator = createStackNavigator(
   {
