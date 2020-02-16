@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react';
 import { Image } from 'react-native';
 import styled from '@woap/utils/styled-components';
+import { MuscleGroup } from '@woap/mobx/types';
 
-import { MuscleGroup } from '../../mobx/types';
 import images from '../../assets/images';
 import { colors } from '../../styles/colors';
 

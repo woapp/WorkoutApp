@@ -6,8 +6,7 @@ import { ActionButton } from '@woap/components/ActionButton';
 import styled from '@woap/utils/styled-components';
 import { useStore } from '@woap/utils/hooks/useStore';
 import { Routes } from '@woap/navigation/routes';
-
-import { createWorkout } from '../../../mobx/workout/constructor';
+import { createWorkout } from '@woap/mobx/workout/constructor';
 
 import { WorkoutItem } from './components/WorkoutItem';
 

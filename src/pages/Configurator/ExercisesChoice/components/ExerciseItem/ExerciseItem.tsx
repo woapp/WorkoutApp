@@ -5,8 +5,7 @@ import styled from '@woap/utils/styled-components';
 import { MuscleGroupToggle } from '@woap/components/MuscleGroupToggle';
 import { useStore } from '@woap/utils/hooks/useStore';
 import { TextTitle } from '@woap/components/Texts';
-
-import { ExerciseType } from '../../../../../mobx/exercise';
+import { ExerciseType } from '@woap/mobx/exercise';
 
 interface Props {
   checked: 'checked' | 'unchecked' | 'indeterminate';

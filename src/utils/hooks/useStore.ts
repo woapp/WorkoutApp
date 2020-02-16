@@ -1,7 +1,6 @@
 import { useContext } from 'react';
-
-import { RootStoreType } from '../../mobx/types';
-import { StoreContext } from '../../mobx/provider';
+import { RootStoreType } from '@woap/mobx/types';
+import { StoreContext } from '@woap/mobx/provider';
 
 export const useStore = (): RootStoreType => {
   const store = useContext(StoreContext);

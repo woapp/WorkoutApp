@@ -11,8 +11,8 @@ import { FormSets } from '@woap/components/FormSets';
 import styled from '@woap/utils/styled-components';
 import { useStore } from '@woap/utils/hooks/useStore';
 import { Routes } from '@woap/navigation/routes';
+import { ExerciseSetsType } from '@woap/mobx/exerciseSets';
 
-import { ExerciseSetsType } from '../../../mobx/exerciseSets';
 import { colors } from '../../../styles/colors';
 
 export const OngoingWorkout: FunctionComponent<NavigationStackScreenProps> = observer(

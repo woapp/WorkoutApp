@@ -8,8 +8,7 @@ import { Spacer } from '@woap/components/Spacer';
 import styled from '@woap/utils/styled-components';
 import { useStore } from '@woap/utils/hooks/useStore';
 import { Routes } from '@woap/navigation/routes';
-
-import { ExerciseSetsType } from '../../../mobx/exerciseSets';
+import { ExerciseSetsType } from '@woap/mobx/exerciseSets';
 
 import { ExerciseItem } from './components/ExerciseItem';
 

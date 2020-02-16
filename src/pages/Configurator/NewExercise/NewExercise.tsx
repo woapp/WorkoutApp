@@ -5,8 +5,7 @@ import { InputTitle } from '@woap/components/InputTitle';
 import styled from '@woap/utils/styled-components';
 import { MuscleGroupToggle } from '@woap/components/MuscleGroupToggle';
 import { ActionButton } from '@woap/components/ActionButton';
-
-import { MuscleGroup } from '../../../mobx/types';
+import { MuscleGroup } from '@woap/mobx/types';
 
 export const NewExercise: FunctionComponent<NavigationStackScreenProps> = observer(
   ({ navigation }) => {

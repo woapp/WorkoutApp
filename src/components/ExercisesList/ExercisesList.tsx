@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react';
 import DraggableFlatList from 'react-native-draggable-flatlist';
 import { observer } from 'mobx-react-lite';
+import { WorkoutType } from '@woap/mobx/workout';
 
-import { WorkoutType } from '../../mobx/workout';
 import { ExercisesListItem } from '../ExercisesListItem';
 
 interface Props {

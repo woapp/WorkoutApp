@@ -4,8 +4,7 @@ import { useNavigation } from 'react-navigation-hooks';
 import { TextTitle } from '@woap/components/Texts';
 import styled from '@woap/utils/styled-components';
 import { Routes } from '@woap/navigation/routes';
-
-import { WorkoutDoneType } from '../../../../../mobx/workoutDone';
+import { WorkoutDoneType } from '@woap/mobx/workoutDone';
 
 interface Props {
   workout: WorkoutDoneType;
