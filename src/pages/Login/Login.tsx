@@ -11,6 +11,7 @@ import { observer } from 'mobx-react-lite';
 
 export const Login: FunctionComponent<NavigationStackScreenProps> = observer(({ navigation }) => {
   const { login, user } = useStore();
+  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(true);
