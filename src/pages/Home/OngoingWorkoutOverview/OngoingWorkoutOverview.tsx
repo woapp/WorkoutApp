@@ -36,6 +36,8 @@ export const OngoingWorkoutOverview: FunctionComponent<NavigationStackScreenProp
                   exerciseName={item.exercise.name}
                   muscleGroup={item.exercise.mainMuscleGroup}
                   nbSets={item.sets.length}
+                  maxWeight={item.maxWeight}
+                  sets={item.sets}
                 />
               )}
             />
