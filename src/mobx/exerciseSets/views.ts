@@ -1,10 +1,9 @@
 import { ModelInstanceTypeProps } from 'mobx-state-tree';
-import _ from 'lodash';
 
-import { ExerciseSetsType } from './index';
+import { ExerciseSetsModel } from './model';
 
-export const exerciseSetsViews = (self: ModelInstanceTypeProps<typeof ExerciseSetsType>) => ({
-  get maxWeight() {
-    return _.maxBy(self.sets, set => set.weight)?.weight;
+export const exerciseSetsViews = (self: ModelInstanceTypeProps<typeof ExerciseSetsModel>) => ({
+  get nbSets() {
+    return self.sets.length;
   },
 });
