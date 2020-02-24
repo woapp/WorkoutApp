@@ -71,6 +71,7 @@
 		AA4817B1133693A0674EF439 /* Pods-WorkoutApp-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkoutApp-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-WorkoutApp-tvOS/Pods-WorkoutApp-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		F15C168C240458320083C3A1 /* AppCenter-Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "AppCenter-Config.xcconfig"; sourceTree = "<group>"; };
 		F8BFCE8E0E9C105508ED244B /* libPods-WorkoutApp-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WorkoutApp-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -138,6 +139,7 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				F15C168C240458320083C3A1 /* AppCenter-Config.xcconfig */,
 			);
 			name = WorkoutApp;
 			sourceTree = "<group>";
