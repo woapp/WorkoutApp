@@ -12,6 +12,8 @@ import { observer } from 'mobx-react-lite';
 export const Login: FunctionComponent<NavigationStackScreenProps> = observer(({ navigation }) => {
   const { login, user } = useStore();
   const [email, setEmail] = useState('');
+  const [isLoginLoading, setIsLoginLoading] = useState(false);
+  const [isSignupLoading, setIsSignupLoading] = useState(false);
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
@@ -24,6 +26,7 @@ export const Login: FunctionComponent<NavigationStackScreenProps> = observer(({ 
   }, [navigation, user]);
 
   const onSubmitLogin = async () => {
+    setIsLoginLoading(true);
     try {
       const {
         user: { uid: id },
@@ -33,9 +36,11 @@ export const Login: FunctionComponent<NavigationStackScreenProps> = observer(({ 
     } catch (e) {
       console.error(e.message);
     }
+    setIsLoginLoading(false);
   };
 
   const onSubmitSignup = async () => {
+    setIsSignupLoading(true);
     try {
       const {
         user: { uid: id },
@@ -45,6 +50,7 @@ export const Login: FunctionComponent<NavigationStackScreenProps> = observer(({ 
     } catch (e) {
       console.error(e.message);
     }
+    setIsSignupLoading(false);
   };
 
   return (
@@ -66,8 +72,8 @@ export const Login: FunctionComponent<NavigationStackScreenProps> = observer(({ 
             value={password}
             onChangeText={setPassword}
           />
-          <PrimaryButton title="Signup" onPress={onSubmitSignup} />
-          <PrimaryButton title="Login" onPress={onSubmitLogin} />
+          <PrimaryButton title="Signup" onPress={onSubmitSignup} isLoading={isSignupLoading} />
+          <PrimaryButton title="Login" onPress={onSubmitLogin} isLoading={isLoginLoading} />
         </>
       )}
     </View>

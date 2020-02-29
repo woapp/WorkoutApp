@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import styled from '@woap/utils/styled-components';
 import { TouchableOpacityProps } from 'react-native';
 
-import { Loader } from '../Loader/Loader';
+import { Loader } from '../Loader';
 
 type ButtonProps = {
   onPress: () => void;
