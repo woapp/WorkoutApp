@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState, useEffect } from 'react';
-import { View } from 'react-native';
+import { View, Alert } from 'react-native';
 import { TextInput, ActivityIndicator } from 'react-native-paper';
 import auth from '@react-native-firebase/auth';
 import { NavigationStackScreenProps } from 'react-navigation-stack';
@@ -34,7 +34,7 @@ export const Login: FunctionComponent<NavigationStackScreenProps> = observer(({ 
       login({ id, email });
       navigation.navigate(Routes.Dashboard);
     } catch (e) {
-      console.error(e.message);
+      Alert.alert('Erreur', e.message);
     }
     setIsLoginLoading(false);
   };
@@ -48,7 +48,7 @@ export const Login: FunctionComponent<NavigationStackScreenProps> = observer(({ 
       login({ id, email });
       navigation.navigate(Routes.Dashboard);
     } catch (e) {
-      console.error(e.message);
+      Alert.alert('Erreur', e.message);
     }
     setIsSignupLoading(false);
   };
