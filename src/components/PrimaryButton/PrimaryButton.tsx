@@ -27,13 +27,13 @@ export const PrimaryButton: FunctionComponent<ButtonProps> = ({
 const Container = styled.TouchableOpacity(props => ({
   width: '100%',
   backgroundColor: props.theme.colors.blue,
-  borderRadius: 15,
-  padding: props.theme.margin.x2,
+  borderRadius: 50,
+  padding: props.theme.margin.x1 * 1.5,
 }));
 
 const Title = styled.Text(props => ({
   color: props.theme.colors.white,
   fontWeight: 'bold',
-  fontSize: 24,
+  fontSize: 18,
   textAlign: 'center',
 }));
