@@ -27,7 +27,7 @@ export const WorkoutCard: FunctionComponent<Props> = observer(({ workout, onSele
                 muscleGroup={muscleGroup}
                 isSelected
                 disabled
-                iconSize={60}
+                iconSize={50}
               />
             </MuscleGroupContainer>
           ))}
