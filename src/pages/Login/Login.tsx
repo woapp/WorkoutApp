@@ -1,17 +1,21 @@
 import React, { FunctionComponent, useState, useEffect } from 'react';
-import { View } from 'react-native';
+import { View, Alert } from 'react-native';
 import { TextInput, ActivityIndicator } from 'react-native-paper';
 import auth from '@react-native-firebase/auth';
 import { NavigationStackScreenProps } from 'react-navigation-stack';
 import { PrimaryButton } from '@woap/components/PrimaryButton';
-import { TextTitle } from '@woap/components/Texts';
+import { TextTitle, TextBody } from '@woap/components/Texts';
 import { Routes } from '@woap/navigation/routes';
 import { useStore } from '@woap/utils/hooks/useStore';
 import { observer } from 'mobx-react-lite';
+import { Spacer } from '@woap/components/Spacer';
+import styled from '@woap/utils/styled-components';
 
 export const Login: FunctionComponent<NavigationStackScreenProps> = observer(({ navigation }) => {
   const { login, user } = useStore();
   const [email, setEmail] = useState('');
+  const [isLoginLoading, setIsLoginLoading] = useState(false);
+  const [isSignupLoading, setIsSignupLoading] = useState(false);
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
@@ -24,6 +28,7 @@ export const Login: FunctionComponent<NavigationStackScreenProps> = observer(({ 
   }, [navigation, user]);
 
   const onSubmitLogin = async () => {
+    setIsLoginLoading(true);
     try {
       const {
         user: { uid: id },
@@ -31,11 +36,13 @@ export const Login: FunctionComponent<NavigationStackScreenProps> = observer(({ 
       login({ id, email });
       navigation.navigate(Routes.Dashboard);
     } catch (e) {
-      console.error(e.message);
+      Alert.alert('Erreur', e.message);
     }
+    setIsLoginLoading(false);
   };
 
   const onSubmitSignup = async () => {
+    setIsSignupLoading(true);
     try {
       const {
         user: { uid: id },
@@ -43,8 +50,9 @@ export const Login: FunctionComponent<NavigationStackScreenProps> = observer(({ 
       login({ id, email });
       navigation.navigate(Routes.Dashboard);
     } catch (e) {
-      console.error(e.message);
+      Alert.alert('Erreur', e.message);
     }
+    setIsSignupLoading(false);
   };
 
   return (
@@ -53,23 +61,33 @@ export const Login: FunctionComponent<NavigationStackScreenProps> = observer(({ 
         <ActivityIndicator />
       ) : (
         <>
-          <TextTitle>Login</TextTitle>
+          <TextTitle>Connexion</TextTitle>
+          <Spacer height={4} />
           <TextInput
             autoCapitalize="none"
             placeholder="Email"
             value={email}
             onChangeText={setEmail}
           />
+          <Spacer height={2} />
           <TextInput
             placeholder="Mot de passe"
             secureTextEntry
             value={password}
             onChangeText={setPassword}
           />
-          <PrimaryButton title="Signup" onPress={onSubmitSignup} />
-          <PrimaryButton title="Login" onPress={onSubmitLogin} />
+          <Spacer height={2} />
+          <PrimaryButton title="S'inscrire" onPress={onSubmitSignup} isLoading={isSignupLoading} />
+          <Spacer height={2} />
+          <OrText>ou</OrText>
+          <Spacer height={2} />
+          <PrimaryButton title="Se connecter" onPress={onSubmitLogin} isLoading={isLoginLoading} />
         </>
       )}
     </View>
   );
+});
+
+const OrText = styled(TextBody)({
+  textAlign: 'center',
 });
