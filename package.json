@@ -11,7 +11,7 @@
     "lint": "eslint src --ext .js,.ts,.tsx --no-ignore --max-warnings=0 && yarn ts:check",
     "lint:fix": "prettier --write './**/*.{ts,tsx}' && eslint --fix src --ext .js,.ts,.tsx",
     "pretty:list": "yarn prettier --list-different './**/*.{ts,tsx}'",
-    "deploy:soft": "code-push release-react WorkoutApp-iOS ios && code-push release-react WorkoutApp-android android",
+    "deploy:soft": "code-push release-react cyrilb-bam.tech/WorkoutApp-iOS ios && code-push release-react cyrilb-bam.tech/WorkoutApp-android android",
     "eslint:check": "eslint .",
     "ts:check": "tsc",
     "generate": "plop"
