@@ -28,7 +28,7 @@ export const Login: FunctionComponent<Props> = observer(({ navigation }) => {
 
   useEffect(() => {
     if (user) {
-      navigation.navigate(Routes.TabNavigator, { screen: Routes.Dashboard });
+      navigation.navigate(Routes.TabNavigator);
     } else {
       setIsLoading(false);
     }
@@ -41,7 +41,7 @@ export const Login: FunctionComponent<Props> = observer(({ navigation }) => {
         user: { uid: id },
       } = await auth().signInWithEmailAndPassword(email, password);
       login({ id, email });
-      navigation.navigate(Routes.TabNavigator, { screen: Routes.Dashboard });
+      navigation.navigate(Routes.TabNavigator);
     } catch (e) {
       Alert.alert('Erreur', e.message);
     }
@@ -55,7 +55,7 @@ export const Login: FunctionComponent<Props> = observer(({ navigation }) => {
         user: { uid: id },
       } = await auth().createUserWithEmailAndPassword(email, password);
       login({ id, email });
-      navigation.navigate(Routes.TabNavigator, { screen: Routes.Dashboard });
+      navigation.navigate(Routes.TabNavigator);
     } catch (e) {
       Alert.alert('Erreur', e.message);
     }
