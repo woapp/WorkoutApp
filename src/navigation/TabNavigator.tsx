@@ -16,6 +16,8 @@ export type TabNavigatorParamList = {
   [Routes.ProfileNavigator]: undefined;
 };
 
+const ICON_SIZE = 30;
+
 const Tab = createBottomTabNavigator<TabNavigatorParamList>();
 
 export const TabNavigator = () => (
@@ -34,28 +36,28 @@ export const TabNavigator = () => (
       name={Routes.HomeNavigator}
       component={HomeNavigator}
       options={{
-        tabBarIcon: ({ color }) => <Ionicons name="ios-home" size={30} color={color} />,
+        tabBarIcon: ({ color }) => <Ionicons name="ios-home" size={ICON_SIZE} color={color} />,
       }}
     />
     <Tab.Screen
       name={Routes.WorkoutsNavigator}
       component={WorkoutsNavigator}
       options={{
-        tabBarIcon: ({ color }) => <Ionicons name="ios-fitness" size={30} color={color} />,
+        tabBarIcon: ({ color }) => <Ionicons name="ios-fitness" size={ICON_SIZE} color={color} />,
       }}
     />
     <Tab.Screen
       name={Routes.HistoryNavigator}
       component={HistoryNavigator}
       options={{
-        tabBarIcon: ({ color }) => <Ionicons name="ios-calendar" size={30} color={color} />,
+        tabBarIcon: ({ color }) => <Ionicons name="ios-calendar" size={ICON_SIZE} color={color} />,
       }}
     />
     <Tab.Screen
       name={Routes.ProfileNavigator}
       component={ProfileNavigator}
       options={{
-        tabBarIcon: ({ color }) => <Ionicons name="ios-person" size={30} color={color} />,
+        tabBarIcon: ({ color }) => <Ionicons name="ios-person" size={ICON_SIZE} color={color} />,
       }}
     />
   </Tab.Navigator>
