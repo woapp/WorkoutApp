@@ -22,9 +22,20 @@ export const theme = {
   border: {
     radius: {
       s: 6,
+      l: 24,
     },
     width: {
       s: 1,
     },
+  },
+  shadow: {
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
+    shadowOpacity: 0.34,
+    shadowRadius: 6.27,
+    elevation: 10,
   },
 };

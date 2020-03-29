@@ -1,15 +1,16 @@
 import React, { FunctionComponent } from 'react';
-import { TextInputProps, TextInput } from 'react-native';
+import { TextInputProps, TextInput, TextStyle } from 'react-native';
 import styled from '@woap/utils/styled-components';
 
 interface Props extends TextInputProps {
   label: string;
+  labelStyle: TextStyle;
 }
 
-export const FormField: FunctionComponent<Props> = ({ label, ...textInputProps }) => {
+export const FormField: FunctionComponent<Props> = ({ label, labelStyle, ...textInputProps }) => {
   return (
     <>
-      <Label>{label}</Label>
+      <Label style={labelStyle}>{label}</Label>
       <InputContainer>
         <TextInput {...textInputProps} />
       </InputContainer>
