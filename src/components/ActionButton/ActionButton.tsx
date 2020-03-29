@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import styled from '@woap/utils/styled-components';
 
 interface ActionButtonProps {
@@ -6,7 +6,7 @@ interface ActionButtonProps {
   title: string;
 }
 
-export const ActionButton: React.FC<ActionButtonProps> = ({ onPress, title }) => (
+export const ActionButton: FunctionComponent<ActionButtonProps> = ({ onPress, title }) => (
   <Container onPress={onPress}>
     <Title>{title}</Title>
   </Container>

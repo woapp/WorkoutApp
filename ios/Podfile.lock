@@ -480,7 +480,7 @@ PODS:
     - React-cxxreact (= 0.61.2)
     - React-jsi (= 0.61.2)
   - React-jsinspector (0.61.2)
-  - react-native-safe-area-context (0.5.0):
+  - react-native-safe-area-context (0.7.3):
     - React
   - React-RCTActionSheet (0.61.2):
     - React-Core/RCTActionSheetHeaders (= 0.61.2)
@@ -517,7 +517,7 @@ PODS:
     - React-cxxreact (= 0.61.2)
     - React-jsi (= 0.61.2)
     - ReactCommon/jscallinvoker (= 0.61.2)
-  - RNCMaskedView (0.1.1):
+  - RNCMaskedView (0.1.7):
     - React
   - RNFBApp (6.3.3):
     - Firebase/Core (~> 6.13.0)
@@ -532,11 +532,11 @@ PODS:
     - Firebase/Firestore (~> 6.13.0)
     - React
     - RNFBApp
-  - RNGestureHandler (1.5.3):
+  - RNGestureHandler (1.6.1):
     - React
-  - RNReanimated (1.7.0):
+  - RNReanimated (1.7.1):
     - React
-  - RNScreens (1.0.0-alpha.23):
+  - RNScreens (2.4.0):
     - React
   - RNVectorIcons (6.6.0):
     - React
@@ -738,7 +738,7 @@ SPEC CHECKSUMS:
   React-jsi: 32285a21b1b24c36060493ed3057a34677d58d09
   React-jsiexecutor: 8909917ff7d8f21a57e443a866fd8d4560e50c65
   React-jsinspector: 111d7d342b07a904c400592e02a2b958f1098b60
-  react-native-safe-area-context: 13004a45f3021328fdd9ee1f987c3131fb65928d
+  react-native-safe-area-context: e200d4433aba6b7e60b52da5f37af11f7a0b0392
   React-RCTActionSheet: 89b037c0fb7d2671607cb645760164e7e0c013f6
   React-RCTAnimation: e3cefa93c38c004c318f7ec04b883eb14b8b8235
   React-RCTBlob: d26ac0e313fbf14e7203473fd593ccaaeee8329e
@@ -749,13 +749,13 @@ SPEC CHECKSUMS:
   React-RCTText: e3ef6191cdb627855ff7fe8fa0c1e14094967fb8
   React-RCTVibration: fb54c732fd20405a76598e431aa2f8c2bf527de9
   ReactCommon: 5848032ed2f274fcb40f6b9ec24067787c42d479
-  RNCMaskedView: b79e193409a90bf6b5170d421684f437ff4e2278
+  RNCMaskedView: 76c40a1d41c3e2535df09246a2b5487f04de0814
   RNFBApp: 887ccc5840f93abad3202ff23eb0faf7bee4ac12
   RNFBAuth: 9c6a6ad1435eeff2aca7bbb335123e25b5781e65
   RNFBFirestore: c03f496b934c498fea94f17b739c6dcb2309f8cc
-  RNGestureHandler: 02905abe54e1f6e59c081a10b4bd689721e17aa6
-  RNReanimated: 031fe8d9ea93c2bd689a40f05320ef9d96f74d7f
-  RNScreens: f28b48b8345f2f5f39ed6195518291515032a788
+  RNGestureHandler: 8f09cd560f8d533eb36da5a6c5a843af9f056b38
+  RNReanimated: 4e102df74a9674fa943e05f97f3362b6e44d0b48
+  RNScreens: b5c0e1b2b04512919e78bd3898e144a157ce2363
   RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
   SSZipArchive: fa16b8cc4cdeceb698e5e5d9f67e9558532fbf23
   Yoga: 14927e37bd25376d216b150ab2a561773d57911f

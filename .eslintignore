@@ -3,3 +3,5 @@ package.json
 .eslintrc.js
 android
 ios
+babel.config.js
+metro.config.js

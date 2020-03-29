@@ -1,17 +1,24 @@
 import React, { FunctionComponent, useState, useEffect } from 'react';
 import { View, Alert } from 'react-native';
 import { TextInput, ActivityIndicator } from 'react-native-paper';
+import { observer } from 'mobx-react-lite';
 import auth from '@react-native-firebase/auth';
-import { NavigationStackScreenProps } from 'react-navigation-stack';
+import { StackNavigationProp } from '@react-navigation/stack';
 import { PrimaryButton } from '@woap/components/PrimaryButton';
 import { TextTitle, TextBody } from '@woap/components/Texts';
 import { Routes } from '@woap/navigation/routes';
 import { useStore } from '@woap/utils/hooks/useStore';
-import { observer } from 'mobx-react-lite';
 import { Spacer } from '@woap/components/Spacer';
 import styled from '@woap/utils/styled-components';
+import { RootNavigatorParamList } from '@woap/navigation';
 
-export const Login: FunctionComponent<NavigationStackScreenProps> = observer(({ navigation }) => {
+type LoginScreenNavigationProp = StackNavigationProp<RootNavigatorParamList, Routes.Login>;
+
+type Props = {
+  navigation: LoginScreenNavigationProp;
+};
+
+export const Login: FunctionComponent<Props> = observer(({ navigation }) => {
   const { login, user } = useStore();
   const [email, setEmail] = useState('');
   const [isLoginLoading, setIsLoginLoading] = useState(false);
@@ -21,7 +28,7 @@ export const Login: FunctionComponent<NavigationStackScreenProps> = observer(({ 
 
   useEffect(() => {
     if (user) {
-      navigation.navigate(Routes.Dashboard);
+      navigation.navigate(Routes.TabNavigator, { screen: Routes.Dashboard });
     } else {
       setIsLoading(false);
     }
@@ -34,7 +41,7 @@ export const Login: FunctionComponent<NavigationStackScreenProps> = observer(({ 
         user: { uid: id },
       } = await auth().signInWithEmailAndPassword(email, password);
       login({ id, email });
-      navigation.navigate(Routes.Dashboard);
+      navigation.navigate(Routes.TabNavigator, { screen: Routes.Dashboard });
     } catch (e) {
       Alert.alert('Erreur', e.message);
     }
@@ -48,7 +55,7 @@ export const Login: FunctionComponent<NavigationStackScreenProps> = observer(({ 
         user: { uid: id },
       } = await auth().createUserWithEmailAndPassword(email, password);
       login({ id, email });
-      navigation.navigate(Routes.Dashboard);
+      navigation.navigate(Routes.TabNavigator, { screen: Routes.Dashboard });
     } catch (e) {
       Alert.alert('Erreur', e.message);
     }

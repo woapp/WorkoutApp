@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { FlatList } from 'react-native';
-import { NavigationStackScreenProps } from 'react-navigation-stack';
 import { observer } from 'mobx-react-lite';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { WorkoutsNavigatorParamList } from '@woap/navigation/WorkoutsNavigator';
 import { ActionButton } from '@woap/components/ActionButton';
 import styled from '@woap/utils/styled-components';
 import { useStore } from '@woap/utils/hooks/useStore';
@@ -10,7 +11,16 @@ import { createWorkout } from '@woap/mobx/workout/constructor';
 
 import { WorkoutItem } from './components/WorkoutItem';
 
-export const MyWorkouts = observer(({ navigation }: NavigationStackScreenProps) => {
+type MyWorkoutsScreenNavigationProp = StackNavigationProp<
+  WorkoutsNavigatorParamList,
+  Routes.MyWorkouts
+>;
+
+type Props = {
+  navigation: MyWorkoutsScreenNavigationProp;
+};
+
+export const MyWorkouts: FunctionComponent<Props> = observer(({ navigation }) => {
   const { workouts, addWorkout, removeWorkout } = useStore();
 
   workouts.map(w => console.log(w.name));
