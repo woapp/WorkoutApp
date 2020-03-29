@@ -1,16 +1,20 @@
-import React, { FunctionComponent, useState, useEffect } from 'react';
-import { Alert } from 'react-native';
+import React, { FunctionComponent } from 'react';
+import { StyleSheet } from 'react-native';
 import { ActivityIndicator } from 'react-native-paper';
 import { observer } from 'mobx-react-lite';
-import auth from '@react-native-firebase/auth';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { PrimaryButton } from '@woap/components/PrimaryButton';
 import { Routes } from '@woap/navigation/routes';
-import { useStore } from '@woap/utils/hooks/useStore';
 import { Spacer } from '@woap/components/Spacer';
 import styled from '@woap/utils/styled-components';
 import { RootNavigatorParamList } from '@woap/navigation';
 import { FormField } from '@woap/components/FormField';
+import images from '@woap/assets/images';
+import { Link } from '@woap/components/Link';
+import { Card } from '@woap/components/Card/Card';
+import { colors } from '@woap/styles/colors';
+
+import { useCardAnimation, useLogin } from './Login.hooks';
 
 type LoginScreenNavigationProp = StackNavigationProp<RootNavigatorParamList, Routes.Login>;
 
@@ -18,64 +22,57 @@ type Props = {
   navigation: LoginScreenNavigationProp;
 };
 
+const LOGO_SIZE = 100;
+
 export const Login: FunctionComponent<Props> = observer(({ navigation }) => {
-  const { login, user } = useStore();
-  const [email, setEmail] = useState('');
-  const [isLoginLoading, setIsLoginLoading] = useState(false);
-  const [password, setPassword] = useState('');
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    if (user) {
-      navigation.navigate(Routes.TabNavigator);
-    } else {
-      setIsLoading(false);
-    }
-  }, [navigation, user]);
-
-  const onSubmitLogin = async () => {
-    setIsLoginLoading(true);
-    try {
-      const {
-        user: { uid: id },
-      } = await auth().signInWithEmailAndPassword(email, password);
-      login({ id, email });
-      navigation.navigate(Routes.TabNavigator);
-    } catch (e) {
-      Alert.alert('Erreur', e.message);
-    }
-    setIsLoginLoading(false);
-  };
+  const navigateToTabNavigator = () => navigation.navigate(Routes.TabNavigator);
+  const {
+    onSubmitLogin,
+    isLoginLoading,
+    setPassword,
+    password,
+    setEmail,
+    email,
+    isLoading,
+  } = useLogin(navigateToTabNavigator);
+  const { cardTranslationY } = useCardAnimation();
 
   return (
     <Container>
+      <LogoContainer>
+        <Logo source={images.logo} />
+      </LogoContainer>
       {isLoading ? (
         <ActivityIndicator />
       ) : (
-        <Card>
+        <Card style={{ transform: [{ translateY: cardTranslationY }] }}>
           <Title>Connexion</Title>
           <Spacer height={4} />
           <FormField
             label="Email"
-            labelStyle={{ color: 'white' }}
+            labelStyle={{ color: colors.white }}
             autoCapitalize="none"
             value={email}
             onChangeText={setEmail}
-            style={{ color: 'white' }}
-            selectionColor={'white'}
+            style={{ color: colors.white }}
+            selectionColor={colors.white}
+            autoCorrect={false}
+            keyboardType="email-address"
           />
           <Spacer height={2} />
           <FormField
             label="Mot de passe"
-            labelStyle={{ color: 'white' }}
+            labelStyle={{ color: colors.white }}
             secureTextEntry
             value={password}
             onChangeText={setPassword}
-            style={{ color: 'white' }}
-            selectionColor={'white'}
+            style={{ color: colors.white }}
+            selectionColor={colors.white}
           />
           <Spacer height={2} />
           <PrimaryButton title="Se connecter" onPress={onSubmitLogin} isLoading={isLoginLoading} />
+          <Spacer height={2} />
+          <Link onPress={() => {}} label="Nouveau compte" />
         </Card>
       )}
     </Container>
@@ -84,17 +81,20 @@ export const Login: FunctionComponent<Props> = observer(({ navigation }) => {
 
 const Container = styled.View(props => ({
   flex: 1,
-  padding: 50,
-  justifyContent: 'center',
+  alignItems: 'center',
   backgroundColor: props.theme.colors.greyScale[70],
 }));
 
-const Card = styled.View(props => ({
-  padding: props.theme.margin.x2,
-  borderRadius: props.theme.border.radius.l,
-  backgroundColor: props.theme.colors.greyScale[90],
-  ...props.theme.shadow,
+const LogoContainer = styled.View(props => ({
+  ...StyleSheet.absoluteFillObject,
+  marginTop: props.theme.margin.x10,
+  alignItems: 'center',
 }));
+
+const Logo = styled.Image({
+  width: LOGO_SIZE,
+  height: LOGO_SIZE,
+});
 
 const Title = styled.Text(props => ({
   ...props.theme.fonts.title.H1,

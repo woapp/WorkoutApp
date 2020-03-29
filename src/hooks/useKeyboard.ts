@@ -11,8 +11,9 @@ export const useKeyboard = () => {
 
       (e: KeyboardEvent) => {
         setKeyboardVisible(true);
-        if (e.endCoordinates.height > maxKeyboardHeight)
+        if (e.endCoordinates.height > maxKeyboardHeight) {
           setMaxKeyboardHeight(e.endCoordinates.height);
+        }
       }
     );
 

@@ -9,14 +9,16 @@ interface Props extends TextInputProps {
 
 export const FormField: FunctionComponent<Props> = ({ label, labelStyle, ...textInputProps }) => {
   return (
-    <>
+    <Container>
       <Label style={labelStyle}>{label}</Label>
       <InputContainer>
         <TextInput {...textInputProps} />
       </InputContainer>
-    </>
+    </Container>
   );
 };
+
+const Container = styled.View({ width: '100%' });
 
 const Label = styled.Text(props => ({
   ...props.theme.fonts.label,
