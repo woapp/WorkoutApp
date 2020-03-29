@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState, useEffect } from 'react';
 import { View, Alert } from 'react-native';
-import { TextInput, ActivityIndicator } from 'react-native-paper';
+import { ActivityIndicator } from 'react-native-paper';
 import { observer } from 'mobx-react-lite';
 import auth from '@react-native-firebase/auth';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -11,6 +11,7 @@ import { useStore } from '@woap/utils/hooks/useStore';
 import { Spacer } from '@woap/components/Spacer';
 import styled from '@woap/utils/styled-components';
 import { RootNavigatorParamList } from '@woap/navigation';
+import { FormField } from '@woap/components/FormField';
 
 type LoginScreenNavigationProp = StackNavigationProp<RootNavigatorParamList, Routes.Login>;
 
@@ -70,15 +71,10 @@ export const Login: FunctionComponent<Props> = observer(({ navigation }) => {
         <>
           <TextTitle>Connexion</TextTitle>
           <Spacer height={4} />
-          <TextInput
-            autoCapitalize="none"
-            placeholder="Email"
-            value={email}
-            onChangeText={setEmail}
-          />
+          <FormField label="Email" autoCapitalize="none" value={email} onChangeText={setEmail} />
           <Spacer height={2} />
-          <TextInput
-            placeholder="Mot de passe"
+          <FormField
+            label="Mot de passe"
             secureTextEntry
             value={password}
             onChangeText={setPassword}
