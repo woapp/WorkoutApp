@@ -1,7 +1,8 @@
 import React, { FunctionComponent } from 'react';
 import { FlatList } from 'react-native-gesture-handler';
 import { observer } from 'mobx-react-lite';
-import { NavigationStackScreenProps } from 'react-navigation-stack';
+import { RouteProp } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 import { ActionButton } from '@woap/components/ActionButton';
 import { useStore } from '@woap/utils/hooks/useStore';
 import styled from '@woap/utils/styled-components';
@@ -10,71 +11,85 @@ import { ExerciseType } from '@woap/mobx/exercise';
 import { createExercise } from '@woap/mobx/exercise/constructor';
 import { WorkoutType } from '@woap/mobx/workout';
 import { colors } from '@woap/styles/colors';
+import { ExercicesNavigatorParamList } from '@woap/navigation/ExercisesNavigator';
 
 import { ExerciseItem } from './components/ExerciseItem';
 
-export const ExercisesChoice: FunctionComponent<NavigationStackScreenProps> = observer(
-  ({ navigation }) => {
-    const { exercises, addExercise } = useStore();
-    const workout: WorkoutType = navigation.getParam('workout');
-    console.log('workoutExercises', workout.exercises); // TODO: used to force watch on workout.exercises, find better way
-    console.log('exercises', exercises); // TODO: used to force watch on workout.exercises, find better way
+type ExercicesChoiceScreenNavigationProp = StackNavigationProp<
+  ExercicesNavigatorParamList,
+  Routes.ExercisesChoice
+>;
 
-    const closeModal = () => navigation.dismiss();
+type ExercicesChoiceScreenRouteProp = RouteProp<
+  ExercicesNavigatorParamList,
+  Routes.ExercisesChoice
+>;
 
-    const isExerciseInWorkout = exerciseId =>
-      workout.exercises.reduce(
-        (previousValue, currentValue) => currentValue.exercise.id === exerciseId || previousValue,
-        false
-      );
+type Props = {
+  navigation: ExercicesChoiceScreenNavigationProp;
+  route: ExercicesChoiceScreenRouteProp;
+};
 
-    const renderItem = ({ item }) => {
-      const isChecked = isExerciseInWorkout(item.id);
-      const addExerciseToWorkout = () => workout.addExercise(item);
-      const removeExerciseFromWorkout = () => workout.removeExercise(item);
+export const ExercisesChoice: FunctionComponent<Props> = observer(({ navigation, route }) => {
+  const { exercises, addExercise } = useStore();
+  const workout: WorkoutType = route.params.workout;
+  console.log('workoutExercises', workout.exercises); // TODO: used to force watch on workout.exercises, find better way
+  console.log('exercises', exercises); // TODO: used to force watch on workout.exercises, find better way
 
-      return (
-        <ExerciseItem
-          exercise={item}
-          checked={isChecked ? 'checked' : 'unchecked'}
-          onPress={isChecked ? removeExerciseFromWorkout : addExerciseToWorkout}
-        />
-      );
-    };
+  const closeModal = () => navigation.goBack();
 
-    const validateExerciseCreation = (newExercise: ExerciseType) => {
-      addExercise(newExercise);
-      workout.addExercise(newExercise);
-    };
+  const isExerciseInWorkout = (exerciseId: string) =>
+    workout.exercises.reduce(
+      (previousValue, currentValue) => currentValue.exercise.id === exerciseId || previousValue,
+      false
+    );
 
-    const onCreateExercise = () => {
-      const newExercise = createExercise();
-      navigation.navigate(Routes.NewExercise, {
-        exercise: newExercise,
-        validateExerciseCreation,
-      });
-    };
+  const renderItem = ({ item }) => {
+    const isChecked = isExerciseInWorkout(item.id);
+    const addExerciseToWorkout = () => workout.addExercise(item);
+    const removeExerciseFromWorkout = () => workout.removeExercise(item);
 
     return (
-      <Container>
-        <FlatListContainer>
-          <FlatList
-            data={exercises}
-            renderItem={renderItem}
-            style={{ backgroundColor: colors.white }}
-            keyExtractor={item => item.id}
-          />
-          <ActionButtonContainer>
-            <ActionButton title="Nouvel exercice" onPress={onCreateExercise} />
-          </ActionButtonContainer>
-        </FlatListContainer>
-        <ValidateButton onPress={closeModal}>
-          <ValidateButtonTitle>Valider</ValidateButtonTitle>
-        </ValidateButton>
-      </Container>
+      <ExerciseItem
+        exercise={item}
+        checked={isChecked ? 'checked' : 'unchecked'}
+        onPress={isChecked ? removeExerciseFromWorkout : addExerciseToWorkout}
+      />
     );
-  }
-);
+  };
+
+  const validateExerciseCreation = (newExercise: ExerciseType) => {
+    addExercise(newExercise);
+    workout.addExercise(newExercise);
+  };
+
+  const onCreateExercise = () => {
+    const newExercise = createExercise();
+    navigation.navigate(Routes.NewExercise, {
+      exercise: newExercise,
+      validateExerciseCreation,
+    });
+  };
+
+  return (
+    <Container>
+      <FlatListContainer>
+        <FlatList
+          data={exercises}
+          renderItem={renderItem}
+          style={{ backgroundColor: colors.white }}
+          keyExtractor={item => item.id}
+        />
+        <ActionButtonContainer>
+          <ActionButton title="Nouvel exercice" onPress={onCreateExercise} />
+        </ActionButtonContainer>
+      </FlatListContainer>
+      <ValidateButton onPress={closeModal}>
+        <ValidateButtonTitle>Valider</ValidateButtonTitle>
+      </ValidateButton>
+    </Container>
+  );
+});
 
 const Container = styled.SafeAreaView(props => ({
   flex: 1,

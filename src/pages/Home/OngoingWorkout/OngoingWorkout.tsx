@@ -1,10 +1,9 @@
 import React, { FunctionComponent, useState } from 'react';
 import { Dimensions, View, ScrollView } from 'react-native';
 import { observer } from 'mobx-react-lite';
-import { NavigationStackScreenProps } from 'react-navigation-stack';
-import { NavigationActions, StackActions } from 'react-navigation';
 import Carousel from 'react-native-snap-carousel';
 import PaginationDot from 'react-native-animated-pagination-dot';
+import { StackNavigationProp } from '@react-navigation/stack';
 import { TextTitle } from '@woap/components/Texts';
 import { PrimaryButton } from '@woap/components/PrimaryButton';
 import { FormSets } from '@woap/components/FormSets';
@@ -13,66 +12,67 @@ import { useStore } from '@woap/utils/hooks/useStore';
 import { Routes } from '@woap/navigation/routes';
 import { ExerciseSetsType } from '@woap/mobx/exerciseSets';
 import { colors } from '@woap/styles/colors';
+import { RootNavigatorParamList } from '@woap/navigation';
 
-export const OngoingWorkout: FunctionComponent<NavigationStackScreenProps> = observer(
-  ({ navigation }) => {
-    const { ongoingWorkout, finishWorkout } = useStore();
-    const [activeExerciseIndex, setActiveExercicseIndex] = useState(0);
+type OngoingWorkoutScreenNavigationProp = StackNavigationProp<
+  RootNavigatorParamList,
+  Routes.OngoingWorkout
+>;
 
-    const onFinishWorkout = () => {
-      ongoingWorkout && finishWorkout(ongoingWorkout);
-      navigation.dispatch(
-        StackActions.reset({
-          index: 0,
-          actions: [
-            NavigationActions.navigate({
-              routeName: Routes.TabNavigator,
-              action: NavigationActions.navigate({ routeName: Routes.HistoryOverview }),
-            }),
-          ],
-        })
-      );
-    };
+type Props = {
+  navigation: OngoingWorkoutScreenNavigationProp;
+};
 
-    const renderWorkoutExercise = ({ item }: { item: ExerciseSetsType }) => {
-      return (
-        <WorkoutExercise>
-          <Name>{item.exercise.name}</Name>
-          {/* TODO: remove padding and find a way to handle keyboard */}
-          <ScrollView contentContainerStyle={{ paddingBottom: 250 }}>
-            <FormSets exerciseSets={item} />
-          </ScrollView>
-        </WorkoutExercise>
-      );
-    };
+export const OngoingWorkout: FunctionComponent<Props> = observer(({ navigation }) => {
+  const { ongoingWorkout, finishWorkout } = useStore();
+  const [activeExerciseIndex, setActiveExercicseIndex] = useState(0);
 
-    if (!ongoingWorkout) return <View />;
+  const onFinishWorkout = () => {
+    ongoingWorkout && finishWorkout(ongoingWorkout);
+    navigation.replace(Routes.TabNavigator, {
+      screen: Routes.HistoryNavigator,
+      params: { screen: Routes.HistoryOverview },
+    });
+  };
 
+  const renderWorkoutExercise = ({ item }: { item: ExerciseSetsType }) => {
     return (
-      <Container>
-        <Carousel
-          containerCustomStyle={{ flex: 1 }}
-          slideStyle={{ flex: 1 }}
-          data={ongoingWorkout.exercises.toJS()}
-          renderItem={renderWorkoutExercise}
-          sliderWidth={Dimensions.get('screen').width}
-          itemWidth={Dimensions.get('screen').width * 0.95}
-          onSnapToItem={index => {
-            setActiveExercicseIndex(index);
-          }}
-        />
-        <PaginationDot
-          activeDotColor={colors.blue}
-          curPage={activeExerciseIndex}
-          maxPage={ongoingWorkout.exercises.length}
-        />
-        <ButtonContainer>
-          <PrimaryButton title={"Terminer l'entrainement"} onPress={onFinishWorkout} />
-        </ButtonContainer>
-      </Container>
+      <WorkoutExercise>
+        <Name>{item.exercise.name}</Name>
+        {/* TODO: remove padding and find a way to handle keyboard */}
+        <ScrollView contentContainerStyle={{ paddingBottom: 250 }}>
+          <FormSets exerciseSets={item} />
+        </ScrollView>
+      </WorkoutExercise>
     );
-  }
-);
+  };
+
+  if (!ongoingWorkout) return <View />;
+
+  return (
+    <Container>
+      <Carousel
+        containerCustomStyle={{ flex: 1 }}
+        slideStyle={{ flex: 1 }}
+        data={ongoingWorkout.exercises.toJS()}
+        renderItem={renderWorkoutExercise}
+        sliderWidth={Dimensions.get('screen').width}
+        itemWidth={Dimensions.get('screen').width * 0.95}
+        onSnapToItem={index => {
+          setActiveExercicseIndex(index);
+        }}
+      />
+      <PaginationDot
+        activeDotColor={colors.blue}
+        curPage={activeExerciseIndex}
+        maxPage={ongoingWorkout.exercises.length}
+      />
+      <ButtonContainer>
+        <PrimaryButton title={"Terminer l'entrainement"} onPress={onFinishWorkout} />
+      </ButtonContainer>
+    </Container>
+  );
+});
 
 const Container = styled.SafeAreaView(props => ({
   alignItems: 'center',
