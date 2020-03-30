@@ -1,19 +1,25 @@
 import React, { FunctionComponent } from 'react';
-import images from '@woap/assets/images';
 import styled from '@woap/utils/styled-components';
+import { IconName } from '@woap/styles/icons';
+import { theme } from '@woap/styles/theme';
+import { colors } from '@woap/styles/colors';
+
+import { Icon } from '../Icon';
 
 export const ITEM_HEIGHT = 48;
 
 interface Props {
   title: string;
-  icon: string;
+  iconName: IconName;
 }
 
-export const MenuItem: FunctionComponent<Props> = ({ title, icon }) => {
+export const MenuItem: FunctionComponent<Props> = ({ title, iconName }) => {
   return (
     <ItemContainer>
       <ItemTitle>{title}</ItemTitle>
-      <Icon source={images[icon]} />
+      <IconContainer>
+        <Icon name={iconName} size={theme.iconSize} color={colors.background.black} />
+      </IconContainer>
     </ItemContainer>
   );
 };
@@ -24,9 +30,11 @@ const ItemContainer = styled.View({
   alignItems: 'center',
 });
 
-const Icon = styled.Image(props => ({
+const IconContainer = styled.View(props => ({
   width: props.theme.iconSize,
   height: props.theme.iconSize,
+  backgroundColor: props.theme.colors.ecru,
+  borderRadius: props.theme.iconSize / 2,
 }));
 
 const ItemTitle = styled.Text(props => ({

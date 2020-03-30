@@ -5,6 +5,7 @@ import { useTransition, bInterpolate } from 'react-native-redash';
 import LinearGradient from 'react-native-linear-gradient';
 import styled from '@woap/utils/styled-components';
 import { colors } from '@woap/styles/colors';
+import { IconName } from '@woap/styles/icons';
 
 import { ITEM_HEIGHT, MenuItem } from '../MenuItem/MenuItem';
 
@@ -12,7 +13,7 @@ const ITEM_MARGIN_BOTTOM = 16;
 
 export interface MenuItem {
   title: string;
-  icon: string;
+  iconName: IconName;
 }
 
 interface Props {
@@ -23,7 +24,7 @@ export const AnimatedMenu: FunctionComponent<Props> = ({ items }) => {
   const [isOpen, setIsOpen] = useState(false);
   const transition = useTransition(isOpen, { duration: 400 });
   const rotate = bInterpolate(transition, 0, Math.PI / 4);
-  const height = bInterpolate(transition, 0, 2 * (ITEM_HEIGHT + ITEM_MARGIN_BOTTOM));
+  const height = bInterpolate(transition, 0, items.length * (ITEM_HEIGHT + ITEM_MARGIN_BOTTOM));
   const opacity = interpolate(transition, { inputRange: [0.5, 1], outputRange: [0, 1] });
 
   return (

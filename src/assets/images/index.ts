@@ -10,6 +10,4 @@ export default {
   triceps: require('./muscles/Triceps.png'),
   workInProgress: require('./workInProgress/workInProgress.png'),
   logo: require('./logo/logo-no-text.png'),
-  dumbbell: require('./icons/dumbbell.png'),
-  whistle: require('./icons/whistle.png'),
 };
