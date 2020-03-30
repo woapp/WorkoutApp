@@ -38,4 +38,5 @@ export const theme = {
     shadowRadius: 6.27,
     elevation: 10,
   },
+  iconSize: 48,
 };
