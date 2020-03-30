@@ -1,4 +1,7 @@
 export const colors = {
+  background: {
+    black: '#0A0D21',
+  },
   black: '#1C1B21',
   white: '#FFFFFF',
   greyScale: {
