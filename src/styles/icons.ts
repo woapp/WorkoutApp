@@ -1,1 +1,1 @@
-export type IconName = 'history' | 'profile' | 'home';
+export type IconName = 'history' | 'profile' | 'home' | 'whistle' | 'dumbbell';
