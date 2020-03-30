@@ -30,7 +30,7 @@ export const useKeyboard = () => {
 
       keyboardWillShowListener.remove();
     };
-  }, []);
+  }, [maxKeyboardHeight]);
 
   return { isKeyboardVisible, maxKeyboardHeight };
 };
