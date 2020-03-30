@@ -39,4 +39,5 @@ export const theme = {
     elevation: 10,
   },
   iconSize: 48,
+  hitSlop: { top: 20, bottom: 20, left: 20, right: 20 },
 };
