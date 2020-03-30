@@ -1,0 +1,1 @@
+export { AnimatedMenu } from './AnimatedMenu';

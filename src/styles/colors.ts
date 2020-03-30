@@ -12,6 +12,6 @@ export const colors = {
     20: '#CDCDCD',
     10: '#E6E6E6', // text
   },
-  green: '#65D196',
-  blue: '#23B4FC',
+  green: '#20CC86',
+  blue: '#20CCC2',
 };
