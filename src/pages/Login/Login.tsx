@@ -97,7 +97,7 @@ const Logo = styled.Image({
 });
 
 const Title = styled.Text(props => ({
-  ...props.theme.fonts.title.H1,
+  ...props.theme.fonts.h1,
   textAlign: 'center',
   fontWeight: 'bold',
   color: props.theme.colors.white,

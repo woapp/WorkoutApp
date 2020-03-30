@@ -1,17 +1,15 @@
 export const fonts = {
-  title: {
-    H1: {
-      fontSize: 25,
-    },
-    H2: {
-      fontSize: 18,
-    },
-    H3: {
-      fontSize: 16,
-    },
-    H4: {
-      fontSize: 14,
-    },
+  h1: {
+    fontSize: 25,
+  },
+  h2: {
+    fontSize: 18,
+  },
+  h3: {
+    fontSize: 16,
+  },
+  h4: {
+    fontSize: 14,
   },
   link: {
     fontSize: 14,
