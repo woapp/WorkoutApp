@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState } from 'react';
-import { TouchableWithoutFeedback } from 'react-native';
-import Animated, { interpolate } from 'react-native-reanimated';
+import { TouchableWithoutFeedback, StyleSheet } from 'react-native';
+import Animated from 'react-native-reanimated';
 import { useTransition, bInterpolate } from 'react-native-redash';
 import LinearGradient from 'react-native-linear-gradient';
 import styled from '@woap/utils/styled-components';
@@ -24,29 +24,31 @@ export const AnimatedMenu: FunctionComponent<Props> = ({ items }) => {
   const [isOpen, setIsOpen] = useState(false);
   const transition = useTransition(isOpen, { duration: 400 });
   const rotate = bInterpolate(transition, 0, Math.PI / 4);
-  const height = bInterpolate(transition, 0, items.length * (ITEM_HEIGHT + ITEM_MARGIN_BOTTOM));
-  const opacity = interpolate(transition, { inputRange: [0.5, 1], outputRange: [0, 1] });
 
   return (
     <Container>
-      <ItemsContainer style={{ height, opacity }}>
-        {items.map((item, index) => {
-          const translateY = bInterpolate(transition, (items.length - index) * ITEM_HEIGHT, 0);
+      {items.map((item, index) => {
+        const translateY = bInterpolate(
+          transition,
+          (items.length - index) * (ITEM_HEIGHT + ITEM_MARGIN_BOTTOM),
+          0
+        );
 
-          return (
-            <ItemContainer
-              style={{
-                transform: [{ translateY }],
-              }}
-              key={index}
-            >
-              <MenuItem {...item} />
-            </ItemContainer>
-          );
-        })}
-      </ItemsContainer>
+        return (
+          <ItemContainer
+            style={{
+              opacity: transition,
+              transform: [{ translateY }],
+            }}
+            key={index}
+          >
+            <MenuItem {...item} />
+          </ItemContainer>
+        );
+      })}
 
       <TouchableWithoutFeedback
+        style={{ ...StyleSheet.absoluteFillObject }}
         onPress={() => {
           setIsOpen(!isOpen);
         }}
@@ -59,16 +61,12 @@ export const AnimatedMenu: FunctionComponent<Props> = ({ items }) => {
   );
 };
 
-const Container = styled.View({
-  alignItems: 'flex-end',
-});
+const Container = styled.View({ alignItems: 'flex-end' });
 
 const ItemContainer = styled(Animated.View)({
   justifyContent: 'flex-start',
   marginBottom: ITEM_MARGIN_BOTTOM,
 });
-
-const ItemsContainer = styled(Animated.View)({ overflow: 'hidden' });
 
 const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient);
 
