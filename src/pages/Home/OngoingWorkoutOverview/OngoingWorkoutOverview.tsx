@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { observer } from 'mobx-react-lite';
 import { CompositeNavigationProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
+import { MaterialTopTabNavigationProp } from '@react-navigation/material-top-tabs';
 import { PrimaryButton } from '@woap/components/PrimaryButton';
 import styled from '@woap/utils/styled-components';
 import { useStore } from '@woap/utils/hooks/useStore';
@@ -15,7 +15,7 @@ import { RootNavigatorParamList } from '@woap/navigation';
 type OngoingWorkoutOverviewScreenNavigationProp = CompositeNavigationProp<
   StackNavigationProp<RootNavigatorParamList, Routes.TabNavigator>,
   CompositeNavigationProp<
-    BottomTabNavigationProp<TabNavigatorParamList, Routes.HomeNavigator>,
+    MaterialTopTabNavigationProp<TabNavigatorParamList, Routes.HomeNavigator>,
     StackNavigationProp<HomeNavigatorParamList, Routes.OngoingWorkoutOverview>
   >
 >;

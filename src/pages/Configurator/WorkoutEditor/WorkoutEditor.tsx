@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { observer } from 'mobx-react-lite';
 import { RouteProp, CompositeNavigationProp } from '@react-navigation/native';
-import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
+import { MaterialTopTabNavigationProp } from '@react-navigation/material-top-tabs';
 import { StackNavigationProp } from '@react-navigation/stack';
 import styled from '@woap/utils/styled-components';
 import { ActionButton } from '@woap/components/ActionButton';
@@ -15,7 +15,7 @@ import { RootNavigatorParamList } from '@woap/navigation';
 type WorkoutEditorScreenNavigationProp = CompositeNavigationProp<
   StackNavigationProp<RootNavigatorParamList, Routes.TabNavigator>,
   CompositeNavigationProp<
-    BottomTabNavigationProp<TabNavigatorParamList, Routes.WorkoutsNavigator>,
+    MaterialTopTabNavigationProp<TabNavigatorParamList, Routes.WorkoutsNavigator>,
     StackNavigationProp<WorkoutsNavigatorParamList, Routes.WorkoutEditor>
   >
 >;

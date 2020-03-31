@@ -1,4 +1,8 @@
 export const colors = {
+  background: {
+    black: '#0A0D21',
+  },
+  ecru: '#FFFBF4',
   black: '#1C1B21',
   white: '#FFFFFF',
   greyScale: {
@@ -12,6 +16,6 @@ export const colors = {
     20: '#CDCDCD',
     10: '#E6E6E6', // text
   },
-  green: '#65D196',
-  blue: '#23B4FC',
+  green: '#20CC86',
+  blue: '#20CCC2',
 };
