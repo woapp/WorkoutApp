@@ -4,7 +4,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { Routes } from '@woap/navigation/routes';
 import { HomeNavigatorParamList } from '@woap/navigation/HomeNavigator';
 import styled from '@woap/utils/styled-components';
-import { AnimatedMenu } from '@woap/components/AnimatedMenu';
+import { AnimatedMenu } from '@woap/pages/Home/Dashboard/components/AnimatedMenu';
 import images from '@woap/assets/images';
 import { Spacer } from '@woap/components/Spacer';
 

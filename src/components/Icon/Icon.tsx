@@ -18,14 +18,20 @@ interface Props {
   contentContainerStyle?: ViewStyle;
 }
 
-export const Icon: React.FC<Props> = ({ onPress, name, size, color, contentContainerStyle }) => (
+export const Icon: React.FC<Props> = ({
+  onPress,
+  name,
+  size = DEFAULT_ICON_SIZE,
+  color,
+  contentContainerStyle,
+}) => (
   <Container
     hitSlop={theme.hitSlop}
     onPress={onPress}
     style={contentContainerStyle}
     disabled={!onPress}
   >
-    <BaseIcon size={size || DEFAULT_ICON_SIZE} color={color} name={name} />
+    <BaseIcon size={size} color={color} name={name} />
   </Container>
 );
 

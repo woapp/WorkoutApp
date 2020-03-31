@@ -4,7 +4,7 @@ import { IconName } from '@woap/styles/icons';
 import { theme } from '@woap/styles/theme';
 import { colors } from '@woap/styles/colors';
 
-import { Icon } from '../Icon';
+import { Icon } from '../../../../../components/Icon';
 
 export const ITEM_HEIGHT = 48;
 
@@ -30,17 +30,17 @@ const ItemContainer = styled.View({
   alignItems: 'center',
 });
 
-const IconContainer = styled.View(props => ({
-  width: props.theme.iconSize,
-  height: props.theme.iconSize,
-  backgroundColor: props.theme.colors.ecru,
-  borderRadius: props.theme.iconSize / 2,
-}));
+const IconContainer = styled.View({
+  width: theme.iconSize,
+  height: theme.iconSize,
+  backgroundColor: theme.colors.ecru,
+  borderRadius: theme.iconSize / 2,
+});
 
-const ItemTitle = styled.Text(props => ({
+const ItemTitle = styled.Text({
   fontSize: 14,
   fontWeight: 'bold',
-  color: props.theme.colors.white,
+  color: theme.colors.white,
   textAlign: 'right',
-  marginRight: props.theme.margin.x1,
-}));
+  marginRight: theme.margin.x1,
+});

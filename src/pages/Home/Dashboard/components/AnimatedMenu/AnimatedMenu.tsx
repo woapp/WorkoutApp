@@ -76,16 +76,16 @@ const IconContainer = styled(AnimatedLinearGradient).attrs({
   start: { x: 0, y: 0 },
   end: { x: 1, y: 1 },
   colors: [colors.green, colors.blue],
-})(props => ({
-  width: props.theme.iconSize,
-  height: props.theme.iconSize,
+})(({ theme }) => ({
+  width: theme.iconSize,
+  height: theme.iconSize,
   alignItems: 'center',
   justifyContent: 'center',
-  borderRadius: props.theme.iconSize / 2,
+  borderRadius: theme.iconSize / 2,
 }));
 
-const Icon = styled(Animated.Text)(props => ({
-  color: props.theme.colors.white,
+const Icon = styled(Animated.Text)(({ theme }) => ({
+  color: theme.colors.white,
   fontSize: 40,
   lineHeight: 40,
   textAlign: 'center',
