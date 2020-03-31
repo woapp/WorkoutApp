@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { View } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { CompositeNavigationProp } from '@react-navigation/native';
-import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
+import { MaterialTopTabNavigationProp } from '@react-navigation/material-top-tabs';
 import firestore from '@react-native-firebase/firestore';
 import { PrimaryButton } from '@woap/components/PrimaryButton';
 import { useStore } from '@woap/utils/hooks/useStore';
@@ -16,7 +16,7 @@ import { TabNavigatorParamList } from '@woap/navigation/TabNavigator';
 type MyProfileScreenNavigationProp = CompositeNavigationProp<
   StackNavigationProp<RootNavigatorParamList, Routes.TabNavigator>,
   CompositeNavigationProp<
-    BottomTabNavigationProp<TabNavigatorParamList, Routes.ProfileNavigator>,
+    MaterialTopTabNavigationProp<TabNavigatorParamList, Routes.ProfileNavigator>,
     StackNavigationProp<ProfileNavigatorParamList, Routes.MyProfile>
   >
 >;
