@@ -23,7 +23,7 @@ interface Props {
 
 export const AnimatedMenu: FunctionComponent<Props> = ({ items }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const transition = useTransition(isOpen, { duration: 400 });
+  const transition = useTransition(isOpen, { duration: 300 });
   const rotate = bInterpolate(transition, 0, Math.PI / 4);
   const toggleMenu = () => {
     setIsOpen(!isOpen);
