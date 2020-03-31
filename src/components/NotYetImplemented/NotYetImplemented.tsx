@@ -1,7 +1,9 @@
 import React, { FunctionComponent } from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Image } from 'react-native';
 import styled from '@woap/utils/styled-components';
 import images from '@woap/assets/images';
+
+import { TranslatedText } from '../Texts';
 
 type INotYetImplemented = {
   pageTitle: string;
@@ -14,7 +16,7 @@ export const NotYetImplemented: FunctionComponent<INotYetImplemented> = ({ pageT
   return (
     <Container>
       <Illustration source={images.workInProgress} resizeMode="contain" />
-      <Text>We are currently working on the page {pageTitle}</Text>
+      <TranslatedText>We are currently working on the page {pageTitle}</TranslatedText>
     </Container>
   );
 };

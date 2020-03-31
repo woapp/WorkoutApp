@@ -6,18 +6,21 @@ import { AppContainer } from '@woap/navigation';
 import { rootStore } from '@woap/mobx/rootStore';
 import { StoreProvider } from '@woap/mobx/provider';
 import { theme } from '@woap/styles/theme';
+import { I18nProvider } from '@lingui/react';
 
 const codePushOptions = { checkFrequency: codePush.CheckFrequency.ON_APP_START };
 
 const WorkoutApp: FunctionComponent = () => {
   return (
     <KeyboardDismiss>
-      <ThemeProvider theme={theme}>
-        <StoreProvider value={rootStore}>
-          <StatusBar barStyle="light-content" />
-          <AppContainer />
-        </StoreProvider>
-      </ThemeProvider>
+      <I18nProvider language="en">
+        <ThemeProvider theme={theme}>
+          <StoreProvider value={rootStore}>
+            <StatusBar barStyle="light-content" />
+            <AppContainer />
+          </StoreProvider>
+        </ThemeProvider>
+      </I18nProvider>
     </KeyboardDismiss>
   );
 };

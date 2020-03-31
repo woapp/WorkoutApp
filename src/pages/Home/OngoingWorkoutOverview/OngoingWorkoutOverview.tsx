@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, Fragment } from 'react';
 import { observer } from 'mobx-react-lite';
 import { CompositeNavigationProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -32,13 +32,13 @@ export const OngoingWorkoutOverview: FunctionComponent<Props> = observer(({ navi
   return (
     <Container>
       {ongoingWorkout && (
-        <>
+        <Fragment>
           <WorkoutOverview workout={ongoingWorkout} />
 
           <ButtonContainer>
             <PrimaryButton onPress={onStartWorkout} title="Démarrer" />
           </ButtonContainer>
-        </>
+        </Fragment>
       )}
     </Container>
   );

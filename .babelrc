@@ -1,0 +1,30 @@
+{
+  "presets": [
+    "babel-preset-env",
+    "babel-preset-react",
+    "@lingui/babel-preset-react",
+    "module:metro-react-native-babel-preset"
+  ],
+  "plugins": [
+    "macros",
+    [
+      "module-resolver",
+      {
+        "cwd": "babelrc",
+        "alias": {
+          "@woap": "./src"
+        },
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx",
+          ".android.js",
+          ".android.tsx",
+          ".ios.js",
+          ".ios.tsx"
+        ]
+      }
+    ]
+  ]
+}

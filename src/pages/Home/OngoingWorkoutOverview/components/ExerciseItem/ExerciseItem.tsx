@@ -1,8 +1,9 @@
 import React, { FunctionComponent, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import styled from '@woap/utils/styled-components';
-import { TextBody } from '@woap/components/Texts';
+import { TextBody, TranslatedText } from '@woap/components/Texts';
 import { ExerciseSetsType } from '@woap/mobx/exerciseSets';
+import { Trans } from '@lingui/macro';
 
 import { MuscleGroupIcon } from '../MuscleGroupIcon';
 
@@ -31,9 +32,11 @@ export const ExerciseItem: FunctionComponent<ExerciseItemProps> = observer(
           {isExpended && (
             <SetDetails>
               {exerciseSets.sets.map((set, index) => (
-                <TextBody style={{ color: 'white' }} key={index}>
-                  {set.nbReps} reps - {set.weight}kg
-                </TextBody>
+                <Trans key={index}>
+                  <TextBody style={{ color: 'white' }}>
+                    {set.nbReps} reps - {set.weight}kg
+                  </TextBody>
+                </Trans>
               ))}
             </SetDetails>
           )}
@@ -67,13 +70,13 @@ const Spacer = styled.View({
   height: 10,
 });
 
-const Title = styled.Text(props => ({
+const Title = styled(TranslatedText)(props => ({
   fontSize: 18,
   color: props.theme.colors.white,
   fontWeight: 'bold',
 }));
 
-const Sets = styled.Text(props => ({
+const Sets = styled(TranslatedText)(props => ({
   fontSize: 16,
   color: props.theme.colors.white,
 }));
