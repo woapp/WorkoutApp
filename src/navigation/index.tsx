@@ -8,6 +8,7 @@ import { WorkoutType } from '@woap/mobx/workout';
 import { Routes } from './routes';
 import { TabNavigator } from './TabNavigator';
 import { ExercisesNavigator } from './ExercisesNavigator';
+import { TrainingNavigator } from './TrainingNavigator';
 
 export type RootNavigatorParamList = {
   [Routes.Login]: undefined;
@@ -22,6 +23,7 @@ export type RootNavigatorParamList = {
     };
   };
   [Routes.OngoingWorkout]: undefined;
+  [Routes.TrainingNavigator]: undefined;
 };
 
 const Stack = createStackNavigator<RootNavigatorParamList>();
@@ -61,6 +63,14 @@ const RootNavigator = () => (
       options={{
         title: 'Exercices',
         gestureEnabled: false,
+      }}
+    />
+
+    <Stack.Screen
+      name={Routes.TrainingNavigator}
+      component={TrainingNavigator}
+      options={{
+        headerShown: false,
       }}
     />
   </Stack.Navigator>

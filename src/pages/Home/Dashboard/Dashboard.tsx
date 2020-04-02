@@ -1,6 +1,8 @@
 import React, { FunctionComponent } from 'react';
 import { observer } from 'mobx-react-lite';
+import { CompositeNavigationProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { MaterialTopTabNavigationProp } from '@react-navigation/material-top-tabs';
 import { Routes } from '@woap/navigation/routes';
 import { HomeNavigatorParamList } from '@woap/navigation/HomeNavigator';
 import styled from '@woap/utils/styled-components';
@@ -8,8 +10,16 @@ import { AnimatedMenu } from '@woap/pages/Home/Dashboard/components/AnimatedMenu
 import images from '@woap/assets/images';
 import { Spacer } from '@woap/components/Spacer';
 import { Alert } from 'react-native';
+import { RootNavigatorParamList } from '@woap/navigation';
+import { TabNavigatorParamList } from '@woap/navigation/TabNavigator';
 
-type DashboardScreenNavigationProp = StackNavigationProp<HomeNavigatorParamList, Routes.Dashboard>;
+type DashboardScreenNavigationProp = CompositeNavigationProp<
+  StackNavigationProp<RootNavigatorParamList, Routes.TabNavigator>,
+  CompositeNavigationProp<
+    MaterialTopTabNavigationProp<TabNavigatorParamList, Routes.ProfileNavigator>,
+    StackNavigationProp<HomeNavigatorParamList, Routes.Dashboard>
+  >
+>;
 
 type Props = {
   navigation: DashboardScreenNavigationProp;
@@ -18,7 +28,9 @@ type Props = {
 const ARROW_HEIGHT = 140;
 const ARROW_WIDTH = 120;
 
-export const Dashboard: FunctionComponent<Props> = observer(() => {
+export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => {
+  const goToTrainingNavigator = () => navigation.navigate(Routes.TrainingNavigator);
+
   return (
     <Container>
       <EmptyContainer>
@@ -33,7 +45,11 @@ export const Dashboard: FunctionComponent<Props> = observer(() => {
       <MenuContainer>
         <AnimatedMenu
           items={[
-            { title: 'NEW\nTRAINING', iconName: 'whistle', onPress: () => Alert.alert('training') },
+            {
+              title: 'NEW\nTRAINING',
+              iconName: 'whistle',
+              onPress: goToTrainingNavigator,
+            },
             {
               title: 'NEW\nEXERCISE',
               iconName: 'dumbbell',
