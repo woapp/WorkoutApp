@@ -4,11 +4,11 @@ import { TrainingCreation } from '@woap/pages/Training/TrainingCreation';
 
 import { Routes } from './routes';
 
-export type ExercicesNavigatorParamList = {
+export type TrainingNavigatorParamList = {
   [Routes.TrainingCreation]: undefined;
 };
 
-const Stack = createStackNavigator<ExercicesNavigatorParamList>();
+const Stack = createStackNavigator<TrainingNavigatorParamList>();
 
 export const TrainingNavigator = () => (
   <Stack.Navigator
