@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react';
+import { FlatList } from 'react-native';
 import styled from '@woap/utils/styled-components';
 import LinearGradient from 'react-native-linear-gradient';
 import { colors } from '@woap/styles/colors';
@@ -6,6 +7,8 @@ import { Routes } from '@woap/navigation/routes';
 import { RouteProp } from '@react-navigation/native';
 import { TrainingNavigatorParamList } from '@woap/navigation/TrainingNavigator';
 import { StackNavigationProp } from '@react-navigation/stack';
+
+import { ExerciseItem } from './components/ExerciseItem';
 
 type TrainingCreationScreenRouteProp = RouteProp<
   TrainingNavigatorParamList,
@@ -24,6 +27,16 @@ type Props = {
 
 export const TrainingCreation: FunctionComponent<Props> = ({ navigation }) => {
   const closeModal = () => navigation.goBack();
+  const exercises = [
+    { title: 'crunch', id: 1 },
+    { title: 'squat', id: 2 },
+    { title: 'push up', id: 3 },
+    { title: 'curl biceps', id: 4 },
+    { title: 'crunch', id: 6 },
+    { title: 'squat', id: 7 },
+    { title: 'push up', id: 8 },
+    { title: 'curl biceps', id: 9 },
+  ];
 
   return (
     <Background>
@@ -34,6 +47,18 @@ export const TrainingCreation: FunctionComponent<Props> = ({ navigation }) => {
             <Button>x</Button>
           </ButtonContainer>
         </Header>
+        <FlatList
+          data={exercises}
+          renderItem={({ item, index }) => (
+            <ExerciseItem
+              title={item.title}
+              onPress={() => {}}
+              selected
+              key={item.id}
+              index={index}
+            />
+          )}
+        />
       </Container>
     </Background>
   );
