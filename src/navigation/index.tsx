@@ -41,7 +41,11 @@ const RootNavigator = () => (
       },
     }}
   >
-    <Stack.Screen name={Routes.TabNavigator} component={TabNavigator} />
+    <Stack.Screen
+      name={Routes.TabNavigator}
+      component={TabNavigator}
+      options={{ gestureEnabled: false }}
+    />
     <Stack.Screen name={Routes.ExercisesNavigator} component={ExercisesNavigator} />
     <Stack.Screen
       name={Routes.Login}
