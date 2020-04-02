@@ -15,6 +15,7 @@ const ITEM_MARGIN_BOTTOM = 16;
 export interface MenuItem {
   title: string;
   iconName: IconName;
+  onPress: () => void;
 }
 
 interface Props {

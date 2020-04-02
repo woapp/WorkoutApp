@@ -11,11 +11,12 @@ export const ITEM_HEIGHT = 48;
 interface Props {
   title: string;
   iconName: IconName;
+  onPress: () => void;
 }
 
-export const MenuItem: FunctionComponent<Props> = ({ title, iconName }) => {
+export const MenuItem: FunctionComponent<Props> = ({ title, iconName, onPress }) => {
   return (
-    <ItemContainer>
+    <ItemContainer onPress={onPress}>
       <ItemTitle>{title}</ItemTitle>
       <IconContainer>
         <Icon name={iconName} size={theme.iconSize} color={colors.background.black} />
@@ -24,7 +25,7 @@ export const MenuItem: FunctionComponent<Props> = ({ title, iconName }) => {
   );
 };
 
-const ItemContainer = styled.View({
+const ItemContainer = styled.TouchableOpacity({
   height: ITEM_HEIGHT,
   flexDirection: 'row',
   alignItems: 'center',

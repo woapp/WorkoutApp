@@ -7,6 +7,7 @@ import styled from '@woap/utils/styled-components';
 import { AnimatedMenu } from '@woap/pages/Home/Dashboard/components/AnimatedMenu';
 import images from '@woap/assets/images';
 import { Spacer } from '@woap/components/Spacer';
+import { Alert } from 'react-native';
 
 type DashboardScreenNavigationProp = StackNavigationProp<HomeNavigatorParamList, Routes.Dashboard>;
 
@@ -32,8 +33,12 @@ export const Dashboard: FunctionComponent<Props> = observer(() => {
       <MenuContainer>
         <AnimatedMenu
           items={[
-            { title: 'NEW\nTRAINING', iconName: 'whistle' },
-            { title: 'NEW\nEXERCISE', iconName: 'dumbbell' },
+            { title: 'NEW\nTRAINING', iconName: 'whistle', onPress: () => Alert.alert('training') },
+            {
+              title: 'NEW\nEXERCISE',
+              iconName: 'dumbbell',
+              onPress: () => Alert.alert('exercise'),
+            },
           ]}
         />
       </MenuContainer>
