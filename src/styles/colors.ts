@@ -3,6 +3,7 @@ export const colors = {
     black: '#0A0D21',
   },
   transparentWhiteScale: {
+    20: '#FFFFFF33',
     60: '#FFFFFF99',
   },
   ecru: '#FFFBF4',

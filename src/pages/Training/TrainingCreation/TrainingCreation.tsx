@@ -7,6 +7,8 @@ import { Routes } from '@woap/navigation/routes';
 import { RouteProp } from '@react-navigation/native';
 import { TrainingNavigatorParamList } from '@woap/navigation/TrainingNavigator';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { SearchBar } from '@woap/components/SearchBar';
+import { Spacer } from '@woap/components/Spacer';
 
 import { ExerciseItem } from './components/ExerciseItem';
 
@@ -47,6 +49,8 @@ export const TrainingCreation: FunctionComponent<Props> = ({ navigation }) => {
             <Button>x</Button>
           </ButtonContainer>
         </Header>
+        <Spacer height={2} />
+        <SearchBar placeholder="Crunch, Squat..." />
         <FlatList
           data={exercises}
           renderItem={({ item, index }) => (
