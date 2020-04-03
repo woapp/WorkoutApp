@@ -73,8 +73,6 @@ const Title = styled.Text(({ theme }) => ({
   fontWeight: 'bold',
 }));
 
-const ButtonContainer = styled.TouchableOpacity({});
-
 const Button = styled.Text(({ theme }) => ({
   ...theme.fonts.h2,
   fontWeight: 'bold',
