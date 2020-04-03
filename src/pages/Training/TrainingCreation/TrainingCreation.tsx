@@ -11,6 +11,7 @@ import { SearchBar } from '@woap/components/SearchBar';
 import { Spacer } from '@woap/components/Spacer';
 
 import { ExerciseItem } from './components/ExerciseItem';
+import { NewExerciseButton } from './components/NewExerciseButton';
 
 type TrainingCreationScreenRouteProp = RouteProp<
   TrainingNavigatorParamList,
@@ -51,8 +52,14 @@ export const TrainingCreation: FunctionComponent<Props> = ({ navigation }) => {
         </Header>
         <Spacer height={2} />
         <SearchBar placeholder="Crunch, Squat..." />
+        <Spacer height={3} />
+        <SubTitle>ADD EXERCISES</SubTitle>
         <FlatList
+          showsVerticalScrollIndicator={false}
           data={exercises}
+          ListHeaderComponent={() => (
+            <NewExerciseButton onPress={() => {}} title="Create a new exercice" />
+          )}
           renderItem={({ item, index }) => (
             <ExerciseItem
               title={item.title}
@@ -77,6 +84,7 @@ const Background = styled(LinearGradient).attrs({
 
 const Container = styled.SafeAreaView(({ theme }) => ({
   margin: theme.margin.x2,
+  flex: 1,
 }));
 
 const Header = styled.View(({ theme }) => ({
@@ -91,6 +99,12 @@ const Header = styled.View(({ theme }) => ({
 
 const Title = styled.Text(({ theme }) => ({
   ...theme.fonts.h1,
+  fontWeight: 'bold',
+  color: theme.colors.white,
+}));
+
+const SubTitle = styled.Text(({ theme }) => ({
+  ...theme.fonts.h3,
   fontWeight: 'bold',
   color: theme.colors.white,
 }));

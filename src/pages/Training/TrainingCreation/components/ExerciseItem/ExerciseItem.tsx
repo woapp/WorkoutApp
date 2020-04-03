@@ -13,6 +13,7 @@ import Animated, {
   set,
 } from 'react-native-reanimated';
 import { delay } from 'react-native-redash';
+import { TouchableOpacity } from 'react-native';
 
 interface Props {
   title: string;
@@ -47,24 +48,25 @@ export const ExerciseItem: FunctionComponent<Props> = ({ selected, title, onPres
   const opacity = runAnimation({ delayDuration: index * 150 });
 
   return (
-    <Container selected={selected} style={{ opacity }}>
+    <Container selected={selected} style={{ opacity }} onPress={onPress}>
       <Title>{title}</Title>
-      <ButtonContainer onPress={onPress}>
-        <Button>+</Button>
-      </ButtonContainer>
+      <Button>+</Button>
     </Container>
   );
 };
 
-const Container = styled(Animated.View)<{ selected: boolean }>(({ selected, theme }) => ({
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  marginTop: theme.margin.x2,
-  borderWidth: selected ? 2 : 0,
-  padding: theme.margin.x3,
-  backgroundColor: theme.colors.white,
-  borderRadius: 8,
-}));
+const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity);
+const Container = styled(AnimatedTouchableOpacity)<{ selected: boolean }>(
+  ({ selected, theme }) => ({
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: theme.margin.x2,
+    borderWidth: selected ? 2 : 0,
+    padding: theme.margin.x3,
+    backgroundColor: theme.colors.white,
+    borderRadius: 8,
+  })
+);
 
 const Title = styled.Text(({ theme }) => ({
   ...theme.fonts.h2,

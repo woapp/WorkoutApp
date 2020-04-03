@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { TextInputProps } from 'react-native';
 import styled from '@woap/utils/styled-components';
 import { colors } from '@woap/styles/colors';
-import { SearchIcon } from '@woap/components/Icons/SearchIcon/SearchIcon';
+import { SearchIcon } from '@woap/components/Icons/SearchIcon';
 
 export const SearchBar: FunctionComponent<TextInputProps> = props => {
   return (
