@@ -1,0 +1,1 @@
+export { WhistleIcon } from './WhistleIcon';

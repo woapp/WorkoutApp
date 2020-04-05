@@ -12,6 +12,8 @@ import { Spacer } from '@woap/components/Spacer';
 import { Alert } from 'react-native';
 import { RootNavigatorParamList } from '@woap/navigation';
 import { TabNavigatorParamList } from '@woap/navigation/TabNavigator';
+import { WhistleIcon } from '@woap/components/Icons/WhistleIcon';
+import { DumbbellIcon } from '@woap/components/Icons/DumbbellIcon';
 
 type DashboardScreenNavigationProp = CompositeNavigationProp<
   StackNavigationProp<RootNavigatorParamList, Routes.TabNavigator>,
@@ -47,12 +49,12 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
           items={[
             {
               title: 'NEW\nTRAINING',
-              iconName: 'whistle',
+              Icon: WhistleIcon,
               onPress: goToTrainingNavigator,
             },
             {
               title: 'NEW\nEXERCISE',
-              iconName: 'dumbbell',
+              Icon: DumbbellIcon,
               onPress: () => Alert.alert('exercise'),
             },
           ]}

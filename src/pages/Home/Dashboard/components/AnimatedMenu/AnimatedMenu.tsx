@@ -5,7 +5,6 @@ import { useTransition, bInterpolate } from 'react-native-redash';
 import LinearGradient from 'react-native-linear-gradient';
 import styled from '@woap/utils/styled-components';
 import { colors } from '@woap/styles/colors';
-import { IconName } from '@woap/styles/icons';
 import { BlackVeil } from '@woap/pages/Home/Dashboard/components/BlackVeil';
 
 import { ITEM_HEIGHT, MenuItem } from '../MenuItem/MenuItem';
@@ -14,7 +13,7 @@ const ITEM_MARGIN_BOTTOM = 16;
 
 export interface MenuItem {
   title: string;
-  iconName: IconName;
+  Icon: FunctionComponent;
   onPress: () => void;
 }
 
