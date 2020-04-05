@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, TouchableOpacity } from 'react-native';
 import styled from '@woap/utils/styled-components';
 import LinearGradient from 'react-native-linear-gradient';
 import { colors } from '@woap/styles/colors';
@@ -46,9 +46,9 @@ export const TrainingCreation: FunctionComponent<Props> = ({ navigation }) => {
       <Container>
         <Header>
           <Title>My new training</Title>
-          <ButtonContainer onPress={closeModal}>
+          <TouchableOpacity onPress={closeModal}>
             <Button>x</Button>
-          </ButtonContainer>
+          </TouchableOpacity>
         </Header>
         <Spacer height={2} />
         <SearchBar placeholder="Crunch, Squat..." />
@@ -108,8 +108,6 @@ const SubTitle = styled.Text(({ theme }) => ({
   fontWeight: 'bold',
   color: theme.colors.white,
 }));
-
-const ButtonContainer = styled.TouchableOpacity({});
 
 const Button = styled.Text(({ theme }) => ({
   ...theme.fonts.h1,
