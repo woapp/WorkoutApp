@@ -1,0 +1,1 @@
+export { DumbbellIcon } from './DumbbellIcon';

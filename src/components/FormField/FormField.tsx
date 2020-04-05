@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { TextInputProps, TextInput, TextStyle } from 'react-native';
+import { TextInputProps, TextStyle } from 'react-native';
 import styled from '@woap/utils/styled-components';
 
 interface Props extends TextInputProps {
@@ -12,7 +12,7 @@ export const FormField: FunctionComponent<Props> = ({ label, labelStyle, ...text
     <Container>
       <Label style={labelStyle}>{label}</Label>
       <InputContainer>
-        <TextInput {...textInputProps} />
+        <TextInputWithoutPadding {...textInputProps} />
       </InputContainer>
     </Container>
   );
@@ -24,6 +24,10 @@ const Label = styled.Text(props => ({
   ...props.theme.fonts.label,
   fontWeight: 'bold',
 }));
+
+const TextInputWithoutPadding = styled.TextInput({
+  padding: 0,
+});
 
 const InputContainer = styled.View(props => ({
   marginTop: props.theme.margin.d2,
