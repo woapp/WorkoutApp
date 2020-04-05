@@ -12,7 +12,6 @@ import { Spacer } from '@woap/components/Spacer';
 
 import { ExerciseItem } from './components/ExerciseItem';
 import { NewExerciseButton } from './components/NewExerciseButton';
-import { AddExerciseModal } from './components/AddExerciseModal';
 
 type TrainingCreationScreenRouteProp = RouteProp<
   TrainingNavigatorParamList,
@@ -72,23 +71,6 @@ export const TrainingCreation: FunctionComponent<Props> = ({ navigation }) => {
           )}
         />
       </Container>
-      <AddExerciseModal
-        title="toto"
-        onPressAdd={() => {}}
-        onPressClose={() => {}}
-        repetitionsValue="10"
-        onRepetitionsChange={(text: string) => {
-          console.log(text);
-        }}
-        kilogramsValue="90"
-        onKilogramsChange={(text: string) => {
-          console.log(text);
-        }}
-        howManyValue="3"
-        onHowManyChange={(text: string) => {
-          console.log(text);
-        }}
-      />
     </Background>
   );
 };
