@@ -6,6 +6,7 @@ import { rootStore } from '@woap/mobx/rootStore';
 import { StoreProvider } from '@woap/mobx/provider';
 import { theme } from '@woap/styles/theme';
 
+// test
 export const App: FunctionComponent = () => {
   return (
     <ThemeProvider theme={theme}>
