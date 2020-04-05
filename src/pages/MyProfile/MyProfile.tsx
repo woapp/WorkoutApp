@@ -1,14 +1,29 @@
 import React, { FunctionComponent } from 'react';
+import { View } from 'react-native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { CompositeNavigationProp } from '@react-navigation/native';
+import { MaterialTopTabNavigationProp } from '@react-navigation/material-top-tabs';
+import firestore from '@react-native-firebase/firestore';
 import { PrimaryButton } from '@woap/components/PrimaryButton';
 import { useStore } from '@woap/utils/hooks/useStore';
-import firestore from '@react-native-firebase/firestore';
-import { NavigationStackScreenProps } from 'react-navigation-stack';
 import { Routes } from '@woap/navigation/routes';
 import styled from '@woap/utils/styled-components';
 import { TextBody, TextSubtitle } from '@woap/components/Texts';
-import { View } from 'react-native';
+import { ProfileNavigatorParamList } from '@woap/navigation/ProfileNavigator';
+import { RootNavigatorParamList } from '@woap/navigation';
+import { TabNavigatorParamList } from '@woap/navigation/TabNavigator';
 
-interface Props extends NavigationStackScreenProps {}
+type MyProfileScreenNavigationProp = CompositeNavigationProp<
+  StackNavigationProp<RootNavigatorParamList, Routes.TabNavigator>,
+  CompositeNavigationProp<
+    MaterialTopTabNavigationProp<TabNavigatorParamList, Routes.ProfileNavigator>,
+    StackNavigationProp<ProfileNavigatorParamList, Routes.MyProfile>
+  >
+>;
+
+type Props = {
+  navigation: MyProfileScreenNavigationProp;
+};
 
 export const MyProfile: FunctionComponent<Props> = ({ navigation }) => {
   const { workouts, user, exercises, history, logout } = useStore();

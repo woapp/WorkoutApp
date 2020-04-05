@@ -1,54 +1,48 @@
 import React, { FunctionComponent } from 'react';
 import { observer } from 'mobx-react-lite';
-import { NavigationStackScreenProps } from 'react-navigation-stack';
-import { FlatList } from 'react-native';
-import { TextTitle, TextSubtitle } from '@woap/components/Texts';
+import { CompositeNavigationProp } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { MaterialTopTabNavigationProp } from '@react-navigation/material-top-tabs';
 import { PrimaryButton } from '@woap/components/PrimaryButton';
-import { Spacer } from '@woap/components/Spacer';
 import styled from '@woap/utils/styled-components';
 import { useStore } from '@woap/utils/hooks/useStore';
 import { Routes } from '@woap/navigation/routes';
-import { ExerciseSetsType } from '@woap/mobx/exerciseSets';
+import { WorkoutOverview } from '@woap/components/WorkoutOverview';
+import { HomeNavigatorParamList } from '@woap/navigation/HomeNavigator';
+import { TabNavigatorParamList } from '@woap/navigation/TabNavigator';
+import { RootNavigatorParamList } from '@woap/navigation';
 
-import { ExerciseItem } from './components/ExerciseItem';
+type OngoingWorkoutOverviewScreenNavigationProp = CompositeNavigationProp<
+  StackNavigationProp<RootNavigatorParamList, Routes.TabNavigator>,
+  CompositeNavigationProp<
+    MaterialTopTabNavigationProp<TabNavigatorParamList, Routes.HomeNavigator>,
+    StackNavigationProp<HomeNavigatorParamList, Routes.OngoingWorkoutOverview>
+  >
+>;
 
-export const OngoingWorkoutOverview: FunctionComponent<NavigationStackScreenProps> = observer(
-  ({ navigation }) => {
-    const { ongoingWorkout } = useStore();
+type Props = {
+  navigation: OngoingWorkoutOverviewScreenNavigationProp;
+};
 
-    const onStartWorkout = () => navigation.navigate(Routes.OngoingWorkout);
+export const OngoingWorkoutOverview: FunctionComponent<Props> = observer(({ navigation }) => {
+  const { ongoingWorkout } = useStore();
 
-    return (
-      <Container>
-        {ongoingWorkout && (
-          <>
-            <Title>{ongoingWorkout.name}</Title>
-            <Spacer height={2} />
-            <Subtitle>Exercices</Subtitle>
-            <Spacer height={2} />
-            <FlatList
-              data={ongoingWorkout.exercises.toJS()}
-              renderItem={({ item, index }: { item: ExerciseSetsType; index: number }) => (
-                <ExerciseItem
-                  isFirst={index === 0}
-                  isLast={index === ongoingWorkout.nbExercises - 1}
-                  key={item.id}
-                  exerciseName={item.exercise.name}
-                  muscleGroup={item.exercise.mainMuscleGroup}
-                  nbSets={item.sets.length}
-                />
-              )}
-            />
+  const onStartWorkout = () => navigation.navigate(Routes.OngoingWorkout);
 
-            <ButtonContainer>
-              <PrimaryButton onPress={onStartWorkout} title="Démarrer" />
-            </ButtonContainer>
-          </>
-        )}
-      </Container>
-    );
-  }
-);
+  return (
+    <Container>
+      {ongoingWorkout && (
+        <>
+          <WorkoutOverview workout={ongoingWorkout} />
+
+          <ButtonContainer>
+            <PrimaryButton onPress={onStartWorkout} title="Démarrer" />
+          </ButtonContainer>
+        </>
+      )}
+    </Container>
+  );
+});
 
 const Container = styled.View(props => ({
   padding: props.theme.margin.x2,
@@ -56,17 +50,7 @@ const Container = styled.View(props => ({
   backgroundColor: props.theme.colors.greyScale[90],
 }));
 
-const Title = styled(TextTitle)(props => ({
-  textAlign: 'center',
-  color: props.theme.colors.greyScale[10],
-}));
-
-const Subtitle = styled(TextSubtitle)(props => ({
-  color: props.theme.colors.greyScale[10],
-}));
-
 const ButtonContainer = styled.View(props => ({
-  flex: 1,
   justifyContent: 'flex-end',
   marginBottom: props.theme.margin.x2,
 }));

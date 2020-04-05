@@ -1,76 +1,104 @@
-import React, { FunctionComponent, useState, useEffect } from 'react';
-import { View } from 'react-native';
-import { TextInput, ActivityIndicator } from 'react-native-paper';
-import auth from '@react-native-firebase/auth';
-import { NavigationStackScreenProps } from 'react-navigation-stack';
-import { PrimaryButton } from '@woap/components/PrimaryButton';
-import { TextTitle } from '@woap/components/Texts';
-import { Routes } from '@woap/navigation/routes';
-import { useStore } from '@woap/utils/hooks/useStore';
+import React, { FunctionComponent } from 'react';
+import { StyleSheet } from 'react-native';
+import { ActivityIndicator } from 'react-native-paper';
 import { observer } from 'mobx-react-lite';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { PrimaryButton } from '@woap/components/PrimaryButton';
+import { Routes } from '@woap/navigation/routes';
+import { Spacer } from '@woap/components/Spacer';
+import styled from '@woap/utils/styled-components';
+import { RootNavigatorParamList } from '@woap/navigation';
+import { FormField } from '@woap/components/FormField';
+import images from '@woap/assets/images';
+import { Link } from '@woap/components/Link';
+import { Card } from '@woap/components/Card/Card';
+import { colors } from '@woap/styles/colors';
 
-export const Login: FunctionComponent<NavigationStackScreenProps> = observer(({ navigation }) => {
-  const { login, user } = useStore();
+import { useCardAnimation, useLogin } from './Login.hooks';
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [isLoading, setIsLoading] = useState(true);
+type LoginScreenNavigationProp = StackNavigationProp<RootNavigatorParamList, Routes.Login>;
 
-  useEffect(() => {
-    if (user) {
-      navigation.navigate(Routes.Dashboard);
-    } else {
-      setIsLoading(false);
-    }
-  }, [navigation, user]);
+type Props = {
+  navigation: LoginScreenNavigationProp;
+};
 
-  const onSubmitLogin = async () => {
-    try {
-      const {
-        user: { uid: id },
-      } = await auth().signInWithEmailAndPassword(email, password);
-      login({ id, email });
-      navigation.navigate(Routes.Dashboard);
-    } catch (e) {
-      console.error(e.message);
-    }
-  };
+const LOGO_SIZE = 100;
 
-  const onSubmitSignup = async () => {
-    try {
-      const {
-        user: { uid: id },
-      } = await auth().createUserWithEmailAndPassword(email, password);
-      login({ id, email });
-      navigation.navigate(Routes.Dashboard);
-    } catch (e) {
-      console.error(e.message);
-    }
-  };
+export const Login: FunctionComponent<Props> = observer(({ navigation }) => {
+  const navigateToTabNavigator = () => navigation.navigate(Routes.TabNavigator);
+  const {
+    onSubmitLogin,
+    isLoginLoading,
+    setPassword,
+    password,
+    setEmail,
+    email,
+    isLoading,
+  } = useLogin(navigateToTabNavigator);
+  const { cardTranslationY } = useCardAnimation();
 
   return (
-    <View style={{ flex: 1, padding: 50, justifyContent: 'center' }}>
+    <Container>
+      <LogoContainer>
+        <Logo source={images.logo} />
+      </LogoContainer>
       {isLoading ? (
         <ActivityIndicator />
       ) : (
-        <>
-          <TextTitle>Login</TextTitle>
-          <TextInput
+        <Card style={{ transform: [{ translateY: cardTranslationY }] }}>
+          <Title>Connexion</Title>
+          <Spacer height={4} />
+          <FormField
+            label="Email"
+            labelStyle={{ color: colors.white }}
             autoCapitalize="none"
-            placeholder="Email"
             value={email}
             onChangeText={setEmail}
+            style={{ color: colors.white }}
+            selectionColor={colors.white}
+            autoCorrect={false}
+            keyboardType="email-address"
           />
-          <TextInput
-            placeholder="Mot de passe"
+          <Spacer height={2} />
+          <FormField
+            label="Mot de passe"
+            labelStyle={{ color: colors.white }}
             secureTextEntry
             value={password}
             onChangeText={setPassword}
+            style={{ color: colors.white }}
+            selectionColor={colors.white}
           />
-          <PrimaryButton title="Signup" onPress={onSubmitSignup} />
-          <PrimaryButton title="Login" onPress={onSubmitLogin} />
-        </>
+          <Spacer height={2} />
+          <PrimaryButton title="Se connecter" onPress={onSubmitLogin} isLoading={isLoginLoading} />
+          <Spacer height={2} />
+          <Link onPress={() => {}} label="Nouveau compte" />
+        </Card>
       )}
-    </View>
+    </Container>
   );
 });
+
+const Container = styled.View(props => ({
+  flex: 1,
+  alignItems: 'center',
+  backgroundColor: props.theme.colors.greyScale[70],
+}));
+
+const LogoContainer = styled.View(props => ({
+  ...StyleSheet.absoluteFillObject,
+  marginTop: props.theme.margin.x10,
+  alignItems: 'center',
+}));
+
+const Logo = styled.Image({
+  width: LOGO_SIZE,
+  height: LOGO_SIZE,
+});
+
+const Title = styled.Text(props => ({
+  ...props.theme.fonts.h1,
+  textAlign: 'center',
+  fontWeight: 'bold',
+  color: props.theme.colors.white,
+}));

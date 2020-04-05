@@ -1,32 +1,80 @@
 import React, { FunctionComponent } from 'react';
-import { FlatList } from 'react-native';
 import { observer } from 'mobx-react-lite';
-import { NavigationStackScreenProps } from 'react-navigation-stack';
-import { useStore } from '@woap/utils/hooks/useStore';
+import { StackNavigationProp } from '@react-navigation/stack';
 import { Routes } from '@woap/navigation/routes';
-import { WorkoutType } from '@woap/mobx/workout';
+import { HomeNavigatorParamList } from '@woap/navigation/HomeNavigator';
+import styled from '@woap/utils/styled-components';
+import { AnimatedMenu } from '@woap/pages/Home/Dashboard/components/AnimatedMenu';
+import images from '@woap/assets/images';
+import { Spacer } from '@woap/components/Spacer';
 
-import { WorkoutCard } from './components/WorkoutCard/WorkoutCard';
+type DashboardScreenNavigationProp = StackNavigationProp<HomeNavigatorParamList, Routes.Dashboard>;
 
-export const Dashboard: FunctionComponent<NavigationStackScreenProps> = observer(
-  ({ navigation }) => {
-    const { workouts, setOngoingWorkout } = useStore();
+type Props = {
+  navigation: DashboardScreenNavigationProp;
+};
 
-    const onSelectWorkout = (workout: WorkoutType) => () => {
-      setOngoingWorkout(workout);
-      navigation.navigate(Routes.OngoingWorkoutOverview);
-    };
+const ARROW_HEIGHT = 140;
+const ARROW_WIDTH = 120;
 
-    const renderWorkoutCard = ({ item: workout }: { item: WorkoutType }) => (
-      <WorkoutCard key={workout.id} onSelectWorkout={onSelectWorkout} workout={workout} />
-    );
+export const Dashboard: FunctionComponent<Props> = observer(() => {
+  return (
+    <Container>
+      <EmptyContainer>
+        <EmptyTitle>Nothing yet.</EmptyTitle>
+        <Spacer height={1} />
+        <EmptyBody>Create your first personnalized training!</EmptyBody>
+        <Spacer height={4} />
+        <ArrowContainer>
+          <Arrow source={images.bottomRightArrow} />
+        </ArrowContainer>
+      </EmptyContainer>
+      <MenuContainer>
+        <AnimatedMenu
+          items={[
+            { title: 'NEW\nTRAINING', iconName: 'whistle' },
+            { title: 'NEW\nEXERCISE', iconName: 'dumbbell' },
+          ]}
+        />
+      </MenuContainer>
+    </Container>
+  );
+});
 
-    return (
-      <FlatList
-        data={workouts.toJS()}
-        renderItem={renderWorkoutCard}
-        keyExtractor={item => item.id}
-      />
-    );
-  }
-);
+const Container = styled.View(props => ({
+  flex: 1,
+  backgroundColor: props.theme.colors.background.black,
+}));
+
+const EmptyContainer = styled.View({
+  flex: 1,
+  alignItems: 'center',
+  justifyContent: 'flex-end',
+});
+
+const EmptyTitle = styled.Text(props => ({
+  ...props.theme.fonts.h2,
+  fontWeight: 'bold',
+  textAlign: 'center',
+  color: props.theme.colors.white,
+}));
+const EmptyBody = styled.Text(props => ({
+  ...props.theme.fonts.h3,
+  textAlign: 'center',
+  color: props.theme.colors.white,
+  width: '50%',
+}));
+
+const ArrowContainer = styled.View(props => ({
+  marginRight: props.theme.margin.x10,
+  marginBottom: props.theme.margin.x5,
+  alignSelf: 'flex-end',
+}));
+
+const Arrow = styled.Image({ height: ARROW_HEIGHT, width: ARROW_WIDTH });
+
+const MenuContainer = styled.View(props => ({
+  position: 'absolute',
+  bottom: props.theme.margin.x2,
+  right: props.theme.margin.x2,
+}));

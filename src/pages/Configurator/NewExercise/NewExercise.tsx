@@ -1,53 +1,67 @@
 import React, { FunctionComponent } from 'react';
-import { NavigationStackScreenProps } from 'react-navigation-stack';
 import { observer } from 'mobx-react-lite';
+import { RouteProp } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 import { InputTitle } from '@woap/components/InputTitle';
 import styled from '@woap/utils/styled-components';
 import { MuscleGroupToggle } from '@woap/components/MuscleGroupToggle';
 import { ActionButton } from '@woap/components/ActionButton';
 import { MuscleGroup } from '@woap/mobx/types';
+import { Routes } from '@woap/navigation/routes';
+import { ExercicesNavigatorParamList } from '@woap/navigation/ExercisesNavigator';
 
-export const NewExercise: FunctionComponent<NavigationStackScreenProps> = observer(
-  ({ navigation }) => {
-    const exercise = navigation.getParam('exercise');
-    const validateExerciseCreation = navigation.getParam('validateExerciseCreation');
-    const addMuscleGroup = (muscleGroup: MuscleGroup) => () => exercise.addMuscleGroup(muscleGroup);
-    const removeMuscleGroup = (muscleGroup: MuscleGroup) => () =>
-      exercise.removeMuscleGroup(muscleGroup);
+type NewExerciseScreenNavigationProp = StackNavigationProp<
+  ExercicesNavigatorParamList,
+  Routes.NewExercise
+>;
 
-    const onCreateExercise = () => {
-      validateExerciseCreation(exercise);
-      navigation.goBack();
-    };
+type NewExerciseScreenRouteProp = RouteProp<ExercicesNavigatorParamList, Routes.NewExercise>;
 
-    return (
-      <Container>
-        <InputTitle value={exercise.name} placeholder="Exercice" onChangeText={exercise.setName} />
-        <MuscleGroupsRow>
-          {Object.values(MuscleGroup).map((muscleGroup, index) => {
-            const isSelected = exercise.muscleGroups.includes(muscleGroup);
-            const onSelectMuscleGroup = isSelected
-              ? removeMuscleGroup(muscleGroup)
-              : addMuscleGroup(muscleGroup);
+type Props = {
+  navigation: NewExerciseScreenNavigationProp;
+  route: NewExerciseScreenRouteProp;
+};
 
-            return (
-              <MuscleGroupToggle
-                key={index}
-                muscleGroup={muscleGroup}
-                title={muscleGroup}
-                onPress={onSelectMuscleGroup}
-                isSelected={isSelected}
-              />
-            );
-          })}
-        </MuscleGroupsRow>
-        <ActionButtonContainer>
-          <ActionButton title="Créer" onPress={onCreateExercise} />
-        </ActionButtonContainer>
-      </Container>
-    );
-  }
-);
+export const NewExercise: FunctionComponent<Props> = observer(({ navigation, route }) => {
+  const exercise = route.params.exercise;
+  const setExerciseName = (text: string) => exercise.setName(text);
+  const validateExerciseCreation = route.params.validateExerciseCreation;
+  const addMuscleGroup = (muscleGroup: MuscleGroup) => () => exercise.addMuscleGroup(muscleGroup);
+  const removeMuscleGroup = (muscleGroup: MuscleGroup) => () =>
+    exercise.removeMuscleGroup(muscleGroup);
+
+  const onCreateExercise = () => {
+    validateExerciseCreation(exercise);
+    navigation.goBack();
+  };
+
+  return (
+    <Container>
+      <InputTitle value={exercise.name} placeholder="Exercice" onChangeText={setExerciseName} />
+      <MuscleGroupsRow>
+        {Object.values(MuscleGroup).map((muscleGroup, index) => {
+          const isSelected = exercise.muscleGroups.includes(muscleGroup);
+          const onSelectMuscleGroup = isSelected
+            ? removeMuscleGroup(muscleGroup)
+            : addMuscleGroup(muscleGroup);
+
+          return (
+            <MuscleGroupToggle
+              key={index}
+              muscleGroup={muscleGroup}
+              title={muscleGroup}
+              onPress={onSelectMuscleGroup}
+              isSelected={isSelected}
+            />
+          );
+        })}
+      </MuscleGroupsRow>
+      <ActionButtonContainer>
+        <ActionButton title="Créer" onPress={onCreateExercise} />
+      </ActionButtonContainer>
+    </Container>
+  );
+});
 
 const Container = styled.View({
   flex: 1,

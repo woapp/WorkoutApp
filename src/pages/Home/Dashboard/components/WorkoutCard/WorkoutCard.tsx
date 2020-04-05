@@ -21,14 +21,7 @@ export const WorkoutCard: FunctionComponent<Props> = observer(({ workout, onSele
         <Row>
           {workout.mainMuscleGroups.map((muscleGroup, index) => (
             <MuscleGroupContainer key={index}>
-              <MuscleGroupToggle
-                // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-                // @ts-ignore
-                muscleGroup={muscleGroup}
-                isSelected
-                disabled
-                iconSize={60}
-              />
+              <MuscleGroupToggle muscleGroup={muscleGroup} isSelected disabled iconSize={50} />
             </MuscleGroupContainer>
           ))}
         </Row>
