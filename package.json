@@ -14,7 +14,8 @@
     "deploy:soft": "code-push release-react cyrilb-bam.tech/WorkoutApp-iOS ios && code-push release-react cyrilb-bam.tech/WorkoutApp-android android",
     "eslint:check": "eslint .",
     "ts:check": "tsc",
-    "generate": "plop"
+    "generate": "plop",
+    "lint-staged": "lint-staged"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.7",
@@ -29,6 +30,7 @@
     "appcenter-analytics": "^3.0.0",
     "appcenter-crashes": "^3.0.0",
     "babel-plugin-module-resolver": "4.0.0",
+    "lint-staged": "10.1.2",
     "lodash": "4.17.15",
     "mobx": "^5.15.4",
     "mobx-devtools-mst": "0.9.21",
@@ -72,6 +74,7 @@
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^2.1.2",
+    "husky": "3.1.0",
     "jest": "^24.9.0",
     "metro-react-native-babel-preset": "^0.56.0",
     "plop": "^2.5.2",
