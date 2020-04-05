@@ -7,9 +7,8 @@ import { StoreProvider } from '@woap/mobx/provider';
 import { theme } from '@woap/styles/theme';
 
 // test2
-// test
-// test3
-export const App: FunctionComponent<any> = () => {
+
+export const App: FunctionComponent = () => {
   return (
     <ThemeProvider theme={theme}>
       <StoreProvider value={rootStore}>
