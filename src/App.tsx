@@ -8,7 +8,8 @@ import { theme } from '@woap/styles/theme';
 
 // test2
 // test
-export const App: FunctionComponent = () => {
+// test3
+export const App: FunctionComponent<any> = () => {
   return (
     <ThemeProvider theme={theme}>
       <StoreProvider value={rootStore}>
