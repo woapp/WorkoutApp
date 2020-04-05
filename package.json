@@ -14,9 +14,7 @@
     "eslint:check": "eslint .",
     "ts:check": "tsc",
     "generate": "plop",
-    "lint-committed": "lint-committed",
-    "commit-formatting": "git commit -m \":rotating_light: Auto-fix format issues\" || echo \"No files to format\"",
-    "commit-linting": "git commit -m \":rotating_light: Auto-fix eslint issues\" || echo \"No files to fix\""
+    "lint-staged": "lint-staged"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.1",
@@ -25,6 +23,7 @@
     "@react-native-firebase/firestore": "6.3.3",
     "@types/react-native-snap-carousel": "^3.7.4",
     "babel-plugin-module-resolver": "4.0.0",
+    "lint-staged": "10.1.2",
     "lodash": "4.17.15",
     "mobx": "^5.15.4",
     "mobx-devtools-mst": "0.9.21",
@@ -71,7 +70,6 @@
     "eslint-plugin-react-hooks": "^2.1.2",
     "husky": "3.1.0",
     "jest": "^24.9.0",
-    "lint-committed": "0.0.0-development",
     "metro-react-native-babel-preset": "^0.56.0",
     "plop": "^2.5.2",
     "prettier": "^1.18.2",
