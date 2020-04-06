@@ -29,11 +29,10 @@ const TextInputWithoutPadding = styled.TextInput({
   padding: 0,
 });
 
-const InputContainer = styled.View(props => ({
-  marginTop: props.theme.margin.d2,
-  borderColor: props.theme.colors.greyScale[30],
-  borderWidth: props.theme.border.width.s,
-  paddingVertical: props.theme.margin.x1,
-  paddingHorizontal: props.theme.margin.x2,
-  borderRadius: props.theme.border.radius.s,
+const InputContainer = styled.View(({ theme }) => ({
+  marginTop: theme.margin.d2,
+  backgroundColor: theme.colors.transparentWhiteScale[20],
+  borderRadius: theme.border.radius.s,
+  paddingHorizontal: theme.margin.x2,
+  paddingVertical: theme.margin.x1,
 }));
