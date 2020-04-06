@@ -4,7 +4,7 @@ import styled from '@woap/utils/styled-components';
 
 interface Props extends TextInputProps {
   label: string;
-  labelStyle: TextStyle;
+  labelStyle?: TextStyle;
 }
 
 export const FormField: FunctionComponent<Props> = ({ label, labelStyle, ...textInputProps }) => {

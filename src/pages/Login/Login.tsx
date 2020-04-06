@@ -22,6 +22,7 @@ type Props = {
 
 export const Login: FunctionComponent<Props> = observer(({ navigation }) => {
   const navigateToTabNavigator = () => navigation.navigate(Routes.TabNavigator);
+  const navigateToSignupScreen = () => navigation.navigate(Routes.Signup);
   const {
     onSubmitLogin,
     isLoginLoading,
@@ -65,7 +66,7 @@ export const Login: FunctionComponent<Props> = observer(({ navigation }) => {
           <Spacer height={2} />
           <Button title="Se connecter" onPress={onSubmitLogin} isLoading={isLoginLoading} />
           <Spacer height={2} />
-          <Link onPress={() => {}} label="Nouveau compte" />
+          <Link onPress={navigateToSignupScreen} label="Nouveau compte" />
         </Card>
       )}
     </Container>
