@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { TrainingCreation } from '@woap/pages/Training/TrainingCreation';
-import { TrainingSetsConfiguration } from '@woap/pages/TrainingSetsConfiguration';
+import { TrainingSetsConfiguration } from '@woap/pages/Training/TrainingSetsConfiguration';
 
 import { Routes } from './routes';
 
