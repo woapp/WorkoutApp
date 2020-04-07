@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import Modal from 'react-native-modal';
 import styled from '@woap/utils/styled-components';
@@ -9,50 +9,39 @@ import { Spacer } from '@woap/components/Spacer';
 import { Button } from '@woap/components/Button';
 
 interface Props {
-  title: string;
-  repetitionsValue: string;
-  onRepetitionsChange: (text: string) => void;
-  kilogramsValue: string;
-  onKilogramsChange: (text: string) => void;
-  howManyValue: string;
-  onHowManyChange: (text: string) => void;
+  isVisible: boolean;
   onPressClose: () => void;
-  onPressAdd: () => void;
 }
 
-export const AddExerciseModal: FunctionComponent<Props> = ({
-  title,
-  onPressClose,
-  onPressAdd,
-  repetitionsValue,
-  onRepetitionsChange,
-  kilogramsValue,
-  onKilogramsChange,
-  howManyValue,
-  onHowManyChange,
-}) => {
+export const AddExerciseModal: FunctionComponent<Props> = ({ isVisible, onPressClose }) => {
+  const [repetitionsValue, setRepetitionsValue] = useState('10');
+  const [kilogramsValue, setKilogramsValue] = useState('80');
+  const [setsValue, setSetsValue] = useState('4');
+
+  const onPressAdd = () => {};
+
   return (
-    <Modal isVisible>
+    <Modal isVisible={isVisible}>
       <Container>
         <Header>
-          <Title>{title}</Title>
+          <Title>Crunch</Title>
           <TouchableOpacity onPress={onPressClose}>
             <CrossIcon />
           </TouchableOpacity>
         </Header>
         <Row>
           <ItemTitle>Repetitions</ItemTitle>
-          <NumberInput value={repetitionsValue} onChangeText={onRepetitionsChange} />
+          <NumberInput value={repetitionsValue} onChangeText={setRepetitionsValue} />
         </Row>
         <Separator />
         <Row>
           <ItemTitle>Kilograms</ItemTitle>
-          <NumberInput value={kilogramsValue} onChangeText={onKilogramsChange} />
+          <NumberInput value={kilogramsValue} onChangeText={setKilogramsValue} />
         </Row>
         <Separator />
         <Row>
           <ItemTitle>How many ?</ItemTitle>
-          <NumberInput value={howManyValue} onChangeText={onHowManyChange} />
+          <NumberInput value={setsValue} onChangeText={setSetsValue} />
         </Row>
       </Container>
       <Spacer height={2} />

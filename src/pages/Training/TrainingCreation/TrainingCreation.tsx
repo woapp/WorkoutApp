@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import { FlatList, TouchableOpacity } from 'react-native';
 import styled from '@woap/utils/styled-components';
 import LinearGradient from 'react-native-linear-gradient';
@@ -12,6 +12,7 @@ import { Spacer } from '@woap/components/Spacer';
 
 import { ExerciseItem } from './components/ExerciseItem';
 import { NewExerciseButton } from './components/NewExerciseButton';
+import { AddExerciseModal } from './components/AddExerciseModal';
 
 type TrainingCreationScreenRouteProp = RouteProp<
   TrainingNavigatorParamList,
@@ -30,6 +31,13 @@ type Props = {
 
 export const TrainingCreation: FunctionComponent<Props> = ({ navigation }) => {
   const closeModal = () => navigation.goBack();
+  const [displayAddExerciseModal, setDisplayAddExerciseModal] = useState(false);
+  const openAddExerciseModal = () => {
+    setDisplayAddExerciseModal(true);
+  };
+  const closeAddExerciseModal = () => {
+    setDisplayAddExerciseModal(false);
+  };
   const exercises = [
     { title: 'crunch', id: 1 },
     { title: 'squat', id: 2 },
@@ -63,7 +71,7 @@ export const TrainingCreation: FunctionComponent<Props> = ({ navigation }) => {
           renderItem={({ item, index }) => (
             <ExerciseItem
               title={item.title}
-              onPress={() => {}}
+              onPress={openAddExerciseModal}
               selected
               key={item.id}
               index={index}
@@ -71,6 +79,7 @@ export const TrainingCreation: FunctionComponent<Props> = ({ navigation }) => {
           )}
         />
       </Container>
+      <AddExerciseModal isVisible={displayAddExerciseModal} onPressClose={closeAddExerciseModal} />
     </Background>
   );
 };
