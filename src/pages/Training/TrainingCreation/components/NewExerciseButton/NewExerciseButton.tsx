@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import styled from '@woap/utils/styled-components';
+import { PlusIcon } from '@woap/components/Icons/PlusIcon';
 
 interface Props {
   title: string;
@@ -10,7 +11,7 @@ export const NewExerciseButton: FunctionComponent<Props> = ({ title, onPress }) 
   return (
     <Container onPress={onPress}>
       <Title>{title}</Title>
-      <Button>+</Button>
+      <PlusIcon />
     </Container>
   );
 };
@@ -29,11 +30,5 @@ const Container = styled.TouchableOpacity(({ theme }) => ({
 
 const Title = styled.Text(({ theme }) => ({
   ...theme.fonts.h2,
-  color: theme.colors.white,
-}));
-
-const Button = styled.Text(({ theme }) => ({
-  ...theme.fonts.h2,
-  fontWeight: 'bold',
   color: theme.colors.white,
 }));
