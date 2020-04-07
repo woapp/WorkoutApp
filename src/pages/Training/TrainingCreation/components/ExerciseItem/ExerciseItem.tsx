@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react';
-import styled from '@woap/utils/styled-components';
 import Animated, {
   Easing,
   Clock,
@@ -13,7 +12,10 @@ import Animated, {
   set,
 } from 'react-native-reanimated';
 import { delay } from 'react-native-redash';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
+import styled from '@woap/utils/styled-components';
+import { colors } from '@woap/styles/colors';
+import { PlusIcon } from '@woap/components/Icons/PlusIcon';
 
 interface Props {
   title: string;
@@ -50,7 +52,9 @@ export const ExerciseItem: FunctionComponent<Props> = ({ selected, title, onPres
   return (
     <Container selected={selected} style={{ opacity }} onPress={onPress}>
       <Title>{title}</Title>
-      <Button>+</Button>
+      <View style={{ transform: [{ rotate: selected ? '45deg' : '0deg' }] }}>
+        <PlusIcon color={colors.black} />
+      </View>
     </Container>
   );
 };
@@ -69,11 +73,6 @@ const Container = styled(AnimatedTouchableOpacity)<{ selected: boolean }>(
 );
 
 const Title = styled.Text(({ theme }) => ({
-  ...theme.fonts.h2,
-  fontWeight: 'bold',
-}));
-
-const Button = styled.Text(({ theme }) => ({
   ...theme.fonts.h2,
   fontWeight: 'bold',
 }));

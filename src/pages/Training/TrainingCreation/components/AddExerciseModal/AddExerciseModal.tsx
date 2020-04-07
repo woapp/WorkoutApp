@@ -21,7 +21,7 @@ export const AddExerciseModal: FunctionComponent<Props> = ({ isVisible, onPressC
   const onPressAdd = () => {};
 
   return (
-    <Modal isVisible={isVisible}>
+    <Modal isVisible={isVisible} onBackdropPress={onPressClose}>
       <Container>
         <Header>
           <Title>Crunch</Title>

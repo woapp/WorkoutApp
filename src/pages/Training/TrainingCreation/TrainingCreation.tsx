@@ -9,6 +9,7 @@ import { TrainingNavigatorParamList } from '@woap/navigation/TrainingNavigator';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { SearchBar } from '@woap/components/SearchBar';
 import { Spacer } from '@woap/components/Spacer';
+import { CrossIcon } from '@woap/components/Icons/CrossIcon';
 
 import { ExerciseItem } from './components/ExerciseItem';
 import { NewExerciseButton } from './components/NewExerciseButton';
@@ -39,14 +40,14 @@ export const TrainingCreation: FunctionComponent<Props> = ({ navigation }) => {
     setDisplayAddExerciseModal(false);
   };
   const exercises = [
-    { title: 'crunch', id: 1 },
-    { title: 'squat', id: 2 },
-    { title: 'push up', id: 3 },
-    { title: 'curl biceps', id: 4 },
-    { title: 'crunch', id: 6 },
-    { title: 'squat', id: 7 },
-    { title: 'push up', id: 8 },
-    { title: 'curl biceps', id: 9 },
+    { title: 'crunch', id: 1, selected: false },
+    { title: 'squat', id: 2, selected: true },
+    { title: 'push up', id: 3, selected: true },
+    { title: 'curl biceps', id: 4, selected: false },
+    { title: 'crunch', id: 6, selected: false },
+    { title: 'squat', id: 7, selected: false },
+    { title: 'push up', id: 8, selected: false },
+    { title: 'curl biceps', id: 9, selected: false },
   ];
 
   return (
@@ -55,7 +56,7 @@ export const TrainingCreation: FunctionComponent<Props> = ({ navigation }) => {
         <Header>
           <Title>My new training</Title>
           <TouchableOpacity onPress={closeModal}>
-            <Button>x</Button>
+            <CrossIcon />
           </TouchableOpacity>
         </Header>
         <Spacer height={2} />
@@ -72,8 +73,8 @@ export const TrainingCreation: FunctionComponent<Props> = ({ navigation }) => {
             <ExerciseItem
               title={item.title}
               onPress={openAddExerciseModal}
-              selected
-              key={item.id}
+              selected={item.selected}
+              key={`${item.id}`}
               index={index}
             />
           )}
@@ -114,12 +115,6 @@ const Title = styled.Text(({ theme }) => ({
 
 const SubTitle = styled.Text(({ theme }) => ({
   ...theme.fonts.h3,
-  fontWeight: 'bold',
-  color: theme.colors.white,
-}));
-
-const Button = styled.Text(({ theme }) => ({
-  ...theme.fonts.h1,
   fontWeight: 'bold',
   color: theme.colors.white,
 }));
