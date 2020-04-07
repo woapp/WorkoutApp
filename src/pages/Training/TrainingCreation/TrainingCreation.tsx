@@ -30,6 +30,17 @@ type Props = {
   navigation: TrainingCreationScreenNavigationProp;
 };
 
+const EXERCISES = [
+  { title: 'crunch', id: 1, selected: false },
+  { title: 'squat', id: 2, selected: true },
+  { title: 'push up', id: 3, selected: true },
+  { title: 'curl biceps', id: 4, selected: false },
+  { title: 'crunch', id: 6, selected: false },
+  { title: 'squat', id: 7, selected: false },
+  { title: 'push up', id: 8, selected: false },
+  { title: 'curl biceps', id: 9, selected: false },
+];
+
 export const TrainingCreation: FunctionComponent<Props> = ({ navigation }) => {
   const closeModal = () => navigation.goBack();
   const [displayAddExerciseModal, setDisplayAddExerciseModal] = useState(false);
@@ -39,16 +50,10 @@ export const TrainingCreation: FunctionComponent<Props> = ({ navigation }) => {
   const closeAddExerciseModal = () => {
     setDisplayAddExerciseModal(false);
   };
-  const exercises = [
-    { title: 'crunch', id: 1, selected: false },
-    { title: 'squat', id: 2, selected: true },
-    { title: 'push up', id: 3, selected: true },
-    { title: 'curl biceps', id: 4, selected: false },
-    { title: 'crunch', id: 6, selected: false },
-    { title: 'squat', id: 7, selected: false },
-    { title: 'push up', id: 8, selected: false },
-    { title: 'curl biceps', id: 9, selected: false },
-  ];
+  const navigateToTrainingSetsConfigurationScreen = () => {
+    closeAddExerciseModal();
+    setTimeout(() => navigation.navigate(Routes.TrainingSetsConfiguration), 500);
+  };
 
   return (
     <Background>
@@ -65,7 +70,7 @@ export const TrainingCreation: FunctionComponent<Props> = ({ navigation }) => {
         <SubTitle>ADD EXERCISES</SubTitle>
         <FlatList
           showsVerticalScrollIndicator={false}
-          data={exercises}
+          data={EXERCISES}
           ListHeaderComponent={() => (
             <NewExerciseButton onPress={() => {}} title="Create a new exercice" />
           )}
@@ -80,7 +85,11 @@ export const TrainingCreation: FunctionComponent<Props> = ({ navigation }) => {
           )}
         />
       </Container>
-      <AddExerciseModal isVisible={displayAddExerciseModal} onPressClose={closeAddExerciseModal} />
+      <AddExerciseModal
+        isVisible={displayAddExerciseModal}
+        onPressClose={closeAddExerciseModal}
+        onPressAdd={navigateToTrainingSetsConfigurationScreen}
+      />
     </Background>
   );
 };

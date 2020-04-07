@@ -11,14 +11,17 @@ import { Button } from '@woap/components/Button';
 interface Props {
   isVisible: boolean;
   onPressClose: () => void;
+  onPressAdd: () => void;
 }
 
-export const AddExerciseModal: FunctionComponent<Props> = ({ isVisible, onPressClose }) => {
+export const AddExerciseModal: FunctionComponent<Props> = ({
+  isVisible,
+  onPressClose,
+  onPressAdd,
+}) => {
   const [repetitionsValue, setRepetitionsValue] = useState('10');
   const [kilogramsValue, setKilogramsValue] = useState('80');
   const [setsValue, setSetsValue] = useState('4');
-
-  const onPressAdd = () => {};
 
   return (
     <Modal isVisible={isVisible} onBackdropPress={onPressClose}>
