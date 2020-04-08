@@ -1,7 +1,7 @@
 import { ModelInstanceTypeProps } from 'mobx-state-tree';
 import _ from 'lodash';
 
-import { WorkoutModel } from './model';
+import { WorkoutModel } from '../training/model';
 
 export const workoutViews = (self: ModelInstanceTypeProps<typeof WorkoutModel>) => ({
   get nbExercises() {

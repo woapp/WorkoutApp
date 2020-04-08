@@ -3,8 +3,8 @@ import { StatusBar } from 'react-native';
 import codePush from 'react-native-code-push';
 import styled, { ThemeProvider } from '@woap/utils/styled-components';
 import { AppContainer } from '@woap/navigation';
-import { rootStore } from '@woap/mobx/rootStore';
-import { StoreProvider } from '@woap/mobx/provider';
+import { rootStore } from '@woap/mobx_new/rootStore';
+import { StoreProvider } from '@woap/mobx_new/provider';
 import { theme } from '@woap/styles/theme';
 
 const codePushOptions = { checkFrequency: codePush.CheckFrequency.ON_APP_START };

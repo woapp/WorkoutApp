@@ -1,9 +1,9 @@
 import { types } from 'mobx-state-tree';
 
-import { Workout } from './workout';
-import { Exercise } from './exercise';
-import { WorkoutDone } from './workoutDone';
-import { User } from './user';
+import { Workout } from '../mobx/workout';
+import { Exercise } from '../mobx/exercise';
+import { WorkoutDone } from '../mobx/workoutDone';
+import { User } from '../mobx/user';
 
 export const RootModel = {
   user: types.maybe(User),
