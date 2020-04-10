@@ -1,14 +1,26 @@
 import React, { FunctionComponent, useState } from 'react';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { CompositeNavigationProp } from '@react-navigation/native';
 import { Background } from '@woap/components/Background';
 import styled from '@woap/utils/styled-components';
 import { Spacer } from '@woap/components/Spacer';
+import { NextButton } from '@woap/components/NextButton';
+import { TrainingNavigatorParamList } from '@woap/navigation/TrainingNavigator';
+import { RootNavigatorParamList } from '@woap/navigation';
+import { Routes } from '@woap/navigation/routes';
 
 import { Header } from '../components/Header';
 
 import { Tag } from './components/Tag';
 
-interface Props {}
+type TrainingTagsScreenNavigationProp = CompositeNavigationProp<
+  StackNavigationProp<RootNavigatorParamList, Routes.TrainingNavigator>,
+  StackNavigationProp<TrainingNavigatorParamList, Routes.TrainingTags>
+>;
 
+type Props = {
+  navigation: TrainingTagsScreenNavigationProp;
+};
 const defaultTags = [
   { id: 1, selected: false, name: 'Morning routine' },
   { id: 2, selected: false, name: 'outside' },
@@ -24,7 +36,9 @@ const defaultTags = [
   { id: 12, selected: false, name: 'Endurance' },
   { id: 13, selected: false, name: 'Muscle Building' },
 ];
-export const TrainingTags: FunctionComponent<Props> = () => {
+export const TrainingTags: FunctionComponent<Props> = ({ navigation }) => {
+  const goToDashBoardScreen = () => navigation.navigate(Routes.TabNavigator);
+
   const [tags, setTags] = useState(defaultTags);
   const onTagPressed = id => () => {
     setTags(previousTags =>
@@ -44,6 +58,10 @@ export const TrainingTags: FunctionComponent<Props> = () => {
             <Tag {...tag} key={tag.id} onPress={onTagPressed(tag.id)} />
           ))}
         </TagsContainer>
+        <NextButton
+          onPress={goToDashBoardScreen}
+          disabled={tags.filter(tag => tag.selected).length === 0}
+        />
       </Container>
     </Background>
   );
