@@ -1,11 +1,8 @@
 import React, { FunctionComponent } from 'react';
 import { ActivityIndicator } from 'react-native-paper';
 import { observer } from 'mobx-react-lite';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { Routes } from '@woap/navigation/routes';
 import { Spacer } from '@woap/components/Spacer';
 import styled from '@woap/utils/styled-components';
-import { RootNavigatorParamList } from '@woap/navigation';
 import { FormField } from '@woap/components/FormField';
 import { Link } from '@woap/components/Link';
 import { Card } from '@woap/components/Card/Card';
@@ -14,15 +11,9 @@ import { Button } from '@woap/components/Button';
 
 import { useCardAnimation, useLogin } from './Login.hooks';
 
-type LoginScreenNavigationProp = StackNavigationProp<RootNavigatorParamList, Routes.Login>;
-
-type Props = {
-  navigation: LoginScreenNavigationProp;
-};
-
-export const Login: FunctionComponent<Props> = observer(({ navigation }) => {
-  const navigateToTabNavigator = () => navigation.navigate(Routes.TabNavigator);
-  const navigateToSignupScreen = () => navigation.navigate(Routes.Signup);
+export const Login: FunctionComponent = observer(() => {
+  const navigateToTabNavigator = () => {};
+  const navigateToSignupScreen = () => {};
   const {
     onSubmitLogin,
     isLoginLoading,

@@ -8,21 +8,12 @@ import { FormField } from '@woap/components/FormField';
 import { Button } from '@woap/components/Button';
 import { Spacer } from '@woap/components/Spacer';
 import { CrossIcon } from '@woap/components/Icons/CrossIcon';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { RootNavigatorParamList } from '@woap/navigation';
-import { Routes } from '@woap/navigation/routes';
 
 import { useSignup } from './Signup.hook';
 
-type LoginScreenNavigationProp = StackNavigationProp<RootNavigatorParamList, Routes.Signup>;
-
-type Props = {
-  navigation: LoginScreenNavigationProp;
-};
-
-export const Signup: FunctionComponent<Props> = ({ navigation }) => {
-  const closeModale = () => navigation.goBack();
-  const navigateToTabNavigator = () => navigation.navigate(Routes.TabNavigator);
+export const Signup: FunctionComponent = () => {
+  const closeModale = () => {};
+  const navigateToTabNavigator = () => {};
 
   const { email, setEmail, password, setPassword, isSignupLoading, onSubmitSignup } = useSignup(
     navigateToTabNavigator
