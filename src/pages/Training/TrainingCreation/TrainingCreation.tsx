@@ -1,14 +1,13 @@
 import React, { FunctionComponent, useState } from 'react';
 import { FlatList } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 import { StackNavigationProp } from '@react-navigation/stack';
 import styled from '@woap/utils/styled-components';
-import { colors } from '@woap/styles/colors';
 import { Routes } from '@woap/navigation/routes';
 import { RouteProp } from '@react-navigation/native';
 import { TrainingNavigatorParamList } from '@woap/navigation/TrainingNavigator';
 import { SearchBar } from '@woap/components/SearchBar';
 import { Spacer } from '@woap/components/Spacer';
+import { Background } from '@woap/components/Background';
 
 import { Header } from '../components/Header';
 
@@ -88,13 +87,6 @@ export const TrainingCreation: FunctionComponent<Props> = ({ navigation }) => {
     </Background>
   );
 };
-
-const Background = styled(LinearGradient).attrs({
-  start: { x: 0, y: 0 },
-  end: { x: 1, y: 1 },
-  colors: [colors.green, colors.blue],
-  flex: 1,
-})``;
 
 const Container = styled.SafeAreaView(({ theme }) => ({
   margin: theme.margin.x2,
