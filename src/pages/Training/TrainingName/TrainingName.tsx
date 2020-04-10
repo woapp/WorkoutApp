@@ -1,16 +1,27 @@
 import React, { FunctionComponent, useState } from 'react';
+import { StackNavigationProp } from '@react-navigation/stack';
 import { Background } from '@woap/components/Background';
 import styled from '@woap/utils/styled-components';
 import { FormField } from '@woap/components/FormField';
 import { Spacer } from '@woap/components/Spacer';
 import { colors } from '@woap/styles/colors';
 import { NextButton } from '@woap/components/NextButton';
+import { Routes } from '@woap/navigation/routes';
+import { TrainingNavigatorParamList } from '@woap/navigation/TrainingNavigator';
 
 import { Header } from '../components/Header';
 
-interface Props {}
+type TrainingNameScreenNavigationProp = StackNavigationProp<
+  TrainingNavigatorParamList,
+  Routes.TrainingName
+>;
 
-export const TrainingName: FunctionComponent<Props> = () => {
+type Props = {
+  navigation: TrainingNameScreenNavigationProp;
+};
+
+export const TrainingName: FunctionComponent<Props> = ({ navigation }) => {
+  const goToTrainingTagsScreen = () => navigation.navigate(Routes.TrainingTags);
   const [name, setName] = useState('');
 
   return (
@@ -27,7 +38,7 @@ export const TrainingName: FunctionComponent<Props> = () => {
           placeholderTextColor={colors.transparentWhiteScale[60]}
           selectionColor={colors.white}
         />
-        <NextButton onPress={() => {}} disabled={name.length === 0} />
+        <NextButton onPress={goToTrainingTagsScreen} disabled={name.length === 0} />
       </Container>
     </Background>
   );

@@ -12,13 +12,13 @@ import { Header } from '../components/Header';
 
 import { SetListItem } from './components/SetListItem';
 
-type TrainingCreationScreenNavigationProp = StackNavigationProp<
+type TrainingSetsConfigurationScreenNavigationProp = StackNavigationProp<
   TrainingNavigatorParamList,
   Routes.TrainingSetsConfiguration
 >;
 
 type Props = {
-  navigation: TrainingCreationScreenNavigationProp;
+  navigation: TrainingSetsConfigurationScreenNavigationProp;
 };
 
 const SETS = [
