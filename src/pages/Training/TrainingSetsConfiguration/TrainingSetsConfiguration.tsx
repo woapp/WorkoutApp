@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import DraggableFlatList from 'react-native-draggable-flatlist';
+import { getBottomSpace } from 'react-native-iphone-x-helper';
 import LinearGradient from 'react-native-linear-gradient';
 import { CrossIcon } from '@woap/components/Icons/CrossIcon';
 import styled from '@woap/utils/styled-components';
@@ -54,6 +55,9 @@ export const TrainingSetsConfiguration: FunctionComponent = () => {
           }} // TODO: remove and find find a way for scrollview to be aware of keyboard
         />
       </Container>
+      <FinalizeButton>
+        <FinalizeTitle>Finalize</FinalizeTitle>
+      </FinalizeButton>
     </Background>
   );
 };
@@ -85,4 +89,17 @@ const Title = styled.Text({
   ...theme.fonts.h1,
   fontWeight: 'bold',
   color: theme.colors.white,
+});
+
+const FinalizeButton = styled.TouchableOpacity({
+  paddingTop: theme.margin.x2,
+  paddingBottom: getBottomSpace() + theme.margin.x2,
+  backgroundColor: theme.colors.black,
+});
+
+const FinalizeTitle = styled.Text({
+  ...theme.fonts.h3,
+  color: theme.colors.white,
+  fontWeight: 'bold',
+  textAlign: 'center',
 });
