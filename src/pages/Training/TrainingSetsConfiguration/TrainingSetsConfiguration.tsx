@@ -1,15 +1,15 @@
 import React, { FunctionComponent, useState } from 'react';
-import { TouchableOpacity } from 'react-native';
 import DraggableFlatList from 'react-native-draggable-flatlist';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 import LinearGradient from 'react-native-linear-gradient';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { CrossIcon } from '@woap/components/Icons/CrossIcon';
 import styled from '@woap/utils/styled-components';
 import { colors } from '@woap/styles/colors';
 import { theme } from '@woap/styles/theme';
 import { TrainingNavigatorParamList } from '@woap/navigation/TrainingNavigator';
 import { Routes } from '@woap/navigation/routes';
+
+import { Header } from '../components/Header';
 
 import { SetListItem } from './components/SetListItem';
 
@@ -50,12 +50,9 @@ export const TrainingSetsConfiguration: FunctionComponent<Props> = ({ navigation
   return (
     <Background>
       <Container>
-        <Header>
-          <Title>Training</Title>
-          <TouchableOpacity onPress={() => {}}>
-            <CrossIcon />
-          </TouchableOpacity>
-        </Header>
+        <HeaderContainer>
+          <Header title="Training" />
+        </HeaderContainer>
         <DraggableFlatList
           data={sets}
           renderItem={renderExercise}
@@ -87,21 +84,8 @@ const Container = styled.SafeAreaView({
   flex: 1,
 });
 
-const Header = styled.View({
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  borderBottomWidth: 1,
-  borderBottomColor: theme.colors.transparentWhiteScale[60],
-  paddingTop: theme.margin.x1,
-  paddingBottom: theme.margin.x2,
-  marginHorizontal: theme.margin.x2,
-});
-
-const Title = styled.Text({
-  ...theme.fonts.h1,
-  fontWeight: 'bold',
-  color: theme.colors.white,
+const HeaderContainer = styled.View({
+  paddingHorizontal: theme.margin.x2,
 });
 
 const FinalizeButton = styled.TouchableOpacity({

@@ -1,15 +1,16 @@
 import React, { FunctionComponent, useState } from 'react';
-import { FlatList, TouchableOpacity } from 'react-native';
-import styled from '@woap/utils/styled-components';
+import { FlatList } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import { StackNavigationProp } from '@react-navigation/stack';
+import styled from '@woap/utils/styled-components';
 import { colors } from '@woap/styles/colors';
 import { Routes } from '@woap/navigation/routes';
 import { RouteProp } from '@react-navigation/native';
 import { TrainingNavigatorParamList } from '@woap/navigation/TrainingNavigator';
-import { StackNavigationProp } from '@react-navigation/stack';
 import { SearchBar } from '@woap/components/SearchBar';
 import { Spacer } from '@woap/components/Spacer';
-import { CrossIcon } from '@woap/components/Icons/CrossIcon';
+
+import { Header } from '../components/Header';
 
 import { ExerciseItem } from './components/ExerciseItem';
 import { NewExerciseButton } from './components/NewExerciseButton';
@@ -42,7 +43,6 @@ const EXERCISES = [
 ];
 
 export const TrainingCreation: FunctionComponent<Props> = ({ navigation }) => {
-  const closeModal = () => navigation.goBack();
   const [displayAddExerciseModal, setDisplayAddExerciseModal] = useState(false);
   const openAddExerciseModal = () => {
     setDisplayAddExerciseModal(true);
@@ -58,12 +58,7 @@ export const TrainingCreation: FunctionComponent<Props> = ({ navigation }) => {
   return (
     <Background>
       <Container>
-        <Header>
-          <Title>My new training</Title>
-          <TouchableOpacity onPress={closeModal}>
-            <CrossIcon />
-          </TouchableOpacity>
-        </Header>
+        <Header title="My new training" />
         <Spacer height={2} />
         <SearchBar placeholder="Crunch, Squat..." />
         <Spacer height={3} />
@@ -104,22 +99,6 @@ const Background = styled(LinearGradient).attrs({
 const Container = styled.SafeAreaView(({ theme }) => ({
   margin: theme.margin.x2,
   flex: 1,
-}));
-
-const Header = styled.View(({ theme }) => ({
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  borderBottomWidth: 1,
-  borderBottomColor: theme.colors.transparentWhiteScale[60],
-  paddingTop: theme.margin.x1,
-  paddingBottom: theme.margin.x2,
-}));
-
-const Title = styled.Text(({ theme }) => ({
-  ...theme.fonts.h1,
-  fontWeight: 'bold',
-  color: theme.colors.white,
 }));
 
 const SubTitle = styled.Text(({ theme }) => ({
