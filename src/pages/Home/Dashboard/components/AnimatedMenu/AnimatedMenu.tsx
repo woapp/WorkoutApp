@@ -6,6 +6,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import styled from '@woap/utils/styled-components';
 import { colors } from '@woap/styles/colors';
 import { BlackVeil } from '@woap/pages/Home/Dashboard/components/BlackVeil';
+import { PlusIcon } from '@woap/components/Icons/PlusIcon';
 
 import { ITEM_HEIGHT, MenuItem } from '../MenuItem/MenuItem';
 
@@ -59,7 +60,7 @@ export const AnimatedMenu: FunctionComponent<Props> = ({ items }) => {
           }}
         >
           <IconContainer style={{ transform: [{ rotate }] }}>
-            <Icon>+</Icon>
+            <PlusIcon />
           </IconContainer>
         </TouchableWithoutFeedback>
       </Container>
@@ -86,11 +87,4 @@ const IconContainer = styled(AnimatedLinearGradient).attrs({
   alignItems: 'center',
   justifyContent: 'center',
   borderRadius: theme.iconSize / 2,
-}));
-
-const Icon = styled(Animated.Text)(({ theme }) => ({
-  color: theme.colors.white,
-  fontSize: 40,
-  lineHeight: 40,
-  textAlign: 'center',
 }));
