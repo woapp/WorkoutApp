@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState } from 'react';
 import { TouchableWithoutFeedback, StyleSheet } from 'react-native';
-import Animated from 'react-native-reanimated';
+import Animated, { interpolate } from 'react-native-reanimated';
 import { useTransition, bInterpolate } from 'react-native-redash';
 import LinearGradient from 'react-native-linear-gradient';
 import styled from '@woap/utils/styled-components';
@@ -25,6 +25,7 @@ interface Props {
 export const AnimatedMenu: FunctionComponent<Props> = ({ items }) => {
   const [isOpen, setIsOpen] = useState(false);
   const transition = useTransition(isOpen, { duration: 300 });
+  const opacity = interpolate(transition, { inputRange: [0, 0.33, 1], outputRange: [0, 0, 1] });
   const rotate = bInterpolate(transition, 0, Math.PI / 4);
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -37,14 +38,14 @@ export const AnimatedMenu: FunctionComponent<Props> = ({ items }) => {
         {items.map((item, index) => {
           const translateY = bInterpolate(
             transition,
-            (items.length - index) * (ITEM_HEIGHT + ITEM_MARGIN_BOTTOM),
+            (items.length - index + 1) * (ITEM_HEIGHT + ITEM_MARGIN_BOTTOM),
             0
           );
 
           return (
             <ItemContainer
               style={{
-                opacity: transition,
+                opacity,
                 transform: [{ translateY }],
               }}
               key={index}
