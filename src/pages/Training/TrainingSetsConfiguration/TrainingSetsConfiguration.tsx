@@ -3,12 +3,24 @@ import { TouchableOpacity } from 'react-native';
 import DraggableFlatList from 'react-native-draggable-flatlist';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
 import LinearGradient from 'react-native-linear-gradient';
+import { StackNavigationProp } from '@react-navigation/stack';
 import { CrossIcon } from '@woap/components/Icons/CrossIcon';
 import styled from '@woap/utils/styled-components';
 import { colors } from '@woap/styles/colors';
 import { theme } from '@woap/styles/theme';
+import { TrainingNavigatorParamList } from '@woap/navigation/TrainingNavigator';
+import { Routes } from '@woap/navigation/routes';
 
 import { SetListItem } from './components/SetListItem';
+
+type TrainingCreationScreenNavigationProp = StackNavigationProp<
+  TrainingNavigatorParamList,
+  Routes.TrainingSetsConfiguration
+>;
+
+type Props = {
+  navigation: TrainingCreationScreenNavigationProp;
+};
 
 const SETS = [
   { title: 'CRUNCH', weight: 25, reps: 10, id: '1', selected: false },
@@ -16,7 +28,8 @@ const SETS = [
   { title: 'BENCH', weight: 25, reps: 10, id: '3', selected: false },
 ];
 
-export const TrainingSetsConfiguration: FunctionComponent = () => {
+export const TrainingSetsConfiguration: FunctionComponent<Props> = ({ navigation }) => {
+  const goToTrainingPageScreen = () => navigation.navigate(Routes.TrainingName);
   const [sets, setSets] = useState(SETS);
   const onReorderSets = ({ data }) => {
     setSets(data);
@@ -55,7 +68,7 @@ export const TrainingSetsConfiguration: FunctionComponent = () => {
           }} // TODO: remove and find find a way for scrollview to be aware of keyboard
         />
       </Container>
-      <FinalizeButton>
+      <FinalizeButton onPress={goToTrainingPageScreen}>
         <FinalizeTitle>Finalize</FinalizeTitle>
       </FinalizeButton>
     </Background>

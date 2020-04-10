@@ -20,4 +20,5 @@ export enum Routes {
   TrainingNavigator = 'TrainingNavigator',
   TrainingCreation = 'TrainingCreation',
   TrainingSetsConfiguration = 'TrainingSetsConfiguration',
+  TrainingName = 'TrainingName',
 }
