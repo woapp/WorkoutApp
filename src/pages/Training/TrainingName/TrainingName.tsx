@@ -4,6 +4,7 @@ import styled from '@woap/utils/styled-components';
 import { FormField } from '@woap/components/FormField';
 import { Spacer } from '@woap/components/Spacer';
 import { colors } from '@woap/styles/colors';
+import { NextButton } from '@woap/components/NextButton';
 
 import { Header } from '../components/Header';
 
@@ -24,7 +25,9 @@ export const TrainingName: FunctionComponent<Props> = () => {
           onChangeText={setName}
           placeholder="Full body, matinal routine..."
           placeholderTextColor={colors.transparentWhiteScale[60]}
+          selectionColor={colors.white}
         />
+        <NextButton onPress={() => {}} disabled={name.length === 0} />
       </Container>
     </Background>
   );
