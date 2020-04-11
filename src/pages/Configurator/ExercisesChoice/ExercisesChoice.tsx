@@ -7,8 +7,6 @@ import { ActionButton } from '@woap/components/ActionButton';
 import { useStore } from '@woap/utils/hooks/useStore';
 import styled from '@woap/utils/styled-components';
 import { Routes } from '@woap/navigation/routes';
-import { ExerciseType } from '@woap/mobx/exercise';
-import { createExercise } from '@woap/mobx/exercise/constructor';
 import { WorkoutType } from '@woap/mobx/workout';
 import { colors } from '@woap/styles/colors';
 import { ExercicesNavigatorParamList } from '@woap/navigation/ExercisesNavigator';
@@ -31,7 +29,7 @@ type Props = {
 };
 
 export const ExercisesChoice: FunctionComponent<Props> = observer(({ navigation, route }) => {
-  const { exercises, addExercise } = useStore();
+  const { exercises } = useStore();
   const workout: WorkoutType = route.params.workout;
   console.log('workoutExercises', workout.exercises); // TODO: used to force watch on workout.exercises, find better way
   console.log('exercises', exercises); // TODO: used to force watch on workout.exercises, find better way
@@ -58,18 +56,7 @@ export const ExercisesChoice: FunctionComponent<Props> = observer(({ navigation,
     );
   };
 
-  const validateExerciseCreation = (newExercise: ExerciseType) => {
-    addExercise(newExercise);
-    workout.addExercise(newExercise);
-  };
-
-  const onCreateExercise = () => {
-    const newExercise = createExercise();
-    navigation.navigate(Routes.NewExercise, {
-      exercise: newExercise,
-      validateExerciseCreation,
-    });
-  };
+  const onCreateExercise = () => {};
 
   return (
     <Container>

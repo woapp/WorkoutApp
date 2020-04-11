@@ -4,7 +4,6 @@ export enum Routes {
   MyWorkouts = 'MyWorkouts',
   WorkoutEditor = 'WorkoutEditor',
   ExercisesChoice = 'ExercisesChoice',
-  NewExercise = 'NewExercise',
   ExercisesNavigator = 'ExercisesNavigator',
   WorkoutsNavigator = 'WorkoutsNavigator',
   HomeNavigator = 'HomeNavigator',
