@@ -7,8 +7,9 @@ import { colors } from '@woap/styles/colors';
 
 import { Routes } from './routes';
 import { TabNavigator } from './TabNavigator';
-import { ExercisesNavigator } from './ExercisesNavigator';
+import { ExerciseNavigator } from './ExerciseNavigator';
 import { TrainingNavigator } from './TrainingNavigator';
+import { ExercisesNavigator } from './ExercisesNavigator';
 
 export type RootNavigatorParamList = {
   [Routes.TabNavigator]: {
@@ -23,6 +24,7 @@ export type RootNavigatorParamList = {
   };
   [Routes.OngoingWorkout]: undefined;
   [Routes.TrainingNavigator]: undefined;
+  [Routes.ExerciseNavigator]: undefined;
 };
 
 const Stack = createStackNavigator<RootNavigatorParamList>();
@@ -56,6 +58,14 @@ const RootNavigator = () => (
     <Stack.Screen
       name={Routes.TrainingNavigator}
       component={TrainingNavigator}
+      options={{
+        headerShown: false,
+      }}
+    />
+
+    <Stack.Screen
+      name={Routes.ExerciseNavigator}
+      component={ExerciseNavigator}
       options={{
         headerShown: false,
       }}

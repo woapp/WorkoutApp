@@ -9,7 +9,6 @@ import styled from '@woap/utils/styled-components';
 import { AnimatedMenu } from '@woap/pages/Home/Dashboard/components/AnimatedMenu';
 import images from '@woap/assets/images';
 import { Spacer } from '@woap/components/Spacer';
-import { Alert } from 'react-native';
 import { RootNavigatorParamList } from '@woap/navigation';
 import { TabNavigatorParamList } from '@woap/navigation/TabNavigator';
 import { WhistleIcon } from '@woap/components/Icons/WhistleIcon';
@@ -32,6 +31,7 @@ const ARROW_WIDTH = 120;
 
 export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => {
   const goToTrainingNavigator = () => navigation.navigate(Routes.TrainingNavigator);
+  const goToExerciceNavigator = () => navigation.navigate(Routes.ExerciseNavigator);
 
   return (
     <Container>
@@ -55,7 +55,7 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
             {
               title: 'NEW\nEXERCISE',
               Icon: DumbbellIcon,
-              onPress: () => Alert.alert('exercise'),
+              onPress: goToExerciceNavigator,
             },
           ]}
         />
