@@ -1,4 +1,7 @@
 import React, { FunctionComponent, useState } from 'react';
+import { observer } from 'mobx-react-lite';
+import { CompositeNavigationProp, RouteProp } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 import { Background } from '@woap/components/Background';
 import { Header } from '@woap/components/Header';
 import { Spacer } from '@woap/components/Spacer';
@@ -6,11 +9,11 @@ import styled from '@woap/utils/styled-components';
 import { MuscleGroup } from '@woap/mobx/types';
 import { MuscleGroupToggle } from '@woap/pages/Exercise/ExerciseMuscleGroups/components/MuscleGroupToggle';
 import { NextButton } from '@woap/components/NextButton';
-import { CompositeNavigationProp, RouteProp } from '@react-navigation/native';
-import { StackNavigationProp } from '@react-navigation/stack';
 import { RootNavigatorParamList } from '@woap/navigation';
 import { Routes } from '@woap/navigation/routes';
 import { ExerciseNavigatorParamList } from '@woap/navigation/ExerciseNavigator';
+import { useStore } from '@woap/utils/hooks/useStore';
+import { createExercise } from '@woap/mobx/exercise/constructor';
 
 type ExerciseMuscleGroupsScreenNavigationProp = CompositeNavigationProp<
   StackNavigationProp<RootNavigatorParamList, Routes.ExerciseNavigator>,
@@ -27,13 +30,27 @@ interface Props {
   route: ExerciseMuscleGroupsScreenRouteProp;
 }
 
-export const ExerciseMuscleGroups: FunctionComponent<Props> = ({ navigation, route }) => {
-  const goToDashboardScreen = () => navigation.navigate(Routes.TabNavigator);
+export const ExerciseMuscleGroups: FunctionComponent<Props> = observer(({ navigation, route }) => {
+  const { addExercise } = useStore();
   const exerciseName = route.params.exerciseName;
-  console.log(exerciseName);
+
   const [muscleGroups, setMuscleGroups] = useState(
     Object.values(MuscleGroup).map(muscleGroup => ({ name: muscleGroup, selected: false }))
   );
+  const goToDashboardScreen = () => navigation.navigate(Routes.TabNavigator);
+
+  const createNewExercise = () => {
+    const exercise = createExercise();
+    exercise.setName(exerciseName);
+    exercise.setMuscleGroups(muscleGroups.map(muscleGroup => muscleGroup.name));
+    addExercise(exercise);
+  };
+
+  const onNextButtonPressed = () => {
+    createNewExercise();
+    goToDashboardScreen();
+  };
+
   const onMuscleGroupPressed = name => () => {
     setMuscleGroups(previousMuscleGroups =>
       previousMuscleGroups.map(muscleGroup => ({
@@ -64,13 +81,13 @@ export const ExerciseMuscleGroups: FunctionComponent<Props> = ({ navigation, rou
           })}
         </MuscleGroupsRow>
         <NextButton
-          onPress={goToDashboardScreen}
+          onPress={onNextButtonPressed}
           disabled={muscleGroups.filter(muscleGroup => muscleGroup.selected).length === 0}
         />
       </Container>
     </Background>
   );
-};
+});
 
 const Container = styled.SafeAreaView(({ theme }) => ({
   margin: theme.margin.x2,

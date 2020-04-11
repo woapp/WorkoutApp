@@ -13,6 +13,7 @@ import { RootNavigatorParamList } from '@woap/navigation';
 import { TabNavigatorParamList } from '@woap/navigation/TabNavigator';
 import { WhistleIcon } from '@woap/components/Icons/WhistleIcon';
 import { DumbbellIcon } from '@woap/components/Icons/DumbbellIcon';
+import { useStore } from '@woap/utils/hooks/useStore';
 
 type DashboardScreenNavigationProp = CompositeNavigationProp<
   StackNavigationProp<RootNavigatorParamList, Routes.TabNavigator>,
@@ -30,6 +31,8 @@ const ARROW_HEIGHT = 140;
 const ARROW_WIDTH = 120;
 
 export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => {
+  const { exercises } = useStore();
+  console.log(exercises);
   const goToTrainingNavigator = () => navigation.navigate(Routes.TrainingNavigator);
   const goToExerciceNavigator = () => navigation.navigate(Routes.ExerciseNavigator);
 
