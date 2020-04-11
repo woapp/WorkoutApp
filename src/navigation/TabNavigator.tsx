@@ -2,7 +2,9 @@ import React from 'react';
 import { SafeAreaView } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { colors } from '@woap/styles/colors';
-import { Icon } from '@woap/components/Icon';
+import { HistoryIcon } from '@woap/components/Icons/HistoryIcon';
+import { HomeIcon } from '@woap/components/Icons/HomeIcon';
+import { ProfileIcon } from '@woap/components/Icons/ProfileIcon';
 
 import { Routes } from './routes';
 import { HistoryNavigator } from './HistoryNavigator';
@@ -27,8 +29,6 @@ export const TabNavigator = () => (
       tabBarOptions={{
         showIcon: true,
         showLabel: false,
-        activeTintColor: colors.green,
-        inactiveTintColor: colors.greyScale[60],
         iconStyle: { height: ICON_SIZE, width: ICON_SIZE },
         indicatorStyle: { backgroundColor: colors.green },
         style: {
@@ -40,21 +40,21 @@ export const TabNavigator = () => (
         name={Routes.HistoryNavigator}
         component={HistoryNavigator}
         options={{
-          tabBarIcon: ({ color }) => <Icon name="history" color={color} />,
+          tabBarIcon: ({ focused }) => <HistoryIcon focused={focused} />,
         }}
       />
       <Tab.Screen
         name={Routes.HomeNavigator}
         component={HomeNavigator}
         options={{
-          tabBarIcon: ({ color }) => <Icon name="home" color={color} />,
+          tabBarIcon: ({ focused }) => <HomeIcon focused={focused} />,
         }}
       />
       <Tab.Screen
         name={Routes.ProfileNavigator}
         component={ProfileNavigator}
         options={{
-          tabBarIcon: ({ color }) => <Icon name="profile" color={color} />,
+          tabBarIcon: ({ focused }) => <ProfileIcon focused={focused} />,
         }}
       />
     </Tab.Navigator>

@@ -25,8 +25,8 @@ type Props = {
   navigation: MyProfileScreenNavigationProp;
 };
 
-export const MyProfile: FunctionComponent<Props> = ({ navigation }) => {
-  const { workouts, user, exercises, history, logout } = useStore();
+export const MyProfile: FunctionComponent<Props> = () => {
+  const { workouts, user, exercises, history } = useStore();
 
   const onSaveData = async () => {
     if (user) {
@@ -41,11 +41,6 @@ export const MyProfile: FunctionComponent<Props> = ({ navigation }) => {
     }
   };
 
-  const onLogout = () => {
-    logout();
-    navigation.navigate(Routes.Login);
-  };
-
   return (
     <Container>
       <View>
@@ -54,7 +49,6 @@ export const MyProfile: FunctionComponent<Props> = ({ navigation }) => {
       </View>
       <View>
         <PrimaryButton title="Sauvegarder mes données" onPress={onSaveData} />
-        <LogoutButton title="Déconnexion" onPress={onLogout} />
       </View>
     </Container>
   );
@@ -64,8 +58,4 @@ const Container = styled.View(({ theme }) => ({
   flex: 1,
   padding: theme.margin.x2,
   justifyContent: 'space-between',
-}));
-
-const LogoutButton = styled(PrimaryButton)(({ theme }) => ({
-  marginTop: theme.margin.x2,
 }));

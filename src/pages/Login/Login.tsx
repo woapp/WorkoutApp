@@ -1,31 +1,19 @@
 import React, { FunctionComponent } from 'react';
-import { StyleSheet } from 'react-native';
 import { ActivityIndicator } from 'react-native-paper';
 import { observer } from 'mobx-react-lite';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { PrimaryButton } from '@woap/components/PrimaryButton';
-import { Routes } from '@woap/navigation/routes';
 import { Spacer } from '@woap/components/Spacer';
 import styled from '@woap/utils/styled-components';
-import { RootNavigatorParamList } from '@woap/navigation';
 import { FormField } from '@woap/components/FormField';
-import images from '@woap/assets/images';
 import { Link } from '@woap/components/Link';
 import { Card } from '@woap/components/Card/Card';
 import { colors } from '@woap/styles/colors';
+import { Button } from '@woap/components/Button';
 
 import { useCardAnimation, useLogin } from './Login.hooks';
 
-type LoginScreenNavigationProp = StackNavigationProp<RootNavigatorParamList, Routes.Login>;
-
-type Props = {
-  navigation: LoginScreenNavigationProp;
-};
-
-const LOGO_SIZE = 100;
-
-export const Login: FunctionComponent<Props> = observer(({ navigation }) => {
-  const navigateToTabNavigator = () => navigation.navigate(Routes.TabNavigator);
+export const Login: FunctionComponent = observer(() => {
+  const navigateToTabNavigator = () => {};
+  const navigateToSignupScreen = () => {};
   const {
     onSubmitLogin,
     isLoginLoading,
@@ -39,9 +27,6 @@ export const Login: FunctionComponent<Props> = observer(({ navigation }) => {
 
   return (
     <Container>
-      <LogoContainer>
-        <Logo source={images.logo} />
-      </LogoContainer>
       {isLoading ? (
         <ActivityIndicator />
       ) : (
@@ -70,35 +55,24 @@ export const Login: FunctionComponent<Props> = observer(({ navigation }) => {
             selectionColor={colors.white}
           />
           <Spacer height={2} />
-          <PrimaryButton title="Se connecter" onPress={onSubmitLogin} isLoading={isLoginLoading} />
+          <Button title="Se connecter" onPress={onSubmitLogin} isLoading={isLoginLoading} />
           <Spacer height={2} />
-          <Link onPress={() => {}} label="Nouveau compte" />
+          <Link onPress={navigateToSignupScreen} label="Nouveau compte" />
         </Card>
       )}
     </Container>
   );
 });
 
-const Container = styled.View(props => ({
+const Container = styled.View(({ theme }) => ({
   flex: 1,
   alignItems: 'center',
-  backgroundColor: props.theme.colors.greyScale[70],
+  backgroundColor: theme.colors.background.black,
 }));
 
-const LogoContainer = styled.View(props => ({
-  ...StyleSheet.absoluteFillObject,
-  marginTop: props.theme.margin.x10,
-  alignItems: 'center',
-}));
-
-const Logo = styled.Image({
-  width: LOGO_SIZE,
-  height: LOGO_SIZE,
-});
-
-const Title = styled.Text(props => ({
-  ...props.theme.fonts.h1,
+const Title = styled.Text(({ theme }) => ({
+  ...theme.fonts.h1,
   textAlign: 'center',
   fontWeight: 'bold',
-  color: props.theme.colors.white,
+  color: theme.colors.white,
 }));

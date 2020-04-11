@@ -1,14 +1,27 @@
 import React, { FunctionComponent } from 'react';
 import { observer } from 'mobx-react-lite';
+import { CompositeNavigationProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { MaterialTopTabNavigationProp } from '@react-navigation/material-top-tabs';
 import { Routes } from '@woap/navigation/routes';
 import { HomeNavigatorParamList } from '@woap/navigation/HomeNavigator';
 import styled from '@woap/utils/styled-components';
 import { AnimatedMenu } from '@woap/pages/Home/Dashboard/components/AnimatedMenu';
 import images from '@woap/assets/images';
 import { Spacer } from '@woap/components/Spacer';
+import { RootNavigatorParamList } from '@woap/navigation';
+import { TabNavigatorParamList } from '@woap/navigation/TabNavigator';
+import { WhistleIcon } from '@woap/components/Icons/WhistleIcon';
+import { DumbbellIcon } from '@woap/components/Icons/DumbbellIcon';
+import { useStore } from '@woap/utils/hooks/useStore';
 
-type DashboardScreenNavigationProp = StackNavigationProp<HomeNavigatorParamList, Routes.Dashboard>;
+type DashboardScreenNavigationProp = CompositeNavigationProp<
+  StackNavigationProp<RootNavigatorParamList, Routes.TabNavigator>,
+  CompositeNavigationProp<
+    MaterialTopTabNavigationProp<TabNavigatorParamList, Routes.ProfileNavigator>,
+    StackNavigationProp<HomeNavigatorParamList, Routes.Dashboard>
+  >
+>;
 
 type Props = {
   navigation: DashboardScreenNavigationProp;
@@ -17,7 +30,12 @@ type Props = {
 const ARROW_HEIGHT = 140;
 const ARROW_WIDTH = 120;
 
-export const Dashboard: FunctionComponent<Props> = observer(() => {
+export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => {
+  const { exercises } = useStore();
+  console.log(exercises);
+  const goToTrainingNavigator = () => navigation.navigate(Routes.TrainingNavigator);
+  const goToExerciceNavigator = () => navigation.navigate(Routes.ExerciseNavigator);
+
   return (
     <Container>
       <EmptyContainer>
@@ -32,8 +50,16 @@ export const Dashboard: FunctionComponent<Props> = observer(() => {
       <MenuContainer>
         <AnimatedMenu
           items={[
-            { title: 'NEW\nTRAINING', iconName: 'whistle' },
-            { title: 'NEW\nEXERCISE', iconName: 'dumbbell' },
+            {
+              title: 'NEW\nTRAINING',
+              Icon: WhistleIcon,
+              onPress: goToTrainingNavigator,
+            },
+            {
+              title: 'NEW\nEXERCISE',
+              Icon: DumbbellIcon,
+              onPress: goToExerciceNavigator,
+            },
           ]}
         />
       </MenuContainer>

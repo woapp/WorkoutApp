@@ -11,6 +11,9 @@ export const fonts = {
   h4: {
     fontSize: 14,
   },
+  h5: {
+    fontSize: 12,
+  },
   link: {
     fontSize: 14,
   },

@@ -22,6 +22,7 @@ export const theme = {
   border: {
     radius: {
       s: 6,
+      m: 16,
       l: 24,
     },
     width: {

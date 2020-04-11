@@ -1,30 +1,26 @@
 import React, { FunctionComponent } from 'react';
 import styled from '@woap/utils/styled-components';
-import { IconName } from '@woap/styles/icons';
 import { theme } from '@woap/styles/theme';
-import { colors } from '@woap/styles/colors';
-
-import { Icon } from '../../../../../components/Icon';
-
 export const ITEM_HEIGHT = 48;
 
 interface Props {
   title: string;
-  iconName: IconName;
+  Icon: FunctionComponent;
+  onPress: () => void;
 }
 
-export const MenuItem: FunctionComponent<Props> = ({ title, iconName }) => {
+export const MenuItem: FunctionComponent<Props> = ({ title, Icon, onPress }) => {
   return (
-    <ItemContainer>
+    <ItemContainer onPress={onPress}>
       <ItemTitle>{title}</ItemTitle>
       <IconContainer>
-        <Icon name={iconName} size={theme.iconSize} color={colors.background.black} />
+        <Icon />
       </IconContainer>
     </ItemContainer>
   );
 };
 
-const ItemContainer = styled.View({
+const ItemContainer = styled.TouchableOpacity({
   height: ITEM_HEIGHT,
   flexDirection: 'row',
   alignItems: 'center',
@@ -33,6 +29,8 @@ const ItemContainer = styled.View({
 const IconContainer = styled.View({
   width: theme.iconSize,
   height: theme.iconSize,
+  alignItems: 'center',
+  justifyContent: 'center',
   backgroundColor: theme.colors.ecru,
   borderRadius: theme.iconSize / 2,
 });
