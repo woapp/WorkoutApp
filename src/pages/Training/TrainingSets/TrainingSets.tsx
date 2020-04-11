@@ -11,13 +11,13 @@ import { Header } from '@woap/components/Header';
 
 import { SetListItem } from './components/SetListItem';
 
-type TrainingSetsConfigurationScreenNavigationProp = StackNavigationProp<
+type TrainingSetsScreenNavigationProp = StackNavigationProp<
   TrainingNavigatorParamList,
-  Routes.TrainingSetsConfiguration
+  Routes.TrainingSets
 >;
 
 type Props = {
-  navigation: TrainingSetsConfigurationScreenNavigationProp;
+  navigation: TrainingSetsScreenNavigationProp;
 };
 
 const SETS = [
@@ -26,7 +26,7 @@ const SETS = [
   { title: 'BENCH', weight: 25, reps: 10, id: '3', selected: false },
 ];
 
-export const TrainingSetsConfiguration: FunctionComponent<Props> = ({ navigation }) => {
+export const TrainingSets: FunctionComponent<Props> = ({ navigation }) => {
   const goToTrainingPageScreen = () => navigation.navigate(Routes.TrainingName);
   const [sets, setSets] = useState(SETS);
   const onReorderSets = ({ data }) => {

@@ -48,9 +48,9 @@ export const TrainingCreation: FunctionComponent<Props> = ({ navigation }) => {
   const closeAddExerciseModal = () => {
     setDisplayAddExerciseModal(false);
   };
-  const navigateToTrainingSetsConfigurationScreen = () => {
+  const navigateToTrainingSetsScreen = () => {
     closeAddExerciseModal();
-    setTimeout(() => navigation.navigate(Routes.TrainingSetsConfiguration), 500);
+    setTimeout(() => navigation.navigate(Routes.TrainingSets), 500);
   };
 
   return (
@@ -81,7 +81,7 @@ export const TrainingCreation: FunctionComponent<Props> = ({ navigation }) => {
       <AddExerciseModal
         isVisible={displayAddExerciseModal}
         onPressClose={closeAddExerciseModal}
-        onPressAdd={navigateToTrainingSetsConfigurationScreen}
+        onPressAdd={navigateToTrainingSetsScreen}
       />
     </Background>
   );
