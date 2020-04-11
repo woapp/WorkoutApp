@@ -8,8 +8,7 @@ import { NextButton } from '@woap/components/NextButton';
 import { TrainingNavigatorParamList } from '@woap/navigation/TrainingNavigator';
 import { RootNavigatorParamList } from '@woap/navigation';
 import { Routes } from '@woap/navigation/routes';
-
-import { Header } from '../components/Header';
+import { Header } from '@woap/components/Header';
 
 import { Tag } from './components/Tag';
 

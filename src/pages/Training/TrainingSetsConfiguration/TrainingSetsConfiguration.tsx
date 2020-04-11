@@ -7,8 +7,7 @@ import { theme } from '@woap/styles/theme';
 import { TrainingNavigatorParamList } from '@woap/navigation/TrainingNavigator';
 import { Routes } from '@woap/navigation/routes';
 import { Background } from '@woap/components/Background';
-
-import { Header } from '../components/Header';
+import { Header } from '@woap/components/Header';
 
 import { SetListItem } from './components/SetListItem';
 

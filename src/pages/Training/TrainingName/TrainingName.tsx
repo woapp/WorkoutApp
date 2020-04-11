@@ -8,8 +8,7 @@ import { colors } from '@woap/styles/colors';
 import { NextButton } from '@woap/components/NextButton';
 import { Routes } from '@woap/navigation/routes';
 import { TrainingNavigatorParamList } from '@woap/navigation/TrainingNavigator';
-
-import { Header } from '../components/Header';
+import { Header } from '@woap/components/Header';
 
 type TrainingNameScreenNavigationProp = StackNavigationProp<
   TrainingNavigatorParamList,

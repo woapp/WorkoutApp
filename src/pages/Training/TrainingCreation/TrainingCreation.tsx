@@ -8,8 +8,7 @@ import { TrainingNavigatorParamList } from '@woap/navigation/TrainingNavigator';
 import { SearchBar } from '@woap/components/SearchBar';
 import { Spacer } from '@woap/components/Spacer';
 import { Background } from '@woap/components/Background';
-
-import { Header } from '../components/Header';
+import { Header } from '@woap/components/Header';
 
 import { ExerciseItem } from './components/ExerciseItem';
 import { NewExerciseButton } from './components/NewExerciseButton';
