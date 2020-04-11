@@ -70,12 +70,11 @@ export const MuscleGroupIcon: FunctionComponent<MuscleGroupIconProps> = ({
 const Container = styled.View<{ isSelected: boolean; size: number }>(props => ({
   width: props.size,
   height: props.size,
-  borderRadius: 40,
-  borderColor: props.theme.colors.greyScale[20],
-  borderWidth: 2,
+  backgroundColor: props.theme.colors.white,
+  borderRadius: props.size / 2,
+  borderWidth: props.isSelected ? 2 : 0,
   alignItems: 'center',
   justifyContent: 'center',
-  opacity: !props.isSelected ? 0.2 : undefined,
   overflow: 'hidden',
 }));
 

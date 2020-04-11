@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 import styled from '@woap/utils/styled-components';
 import { ExerciseSetsType } from '@woap/mobx/exerciseSets';
 
-import { MuscleGroupToggle } from '../MuscleGroupToggle';
+import { MuscleGroupToggle } from '../../pages/Exercise/ExerciseMuscleGroups/components/MuscleGroupToggle';
 import { FormSets } from '../FormSets';
 import { TextTitle } from '../Texts';
 

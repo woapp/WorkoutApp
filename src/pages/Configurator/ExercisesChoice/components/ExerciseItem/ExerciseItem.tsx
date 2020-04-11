@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { Checkbox } from 'react-native-paper';
 import { Alert } from 'react-native';
 import styled from '@woap/utils/styled-components';
-import { MuscleGroupToggle } from '@woap/components/MuscleGroupToggle';
+import { MuscleGroupToggle } from '@woap/pages/Exercise/ExerciseMuscleGroups/components/MuscleGroupToggle';
 import { useStore } from '@woap/utils/hooks/useStore';
 import { TextTitle } from '@woap/components/Texts';
 import { ExerciseType } from '@woap/mobx/exercise';

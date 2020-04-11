@@ -4,7 +4,7 @@ import { TouchableOpacity } from 'react-native';
 import { observer } from 'mobx-react-lite';
 import { TextTitle } from '@woap/components/Texts';
 import styled from '@woap/utils/styled-components';
-import { MuscleGroupToggle } from '@woap/components/MuscleGroupToggle';
+import { MuscleGroupToggle } from '@woap/pages/Exercise/ExerciseMuscleGroups/components/MuscleGroupToggle';
 import { WorkoutType } from '@woap/mobx/workout';
 
 interface Props {

@@ -1,9 +1,7 @@
 import React, { FunctionComponent } from 'react';
-import { TouchableOpacity } from 'react-native';
 import styled from '@woap/utils/styled-components';
 import { MuscleGroup } from '@woap/mobx/types';
-
-import { MuscleGroupIcon } from '../MuscleGroupIcon';
+import { MuscleGroupIcon } from '@woap/pages/Exercise/ExerciseMuscleGroups/components/MuscleGroupIcon';
 
 interface Props {
   title?: string;
@@ -23,16 +21,21 @@ export const MuscleGroupToggle: FunctionComponent<Props> = ({
   iconSize = 80,
 }) => {
   return (
-    <TouchableOpacity onPress={onPress} disabled={disabled}>
+    <Container onPress={onPress} disabled={disabled}>
       <MuscleGroupIcon muscleGroup={muscleGroup} isSelected={isSelected} size={iconSize} />
       {title && <MuscleGroupTitle>{title}</MuscleGroupTitle>}
-    </TouchableOpacity>
+    </Container>
   );
 };
 
-const MuscleGroupTitle = styled.Text(props => ({
-  fontSize: 15,
+const Container = styled.TouchableOpacity({
+  alignItems: 'center',
+});
+
+const MuscleGroupTitle = styled.Text(({ theme }) => ({
+  ...theme.fonts.h4,
   textAlign: 'center',
-  marginTop: props.theme.margin.x1,
-  marginBottom: props.theme.margin.x4,
+  marginTop: theme.margin.x1,
+  marginBottom: theme.margin.x4,
+  color: theme.colors.white,
 }));

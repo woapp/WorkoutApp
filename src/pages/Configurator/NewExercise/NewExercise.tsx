@@ -4,7 +4,7 @@ import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { InputTitle } from '@woap/components/InputTitle';
 import styled from '@woap/utils/styled-components';
-import { MuscleGroupToggle } from '@woap/components/MuscleGroupToggle';
+import { MuscleGroupToggle } from '@woap/pages/Exercise/ExerciseMuscleGroups/components/MuscleGroupToggle';
 import { ActionButton } from '@woap/components/ActionButton';
 import { MuscleGroup } from '@woap/mobx/types';
 import { Routes } from '@woap/navigation/routes';
