@@ -1,14 +1,12 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { OngoingWorkout } from 'old/pages/OngoingWorkout';
 import { colors } from '@woap/styles/colors';
 
 import { Routes } from './routes';
 import { TabNavigator } from './TabNavigator';
 import { ExerciseNavigator } from './ExerciseNavigator';
 import { TrainingNavigator } from './TrainingNavigator';
-import { ExercisesNavigator } from './ExercisesNavigator';
 
 export type RootNavigatorParamList = {
   [Routes.TabNavigator]: {
@@ -43,15 +41,6 @@ const RootNavigator = () => (
       name={Routes.TabNavigator}
       component={TabNavigator}
       options={{ gestureEnabled: false }}
-    />
-    <Stack.Screen name={Routes.ExercisesNavigator} component={ExercisesNavigator} />
-    <Stack.Screen
-      name={Routes.OngoingWorkout}
-      component={OngoingWorkout}
-      options={{
-        title: 'Exercices',
-        gestureEnabled: false,
-      }}
     />
 
     <Stack.Screen
