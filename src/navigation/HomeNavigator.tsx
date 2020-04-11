@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { OngoingWorkoutOverview } from '@woap/pages/Home/OngoingWorkoutOverview';
+import { OngoingWorkoutOverview } from 'old/pages/OngoingWorkoutOverview';
 import { Dashboard } from '@woap/pages/Home/Dashboard';
 
 import { Routes } from './routes';

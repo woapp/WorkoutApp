@@ -1,8 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { OngoingWorkout } from '@woap/pages/Home/OngoingWorkout';
-import { WorkoutType } from '@woap/mobx/workout';
+import { OngoingWorkout } from 'old/pages/OngoingWorkout';
 import { colors } from '@woap/styles/colors';
 
 import { Routes } from './routes';
@@ -19,7 +18,7 @@ export type RootNavigatorParamList = {
   [Routes.ExercisesNavigator]: {
     screen: Routes;
     params: {
-      workout: WorkoutType;
+      // workout: WorkoutType;
     };
   };
   [Routes.OngoingWorkout]: undefined;

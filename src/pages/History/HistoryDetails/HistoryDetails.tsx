@@ -1,6 +1,4 @@
-import React, { FunctionComponent } from 'react';
-import { WorkoutType } from '@woap/mobx/workout';
-import { WorkoutOverview } from '@woap/components/WorkoutOverview';
+import { FunctionComponent } from 'react';
 import { HistoryNavigatorParamList } from '@woap/navigation/HistoryNavigator';
 import { Routes } from '@woap/navigation/routes';
 import { RouteProp } from '@react-navigation/native';
@@ -11,8 +9,6 @@ type Props = {
   route: HistoryDetailsScreenRouteProp;
 };
 
-export const HistoryDetails: FunctionComponent<Props> = ({ route }) => {
-  const workout: WorkoutType = route.params.workout;
-
-  return <WorkoutOverview workout={workout} />;
+export const HistoryDetails: FunctionComponent<Props> = () => {
+  return null;
 };

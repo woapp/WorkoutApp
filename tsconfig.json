@@ -18,7 +18,7 @@
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "jsx": "react",
+    "jsx": "react-native",
     "moduleResolution": "node",
     "noEmit": true,
     "resolveJsonModule": true,
@@ -35,6 +35,8 @@
     "jest.config.js",
     "rn-cli.config.js",
     "src/**/*.test.ts",
-    "src/**/*.test.tsx"
+    "src/**/*.test.tsx",
+    "old/**/*.ts",
+    "old/**/*.tsx"
   ]
 }

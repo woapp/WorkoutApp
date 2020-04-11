@@ -1,24 +1,19 @@
-import { FlatList } from 'react-native';
 import React, { FunctionComponent } from 'react';
 import styled from '@woap/utils/styled-components';
 import { TextSubtitle, TextTitle } from '@woap/components/Texts';
-import { WorkoutType } from '@woap/mobx/workout';
 import { Spacer } from '@woap/components/Spacer';
-import { ExerciseSetsType } from '@woap/mobx/exerciseSets';
-
-import { ExerciseItem } from './components/ExerciseItem';
 
 interface Props {
-  workout: WorkoutType;
+  // workout: WorkoutType;
 }
 
-export const WorkoutOverview: FunctionComponent<Props> = ({ workout }) => (
+export const WorkoutOverview: FunctionComponent<Props> = () => (
   <Container>
-    <Title>{workout.name}</Title>
+    <Title>Workout name</Title>
     <Spacer height={2} />
     <Subtitle>Exercices</Subtitle>
     <Spacer height={2} />
-    <FlatList
+    {/* <FlatList
       data={workout.exercises.toJS()}
       renderItem={({ item, index }: { item: ExerciseSetsType; index: number }) => (
         <ExerciseItem
@@ -28,7 +23,7 @@ export const WorkoutOverview: FunctionComponent<Props> = ({ workout }) => (
           exerciseSets={item}
         />
       )}
-    />
+    /> */}
   </Container>
 );
 

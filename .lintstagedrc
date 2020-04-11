@@ -5,7 +5,4 @@
   "src/**/*.+(js|ts|tsx)": [
     "eslint --fix --max-warnings=0",
   ],
-  "src/**/*.+(ts|tsx)": [
-    "yarn ts:check --build tsconfig.json",
-  ],
 }

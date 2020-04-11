@@ -12,7 +12,6 @@ import { NextButton } from '@woap/components/NextButton';
 import { RootNavigatorParamList } from '@woap/navigation';
 import { Routes } from '@woap/navigation/routes';
 import { ExerciseNavigatorParamList } from '@woap/navigation/ExerciseNavigator';
-import { useStore } from '@woap/utils/hooks/useStore';
 import { createExercise } from '@woap/mobx/exercise/constructor';
 
 type ExerciseMuscleGroupsScreenNavigationProp = CompositeNavigationProp<
@@ -31,7 +30,7 @@ interface Props {
 }
 
 export const ExerciseMuscleGroups: FunctionComponent<Props> = observer(({ navigation, route }) => {
-  const { addExercise } = useStore();
+  // const { addExercise } = useStore();
   const exerciseName = route.params.exerciseName;
 
   const [muscleGroups, setMuscleGroups] = useState(
@@ -43,7 +42,7 @@ export const ExerciseMuscleGroups: FunctionComponent<Props> = observer(({ naviga
     const exercise = createExercise();
     exercise.setName(exerciseName);
     exercise.setMuscleGroups(muscleGroups.map(muscleGroup => muscleGroup.name));
-    addExercise(exercise);
+    // addExercise(exercise);
   };
 
   const onNextButtonPressed = () => {
