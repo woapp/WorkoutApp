@@ -19,7 +19,8 @@ type Props = {
   navigation: ExerciseNameScreenNavigationProp;
 };
 
-export const ExerciseName: FunctionComponent<Props> = () => {
+export const ExerciseName: FunctionComponent<Props> = ({ navigation }) => {
+  const goToExerciseMuscleGroupsScreen = () => navigation.navigate(Routes.ExerciseMuscleGroups);
   const [name, setName] = useState('');
 
   return (
@@ -36,7 +37,7 @@ export const ExerciseName: FunctionComponent<Props> = () => {
           placeholderTextColor={colors.transparentWhiteScale[60]}
           selectionColor={colors.white}
         />
-        <NextButton onPress={() => {}} disabled={name.length === 0} />
+        <NextButton onPress={goToExerciseMuscleGroupsScreen} disabled={name.length === 0} />
       </Container>
     </Background>
   );
