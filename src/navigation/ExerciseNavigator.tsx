@@ -7,7 +7,7 @@ import { Routes } from './routes';
 
 export type ExerciseNavigatorParamList = {
   [Routes.ExerciseName]: undefined;
-  [Routes.ExerciseMuscleGroups]: undefined;
+  [Routes.ExerciseMuscleGroups]: { exerciseName: string };
 };
 
 const Stack = createStackNavigator<ExerciseNavigatorParamList>();
