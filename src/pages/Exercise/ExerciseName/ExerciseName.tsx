@@ -20,8 +20,9 @@ type Props = {
 };
 
 export const ExerciseName: FunctionComponent<Props> = ({ navigation }) => {
-  const goToExerciseMuscleGroupsScreen = () => navigation.navigate(Routes.ExerciseMuscleGroups);
   const [name, setName] = useState('');
+  const goToExerciseMuscleGroupsScreen = () =>
+    navigation.navigate(Routes.ExerciseMuscleGroups, { exerciseName: name });
 
   return (
     <Background>
