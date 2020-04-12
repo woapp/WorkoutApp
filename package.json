@@ -68,7 +68,7 @@
     "@types/react-native-vector-icons": "6.4.5",
     "@types/react-test-renderer": "16.9.0",
     "@types/styled-components": "^4.1.19",
-    "@typescript-eslint/eslint-plugin": "^2.3.3",
+    "@typescript-eslint/eslint-plugin": "^2.27.0",
     "@typescript-eslint/parser": "^2.3.3",
     "babel-jest": "^24.9.0",
     "eslint": "^6.5.1",
@@ -84,7 +84,7 @@
     "prettier": "^1.18.2",
     "react-native-testing-library": "^1.11.1",
     "react-test-renderer": "16.9.0",
-    "typescript": "^3.6.3"
+    "typescript": "^3.8.3"
   },
   "jest": {
     "preset": "react-native",

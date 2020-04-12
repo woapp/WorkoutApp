@@ -19,6 +19,7 @@ module.exports = {
     ecmaVersion: 2018, // Allows for the parsing of modern ECMAScript features
     sourceType: 'module', // Allows for the use of imports
     project: './tsconfig.json',
+    createDefaultProgram: true, // linked to this issue https://github.com/typescript-eslint/typescript-eslint/issues/864
     ecmaFeatures: {
       jsx: true, // Allows for the parsing of JSX
       modules: true,
@@ -40,7 +41,7 @@ module.exports = {
     ],
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
-    'react-native/no-inline-styles': 'off'
+    'react-native/no-inline-styles': 'off',
   },
   settings: {
     react: {

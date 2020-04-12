@@ -16,7 +16,7 @@ export const MuscleGroupToggle: FunctionComponent<Props> = ({
   title,
   disabled,
   muscleGroup,
-  onPress = () => {},
+  onPress = () => null,
   isSelected,
   iconSize = 80,
 }) => {
