@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
+import { observer } from 'mobx-react-lite';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Background } from '@woap/components/Background';
 import styled from '@woap/utils/styled-components';
@@ -9,6 +10,7 @@ import { NextButton } from '@woap/components/NextButton';
 import { Routes } from '@woap/navigation/routes';
 import { TrainingNavigatorParamList } from '@woap/navigation/TrainingNavigator';
 import { Header } from '@woap/components/Header';
+import { useStore } from '@woap/utils/hooks/useStore';
 
 type TrainingNameScreenNavigationProp = StackNavigationProp<
   TrainingNavigatorParamList,
@@ -19,9 +21,14 @@ type Props = {
   navigation: TrainingNameScreenNavigationProp;
 };
 
-export const TrainingName: FunctionComponent<Props> = ({ navigation }) => {
-  const goToTrainingTagsScreen = () => navigation.navigate(Routes.TrainingTags);
+export const TrainingName: FunctionComponent<Props> = observer(({ navigation }) => {
+  const { newFreeWorkout } = useStore();
+  if (!newFreeWorkout) return null;
   const [name, setName] = useState('');
+  const goToTrainingTagsScreen = () => {
+    newFreeWorkout.setName(name);
+    navigation.navigate(Routes.TrainingTags);
+  };
 
   return (
     <Background>
@@ -41,7 +48,7 @@ export const TrainingName: FunctionComponent<Props> = ({ navigation }) => {
       </Container>
     </Background>
   );
-};
+});
 
 const Container = styled.SafeAreaView(({ theme }) => ({
   margin: theme.margin.x2,

@@ -6,5 +6,5 @@ export const TrainingModel = {
   name: types.optional(types.string, 'Entrainement'),
   id: types.identifier,
   isFavorite: types.optional(types.boolean, false),
-  tags: types.array(Tag),
+  tags: types.array(types.reference(Tag)),
 };

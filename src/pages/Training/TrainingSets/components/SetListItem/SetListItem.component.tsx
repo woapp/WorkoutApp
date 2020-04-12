@@ -6,17 +6,28 @@ import { CopyIcon } from '@woap/components/Icons/CopyIcon';
 import { TrashIcon } from '@woap/components/Icons/TrashIcon';
 import { EditIcon } from '@woap/components/Icons/EditIcon';
 import { Spacer } from '@woap/components/Spacer';
+import { ExerciseSetType } from '@woap/mobx/exerciseSet';
 
 interface Props {
-  set: { title: string; weight: number; reps: number; selected: boolean };
+  selected: boolean;
+  set: ExerciseSetType;
   onDrag: () => void;
   onPress: () => void;
+  onRemove: () => void;
+  onDuplicate: () => void;
 }
 
 const ICON_CONTAINER_SIZE = 32;
 
-export const SetListItem: FunctionComponent<Props> = ({ set, onDrag, onPress }) => {
-  const { title, weight, reps, selected } = set;
+export const SetListItem: FunctionComponent<Props> = ({
+  set,
+  onDrag,
+  onPress,
+  onRemove,
+  onDuplicate,
+  selected,
+}) => {
+  const { name, reps, weight } = set;
   const transition = useTimingTransition(selected, { duration: 200 });
   const translateY = bInterpolate(transition, -48, 0);
   const height = bInterpolate(transition, 0, 48);
@@ -25,7 +36,7 @@ export const SetListItem: FunctionComponent<Props> = ({ set, onDrag, onPress }) 
   return (
     <>
       <ItemContainer selected={selected} onLongPress={onDrag} onPress={onPress}>
-        <Title>{title}</Title>
+        <Title>{name}</Title>
         <FiguresContainer>
           <Data>
             <Figure>{reps}</Figure>
@@ -38,7 +49,7 @@ export const SetListItem: FunctionComponent<Props> = ({ set, onDrag, onPress }) 
         </FiguresContainer>
       </ItemContainer>
       <OptionsContainer style={{ height, transform: [{ translateY }], opacity }}>
-        <IconContainer>
+        <IconContainer onPress={onDuplicate}>
           <CopyIcon />
         </IconContainer>
         <Spacer width={2} />
@@ -46,7 +57,7 @@ export const SetListItem: FunctionComponent<Props> = ({ set, onDrag, onPress }) 
           <EditIcon />
         </IconContainer>
         <Separator />
-        <IconContainer>
+        <IconContainer onPress={onRemove}>
           <TrashIcon />
         </IconContainer>
       </OptionsContainer>

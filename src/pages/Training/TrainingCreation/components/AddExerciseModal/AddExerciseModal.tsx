@@ -7,51 +7,65 @@ import { colors } from '@woap/styles/colors';
 import LinearGradient from 'react-native-linear-gradient';
 import { Spacer } from '@woap/components/Spacer';
 import { Button } from '@woap/components/Button';
+import { ExerciseSnapshotIn } from '@woap/mobx/exercise';
+import { observer } from 'mobx-react-lite';
+import { useStore } from '@woap/utils/hooks/useStore';
+import { createExerciseSet } from '@woap/mobx/exerciseSet/constructor';
 
 interface Props {
   isVisible: boolean;
   onPressClose: () => void;
   onPressAdd: () => void;
+  exercise: ExerciseSnapshotIn;
 }
 
-export const AddExerciseModal: FunctionComponent<Props> = ({
-  isVisible,
-  onPressClose,
-  onPressAdd,
-}) => {
-  const [repetitionsValue, setRepetitionsValue] = useState('10');
-  const [kilogramsValue, setKilogramsValue] = useState('80');
-  const [setsValue, setSetsValue] = useState('4');
+export const AddExerciseModal: FunctionComponent<Props> = observer(
+  ({ isVisible, onPressClose, onPressAdd, exercise }) => {
+    const { newFreeWorkout } = useStore();
+    if (!newFreeWorkout) return null;
+    const [repetitionsValue, setRepetitionsValue] = useState('10');
+    const [kilogramsValue, setKilogramsValue] = useState('80');
+    const [setsValue, setSetsValue] = useState('4');
+    const addSetsToNewFreeWorkout = () => {
+      for (let i = 0; i < Number.parseInt(setsValue, 10); i++) {
+        const set = createExerciseSet(exercise.id);
+        set.setReps(Number.parseInt(repetitionsValue, 10));
+        set.setWeight(Number.parseFloat(kilogramsValue));
+        newFreeWorkout.addExerciseSet(set);
+      }
+      onPressAdd();
+    };
 
-  return (
-    <Modal isVisible={isVisible} onBackdropPress={onPressClose}>
-      <Container>
-        <Header>
-          <Title>Crunch</Title>
-          <TouchableOpacity onPress={onPressClose}>
-            <CrossIcon />
-          </TouchableOpacity>
-        </Header>
-        <Row>
-          <ItemTitle>Repetitions</ItemTitle>
-          <NumberInput value={repetitionsValue} onChangeText={setRepetitionsValue} />
-        </Row>
-        <Separator />
-        <Row>
-          <ItemTitle>Kilograms</ItemTitle>
-          <NumberInput value={kilogramsValue} onChangeText={setKilogramsValue} />
-        </Row>
-        <Separator />
-        <Row>
-          <ItemTitle>How many ?</ItemTitle>
-          <NumberInput value={setsValue} onChangeText={setSetsValue} />
-        </Row>
-      </Container>
-      <Spacer height={2} />
-      <Button onPress={onPressAdd} title="Add" />
-    </Modal>
-  );
-};
+    return (
+      <Modal isVisible={isVisible} onBackdropPress={onPressClose}>
+        <Container>
+          <Header>
+            <Title>{exercise.name}</Title>
+            <TouchableOpacity onPress={onPressClose}>
+              <CrossIcon />
+            </TouchableOpacity>
+          </Header>
+          <Row>
+            <ItemTitle>Repetitions</ItemTitle>
+            <NumberInput value={repetitionsValue} onChangeText={setRepetitionsValue} />
+          </Row>
+          <Separator />
+          <Row>
+            <ItemTitle>Kilograms</ItemTitle>
+            <NumberInput value={kilogramsValue} onChangeText={setKilogramsValue} />
+          </Row>
+          <Separator />
+          <Row>
+            <ItemTitle>How many ?</ItemTitle>
+            <NumberInput value={setsValue} onChangeText={setSetsValue} />
+          </Row>
+        </Container>
+        <Spacer height={2} />
+        <Button onPress={addSetsToNewFreeWorkout} title="Add" />
+      </Modal>
+    );
+  }
+);
 
 const Container = styled.View(({ theme }) => ({
   backgroundColor: theme.colors.white,
