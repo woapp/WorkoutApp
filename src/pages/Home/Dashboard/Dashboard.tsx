@@ -32,7 +32,7 @@ const ARROW_WIDTH = 120;
 
 export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => {
   const { exercises } = useStore();
-  console.log(exercises);
+  console.log(exercises.length);
   const goToTrainingNavigator = () => navigation.navigate(Routes.TrainingNavigator);
   const goToExerciceNavigator = () => navigation.navigate(Routes.ExerciseNavigator);
 
