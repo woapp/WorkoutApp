@@ -35,6 +35,8 @@ type Props = {
 export const TrainingCreation: FunctionComponent<Props> = observer(({ navigation }) => {
   const { exercises, newFreeWorkout } = useStore();
   if (!newFreeWorkout) return null;
+
+  const [filter, setFilter] = useState('');
   const [displayAddExerciseModal, setDisplayAddExerciseModal] = useState(false);
   const [selectedExercise, setSelectedExercise] = useState<ExerciseType | null>(null);
   const openAddExerciseModal = () => {
@@ -53,12 +55,14 @@ export const TrainingCreation: FunctionComponent<Props> = observer(({ navigation
       <Container>
         <Header title="My new training" />
         <Spacer height={2} />
-        <SearchBar placeholder="Crunch, Squat..." />
+        <SearchBar placeholder="Crunch, Squat..." value={filter} onChangeText={setFilter} />
         <Spacer height={3} />
         <SubTitle>ADD EXERCISES</SubTitle>
         <FlatList
           showsVerticalScrollIndicator={false}
-          data={exercises.toJS()}
+          data={exercises
+            .toJS()
+            .filter(exercise => exercise.name.toLowerCase().includes(filter.toLowerCase()))}
           ListHeaderComponent={() => (
             <NewExerciseButton
               onPress={() => {
