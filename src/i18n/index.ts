@@ -11,6 +11,8 @@ import profileFr from './locales/en/profile.json';
 import historyFr from './locales/en/history.json';
 import trainingCreationFr from './locales/en/trainingCreation.json';
 import homeFr from './locales/fr/home.json';
+import exerciseCreationFr from './locales/fr/exerciseCreation.json';
+import exerciseCreationEn from './locales/en/exerciseCreation.json';
 import { languageDetector } from './languageDetector';
 
 const resources = {
@@ -20,6 +22,7 @@ const resources = {
     profile: profileEn,
     common: commonEn,
     trainingCreation: trainingCreationEn,
+    exerciseCreation: exerciseCreationEn,
   },
   fr: {
     home: homeFr,
@@ -27,6 +30,7 @@ const resources = {
     profile: profileFr,
     common: commonFr,
     trainingCreation: trainingCreationFr,
+    exerciseCreation: exerciseCreationFr,
   },
 };
 

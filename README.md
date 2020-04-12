@@ -9,3 +9,7 @@ There are all in this [file](.vscode/snippets.code-snippets)
 - utrans --> useTranslation hook 
 - rtrans --> for jsx translation
 - ttrans --> for typescript translation
+
+### Mobx
+
+- ustore --> useStore
