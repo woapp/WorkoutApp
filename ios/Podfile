@@ -39,6 +39,8 @@ target 'WorkoutApp' do
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
+  pod 'RNLocalize', :path => '../node_modules/react-native-localize'
+
   target 'WorkoutAppTests' do
     inherit! :search_paths
     # Pods for testing
