@@ -13,7 +13,7 @@ import { RootNavigatorParamList } from '@woap/navigation';
 import { TabNavigatorParamList } from '@woap/navigation/TabNavigator';
 import { WhistleIcon } from '@woap/components/Icons/WhistleIcon';
 import { DumbbellIcon } from '@woap/components/Icons/DumbbellIcon';
-import { useStore } from '@woap/utils/hooks/useStore';
+import { useTranslation } from 'react-i18next';
 
 type DashboardScreenNavigationProp = CompositeNavigationProp<
   StackNavigationProp<RootNavigatorParamList, Routes.TabNavigator>,
@@ -31,14 +31,15 @@ const ARROW_HEIGHT = 140;
 const ARROW_WIDTH = 120;
 
 export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => {
-  const { exercises } = useStore();
-  console.log(exercises);
+  const { t } = useTranslation('home');
+
   const goToTrainingNavigator = () => navigation.navigate(Routes.TrainingNavigator);
   const goToExerciceNavigator = () => navigation.navigate(Routes.ExerciseNavigator);
 
   return (
     <Container>
       <EmptyContainer>
+        <EmptyTitle>{t('title')}</EmptyTitle>
         <EmptyTitle>Nothing yet.</EmptyTitle>
         <Spacer height={1} />
         <EmptyBody>Create your first personnalized training!</EmptyBody>
@@ -84,6 +85,7 @@ const EmptyTitle = styled.Text(props => ({
   textAlign: 'center',
   color: props.theme.colors.white,
 }));
+
 const EmptyBody = styled.Text(props => ({
   ...props.theme.fonts.h3,
   textAlign: 'center',
