@@ -39,10 +39,9 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
   return (
     <Container>
       <EmptyContainer>
-        <EmptyTitle>{t('title')}</EmptyTitle>
-        <EmptyTitle>Nothing yet.</EmptyTitle>
+        <EmptyTitle>{t('dashboard.nothingYet')}</EmptyTitle>
         <Spacer height={1} />
-        <EmptyBody>Create your first personnalized training!</EmptyBody>
+        <EmptyBody>{t('dashboard.createTraining')}</EmptyBody>
         <Spacer height={4} />
         <ArrowContainer>
           <Arrow source={images.bottomRightArrow} />
@@ -52,12 +51,12 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
         <AnimatedMenu
           items={[
             {
-              title: 'NEW\nTRAINING',
+              title: t('dashboard.newTraining'),
               Icon: WhistleIcon,
               onPress: goToTrainingNavigator,
             },
             {
-              title: 'NEW\nEXERCISE',
+              title: t('dashboard.newExercise'),
               Icon: DumbbellIcon,
               onPress: goToExerciceNavigator,
             },
