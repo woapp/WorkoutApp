@@ -1,7 +1,8 @@
 {
-  "title": "Welcome to react using react-i18next",
-  "description": {
-    "part1": "To get started, edit <1>src/App.js</1> and save to reload.",
-    "part2": "Switch language between english and german using buttons above."
+  "dashboard": {
+    "nothingYet": "Nothing yet.",
+    "createTraining": "Create your first personnalized training!",
+    "newTraining": "NEW\nTRAINING",
+    "newExercise": "NEW\nEXERCISE"
   }
 }
