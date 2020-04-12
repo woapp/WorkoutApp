@@ -1,10 +1,10 @@
 import React, { FunctionComponent, useState } from 'react';
-import { FlatList, Alert } from 'react-native';
+import { FlatList } from 'react-native';
 import { observer } from 'mobx-react-lite';
 import { StackNavigationProp } from '@react-navigation/stack';
 import styled from '@woap/utils/styled-components';
 import { Routes } from '@woap/navigation/routes';
-import { RouteProp } from '@react-navigation/native';
+import { RouteProp, CompositeNavigationProp } from '@react-navigation/native';
 import { TrainingNavigatorParamList } from '@woap/navigation/TrainingNavigator';
 import { SearchBar } from '@woap/components/SearchBar';
 import { Spacer } from '@woap/components/Spacer';
@@ -12,6 +12,7 @@ import { Background } from '@woap/components/Background';
 import { Header } from '@woap/components/Header';
 import { useStore } from '@woap/utils/hooks/useStore';
 import { ExerciseType } from '@woap/mobx/exercise';
+import { RootNavigatorParamList } from '@woap/navigation';
 
 import { ExerciseItem } from './components/ExerciseItem';
 import { NewExerciseButton } from './components/NewExerciseButton';
@@ -22,9 +23,9 @@ type TrainingCreationScreenRouteProp = RouteProp<
   Routes.TrainingCreation
 >;
 
-type TrainingCreationScreenNavigationProp = StackNavigationProp<
-  TrainingNavigatorParamList,
-  Routes.TrainingCreation
+type TrainingCreationScreenNavigationProp = CompositeNavigationProp<
+  StackNavigationProp<RootNavigatorParamList, Routes.TrainingNavigator>,
+  StackNavigationProp<TrainingNavigatorParamList, Routes.TrainingCreation>
 >;
 
 type Props = {
@@ -50,6 +51,8 @@ export const TrainingCreation: FunctionComponent<Props> = observer(({ navigation
     setTimeout(() => navigation.push(Routes.TrainingSets), 500);
   };
 
+  const goToExerciseNavigator = () => navigation.navigate(Routes.ExerciseNavigator);
+
   return (
     <Background>
       <Container>
@@ -66,7 +69,7 @@ export const TrainingCreation: FunctionComponent<Props> = observer(({ navigation
           ListHeaderComponent={() => (
             <NewExerciseButton
               onPress={() => {
-                Alert.alert('new exercise');
+                goToExerciseNavigator();
               }}
               title="Create a new exercice"
             />

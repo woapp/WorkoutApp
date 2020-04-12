@@ -23,11 +23,12 @@ export const ExerciseName: FunctionComponent<Props> = ({ navigation }) => {
   const [name, setName] = useState('');
   const goToExerciseMuscleGroupsScreen = () =>
     navigation.navigate(Routes.ExerciseMuscleGroups, { exerciseName: name });
+  const closeModal = () => navigation.goBack();
 
   return (
     <Background>
       <Container>
-        <Header title="New Exercise" />
+        <Header title="New Exercise" onClose={closeModal} />
         <Spacer height={3} />
         <Title>HOW WOULD YOU NAME IT?</Title>
         <Spacer height={2} />

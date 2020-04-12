@@ -37,7 +37,11 @@ export const ExerciseMuscleGroups: FunctionComponent<Props> = observer(({ naviga
   const [muscleGroups, setMuscleGroups] = useState(
     Object.values(MuscleGroup).map(muscleGroup => ({ name: muscleGroup, selected: false }))
   );
-  const goToDashboardScreen = () => navigation.navigate(Routes.TabNavigator);
+
+  const closeModale = () => {
+    navigation.popToTop();
+    navigation.goBack();
+  };
 
   const createNewExercise = () => {
     const exercise = createExercise();
@@ -48,7 +52,7 @@ export const ExerciseMuscleGroups: FunctionComponent<Props> = observer(({ naviga
 
   const onNextButtonPressed = () => {
     createNewExercise();
-    goToDashboardScreen();
+    closeModale();
   };
 
   const onMuscleGroupPressed = name => () => {
@@ -63,7 +67,7 @@ export const ExerciseMuscleGroups: FunctionComponent<Props> = observer(({ naviga
   return (
     <Background>
       <Container>
-        <Header title="New Exercise" />
+        <Header title="New Exercise" onClose={closeModale} />
         <Spacer height={3} />
         <Title>CHOOSE AT LEAST ONE MUSCLE GROUP</Title>
         <Spacer height={2} />
