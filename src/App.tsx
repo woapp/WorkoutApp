@@ -7,6 +7,8 @@ import { rootStore } from '@woap/mobx/rootStore';
 import { StoreProvider } from '@woap/mobx/provider';
 import { theme } from '@woap/styles/theme';
 
+import './i18n';
+
 const codePushOptions = { checkFrequency: codePush.CheckFrequency.ON_APP_START };
 
 const WorkoutApp: FunctionComponent = () => {
