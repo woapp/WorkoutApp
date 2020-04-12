@@ -65,7 +65,7 @@ export const TrainingCreation: FunctionComponent<Props> = ({ navigation }) => {
           showsVerticalScrollIndicator={false}
           data={EXERCISES}
           ListHeaderComponent={() => (
-            <NewExerciseButton onPress={() => {}} title="Create a new exercice" />
+            <NewExerciseButton onPress={() => null} title="Create a new exercice" />
           )}
           renderItem={({ item, index }) => (
             <ExerciseItem

@@ -1,4 +1,4 @@
-import { types, Instance } from 'mobx-state-tree';
+import { types, Instance, SnapshotIn, SnapshotOut } from 'mobx-state-tree';
 
 import { ExerciseModel } from './model';
 import { exerciseActions } from './actions';
@@ -10,3 +10,5 @@ export const Exercise = types
   .views(exerciseViews);
 
 export interface ExerciseType extends Instance<typeof Exercise> {}
+export interface ExerciseSnapshotIn extends SnapshotIn<typeof Exercise> {}
+export interface ExerciseSnapshotOut extends SnapshotOut<typeof Exercise> {}

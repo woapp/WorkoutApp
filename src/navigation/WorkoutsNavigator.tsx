@@ -1,14 +1,13 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { MyWorkouts } from '@woap/pages/Configurator/MyWorkouts';
-import { WorkoutEditor } from '@woap/pages/Configurator/WorkoutEditor';
-import { WorkoutType } from '@woap/mobx/workout';
+import { MyWorkouts } from 'old/pages/Configurator/MyWorkouts';
+import { WorkoutEditor } from 'old/pages/Configurator/WorkoutEditor';
 
 import { Routes } from './routes';
 
 export type WorkoutsNavigatorParamList = {
   [Routes.MyWorkouts]: undefined;
-  [Routes.WorkoutEditor]: { workout: WorkoutType };
+  [Routes.WorkoutEditor]: {};
 };
 
 const Stack = createStackNavigator();

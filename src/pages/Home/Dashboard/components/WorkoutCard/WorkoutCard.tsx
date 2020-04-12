@@ -4,12 +4,11 @@ import { TouchableOpacity } from 'react-native';
 import { observer } from 'mobx-react-lite';
 import { TextTitle } from '@woap/components/Texts';
 import styled from '@woap/utils/styled-components';
-import { MuscleGroupToggle } from '@woap/pages/Exercise/ExerciseMuscleGroups/components/MuscleGroupToggle';
-import { WorkoutType } from '@woap/mobx/workout';
+import { FreeWorkoutType } from '@woap/mobx/freeWorkout';
 
 interface Props {
-  workout: WorkoutType;
-  onSelectWorkout: (workout: WorkoutType) => () => void;
+  workout: FreeWorkoutType;
+  onSelectWorkout: (workout: FreeWorkoutType) => () => void;
 }
 
 export const WorkoutCard: FunctionComponent<Props> = observer(({ workout, onSelectWorkout }) => {
@@ -17,36 +16,13 @@ export const WorkoutCard: FunctionComponent<Props> = observer(({ workout, onSele
     <Container key={workout.id}>
       <TouchableOpacity onPress={onSelectWorkout(workout)}>
         <TextTitle>{workout.name}</TextTitle>
-        <Exercises>{workout.nbExercises} exercices</Exercises>
-        <Row>
-          {workout.mainMuscleGroups.map((muscleGroup, index) => (
-            <MuscleGroupContainer key={index}>
-              <MuscleGroupToggle muscleGroup={muscleGroup} isSelected disabled iconSize={50} />
-            </MuscleGroupContainer>
-          ))}
-        </Row>
       </TouchableOpacity>
     </Container>
   );
 });
 
-const Exercises = styled.Text(props => ({
-  marginVertical: props.theme.margin.x2,
-  fontSize: 18,
-}));
-
 const Container = styled(Card)(({ theme }) => ({
   padding: theme.margin.x2,
   margin: theme.margin.x2,
   borderRadius: 7,
-}));
-
-const Row = styled.View({
-  flexDirection: 'row',
-  flexWrap: 'wrap',
-});
-
-const MuscleGroupContainer = styled.View(props => ({
-  marginRight: props.theme.margin.x2,
-  marginBottom: props.theme.margin.x1,
 }));

@@ -1,6 +1,6 @@
 import { ModelInstanceTypeProps } from 'mobx-state-tree';
 
-import { MuscleGroup } from '../types';
+import { MuscleGroup } from '../../mobx/types';
 
 import { ExerciseModel } from './model';
 

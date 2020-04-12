@@ -2,9 +2,9 @@ import React, { FunctionComponent } from 'react';
 import { useTimingTransition, bInterpolate } from 'react-native-redash';
 import Animated, { interpolate } from 'react-native-reanimated';
 import styled from '@woap/utils/styled-components';
-import { CopyIcon } from '@woap/components/CopyIcon';
-import { TrashIcon } from '@woap/components/TrashIcon';
-import { EditIcon } from '@woap/components/EditIcon';
+import { CopyIcon } from '@woap/components/Icons/CopyIcon';
+import { TrashIcon } from '@woap/components/Icons/TrashIcon';
+import { EditIcon } from '@woap/components/Icons/EditIcon';
 import { Spacer } from '@woap/components/Spacer';
 
 interface Props {
