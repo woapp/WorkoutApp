@@ -1,16 +1,16 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import homeEn from '@woap/i18n/locales/en/home';
-import commonEn from '@woap/i18n/locales/en/common';
-import profileEn from '@woap/i18n/locales/en/profile';
-import historyEn from '@woap/i18n/locales/en/history';
-import trainingCreationEn from '@woap/i18n/locales/en/trainingCreation';
-import commonFr from '@woap/i18n/locales/en/common';
-import profileFr from '@woap/i18n/locales/en/profile';
-import historyFr from '@woap/i18n/locales/en/history';
-import trainingCreationFr from '@woap/i18n/locales/en/trainingCreation';
-import homeFr from '@woap/i18n/locales/fr/home';
 
+import homeEn from './locales/en/home.json';
+import commonEn from './locales/en/common.json';
+import profileEn from './locales/en/profile.json';
+import historyEn from './locales/en/history.json';
+import trainingCreationEn from './locales/en/trainingCreation.json';
+import commonFr from './locales/en/common.json';
+import profileFr from './locales/en/profile.json';
+import historyFr from './locales/en/history.json';
+import trainingCreationFr from './locales/en/trainingCreation.json';
+import homeFr from './locales/fr/home.json';
 import { languageDetector } from './languageDetector';
 
 const resources = {
