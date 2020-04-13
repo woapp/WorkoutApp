@@ -33,11 +33,12 @@ const ARROW_WIDTH = 120;
 
 export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => {
   const { initializeNewFreeWorkout } = useStore();
+  const { t } = useTranslation('home');
+
   const goToTrainingNavigator = () => {
     initializeNewFreeWorkout();
     navigation.navigate(Routes.TrainingNavigator);
   };
-  const { t } = useTranslation('home');
 
   const goToExerciceNavigator = () => navigation.navigate(Routes.ExerciseNavigator);
 

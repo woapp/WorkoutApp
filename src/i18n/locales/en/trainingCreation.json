@@ -1,1 +1,25 @@
-{}
+{
+  "trainingCreation": {
+    "title": "My new training",
+    "chooseExercise": "Choose an exercise",
+    "createExercise": "Create a new exercise",
+    "repetitions": "Repetitions",
+    "kilograms": "Kilograms",
+    "nbSets": "How many sets",
+    "add": "Add"
+  },
+  "trainingSets": {
+    "reps": "reps",
+    "kg": "kg",
+    "finalize": "Finalize"
+  },
+  "trainingName": {
+    "title": "New training",
+    "whatName": "How would you name it?",
+    "placeholder": "Full body, morning routine"
+  },
+  "trainingTags": {
+    "title": "New training",
+    "chooseTage": "Choose at least 1 tag"
+  }
+}

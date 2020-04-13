@@ -11,6 +11,7 @@ import { ExerciseSnapshotIn } from '@woap/mobx/exercise';
 import { observer } from 'mobx-react-lite';
 import { useStore } from '@woap/utils/hooks/useStore';
 import { createExerciseSet } from '@woap/mobx/exerciseSet/constructor';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   isVisible: boolean;
@@ -22,6 +23,7 @@ interface Props {
 export const AddExerciseModal: FunctionComponent<Props> = observer(
   ({ isVisible, onPressClose, onPressAdd, exercise }) => {
     const { newFreeWorkout } = useStore();
+    const { t } = useTranslation('trainingCreation');
     if (!newFreeWorkout) return null;
     const [repetitionsValue, setRepetitionsValue] = useState('10');
     const [kilogramsValue, setKilogramsValue] = useState('80');
@@ -46,22 +48,22 @@ export const AddExerciseModal: FunctionComponent<Props> = observer(
             </TouchableOpacity>
           </Header>
           <Row>
-            <ItemTitle>Repetitions</ItemTitle>
+            <ItemTitle>{t('trainingCreation.repetitions')}</ItemTitle>
             <NumberInput value={repetitionsValue} onChangeText={setRepetitionsValue} />
           </Row>
           <Separator />
           <Row>
-            <ItemTitle>Kilograms</ItemTitle>
+            <ItemTitle>{t('trainingCreation.kilograms')}</ItemTitle>
             <NumberInput value={kilogramsValue} onChangeText={setKilogramsValue} />
           </Row>
           <Separator />
           <Row>
-            <ItemTitle>How many ?</ItemTitle>
+            <ItemTitle>{t('trainingCreation.nbSets')}</ItemTitle>
             <NumberInput value={setsValue} onChangeText={setSetsValue} />
           </Row>
         </Container>
         <Spacer height={2} />
-        <Button onPress={addSetsToNewFreeWorkout} title="Add" />
+        <Button onPress={addSetsToNewFreeWorkout} title={t('trainingCreation.add')} />
       </Modal>
     );
   }

@@ -13,6 +13,7 @@ import { Header } from '@woap/components/Header';
 import { useStore } from '@woap/utils/hooks/useStore';
 import { ExerciseType } from '@woap/mobx/exercise';
 import { RootNavigatorParamList } from '@woap/navigation';
+import { useTranslation } from 'react-i18next';
 
 import { ExerciseItem } from './components/ExerciseItem';
 import { NewExerciseButton } from './components/NewExerciseButton';
@@ -35,6 +36,8 @@ type Props = {
 
 export const TrainingCreation: FunctionComponent<Props> = observer(({ navigation }) => {
   const { exercises, newFreeWorkout } = useStore();
+  const { t } = useTranslation('trainingCreation');
+
   if (!newFreeWorkout) return null;
 
   const [filter, setFilter] = useState('');
@@ -56,11 +59,11 @@ export const TrainingCreation: FunctionComponent<Props> = observer(({ navigation
   return (
     <Background>
       <Container>
-        <Header title="My new training" />
+        <Header title={t('trainingCreation.title')} />
         <Spacer height={2} />
         <SearchBar placeholder="Crunch, Squat..." value={filter} onChangeText={setFilter} />
         <Spacer height={3} />
-        <SubTitle>ADD EXERCISES</SubTitle>
+        <SubTitle>{t('trainingCreation.chooseExercise')}</SubTitle>
         <FlatList
           showsVerticalScrollIndicator={false}
           data={exercises
@@ -71,7 +74,7 @@ export const TrainingCreation: FunctionComponent<Props> = observer(({ navigation
               onPress={() => {
                 goToExerciseNavigator();
               }}
-              title="Create a new exercice"
+              title={t('trainingCreation.createExercise')}
             />
           )}
           renderItem={({ item, index }) => (
