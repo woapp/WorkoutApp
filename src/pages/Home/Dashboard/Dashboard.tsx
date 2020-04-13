@@ -13,6 +13,7 @@ import { RootNavigatorParamList } from '@woap/navigation';
 import { TabNavigatorParamList } from '@woap/navigation/TabNavigator';
 import { WhistleIcon } from '@woap/components/Icons/WhistleIcon';
 import { DumbbellIcon } from '@woap/components/Icons/DumbbellIcon';
+import { useTranslation } from 'react-i18next';
 import { useStore } from '@woap/utils/hooks/useStore';
 
 type DashboardScreenNavigationProp = CompositeNavigationProp<
@@ -36,14 +37,16 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
     initializeNewFreeWorkout();
     navigation.navigate(Routes.TrainingNavigator);
   };
+  const { t } = useTranslation('home');
+
   const goToExerciceNavigator = () => navigation.navigate(Routes.ExerciseNavigator);
 
   return (
     <Container>
       <EmptyContainer>
-        <EmptyTitle>Nothing yet.</EmptyTitle>
+        <EmptyTitle>{t('dashboard.nothingYet')}</EmptyTitle>
         <Spacer height={1} />
-        <EmptyBody>Create your first personnalized training!</EmptyBody>
+        <EmptyBody>{t('dashboard.createTraining')}</EmptyBody>
         <Spacer height={4} />
         <ArrowContainer>
           <Arrow source={images.bottomRightArrow} />
@@ -53,12 +56,12 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
         <AnimatedMenu
           items={[
             {
-              title: 'NEW\nTRAINING',
+              title: t('dashboard.newTraining'),
               Icon: WhistleIcon,
               onPress: goToTrainingNavigator,
             },
             {
-              title: 'NEW\nEXERCISE',
+              title: t('dashboard.newExercise'),
               Icon: DumbbellIcon,
               onPress: goToExerciceNavigator,
             },
@@ -86,6 +89,7 @@ const EmptyTitle = styled.Text(props => ({
   textAlign: 'center',
   color: props.theme.colors.white,
 }));
+
 const EmptyBody = styled.Text(props => ({
   ...props.theme.fonts.h3,
   textAlign: 'center',
