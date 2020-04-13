@@ -12,6 +12,7 @@ import { Header } from '@woap/components/Header';
 import { useStore } from '@woap/utils/hooks/useStore';
 import { ExerciseSetType } from '@woap/mobx/exerciseSet';
 import { PlusIcon } from '@woap/components/Icons/PlusIcon';
+import { useTranslation } from 'react-i18next';
 
 import { SetListItem } from './components/SetListItem';
 
@@ -26,6 +27,8 @@ type Props = {
 
 export const TrainingSets: FunctionComponent<Props> = observer(({ navigation }) => {
   const { newFreeWorkout } = useStore();
+  const { t } = useTranslation('trainingCreation');
+
   if (!newFreeWorkout) return null;
   const [selectedSet, setSelectedSet] = useState<ExerciseSetType | null>();
   const goToTrainingPageScreen = () => navigation.navigate(Routes.TrainingName);
@@ -55,7 +58,7 @@ export const TrainingSets: FunctionComponent<Props> = observer(({ navigation }) 
     <Background>
       <Container>
         <HeaderContainer>
-          <Header title="Training" />
+          <Header title={t('trainingSets.title')} />
         </HeaderContainer>
         <DraggableFlatList
           data={newFreeWorkout.exerciseSets.toJS()}
@@ -73,7 +76,7 @@ export const TrainingSets: FunctionComponent<Props> = observer(({ navigation }) 
         </IconContainer>
       </Container>
       <FinalizeButton onPress={goToTrainingPageScreen}>
-        <FinalizeTitle>Finalize</FinalizeTitle>
+        <FinalizeTitle>{t('trainingSets.finalize')}</FinalizeTitle>
       </FinalizeButton>
     </Background>
   );

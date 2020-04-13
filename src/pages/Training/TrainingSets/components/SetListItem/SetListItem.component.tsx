@@ -7,6 +7,7 @@ import { TrashIcon } from '@woap/components/Icons/TrashIcon';
 import { EditIcon } from '@woap/components/Icons/EditIcon';
 import { Spacer } from '@woap/components/Spacer';
 import { ExerciseSetType } from '@woap/mobx/exerciseSet';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   selected: boolean;
@@ -28,6 +29,7 @@ export const SetListItem: FunctionComponent<Props> = ({
   selected,
 }) => {
   const { name, reps, weight } = set;
+  const { t } = useTranslation('trainingCreation');
   const transition = useTimingTransition(selected, { duration: 200 });
   const translateY = bInterpolate(transition, -48, 0);
   const height = bInterpolate(transition, 0, 48);
@@ -40,11 +42,11 @@ export const SetListItem: FunctionComponent<Props> = ({
         <FiguresContainer>
           <Data>
             <Figure>{reps}</Figure>
-            <Label> reps</Label>
+            <Label> {t('trainingSets.reps')}</Label>
           </Data>
           <Data>
             <Figure>{weight}</Figure>
-            <Label> kg</Label>
+            <Label> {t('trainingSets.kg')}</Label>
           </Data>
         </FiguresContainer>
       </ItemContainer>

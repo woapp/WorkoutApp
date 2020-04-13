@@ -5,10 +5,11 @@
     "createExercise": "Crée un nouvel exercice",
     "repetitions": "Répétitions",
     "kilograms": "Kilogrammes",
-    "nbSets": "Nombr de séries",
+    "nbSets": "Nombre de séries",
     "add": "Ajouter"
   },
   "trainingSets": {
+    "title": "New training",
     "reps": "reps",
     "kg": "kg",
     "finalize": "Finaliser"
