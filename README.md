@@ -36,6 +36,12 @@ There are all in this [file](.vscode/snippets.code-snippets)
 - rtrans --> for jsx translation
 - ttrans --> for typescript translation
 
+### Components
+
+- tb --> basic typescript component
+- nsc --> native styled component
+- csc --> custom styled component
+
 ### Mobx
 
 - ustore --> useStore
