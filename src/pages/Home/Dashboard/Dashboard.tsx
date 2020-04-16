@@ -13,6 +13,9 @@ import { WhistleIcon } from '@woap/components/Icons/WhistleIcon';
 import { DumbbellIcon } from '@woap/components/Icons/DumbbellIcon';
 import { useTranslation } from 'react-i18next';
 import { useStore } from '@woap/utils/hooks/useStore';
+import { TextBody } from '@woap/components/Texts';
+import { ArrowForwardIcon } from '@woap/components/Icons/ArrowForwardIcon';
+import { Spacer } from '@woap/components/Spacer';
 
 import { NoTraining } from './components/NoTraining';
 
@@ -29,7 +32,7 @@ type Props = {
 };
 
 export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => {
-  const { initializeNewFreeWorkout } = useStore();
+  const { initializeNewFreeWorkout, trainings } = useStore();
   const { t } = useTranslation('home');
 
   const goToTrainingNavigator = () => {
@@ -41,7 +44,21 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
 
   return (
     <Container>
-      <NoTraining />
+      {trainings.length === 0 ? (
+        <NoTraining />
+      ) : (
+        <>
+          <AllTrainings>ALL TRAININGS</AllTrainings>
+          <Spacer height={2} />
+          {trainings.map(training => (
+            <TrainingContainer key={training.id}>
+              <TrainingName>{training.name}</TrainingName>
+              <ArrowForwardIcon />
+            </TrainingContainer>
+          ))}
+        </>
+      )}
+
       <MenuContainer>
         <AnimatedMenu
           items={[
@@ -62,13 +79,32 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
   );
 });
 
-const Container = styled.View(props => ({
+const Container = styled.View(({ theme }) => ({
   flex: 1,
-  backgroundColor: props.theme.colors.background.black,
+  backgroundColor: theme.colors.background.black,
+  padding: theme.margin.x2,
 }));
 
-const MenuContainer = styled.View(props => ({
+const MenuContainer = styled.View(({ theme }) => ({
   position: 'absolute',
-  bottom: props.theme.margin.x2,
-  right: props.theme.margin.x2,
+  bottom: theme.margin.x2,
+  right: theme.margin.x2,
+}));
+
+const AllTrainings = styled(TextBody)(({ theme }) => ({
+  color: theme.colors.white,
+}));
+
+const TrainingName = styled.Text(({ theme }) => ({
+  color: theme.colors.white,
+  fontSize: 16,
+}));
+
+const TrainingContainer = styled.View(({ theme }) => ({
+  backgroundColor: '#3D3D55',
+  padding: theme.margin.x2,
+  borderRadius: theme.border.radius.s + 2,
+  marginBottom: theme.margin.x2,
+  flexDirection: 'row',
+  justifyContent: 'space-between',
 }));
