@@ -32,11 +32,11 @@ type Props = {
 };
 
 export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => {
-  const { initializeNewFreeWorkout, trainings } = useStore();
+  const store = useStore();
   const { t } = useTranslation('home');
 
   const goToTrainingNavigator = () => {
-    initializeNewFreeWorkout();
+    store.initializeNewFreeWorkout();
     navigation.navigate(Routes.TrainingNavigator);
   };
 
@@ -44,14 +44,14 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
 
   return (
     <Container>
-      {trainings.length === 0 ? (
+      {store.trainings.length === 0 ? (
         <NoTraining />
       ) : (
         <>
           <Spacer height={2} />
           <AllTrainings>{t('dashboard.allTrainings')}</AllTrainings>
           <Spacer height={2} />
-          {trainings.map(training => (
+          {store.trainings.map(training => (
             <TrainingContainer key={training.id}>
               <TrainingName>{training.name}</TrainingName>
               <ArrowForwardIcon />
