@@ -1,13 +1,15 @@
 import styled from '@woap/utils/styled-components';
 import { useTranslation } from 'react-i18next';
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { Spacer } from '@woap/components/Spacer';
 import images from '@woap/assets/images';
 
 const ARROW_HEIGHT = 140;
 const ARROW_WIDTH = 120;
 
-export const NoTraining = () => {
+interface Props {}
+
+export const NoTraining: FunctionComponent<Props> = () => {
   const { t } = useTranslation('home');
 
   return (
