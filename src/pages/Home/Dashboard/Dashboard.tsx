@@ -48,7 +48,8 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
         <NoTraining />
       ) : (
         <>
-          <AllTrainings>ALL TRAININGS</AllTrainings>
+          <Spacer height={2} />
+          <AllTrainings>{t('dashboard.allTrainings')}</AllTrainings>
           <Spacer height={2} />
           {trainings.map(training => (
             <TrainingContainer key={training.id}>
