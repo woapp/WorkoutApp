@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useState } from 'react';
 import DraggableFlatList from 'react-native-draggable-flatlist';
 import { getBottomSpace } from 'react-native-iphone-x-helper';
+import { observer } from 'mobx-react-lite';
 import { StackNavigationProp } from '@react-navigation/stack';
 import styled from '@woap/utils/styled-components';
 import { theme } from '@woap/styles/theme';
@@ -8,6 +9,10 @@ import { TrainingNavigatorParamList } from '@woap/navigation/TrainingNavigator';
 import { Routes } from '@woap/navigation/routes';
 import { Background } from '@woap/components/Background';
 import { Header } from '@woap/components/Header';
+import { useStore } from '@woap/utils/hooks/useStore';
+import { ExerciseSetType } from '@woap/mobx/exerciseSet';
+import { PlusIcon } from '@woap/components/Icons/PlusIcon';
+import { useTranslation } from 'react-i18next';
 
 import { SetListItem } from './components/SetListItem';
 
@@ -20,27 +25,31 @@ type Props = {
   navigation: TrainingSetsScreenNavigationProp;
 };
 
-const SETS = [
-  { title: 'CRUNCH', weight: 25, reps: 10, id: '1', selected: false },
-  { title: 'SQUAT', weight: 25, reps: 10, id: '2', selected: false },
-  { title: 'BENCH', weight: 25, reps: 10, id: '3', selected: false },
-];
+export const TrainingSets: FunctionComponent<Props> = observer(({ navigation }) => {
+  const { newFreeWorkout } = useStore();
+  const { t } = useTranslation('trainingCreation');
 
-export const TrainingSets: FunctionComponent<Props> = ({ navigation }) => {
+  if (!newFreeWorkout) return null;
+  const [selectedSet, setSelectedSet] = useState<ExerciseSetType | null>();
   const goToTrainingPageScreen = () => navigation.navigate(Routes.TrainingName);
-  const [sets, setSets] = useState(SETS);
   const onReorderSets = ({ data }) => {
-    setSets(data);
+    newFreeWorkout.replaceExerciseSets(data);
   };
   const renderExercise = ({ item, drag }) => (
     <SetListItem
       onDrag={drag}
       set={item}
+      selected={!!selectedSet && selectedSet.id === item.id}
       onPress={() => {
-        console.log('ON PRESS');
-        setSets(prevSets =>
-          prevSets.map(set => ({ ...set, selected: item.id === set.id ? !set.selected : false }))
+        setSelectedSet(previousSelectedSet =>
+          previousSelectedSet && previousSelectedSet.id === item.id ? null : item
         );
+      }}
+      onRemove={() => {
+        newFreeWorkout.removeExerciseSet(item);
+      }}
+      onDuplicate={() => {
+        newFreeWorkout.duplicateExerciseSet(item);
       }}
     />
   );
@@ -49,10 +58,10 @@ export const TrainingSets: FunctionComponent<Props> = ({ navigation }) => {
     <Background>
       <Container>
         <HeaderContainer>
-          <Header title="Training" />
+          <Header title={t('trainingSets.title')} />
         </HeaderContainer>
         <DraggableFlatList
-          data={sets}
+          data={newFreeWorkout.exerciseSets.toJS()}
           renderItem={renderExercise}
           keyExtractor={item => item.id}
           onDragEnd={onReorderSets}
@@ -62,16 +71,19 @@ export const TrainingSets: FunctionComponent<Props> = ({ navigation }) => {
             paddingBottom: 250,
           }} // TODO: remove and find find a way for scrollview to be aware of keyboard
         />
+        <IconContainer onPress={() => navigation.push(Routes.TrainingCreation)}>
+          <PlusIcon />
+        </IconContainer>
       </Container>
       <FinalizeButton onPress={goToTrainingPageScreen}>
-        <FinalizeTitle>Finalize</FinalizeTitle>
+        <FinalizeTitle>{t('trainingSets.finalize')}</FinalizeTitle>
       </FinalizeButton>
     </Background>
   );
-};
+});
 
 const Container = styled.SafeAreaView({
-  marginVertical: theme.margin.x2,
+  marginTop: theme.margin.x2,
   flex: 1,
 });
 
@@ -90,4 +102,16 @@ const FinalizeTitle = styled.Text({
   color: theme.colors.white,
   fontWeight: 'bold',
   textAlign: 'center',
+});
+
+const IconContainer = styled.TouchableOpacity({
+  position: 'absolute',
+  bottom: theme.margin.x2,
+  right: theme.margin.x2,
+  backgroundColor: theme.colors.black,
+  width: theme.iconSize,
+  height: theme.iconSize,
+  alignItems: 'center',
+  justifyContent: 'center',
+  borderRadius: theme.iconSize / 2,
 });

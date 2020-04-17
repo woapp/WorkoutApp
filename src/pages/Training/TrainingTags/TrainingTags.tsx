@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
+import { observer } from 'mobx-react-lite';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { CompositeNavigationProp } from '@react-navigation/native';
 import { Background } from '@woap/components/Background';
@@ -9,6 +10,10 @@ import { TrainingNavigatorParamList } from '@woap/navigation/TrainingNavigator';
 import { RootNavigatorParamList } from '@woap/navigation';
 import { Routes } from '@woap/navigation/routes';
 import { Header } from '@woap/components/Header';
+import { useStore } from '@woap/utils/hooks/useStore';
+import { FormField } from '@woap/components/FormField';
+import { Button } from '@woap/components/Button';
+import { createTag } from '@woap/mobx/tag/constructor';
 
 import { Tag } from './components/Tag';
 
@@ -20,29 +25,25 @@ type TrainingTagsScreenNavigationProp = CompositeNavigationProp<
 type Props = {
   navigation: TrainingTagsScreenNavigationProp;
 };
-const defaultTags = [
-  { id: 1, selected: false, name: 'Morning routine' },
-  { id: 2, selected: false, name: 'outside' },
-  { id: 3, selected: false, name: 'Inside' },
-  { id: 4, selected: false, name: 'Equipment' },
-  { id: 5, selected: false, name: 'Yoga' },
-  { id: 6, selected: false, name: 'Athlete' },
-  { id: 7, selected: false, name: 'Quick' },
-  { id: 8, selected: false, name: 'Refine' },
-  { id: 9, selected: false, name: 'Mobility' },
-  { id: 10, selected: false, name: 'Warming-Up' },
-  { id: 11, selected: false, name: 'Cladding' },
-  { id: 12, selected: false, name: 'Endurance' },
-  { id: 13, selected: false, name: 'Muscle Building' },
-];
-export const TrainingTags: FunctionComponent<Props> = ({ navigation }) => {
-  const goToDashBoardScreen = () => navigation.navigate(Routes.TabNavigator);
 
-  const [tags, setTags] = useState(defaultTags);
-  const onTagPressed = id => () => {
-    setTags(previousTags =>
-      previousTags.map(tag => ({ ...tag, selected: tag.id === id ? !tag.selected : tag.selected }))
-    );
+export const TrainingTags: FunctionComponent<Props> = observer(({ navigation }) => {
+  const { tags, newFreeWorkout, saveNewFreeWorkout, addTag } = useStore();
+  if (!newFreeWorkout) return null;
+  const [newTag, setNewTag] = useState('');
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const goToDashBoardScreen = () => {
+    newFreeWorkout.setTags(tags.filter(tag => selectedTags.includes(tag.id)));
+    saveNewFreeWorkout();
+    navigation.navigate(Routes.TabNavigator);
+  };
+
+  const onTagPressed = (id: string) => () => {
+    const index = selectedTags.indexOf(id);
+    if (index >= 0) {
+      setSelectedTags(previousSelectedTags => previousSelectedTags.filter(tag => tag !== id));
+    } else {
+      setSelectedTags(previousSelectedTags => [...previousSelectedTags, id]);
+    }
   };
 
   return (
@@ -54,17 +55,30 @@ export const TrainingTags: FunctionComponent<Props> = ({ navigation }) => {
         <Spacer height={2} />
         <TagsContainer>
           {tags.map(tag => (
-            <Tag {...tag} key={tag.id} onPress={onTagPressed(tag.id)} />
+            <Tag
+              selected={selectedTags.includes(tag.id)}
+              name={tag.name}
+              key={tag.id}
+              onPress={onTagPressed(tag.id)}
+            />
           ))}
         </TagsContainer>
-        <NextButton
-          onPress={goToDashBoardScreen}
-          disabled={tags.filter(tag => tag.selected).length === 0}
+        <FormField
+          placeholder="PPL, tabata, street workout..."
+          value={newTag}
+          onChangeText={setNewTag}
         />
+        <Button
+          onPress={() => {
+            addTag(createTag(newTag));
+          }}
+          title="Create"
+        />
+        <NextButton onPress={goToDashBoardScreen} disabled={selectedTags.length === 0} />
       </Container>
     </Background>
   );
-};
+});
 
 const Container = styled.SafeAreaView(({ theme }) => ({
   margin: theme.margin.x2,

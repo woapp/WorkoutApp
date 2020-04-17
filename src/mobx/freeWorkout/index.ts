@@ -3,7 +3,8 @@ import { types, Instance, SnapshotIn, SnapshotOut } from 'mobx-state-tree';
 import { Training } from '../training';
 
 import { FreeWorkoutModel } from './model';
-import { freeWorkoutActions } from './actions';
+import { FreeWorkoutActions } from './actions';
+import { FreeWorkoutViews } from './views';
 
 /**
  * Workout with no precise exercise planning
@@ -14,7 +15,8 @@ export const FreeWorkout = types
     Training,
     types.model(FreeWorkoutModel)
   )
-  .actions(freeWorkoutActions);
+  .actions(FreeWorkoutActions)
+  .views(FreeWorkoutViews);
 
 export interface FreeWorkoutType extends Instance<typeof FreeWorkout> {}
 export interface FreeWorkoutSnapshotIn extends SnapshotIn<typeof FreeWorkout> {}

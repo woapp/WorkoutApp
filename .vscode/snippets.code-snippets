@@ -18,7 +18,30 @@
   },
   "useStore": {
     "prefix": "ustore",
-    "body": ["const { $1 } = useStore()"],
+    "body": ["const store = useStore()"],
     "description": "useStore"
+  },
+  "Native Styled Component": {
+    "prefix": "nsc",
+    "body": ["const $1 = styled.$2(({ theme }) => ({", "  $3", "}));"],
+    "description": "Native Styled Component"
+  },
+  "Custom Styled Component": {
+    "prefix": "csc",
+    "body": ["const $1 = styled($2)(({ theme }) => ({", "  $3", "}));"],
+    "description": "Custom Styled Component"
+  },
+  "Typescript component ": {
+    "prefix": "tc",
+    "body": [
+      "import React, { FunctionComponent } from 'react';",
+      "",
+      "interface Props {}",
+      "",
+      "export const ${1:$TM_FILENAME_BASE}: FunctionComponent<Props> = () => {",
+      "  return ($2);",
+      "};"
+    ],
+    "description": "Typescript component "
   }
 }

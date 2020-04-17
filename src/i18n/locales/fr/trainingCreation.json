@@ -1,1 +1,26 @@
-{}
+{
+  "trainingCreation": {
+    "title": "Mon nouvel entraînement",
+    "chooseExercise": "Choisis un exercice",
+    "createExercise": "Crée un nouvel exercice",
+    "repetitions": "Répétitions",
+    "kilograms": "Kilogrammes",
+    "nbSets": "Nombre de séries",
+    "add": "Ajouter"
+  },
+  "trainingSets": {
+    "title": "New training",
+    "reps": "reps",
+    "kg": "kg",
+    "finalize": "Finaliser"
+  },
+  "trainingName": {
+    "title": "Nouvel entraînement",
+    "whatName": "Comment le nommerais-tu ?",
+    "placeholder": "Full body, routine matinale"
+  },
+  "trainingTags": {
+    "title": "Nouvel entraînement",
+    "chooseTage": "Choisis au moins un tag"
+  }
+}

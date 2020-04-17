@@ -6,5 +6,5 @@ export const ExerciseSetModel = {
   exercise: types.reference(Exercise),
   id: types.identifier,
   weight: types.number,
-  nbReps: types.number,
+  reps: types.number,
 };

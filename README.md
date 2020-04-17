@@ -1,5 +1,12 @@
 # Workout App
 
+- [Workout App](#workout-app)
+  - [Setup the project](#setup-the-project)
+  - [Coding standards](#coding-standards)
+  - [Snippets](#snippets)
+    - [Translations](#translations)
+    - [Components](#components)
+    - [Mobx](#mobx)
 
 ## Setup the project
 
@@ -25,6 +32,10 @@
   react-native run-android
   ```
 
+## Coding standards
+
+- [Add svg component](./docs/AddSvgComponent.md)
+
 
 ## Snippets
 
@@ -35,6 +46,12 @@ There are all in this [file](.vscode/snippets.code-snippets)
 - utrans --> useTranslation hook 
 - rtrans --> for jsx translation
 - ttrans --> for typescript translation
+
+### Components
+
+- tb --> basic typescript component
+- nsc --> native styled component
+- csc --> custom styled component
 
 ### Mobx
 

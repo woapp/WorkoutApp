@@ -27,8 +27,10 @@ export const AnimatedMenu: FunctionComponent<Props> = ({ items }) => {
   const transition = useTransition(isOpen, { duration: 300 });
   const opacity = interpolate(transition, { inputRange: [0, 0.33, 1], outputRange: [0, 0, 1] });
   const rotate = bInterpolate(transition, 0, Math.PI / 4);
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
+  const toggleMenu = () => setIsOpen(!isOpen);
+  const hideMenuOnItemPress = (onItemPress: Function) => () => {
+    onItemPress();
+    setIsOpen(false);
   };
 
   return (
@@ -50,16 +52,11 @@ export const AnimatedMenu: FunctionComponent<Props> = ({ items }) => {
               }}
               key={index}
             >
-              <MenuItem {...item} />
+              <MenuItem {...item} onPress={hideMenuOnItemPress(item.onPress)} />
             </ItemContainer>
           );
         })}
-        <TouchableWithoutFeedback
-          style={{ ...StyleSheet.absoluteFillObject }}
-          onPress={() => {
-            setIsOpen(!isOpen);
-          }}
-        >
+        <TouchableWithoutFeedback style={{ ...StyleSheet.absoluteFillObject }} onPress={toggleMenu}>
           <IconContainer style={{ transform: [{ rotate }] }}>
             <PlusIcon />
           </IconContainer>

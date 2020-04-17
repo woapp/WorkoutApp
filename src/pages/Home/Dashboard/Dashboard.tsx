@@ -7,13 +7,17 @@ import { Routes } from '@woap/navigation/routes';
 import { HomeNavigatorParamList } from '@woap/navigation/HomeNavigator';
 import styled from '@woap/utils/styled-components';
 import { AnimatedMenu } from '@woap/pages/Home/Dashboard/components/AnimatedMenu';
-import images from '@woap/assets/images';
-import { Spacer } from '@woap/components/Spacer';
 import { RootNavigatorParamList } from '@woap/navigation';
 import { TabNavigatorParamList } from '@woap/navigation/TabNavigator';
 import { WhistleIcon } from '@woap/components/Icons/WhistleIcon';
 import { DumbbellIcon } from '@woap/components/Icons/DumbbellIcon';
 import { useTranslation } from 'react-i18next';
+import { useStore } from '@woap/utils/hooks/useStore';
+import { TextBody } from '@woap/components/Texts';
+import { ArrowForwardIcon } from '@woap/components/Icons/ArrowForwardIcon';
+import { Spacer } from '@woap/components/Spacer';
+
+import { NoTraining } from './components/NoTraining';
 
 type DashboardScreenNavigationProp = CompositeNavigationProp<
   StackNavigationProp<RootNavigatorParamList, Routes.TabNavigator>,
@@ -27,38 +31,47 @@ type Props = {
   navigation: DashboardScreenNavigationProp;
 };
 
-const ARROW_HEIGHT = 140;
-const ARROW_WIDTH = 120;
-
 export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => {
+  const store = useStore();
   const { t } = useTranslation('home');
 
-  const goToTrainingNavigator = () => navigation.navigate(Routes.TrainingNavigator);
-  const goToExerciceNavigator = () => navigation.navigate(Routes.ExerciseNavigator);
+  const onCreateNewTraining = () => {
+    store.initializeNewFreeWorkout();
+    navigation.navigate(Routes.TrainingNavigator);
+  };
+
+  const onCreateNewExercise = () => navigation.navigate(Routes.ExerciseNavigator);
 
   return (
     <Container>
-      <EmptyContainer>
-        <EmptyTitle>{t('dashboard.nothingYet')}</EmptyTitle>
-        <Spacer height={1} />
-        <EmptyBody>{t('dashboard.createTraining')}</EmptyBody>
-        <Spacer height={4} />
-        <ArrowContainer>
-          <Arrow source={images.bottomRightArrow} />
-        </ArrowContainer>
-      </EmptyContainer>
+      {store.trainings.length === 0 ? (
+        <NoTraining />
+      ) : (
+        <>
+          <Spacer height={2} />
+          <AllTrainings>{t('dashboard.allTrainings')}</AllTrainings>
+          <Spacer height={2} />
+          {store.trainings.map(training => (
+            <TrainingContainer key={training.id}>
+              <TrainingName>{training.name}</TrainingName>
+              <ArrowForwardIcon />
+            </TrainingContainer>
+          ))}
+        </>
+      )}
+
       <MenuContainer>
         <AnimatedMenu
           items={[
             {
               title: t('dashboard.newTraining'),
               Icon: WhistleIcon,
-              onPress: goToTrainingNavigator,
+              onPress: onCreateNewTraining,
             },
             {
               title: t('dashboard.newExercise'),
               Icon: DumbbellIcon,
-              onPress: goToExerciceNavigator,
+              onPress: onCreateNewExercise,
             },
           ]}
         />
@@ -67,41 +80,32 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
   );
 });
 
-const Container = styled.View(props => ({
+const Container = styled.View(({ theme }) => ({
   flex: 1,
-  backgroundColor: props.theme.colors.background.black,
+  backgroundColor: theme.colors.background.black,
+  padding: theme.margin.x2,
 }));
 
-const EmptyContainer = styled.View({
-  flex: 1,
-  alignItems: 'center',
-  justifyContent: 'flex-end',
-});
-
-const EmptyTitle = styled.Text(props => ({
-  ...props.theme.fonts.h2,
-  fontWeight: 'bold',
-  textAlign: 'center',
-  color: props.theme.colors.white,
-}));
-
-const EmptyBody = styled.Text(props => ({
-  ...props.theme.fonts.h3,
-  textAlign: 'center',
-  color: props.theme.colors.white,
-  width: '50%',
-}));
-
-const ArrowContainer = styled.View(props => ({
-  marginRight: props.theme.margin.x10,
-  marginBottom: props.theme.margin.x5,
-  alignSelf: 'flex-end',
-}));
-
-const Arrow = styled.Image({ height: ARROW_HEIGHT, width: ARROW_WIDTH });
-
-const MenuContainer = styled.View(props => ({
+const MenuContainer = styled.View(({ theme }) => ({
   position: 'absolute',
-  bottom: props.theme.margin.x2,
-  right: props.theme.margin.x2,
+  bottom: theme.margin.x2,
+  right: theme.margin.x2,
+}));
+
+const AllTrainings = styled(TextBody)(({ theme }) => ({
+  color: theme.colors.white,
+}));
+
+const TrainingName = styled.Text(({ theme }) => ({
+  color: theme.colors.white,
+  fontSize: 16,
+}));
+
+const TrainingContainer = styled.View(({ theme }) => ({
+  backgroundColor: '#3D3D55',
+  padding: theme.margin.x2,
+  borderRadius: theme.border.radius.s + 2,
+  marginBottom: theme.margin.x2,
+  flexDirection: 'row',
+  justifyContent: 'space-between',
 }));
