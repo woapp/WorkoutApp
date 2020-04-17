@@ -1,5 +1,12 @@
 # Workout App
 
+- [Workout App](#workout-app)
+  - [Setup the project](#setup-the-project)
+  - [Coding standards](#coding-standards)
+  - [Snippets](#snippets)
+    - [Translations](#translations)
+    - [Components](#components)
+    - [Mobx](#mobx)
 
 ## Setup the project
 
@@ -24,6 +31,10 @@
   ```bash
   react-native run-android
   ```
+
+## Coding standards
+
+- [Add svg component](./docs/AddSvgComponent.md)
 
 
 ## Snippets
