@@ -35,12 +35,12 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
   const store = useStore();
   const { t } = useTranslation('home');
 
-  const goToTrainingNavigator = () => {
+  const onCreateNewTraining = () => {
     store.initializeNewFreeWorkout();
     navigation.navigate(Routes.TrainingNavigator);
   };
 
-  const goToExerciceNavigator = () => navigation.navigate(Routes.ExerciseNavigator);
+  const onCreateNewExercise = () => navigation.navigate(Routes.ExerciseNavigator);
 
   return (
     <Container>
@@ -66,12 +66,12 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
             {
               title: t('dashboard.newTraining'),
               Icon: WhistleIcon,
-              onPress: goToTrainingNavigator,
+              onPress: onCreateNewTraining,
             },
             {
               title: t('dashboard.newExercise'),
               Icon: DumbbellIcon,
-              onPress: goToExerciceNavigator,
+              onPress: onCreateNewExercise,
             },
           ]}
         />
