@@ -18,7 +18,6 @@ export const rootActions = (self: ModelInstanceTypeProps<typeof RootModel>) => (
   saveNewFreeWorkout(): void {
     if (self.newFreeWorkout) {
       self.trainings.push(clone(self.newFreeWorkout));
-      this.initializeNewFreeWorkout();
     }
   },
 });
