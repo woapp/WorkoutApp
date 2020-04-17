@@ -5,13 +5,14 @@ import { AsyncStorage } from 'react-native';
 
 import { RootModel } from './rootModel';
 import { rootActions } from './rootActions';
+import { defaultTags } from './tag/defaultTags';
 
 export const RootStore = types.model(RootModel).actions(rootActions);
 
 export const rootStore = RootStore.create({
   trainings: [],
   exercises: [],
-  tags: [],
+  tags: defaultTags,
 });
 
 persist('rootStore', rootStore, {
