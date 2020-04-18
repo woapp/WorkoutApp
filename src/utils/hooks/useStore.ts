@@ -9,5 +9,5 @@ export const useStore = (): RootStoreType => {
     throw Error('Store is null or undefined');
   }
 
-  return store;
+  return store as RootStoreType;
 };

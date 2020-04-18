@@ -1,9 +1,10 @@
-import { ModelInstanceTypeProps, clone } from 'mobx-state-tree';
+import { ModelInstanceTypeProps, clone, destroy } from 'mobx-state-tree';
 
 import { RootModel } from './rootModel';
 import { ExerciseType } from './exercise';
 import { createFreeWorkout } from './freeWorkout/constructor';
 import { TagType } from './tag';
+import { TrainingType } from './training';
 
 export const rootActions = (self: ModelInstanceTypeProps<typeof RootModel>) => ({
   addExercise(exercise: ExerciseType): void {
@@ -19,5 +20,8 @@ export const rootActions = (self: ModelInstanceTypeProps<typeof RootModel>) => (
     if (self.newFreeWorkout) {
       self.trainings.push(clone(self.newFreeWorkout));
     }
+  },
+  deleteTraining(training: TrainingType): void {
+    destroy(training);
   },
 });
