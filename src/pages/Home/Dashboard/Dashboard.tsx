@@ -45,16 +45,20 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
   const onCreateNewExercise = () => navigation.navigate(Routes.ExerciseNavigator);
 
   const onDeleteTraining = (training: TrainingType) => () => {
-    Alert.alert("Supprimer l'entraînement", '', [
-      { text: 'Cancel', style: 'cancel' },
-      {
-        text: 'Supprimer',
-        style: 'destructive',
-        onPress: () => {
-          store.deleteTraining(training);
+    Alert.alert(
+      t('ongoingTrainingPreview.deleteAlert.title'),
+      t('ongoingTrainingPreview.deleteAlert.content'),
+      [
+        { text: t('ongoingTrainingPreview.deleteAlert.cancel'), style: 'cancel' },
+        {
+          text: t('ongoingTrainingPreview.deleteAlert.delete'),
+          style: 'destructive',
+          onPress: () => {
+            store.deleteTraining(training);
+          },
         },
-      },
-    ]);
+      ]
+    );
   };
 
   return (
