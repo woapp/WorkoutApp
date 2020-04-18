@@ -44,6 +44,11 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
 
   const onCreateNewExercise = () => navigation.navigate(Routes.ExerciseNavigator);
 
+  const onPressTraining = (training: TrainingType) => () => {
+    navigation.navigate(Routes.OngoingTrainingPreview);
+    console.log(training);
+  };
+
   const onDeleteTraining = (training: TrainingType) => () => {
     Alert.alert(
       t('ongoingTrainingPreview.deleteAlert.title'),
@@ -71,7 +76,11 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
           <AllTrainings>{t('dashboard.allTrainings')}</AllTrainings>
           <Spacer height={2} />
           {store.trainings.map(training => (
-            <TrainingContainer key={training.id} onLongPress={onDeleteTraining(training)}>
+            <TrainingContainer
+              key={training.id}
+              onPress={onPressTraining(training)}
+              onLongPress={onDeleteTraining(training)}
+            >
               <TrainingName>{training.name}</TrainingName>
               <ArrowForwardIcon />
             </TrainingContainer>
