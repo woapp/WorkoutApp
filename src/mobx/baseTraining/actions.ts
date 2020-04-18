@@ -2,9 +2,9 @@ import { ModelInstanceTypeProps } from 'mobx-state-tree';
 
 import { TagType } from '../tag';
 
-import { TrainingModel } from './model';
+import { BaseTrainingModel } from './model';
 
-export const TrainingActions = (self: ModelInstanceTypeProps<typeof TrainingModel>) => ({
+export const BaseTrainingActions = (self: ModelInstanceTypeProps<typeof BaseTrainingModel>) => ({
   setTags(tags: TagType[]) {
     self.tags.replace(tags);
   },

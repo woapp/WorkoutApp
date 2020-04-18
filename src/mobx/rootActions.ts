@@ -24,4 +24,8 @@ export const rootActions = (self: ModelInstanceTypeProps<typeof RootModel>) => (
   deleteTraining(training: TrainingType): void {
     destroy(training);
   },
+  startTraining(training: TrainingType): void {
+    // self.ongoingTraining = getType(training).create({ ...training, id: generateId() });
+    console.log(training);
+  },
 });

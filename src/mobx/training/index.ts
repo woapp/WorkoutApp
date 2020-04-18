@@ -1,11 +1,14 @@
-import { types, Instance, SnapshotIn, SnapshotOut } from 'mobx-state-tree';
+import { types } from 'mobx-state-tree';
 
-import { TrainingModel } from './model';
-import { TrainingActions } from './actions';
+import {
+  FreeWorkout,
+  FreeWorkoutType,
+  FreeWorkoutSnapshotIn,
+  FreeWorkoutSnapshotOut,
+} from '../freeWorkout';
 
-export const Training = types.model(TrainingModel).actions(TrainingActions);
+export const Training = types.union(FreeWorkout);
 
-export interface TrainingType extends Instance<typeof Training> {}
-export interface TrainingModelType extends Instance<typeof TrainingModel> {}
-export interface TrainingSnapshotIn extends SnapshotIn<typeof Training> {}
-export interface TrainingSnapshotOut extends SnapshotOut<typeof Training> {}
+export type TrainingType = FreeWorkoutType;
+export type TrainingSnapshotIn = FreeWorkoutSnapshotIn;
+export type TrainingSnapshotOut = FreeWorkoutSnapshotOut;

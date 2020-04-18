@@ -1,6 +1,6 @@
 import { types, Instance, SnapshotIn, SnapshotOut } from 'mobx-state-tree';
 
-import { Training } from '../training';
+import { BaseTraining } from '../baseTraining';
 
 import { FreeWorkoutModel } from './model';
 import { FreeWorkoutActions } from './actions';
@@ -12,7 +12,7 @@ import { FreeWorkoutViews } from './views';
  */
 export const FreeWorkout = types
   .compose(
-    Training,
+    BaseTraining,
     types.model(FreeWorkoutModel)
   )
   .actions(FreeWorkoutActions)

@@ -1,8 +1,13 @@
-import React, { FunctionComponent } from 'react';
-import { Text } from 'react-native';
+import React from 'react';
+import { useStore } from '@woap/utils/hooks/useStore';
+import { TextTitle } from '@woap/components/Texts';
 
-interface Props {}
+export const OngoingTrainingPreview = () => {
+  const store = useStore();
+  const ongoingTraining = store.ongoingTraining;
+  if (!ongoingTraining) {
+    return null;
+  }
 
-export const OngoingTrainingPreview: FunctionComponent<Props> = () => {
-  return <Text>OngoingTrainingPreview</Text>;
+  return <TextTitle>{ongoingTraining.name}</TextTitle>;
 };
