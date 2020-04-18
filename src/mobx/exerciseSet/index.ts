@@ -10,5 +10,6 @@ export const ExerciseSet = types
   .views(exerciseSetViews);
 
 export interface ExerciseSetType extends Instance<typeof ExerciseSet> {}
+export interface ExerciseSetModelType extends Instance<typeof ExerciseSetModel> {}
 export interface ExerciseSetSnapshotIn extends SnapshotIn<typeof ExerciseSet> {}
 export interface ExerciseSetSnapshotOut extends SnapshotOut<typeof ExerciseSet> {}

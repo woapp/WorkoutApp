@@ -19,5 +19,6 @@ export const FreeWorkout = types
   .views(FreeWorkoutViews);
 
 export interface FreeWorkoutType extends Instance<typeof FreeWorkout> {}
+export interface FreeWorkoutModelType extends Instance<typeof FreeWorkoutModel> {}
 export interface FreeWorkoutSnapshotIn extends SnapshotIn<typeof FreeWorkout> {}
 export interface FreeWorkoutSnapshotOut extends SnapshotOut<typeof FreeWorkout> {}
