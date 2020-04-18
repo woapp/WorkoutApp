@@ -2,10 +2,8 @@ import styled from '@woap/utils/styled-components';
 import { useTranslation } from 'react-i18next';
 import React, { FunctionComponent } from 'react';
 import { Spacer } from '@woap/components/Spacer';
-import images from '@woap/assets/images';
 
-const ARROW_HEIGHT = 140;
-const ARROW_WIDTH = 120;
+import { BottomRightArrow } from '../BottomRightArrow';
 
 interface Props {}
 
@@ -19,7 +17,7 @@ export const NoTraining: FunctionComponent<Props> = () => {
       <EmptyBody>{t('dashboard.createTraining')}</EmptyBody>
       <Spacer height={4} />
       <ArrowContainer>
-        <Arrow source={images.bottomRightArrow} />
+        <BottomRightArrow />
       </ArrowContainer>
     </EmptyContainer>
   );
@@ -50,5 +48,3 @@ const ArrowContainer = styled.View(props => ({
   marginBottom: props.theme.margin.x5,
   alignSelf: 'flex-end',
 }));
-
-const Arrow = styled.Image({ height: ARROW_HEIGHT, width: ARROW_WIDTH });
