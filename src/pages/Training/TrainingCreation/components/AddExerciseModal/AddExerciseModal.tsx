@@ -1,5 +1,5 @@
-import React, { FunctionComponent, useState } from 'react';
-import { TouchableOpacity } from 'react-native';
+import React, { FunctionComponent, useState, useRef } from 'react';
+import { TouchableOpacity, Keyboard, TextInput } from 'react-native';
 import Modal from 'react-native-modal';
 import styled from '@woap/utils/styled-components';
 import { CrossIcon } from '@woap/components/Icons/CrossIcon';
@@ -26,20 +26,22 @@ export const AddExerciseModal: FunctionComponent<Props> = observer(
     const { t } = useTranslation('trainingCreation');
     if (!newFreeWorkout) return null;
     const [repetitionsValue, setRepetitionsValue] = useState('10');
-    const [kilogramsValue, setKilogramsValue] = useState('80');
+    const [weightValue, setWeightValue] = useState('80');
+    const weightInput = useRef<TextInput>(null);
     const [setsValue, setSetsValue] = useState('4');
+    const setsInput = useRef<TextInput>(null);
     const addSetsToNewFreeWorkout = () => {
       for (let i = 0; i < Number.parseInt(setsValue, 10); i++) {
         const set = createExerciseSet(exercise.id);
         set.setReps(Number.parseInt(repetitionsValue, 10));
-        set.setWeight(Number.parseFloat(kilogramsValue));
+        set.setWeight(Number.parseFloat(weightValue));
         newFreeWorkout.addExerciseSet(set);
       }
       onPressAdd();
     };
 
     return (
-      <Modal isVisible={isVisible} onBackdropPress={onPressClose}>
+      <Modal isVisible={isVisible} onBackdropPress={Keyboard.dismiss}>
         <Container>
           <Header>
             <Title>{exercise.name}</Title>
@@ -49,17 +51,46 @@ export const AddExerciseModal: FunctionComponent<Props> = observer(
           </Header>
           <Row>
             <ItemTitle>{t('trainingCreation.repetitions')}</ItemTitle>
-            <NumberInput value={repetitionsValue} onChangeText={setRepetitionsValue} />
+            <NumberInput
+              value={repetitionsValue}
+              onChangeText={setRepetitionsValue}
+              keyboardType="number-pad"
+              maxLength={3}
+              returnKeyType="next"
+              onSubmitEditing={() => {
+                weightInput.current && weightInput.current.focus();
+              }}
+              blurOnSubmit={false}
+            />
           </Row>
           <Separator />
           <Row>
             <ItemTitle>{t('trainingCreation.kilograms')}</ItemTitle>
-            <NumberInput value={kilogramsValue} onChangeText={setKilogramsValue} />
+            <NumberInput
+              ref={weightInput}
+              value={weightValue}
+              onChangeText={setWeightValue}
+              keyboardType="numeric"
+              maxLength={8}
+              returnKeyType="next"
+              onSubmitEditing={() => {
+                setsInput.current && setsInput.current.focus();
+              }}
+              blurOnSubmit={false}
+            />
           </Row>
           <Separator />
           <Row>
             <ItemTitle>{t('trainingCreation.nbSets')}</ItemTitle>
-            <NumberInput value={setsValue} onChangeText={setSetsValue} />
+            <NumberInput
+              ref={setsInput}
+              value={setsValue}
+              onChangeText={setSetsValue}
+              keyboardType="number-pad"
+              maxLength={2}
+              returnKeyType="go"
+              onSubmitEditing={Keyboard.dismiss}
+            />
           </Row>
         </Container>
         <Spacer height={2} />
@@ -86,9 +117,12 @@ const Header = styled(LinearGradient).attrs({
   alignItems: 'center',
 }));
 
-const NumberInput = styled.TextInput.attrs({ keyboardType: 'numeric' })(({ theme }) => ({
+const NumberInput = styled.TextInput(({ theme }) => ({
   ...theme.fonts.h2,
   fontWeight: 'bold',
+  color: theme.colors.black,
+  flex: 1,
+  textAlign: 'right',
 }));
 
 const Title = styled.Text(({ theme }) => ({
