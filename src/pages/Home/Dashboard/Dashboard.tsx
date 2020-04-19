@@ -16,6 +16,8 @@ import { useStore } from '@woap/utils/hooks/useStore';
 import { TextBody } from '@woap/components/Texts';
 import { ArrowForwardIcon } from '@woap/components/Icons/ArrowForwardIcon';
 import { Spacer } from '@woap/components/Spacer';
+import { Alert } from 'react-native';
+import { TrainingType } from '@woap/mobx/training';
 
 import { NoTraining } from './components/NoTraining';
 
@@ -42,6 +44,28 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
 
   const onCreateNewExercise = () => navigation.navigate(Routes.ExerciseNavigator);
 
+  const onPressTraining = (training: TrainingType) => () => {
+    navigation.navigate(Routes.OngoingTrainingPreview);
+    store.startTraining(training);
+  };
+
+  const onDeleteTraining = (training: TrainingType) => () => {
+    Alert.alert(
+      t('ongoingTrainingPreview.deleteAlert.title'),
+      t('ongoingTrainingPreview.deleteAlert.content'),
+      [
+        { text: t('ongoingTrainingPreview.deleteAlert.cancel'), style: 'cancel' },
+        {
+          text: t('ongoingTrainingPreview.deleteAlert.delete'),
+          style: 'destructive',
+          onPress: () => {
+            store.deleteTraining(training);
+          },
+        },
+      ]
+    );
+  };
+
   return (
     <Container>
       {store.trainings.length === 0 ? (
@@ -52,7 +76,11 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
           <AllTrainings>{t('dashboard.allTrainings')}</AllTrainings>
           <Spacer height={2} />
           {store.trainings.map(training => (
-            <TrainingContainer key={training.id}>
+            <TrainingContainer
+              key={training.id}
+              onPress={onPressTraining(training)}
+              onLongPress={onDeleteTraining(training)}
+            >
               <TrainingName>{training.name}</TrainingName>
               <ArrowForwardIcon />
             </TrainingContainer>
@@ -101,7 +129,7 @@ const TrainingName = styled.Text(({ theme }) => ({
   fontSize: 16,
 }));
 
-const TrainingContainer = styled.View(({ theme }) => ({
+const TrainingContainer = styled.TouchableOpacity(({ theme }) => ({
   backgroundColor: '#3D3D55',
   padding: theme.margin.x2,
   borderRadius: theme.border.radius.s + 2,

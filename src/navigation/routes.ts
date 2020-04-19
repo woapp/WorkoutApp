@@ -9,7 +9,7 @@ export enum Routes {
   HomeNavigator = 'HomeNavigator',
   HistoryNavigator = 'HistoryNavigator',
   TabNavigator = 'TabNavigator',
-  OngoingWorkoutOverview = 'OngoingWorkoutOverview',
+  OngoingTrainingPreview = 'OngoingTrainingPreview',
   OngoingWorkout = 'OngoingWorkout',
   HistoryDetails = 'HistoryDetails',
   Login = 'Login',

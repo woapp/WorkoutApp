@@ -5,5 +5,13 @@
     "newTraining": "NEW\nTRAINING",
     "newExercise": "NEW\nEXERCISE",
     "allTrainings": "ALL TRAININGS"
+  },
+  "ongoingTrainingPreview": {
+    "deleteAlert": {
+      "title": "Delete training",
+      "content": "Are you sure you want to delete this training?",
+      "cancel": "Cancel",
+      "delete": "Delete"
+    }
   }
 }
