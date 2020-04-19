@@ -1,5 +1,6 @@
 import { generateId } from '@woap/utils/services/generateId';
 
-import { FreeWorkout } from '.';
+import { FreeWorkout, FreeWorkoutSnapshotIn } from '.';
 
-export const createFreeWorkout = () => FreeWorkout.create({ id: generateId() });
+export const createFreeWorkout = (data?: FreeWorkoutSnapshotIn) =>
+  FreeWorkout.create({ ...data, id: generateId() });
