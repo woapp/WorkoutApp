@@ -58,12 +58,12 @@ export const TrainingCreation: FunctionComponent<Props> = observer(({ navigation
 
   const archiveExercise = (exercise: ExerciseType) => () => {
     Alert.alert(
-      t('ongoingTrainingPreview.deleteAlert.title'),
-      t('ongoingTrainingPreview.deleteAlert.content'),
+      t('trainingCreation.deleteAlert.title'),
+      t('trainingCreation.deleteAlert.content'),
       [
-        { text: t('ongoingTrainingPreview.deleteAlert.cancel'), style: 'cancel' },
+        { text: t('trainingCreation.deleteAlert.cancel'), style: 'cancel' },
         {
-          text: t('ongoingTrainingPreview.deleteAlert.delete'),
+          text: t('trainingCreation.deleteAlert.delete'),
           style: 'destructive',
           onPress: () => {
             store.deleteExercise(exercise);
