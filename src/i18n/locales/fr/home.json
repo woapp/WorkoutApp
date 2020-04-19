@@ -4,7 +4,8 @@
     "createTraining": "Crée ton premier entraînement personnalisé !",
     "newTraining": "NOUVEL\nENTRAINEMENT",
     "newExercise": "NOUVEL\nEXERCICE",
-    "allTrainings": "TOUS LES ENTRAINEMENTS"
+    "allTrainings": "TOUS LES ENTRAINEMENTS",
+    "favoriteTrainings": "TES ENTRAÎNEMENTS FAVORIS"
   },
   "ongoingTrainingPreview": {
     "deleteAlert": {

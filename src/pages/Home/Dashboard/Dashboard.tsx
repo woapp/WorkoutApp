@@ -72,7 +72,9 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
       ) : (
         <>
           <Spacer height={2} />
-          <AllTrainings>{t('dashboard.allTrainings')}</AllTrainings>
+          <CategoryTitle>{t('dashboard.favoriteTrainings')}</CategoryTitle>
+          <Spacer height={3} />
+          <CategoryTitle>{t('dashboard.allTrainings')}</CategoryTitle>
           <Spacer height={2} />
           {store.trainings.map(training => (
             <TrainingContainer
@@ -119,7 +121,7 @@ const MenuContainer = styled.View(({ theme }) => ({
   right: theme.margin.x2,
 }));
 
-const AllTrainings = styled(TextBody)(({ theme }) => ({
+const CategoryTitle = styled(TextBody)(({ theme }) => ({
   color: theme.colors.white,
 }));
 
