@@ -1,0 +1,1 @@
+export { ShoulderIcon } from './ShoulderIcon';
