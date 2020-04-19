@@ -20,6 +20,7 @@ import { PlusIcon } from '@woap/components/Icons/PlusIcon';
 interface Props {
   title: string;
   onPress: () => void;
+  onLongPress: () => void;
   selected: boolean;
   index: number;
 }
@@ -46,11 +47,17 @@ const runAnimation = ({ delayDuration }: { delayDuration: number }) => {
   ]);
 };
 
-export const ExerciseItem: FunctionComponent<Props> = ({ selected, title, onPress, index }) => {
+export const ExerciseItem: FunctionComponent<Props> = ({
+  selected,
+  title,
+  onPress,
+  onLongPress,
+  index,
+}) => {
   const opacity = runAnimation({ delayDuration: index * 150 });
 
   return (
-    <Container selected={selected} style={{ opacity }} onPress={onPress}>
+    <Container selected={selected} style={{ opacity }} onPress={onPress} onLongPress={onLongPress}>
       <Title>{title}</Title>
       <View style={{ transform: [{ rotate: selected ? '45deg' : '0deg' }] }}>
         <PlusIcon color={colors.black} />

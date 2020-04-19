@@ -10,6 +10,7 @@ export const RootModel = {
   newFreeWorkout: types.maybe(FreeWorkout),
   trainings: types.array(Training),
   exercises: types.array(Exercise),
+  archivedExercises: types.array(Exercise),
   tags: types.array(Tag),
   ongoingTraining: types.maybe(Training),
 };

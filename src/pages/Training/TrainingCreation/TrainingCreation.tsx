@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, Alert } from 'react-native';
 import { observer } from 'mobx-react-lite';
 import { StackNavigationProp } from '@react-navigation/stack';
 import styled from '@woap/utils/styled-components';
@@ -35,10 +35,10 @@ type Props = {
 };
 
 export const TrainingCreation: FunctionComponent<Props> = observer(({ navigation }) => {
-  const { exercises, newFreeWorkout } = useStore();
+  const store = useStore();
   const { t } = useTranslation('trainingCreation');
 
-  if (!newFreeWorkout) return null;
+  if (!store.newFreeWorkout) return null;
 
   const [filter, setFilter] = useState('');
   const [displayAddExerciseModal, setDisplayAddExerciseModal] = useState(false);
@@ -56,6 +56,23 @@ export const TrainingCreation: FunctionComponent<Props> = observer(({ navigation
 
   const goToExerciseNavigator = () => navigation.navigate(Routes.ExerciseNavigator);
 
+  const archiveExercise = (exercise: ExerciseType) => () => {
+    Alert.alert(
+      t('ongoingTrainingPreview.deleteAlert.title'),
+      t('ongoingTrainingPreview.deleteAlert.content'),
+      [
+        { text: t('ongoingTrainingPreview.deleteAlert.cancel'), style: 'cancel' },
+        {
+          text: t('ongoingTrainingPreview.deleteAlert.delete'),
+          style: 'destructive',
+          onPress: () => {
+            store.deleteExercise(exercise);
+          },
+        },
+      ]
+    );
+  };
+
   return (
     <Background>
       <Container>
@@ -66,7 +83,7 @@ export const TrainingCreation: FunctionComponent<Props> = observer(({ navigation
         <SubTitle>{t('trainingCreation.chooseExercise')}</SubTitle>
         <FlatList
           showsVerticalScrollIndicator={false}
-          data={exercises
+          data={store.exercises
             .toJS()
             .filter(exercise => exercise.name.toLowerCase().includes(filter.toLowerCase()))}
           ListHeaderComponent={() => (
@@ -84,7 +101,10 @@ export const TrainingCreation: FunctionComponent<Props> = observer(({ navigation
                 setSelectedExercise(item);
                 openAddExerciseModal();
               }}
-              selected={newFreeWorkout.exercisesId.includes(item.id)}
+              onLongPress={archiveExercise(item)}
+              selected={
+                store.newFreeWorkout ? store.newFreeWorkout.exercisesId.includes(item.id) : false
+              }
               key={`${item.id}`}
               index={index}
             />
