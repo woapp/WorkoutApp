@@ -6,8 +6,12 @@ import { AsyncStorage } from 'react-native';
 import { RootModel } from './rootModel';
 import { rootActions } from './rootActions';
 import { defaultTags } from './tag/defaultTags';
+import { RootViews } from './rootViews';
 
-export const RootStore = types.model(RootModel).actions(rootActions);
+export const RootStore = types
+  .model(RootModel)
+  .actions(rootActions)
+  .views(RootViews);
 
 export const rootStore = RootStore.create({
   trainings: [],

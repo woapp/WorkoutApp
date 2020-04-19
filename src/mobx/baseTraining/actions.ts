@@ -11,4 +11,7 @@ export const BaseTrainingActions = (self: ModelInstanceTypeProps<typeof BaseTrai
   setName(name: string) {
     self.name = name;
   },
+  toggleFavorite() {
+    self.isFavorite = !self.isFavorite;
+  },
 });
