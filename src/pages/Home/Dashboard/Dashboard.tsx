@@ -45,8 +45,7 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
   const onCreateNewExercise = () => navigation.navigate(Routes.ExerciseNavigator);
 
   const onPressTraining = (training: TrainingType) => () => {
-    navigation.navigate(Routes.OngoingTrainingPreview);
-    store.startTraining(training);
+    navigation.navigate(Routes.OngoingTrainingPreview, { training });
   };
 
   const onDeleteTraining = (training: TrainingType) => () => {

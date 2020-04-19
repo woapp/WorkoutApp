@@ -1,10 +1,11 @@
-import { ModelInstanceTypeProps, clone, destroy } from 'mobx-state-tree';
+import { ModelInstanceTypeProps, clone, destroy, getType, castToSnapshot } from 'mobx-state-tree';
 
 import { RootModel } from './rootModel';
 import { ExerciseType } from './exercise';
 import { createFreeWorkout } from './freeWorkout/constructor';
 import { TagType } from './tag';
 import { TrainingType } from './training';
+import { FreeWorkout } from './freeWorkout';
 
 export const rootActions = (self: ModelInstanceTypeProps<typeof RootModel>) => ({
   addExercise(exercise: ExerciseType): void {
@@ -42,7 +43,9 @@ export const rootActions = (self: ModelInstanceTypeProps<typeof RootModel>) => (
     }
   },
   startTraining(training: TrainingType): void {
-    // self.ongoingTraining = getType(training).create({ ...training, id: generateId() });
-    console.log(training);
+    const trainingType = getType(training);
+    if (trainingType === FreeWorkout) {
+      self.ongoingTraining = createFreeWorkout(castToSnapshot(training));
+    }
   },
 });
