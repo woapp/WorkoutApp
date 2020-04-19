@@ -16,10 +16,13 @@ import { useStore } from '@woap/utils/hooks/useStore';
 import { TextBody } from '@woap/components/Texts';
 import { ArrowForwardIcon } from '@woap/components/Icons/ArrowForwardIcon';
 import { Spacer } from '@woap/components/Spacer';
-import { Alert } from 'react-native';
+import { Alert, Dimensions, View } from 'react-native';
 import { TrainingType } from '@woap/mobx/training';
+import { FlatList } from 'react-native-gesture-handler';
+import { MuscleGroup } from '@woap/mobx/types';
 
 import { NoTraining } from './components/NoTraining';
+import { MuscleGroupIcon } from './components/MuscleGroupIcon';
 
 type DashboardScreenNavigationProp = CompositeNavigationProp<
   StackNavigationProp<RootNavigatorParamList, Routes.TabNavigator>,
@@ -32,6 +35,8 @@ type DashboardScreenNavigationProp = CompositeNavigationProp<
 type Props = {
   navigation: DashboardScreenNavigationProp;
 };
+
+const { width: screenWidth } = Dimensions.get('window');
 
 export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => {
   const store = useStore();
@@ -73,19 +78,51 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
         <>
           <Spacer height={2} />
           <CategoryTitle>{t('dashboard.favoriteTrainings')}</CategoryTitle>
+          <Spacer height={2} />
+          <View>
+            <FlatList
+              horizontal
+              style={{ flex: 0 }}
+              data={store.favoriteTrainings}
+              renderItem={({ item: training }: { item: TrainingType }) => (
+                <FavoriteTrainingCard
+                  key={training.id}
+                  onPress={onPressTraining(training)}
+                  onLongPress={onDeleteTraining(training)}
+                >
+                  <MuscleGroupsRow>
+                    {training.mainMuscleGroups.map((muscleGroup: MuscleGroup) => (
+                      <MuscleGroupIcon key={muscleGroup} muscleGroup={muscleGroup} />
+                    ))}
+                  </MuscleGroupsRow>
+                  <FavoriteTrainingName>{training.name}</FavoriteTrainingName>
+                  <TagRow>
+                    {training.tags.map(tag => (
+                      <Tag key={tag.id}>{tag.name}</Tag>
+                    ))}
+                  </TagRow>
+                </FavoriteTrainingCard>
+              )}
+            />
+          </View>
+
           <Spacer height={3} />
           <CategoryTitle>{t('dashboard.allTrainings')}</CategoryTitle>
           <Spacer height={2} />
-          {store.trainings.map(training => (
-            <TrainingContainer
-              key={training.id}
-              onPress={onPressTraining(training)}
-              onLongPress={onDeleteTraining(training)}
-            >
-              <TrainingName>{training.name}</TrainingName>
-              <ArrowForwardIcon />
-            </TrainingContainer>
-          ))}
+          <FlatList
+            style={{ flex: 1 }}
+            data={store.trainings}
+            renderItem={({ item: training }: { item: TrainingType }) => (
+              <TrainingContainer
+                key={training.id}
+                onPress={onPressTraining(training)}
+                onLongPress={onDeleteTraining(training)}
+              >
+                <TrainingName>{training.name}</TrainingName>
+                <ArrowForwardIcon />
+              </TrainingContainer>
+            )}
+          />
         </>
       )}
 
@@ -137,4 +174,44 @@ const TrainingContainer = styled.TouchableOpacity(({ theme }) => ({
   marginBottom: theme.margin.x2,
   flexDirection: 'row',
   justifyContent: 'space-between',
+}));
+
+const FavoriteTrainingCard = styled.TouchableOpacity(({ theme }) => ({
+  backgroundColor: '#3D3D55',
+  padding: theme.margin.x2,
+  borderRadius: theme.border.radius.s + 2,
+  marginRight: theme.margin.x2,
+  width: screenWidth * 0.7,
+  flex: 1,
+  overflow: 'hidden',
+}));
+
+const TagRow = styled.View({
+  flexDirection: 'row',
+  flexWrap: 'nowrap',
+  overflow: 'visible',
+});
+
+const Tag = styled.Text(({ theme }) => ({
+  paddingVertical: theme.margin.x1,
+  paddingHorizontal: theme.margin.x2,
+  marginRight: theme.margin.x2,
+  marginVertical: theme.margin.x1,
+  borderColor: theme.colors.greyScale[10],
+  borderWidth: theme.border.width.s,
+  borderRadius: theme.border.radius.m,
+  color: theme.colors.greyScale[10],
+}));
+
+const FavoriteTrainingName = styled.Text(({ theme }) => ({
+  color: theme.colors.white,
+  fontSize: 20,
+  fontWeight: 'bold',
+}));
+
+const MuscleGroupsRow = styled.View(({ theme }) => ({
+  flexDirection: 'row',
+  flexWrap: 'nowrap',
+  overflow: 'visible',
+  marginBottom: theme.margin.x2,
 }));
