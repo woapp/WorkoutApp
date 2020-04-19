@@ -4,7 +4,7 @@ import styled from '@woap/utils/styled-components';
 import { Dimensions } from 'react-native';
 import { MuscleGroup } from '@woap/mobx/types';
 
-import { MuscleGroupIcon } from '../MuscleGroupIcon';
+import { MuscleGroupCard } from '../MuscleGroupCard';
 
 const { width: screenWidth } = Dimensions.get('window');
 
@@ -22,7 +22,7 @@ export const FavoriteTrainingCard: FunctionComponent<Props> = ({
   <Container key={training.id} onPress={onPressTraining} onLongPress={onDeleteTraining}>
     <MuscleGroupsRow>
       {training.mainMuscleGroups.map((muscleGroup: MuscleGroup) => (
-        <MuscleGroupIcon key={muscleGroup} muscleGroup={muscleGroup} />
+        <MuscleGroupCard key={muscleGroup} muscleGroup={muscleGroup} />
       ))}
     </MuscleGroupsRow>
     <FavoriteTrainingName>{training.name}</FavoriteTrainingName>
