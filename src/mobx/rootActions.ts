@@ -6,6 +6,7 @@ import { createFreeWorkout } from './freeWorkout/constructor';
 import { TagType } from './tag';
 import { TrainingType } from './training';
 import { FreeWorkout } from './freeWorkout';
+import { defaultTags } from './tag/defaultTags';
 
 export const rootActions = (self: ModelInstanceTypeProps<typeof RootModel>) => ({
   addExercise(exercise: ExerciseType): void {
@@ -13,6 +14,11 @@ export const rootActions = (self: ModelInstanceTypeProps<typeof RootModel>) => (
   },
   addTag(tag: TagType): void {
     self.tags.push(tag);
+  },
+  addDefaultTags() {
+    if (self.tags.length === 0) {
+      self.tags.replace(defaultTags);
+    }
   },
   initializeNewFreeWorkout(): void {
     self.newFreeWorkout = createFreeWorkout();

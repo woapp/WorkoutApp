@@ -27,7 +27,9 @@ type Props = {
 };
 
 export const TrainingTags: FunctionComponent<Props> = observer(({ navigation }) => {
-  const { tags, newFreeWorkout, saveNewFreeWorkout, addTag } = useStore();
+  const { tags, newFreeWorkout, saveNewFreeWorkout, addTag, addDefaultTags } = useStore();
+  addDefaultTags();
+
   if (!newFreeWorkout) return null;
   const [newTag, setNewTag] = useState('');
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
