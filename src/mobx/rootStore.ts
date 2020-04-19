@@ -12,6 +12,7 @@ export const RootStore = types.model(RootModel).actions(rootActions);
 export const rootStore = RootStore.create({
   trainings: [],
   exercises: [],
+  archivedExercises: [],
   tags: defaultTags,
 });
 

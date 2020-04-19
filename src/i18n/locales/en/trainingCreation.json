@@ -6,7 +6,13 @@
     "repetitions": "Repetitions",
     "kilograms": "Kilograms",
     "nbSets": "How many sets",
-    "add": "Add"
+    "add": "Add",
+    "deleteAlert": {
+      "title": "Delete exercise",
+      "content": "Are you sure you want to delete this exercise? \nIt will remain in the trainings using it.",
+      "cancel": "Cancel",
+      "delete": "Delete"
+    }
   },
   "trainingSets": {
     "title": "Nouvel entraînement",
