@@ -21,7 +21,8 @@ export const MuscleGroupCard: FunctionComponent<MuscleGroupIconProps> = ({ muscl
 const Container = styled.View(({ theme }) => ({
   width: ICON_CONTAINER_SIZE,
   height: ICON_CONTAINER_SIZE,
-  padding: theme.margin.x1,
+  marginRight: theme.margin.x1,
+  padding: theme.margin.x1 / 2,
   alignItems: 'center',
   justifyContent: 'center',
   backgroundColor: '#6D6C7D',
