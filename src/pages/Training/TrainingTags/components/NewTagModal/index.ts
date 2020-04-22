@@ -1,0 +1,1 @@
+export { NewTagModal } from './NewTagModal';

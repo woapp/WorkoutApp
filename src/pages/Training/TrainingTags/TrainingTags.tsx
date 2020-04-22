@@ -11,11 +11,10 @@ import { RootNavigatorParamList } from '@woap/navigation';
 import { Routes } from '@woap/navigation/routes';
 import { Header } from '@woap/components/Header';
 import { useStore } from '@woap/utils/hooks/useStore';
-import { FormField } from '@woap/components/FormField';
-import { Button } from '@woap/components/Button';
 import { createTag } from '@woap/mobx/tag/constructor';
 
 import { Tag } from './components/Tag';
+import { NewTagModal } from './components/NewTagModal';
 
 type TrainingTagsScreenNavigationProp = CompositeNavigationProp<
   StackNavigationProp<RootNavigatorParamList, Routes.TrainingNavigator>,
@@ -29,7 +28,7 @@ type Props = {
 export const TrainingTags: FunctionComponent<Props> = observer(({ navigation }) => {
   const { tags, newFreeWorkout, saveNewFreeWorkout, addTag } = useStore();
   if (!newFreeWorkout) return null;
-  const [newTag, setNewTag] = useState('');
+  const [isNewTagModalVisible, setIsNewTagModalVisible] = useState(false);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const goToDashBoardScreen = () => {
     newFreeWorkout.setTags(tags.filter(tag => selectedTags.includes(tag.id)));
@@ -44,6 +43,13 @@ export const TrainingTags: FunctionComponent<Props> = observer(({ navigation }) 
     } else {
       setSelectedTags(previousSelectedTags => [...previousSelectedTags, id]);
     }
+  };
+
+  const closeNewTagModal = () => setIsNewTagModalVisible(false);
+  const openNewTagModal = () => setIsNewTagModalVisible(true);
+
+  const addNewTag = (newTag: string) => {
+    addTag(createTag(newTag));
   };
 
   return (
@@ -62,20 +68,15 @@ export const TrainingTags: FunctionComponent<Props> = observer(({ navigation }) 
               onPress={onTagPressed(tag.id)}
             />
           ))}
+          <Tag dashed onPress={openNewTagModal} name="+ new tag" selected={false} />
         </TagsContainer>
-        <FormField
-          placeholder="PPL, tabata, street workout..."
-          value={newTag}
-          onChangeText={setNewTag}
-        />
-        <Button
-          onPress={() => {
-            addTag(createTag(newTag));
-          }}
-          title="Create"
-        />
         <NextButton onPress={goToDashBoardScreen} disabled={selectedTags.length === 0} />
       </Container>
+      <NewTagModal
+        isVisible={isNewTagModalVisible}
+        onPressClose={closeNewTagModal}
+        onPressAdd={addNewTag}
+      />
     </Background>
   );
 });
