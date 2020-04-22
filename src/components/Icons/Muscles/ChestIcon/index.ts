@@ -1,0 +1,1 @@
+export { ChestIcon } from './ChestIcon';

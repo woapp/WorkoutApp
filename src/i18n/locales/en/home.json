@@ -4,7 +4,8 @@
     "createTraining": "Create your first personnalized training!",
     "newTraining": "NEW\nTRAINING",
     "newExercise": "NEW\nEXERCISE",
-    "allTrainings": "ALL TRAININGS"
+    "allTrainings": "ALL TRAININGS",
+    "favoriteTrainings": "YOUR FAVORITE TRAININGS"
   },
   "ongoingTrainingPreview": {
     "deleteAlert": {

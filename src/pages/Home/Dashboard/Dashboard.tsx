@@ -16,10 +16,12 @@ import { useStore } from '@woap/utils/hooks/useStore';
 import { TextBody } from '@woap/components/Texts';
 import { ArrowForwardIcon } from '@woap/components/Icons/ArrowForwardIcon';
 import { Spacer } from '@woap/components/Spacer';
-import { Alert } from 'react-native';
+import { Alert, View } from 'react-native';
 import { TrainingType } from '@woap/mobx/training';
+import { FlatList } from 'react-native-gesture-handler';
 
 import { NoTraining } from './components/NoTraining';
+import { FavoriteTrainingCard } from './components/FavoriteTrainingCard';
 
 type DashboardScreenNavigationProp = CompositeNavigationProp<
   StackNavigationProp<RootNavigatorParamList, Routes.TabNavigator>,
@@ -65,6 +67,25 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
     );
   };
 
+  const renderFavoriteTrainingCard = ({ item: training }: { item: TrainingType }) => (
+    <FavoriteTrainingCard
+      training={training}
+      onDeleteTraining={onDeleteTraining(training)}
+      onPressTraining={onPressTraining(training)}
+    />
+  );
+
+  const renderClassicTrainingCard = ({ item: training }: { item: TrainingType }) => (
+    <TrainingContainer
+      key={training.id}
+      onPress={onPressTraining(training)}
+      onLongPress={onDeleteTraining(training)}
+    >
+      <TrainingName>{training.name}</TrainingName>
+      <ArrowForwardIcon />
+    </TrainingContainer>
+  );
+
   return (
     <Container>
       {store.trainings.length === 0 ? (
@@ -72,18 +93,25 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
       ) : (
         <>
           <Spacer height={2} />
-          <AllTrainings>{t('dashboard.allTrainings')}</AllTrainings>
+          <CategoryTitle>{t('dashboard.favoriteTrainings')}</CategoryTitle>
           <Spacer height={2} />
-          {store.trainings.map(training => (
-            <TrainingContainer
-              key={training.id}
-              onPress={onPressTraining(training)}
-              onLongPress={onDeleteTraining(training)}
-            >
-              <TrainingName>{training.name}</TrainingName>
-              <ArrowForwardIcon />
-            </TrainingContainer>
-          ))}
+          <View>
+            <FlatList
+              horizontal
+              style={{ flex: 0 }}
+              data={store.favoriteTrainings}
+              renderItem={renderFavoriteTrainingCard}
+            />
+          </View>
+
+          <Spacer height={3} />
+          <CategoryTitle>{t('dashboard.allTrainings')}</CategoryTitle>
+          <Spacer height={2} />
+          <FlatList
+            style={{ flex: 1 }}
+            data={store.trainings}
+            renderItem={renderClassicTrainingCard}
+          />
         </>
       )}
 
@@ -119,7 +147,7 @@ const MenuContainer = styled.View(({ theme }) => ({
   right: theme.margin.x2,
 }));
 
-const AllTrainings = styled(TextBody)(({ theme }) => ({
+const CategoryTitle = styled(TextBody)(({ theme }) => ({
   color: theme.colors.white,
 }));
 

@@ -46,7 +46,9 @@ export const ExerciseMuscleGroups: FunctionComponent<Props> = observer(({ naviga
   const createNewExercise = () => {
     const exercise = createExercise();
     exercise.setName(exerciseName);
-    exercise.setMuscleGroups(muscleGroups.map(muscleGroup => muscleGroup.name));
+    exercise.setMuscleGroups(
+      muscleGroups.filter(muscleGroup => muscleGroup.selected).map(muscleGroup => muscleGroup.name)
+    );
     addExercise(exercise);
   };
 
