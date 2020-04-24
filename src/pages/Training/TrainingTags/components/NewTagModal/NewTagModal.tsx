@@ -19,6 +19,11 @@ interface Props {
 export const NewTagModal: FunctionComponent<Props> = ({ isVisible, onPressClose, onPressAdd }) => {
   const [newTag, setNewTag] = useState('');
   const { t } = useTranslation('trainingCreation');
+  const createTag = () => {
+    onPressAdd(newTag);
+    setNewTag('');
+    onPressClose();
+  };
 
   return (
     <Modal isVisible={isVisible} onBackdropPress={Keyboard.dismiss}>
@@ -38,14 +43,7 @@ export const NewTagModal: FunctionComponent<Props> = ({ isVisible, onPressClose,
         <Spacer height={2} />
       </Container>
       <Spacer height={2} />
-      <Button
-        onPress={() => {
-          onPressAdd(newTag);
-          setNewTag('');
-          onPressClose();
-        }}
-        title={t('trainingTags.create')}
-      />
+      <Button onPress={createTag} title={t('trainingTags.create')} />
     </Modal>
   );
 };

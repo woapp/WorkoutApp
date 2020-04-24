@@ -40,6 +40,14 @@ export const AddExerciseModal: FunctionComponent<Props> = observer(
       onPressAdd();
     };
 
+    const onSubmitEditingRepetitionInput = () => {
+      weightInput.current && weightInput.current.focus();
+    };
+
+    const onSubmitEditingWeightInput = () => {
+      setsInput.current && setsInput.current.focus();
+    };
+
     return (
       <Modal isVisible={isVisible} onBackdropPress={Keyboard.dismiss}>
         <Container>
@@ -57,9 +65,7 @@ export const AddExerciseModal: FunctionComponent<Props> = observer(
               keyboardType="number-pad"
               maxLength={3}
               returnKeyType="next"
-              onSubmitEditing={() => {
-                weightInput.current && weightInput.current.focus();
-              }}
+              onSubmitEditing={onSubmitEditingRepetitionInput}
               blurOnSubmit={false}
             />
           </Row>
@@ -73,9 +79,7 @@ export const AddExerciseModal: FunctionComponent<Props> = observer(
               keyboardType="numeric"
               maxLength={8}
               returnKeyType="next"
-              onSubmitEditing={() => {
-                setsInput.current && setsInput.current.focus();
-              }}
+              onSubmitEditing={onSubmitEditingWeightInput}
               blurOnSubmit={false}
             />
           </Row>
