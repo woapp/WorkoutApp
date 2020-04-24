@@ -35,6 +35,7 @@ const Container = styled.TouchableOpacity({
 const MuscleGroupTitle = styled.Text(({ theme }) => ({
   ...theme.fonts.h4,
   textAlign: 'center',
+  fontWeight: 'bold',
   marginTop: theme.margin.x1,
   marginBottom: theme.margin.x4,
   color: theme.colors.white,
