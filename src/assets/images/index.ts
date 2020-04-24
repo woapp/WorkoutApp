@@ -9,5 +9,4 @@ export default {
   shoulders: require('./muscles/Shoulders.png'),
   triceps: require('./muscles/Triceps.png'),
   workInProgress: require('./workInProgress/workInProgress.png'),
-  bottomRightArrow: require('./arrows/bottom-right-arrow.png'),
 };

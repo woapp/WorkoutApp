@@ -1,0 +1,1 @@
+export { BottomRightArrow } from './BottomRightArrow';

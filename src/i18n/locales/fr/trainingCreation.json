@@ -27,6 +27,8 @@
   },
   "trainingTags": {
     "title": "Nouvel entraînement",
-    "chooseTage": "Choisis au moins un tag"
+    "chooseTage": "Choisis au moins un tag",
+    "newTag": "Nouveau tag",
+    "create": "Créer"
   }
 }
