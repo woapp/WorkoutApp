@@ -11,6 +11,8 @@ import { TabNavigatorParamList } from '@woap/navigation/TabNavigator';
 import { HomeNavigatorParamList } from '@woap/navigation/HomeNavigator';
 import { HeartIcon } from '@woap/components/Icons/HeartIcon';
 
+import { ExerciseSet } from './components/ExerciseSet';
+
 type OngoingTrainingPreviewScreenNavigationProp = CompositeNavigationProp<
   StackNavigationProp<RootNavigatorParamList, Routes.TabNavigator>,
   CompositeNavigationProp<
@@ -41,6 +43,16 @@ export const OngoingTrainingPreview: FunctionComponent<Props> = observer(({ rout
           <HeartIcon selected={training.isFavorite} size={35} />
         </TouchableOpacity>
       </Row>
+      <SetsContainer>
+        {training.exerciseSets.map((exerciseSet, index) => (
+          <ExerciseSet
+            isFirst={index === 0}
+            isLast={index === training.exerciseSets.length - 1}
+            key={exerciseSet.id}
+            exerciseSet={exerciseSet}
+          />
+        ))}
+      </SetsContainer>
     </Container>
   );
 });
@@ -62,3 +74,5 @@ const TrainingTitle = styled.Text(({ theme }) => ({
   fontWeight: 'bold',
   flex: 1,
 }));
+
+const SetsContainer = styled.ScrollView(({ theme }) => ({ padding: theme.margin.x2 }));
