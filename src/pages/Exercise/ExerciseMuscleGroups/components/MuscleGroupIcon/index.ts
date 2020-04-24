@@ -1,1 +1,0 @@
-export { MuscleGroupIcon } from './MuscleGroupIcon';

@@ -1,0 +1,1 @@
+export { MuscleGroupItem } from './MuscleGroupItem';

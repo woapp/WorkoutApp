@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import styled from '@woap/utils/styled-components';
 import { MuscleGroup } from '@woap/mobx/types';
-import { MuscleGroupIcon } from '@woap/pages/Exercise/ExerciseMuscleGroups/components/MuscleGroupIcon';
+import { MuscleGroupItem } from '@woap/pages/Exercise/ExerciseMuscleGroups/components/MuscleGroupItem';
 
 interface Props {
   title?: string;
@@ -22,7 +22,7 @@ export const MuscleGroupToggle: FunctionComponent<Props> = ({
 }) => {
   return (
     <Container onPress={onPress} disabled={disabled}>
-      <MuscleGroupIcon muscleGroup={muscleGroup} isSelected={isSelected} size={iconSize} />
+      <MuscleGroupItem muscleGroup={muscleGroup} isSelected={isSelected} size={iconSize} />
       {title && <MuscleGroupTitle>{title}</MuscleGroupTitle>}
     </Container>
   );
