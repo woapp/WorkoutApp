@@ -10,6 +10,8 @@ import { RootNavigatorParamList } from '@woap/navigation';
 import { TabNavigatorParamList } from '@woap/navigation/TabNavigator';
 import { HomeNavigatorParamList } from '@woap/navigation/HomeNavigator';
 import { HeartIcon } from '@woap/components/Icons/HeartIcon';
+import { LinearButton } from '@woap/components/LinearButton';
+import { Spacer } from '@woap/components/Spacer';
 
 import { ExerciseSet } from './components/ExerciseSet';
 
@@ -43,6 +45,7 @@ export const OngoingTrainingPreview: FunctionComponent<Props> = observer(({ rout
           <HeartIcon selected={training.isFavorite} size={35} />
         </TouchableOpacity>
       </Row>
+      <Spacer height={2} />
       <SetsContainer>
         {training.exerciseSets.map((exerciseSet, index) => (
           <ExerciseSet
@@ -53,6 +56,8 @@ export const OngoingTrainingPreview: FunctionComponent<Props> = observer(({ rout
           />
         ))}
       </SetsContainer>
+      {/* eslint-disable-next-line @typescript-eslint/no-empty-function */}
+      <LinearButton onPress={() => {}} title="GO" />
     </Container>
   );
 });
@@ -60,13 +65,13 @@ export const OngoingTrainingPreview: FunctionComponent<Props> = observer(({ rout
 const Container = styled.View(({ theme }) => ({
   flex: 1,
   backgroundColor: theme.colors.background.black,
+  padding: theme.margin.x2,
 }));
 
-const Row = styled.View(({ theme }) => ({
+const Row = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
-  margin: theme.margin.x2,
-}));
+});
 
 const TrainingTitle = styled.Text(({ theme }) => ({
   ...theme.fonts.h1,
