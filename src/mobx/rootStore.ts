@@ -1,11 +1,12 @@
 import { types } from 'mobx-state-tree';
 import makeInspectable from 'mobx-devtools-mst';
-import { persist } from 'mst-persist';
-import { AsyncStorage } from 'react-native';
 
 import { RootModel } from './rootModel';
 import { rootActions } from './rootActions';
 import { RootViews } from './rootViews';
+import { exerciseSeeds } from './exercise/seeds';
+import { defaultTags } from './tag/defaultTags';
+import { trainingSeeds } from './training/seeds';
 
 export const RootStore = types
   .model(RootModel)
@@ -13,16 +14,17 @@ export const RootStore = types
   .views(RootViews);
 
 export const rootStore = RootStore.create({
-  trainings: [],
-  exercises: [],
+  trainings: trainingSeeds,
+  exercises: exerciseSeeds,
   archivedExercises: [],
-  tags: [],
+  tags: defaultTags,
 });
 
-persist('rootStore', rootStore, {
-  storage: AsyncStorage,
-  blacklist: ['newFreeWorkout'],
-}).then(() => console.log('rootStore has been hydrated'));
+// TODO: reactivate persistence
+// persist('rootStore', rootStore, {
+//   storage: AsyncStorage,
+//   blacklist: ['newFreeWorkout'],
+// }).then(() => console.log('rootStore has been hydrated'));
 
 makeInspectable(rootStore);
 

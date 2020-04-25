@@ -19,9 +19,11 @@ import { Spacer } from '@woap/components/Spacer';
 import { Alert, View } from 'react-native';
 import { TrainingType } from '@woap/mobx/training';
 import { FlatList } from 'react-native-gesture-handler';
+import { useSearch } from '@woap/hooks/useSearch';
+import { SearchBar } from '@woap/components/SearchBar';
 
 import { NoTraining } from './components/NoTraining';
-import { FavoriteTrainingCard } from './components/FavoriteTrainingCard';
+import { FavoriteTrainingCard, Tag } from './components/FavoriteTrainingCard';
 
 type DashboardScreenNavigationProp = CompositeNavigationProp<
   StackNavigationProp<RootNavigatorParamList, Routes.TabNavigator>,
@@ -38,6 +40,13 @@ type Props = {
 export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => {
   const store = useStore();
   const { t } = useTranslation('home');
+  const { matchSearch, filter, setFilter } = useSearch();
+
+  const filterTrainingByTagOrName = (training: TrainingType) =>
+    matchSearch(training.name) ||
+    (training.tags && training.tags.some(tag => matchSearch(tag.name)));
+
+  const onTagPress = (tagName: string) => () => setFilter(tagName);
 
   const onCreateNewTraining = () => {
     store.initializeNewFreeWorkout();
@@ -67,6 +76,24 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
     );
   };
 
+  const renderSearchedTags = () => {
+    if (filter.length > 0) {
+      return (
+        <SearchedTagsRow>
+          {store.tags
+            .filter(tag => matchSearch(tag.name))
+            .map(tag => (
+              <Tag key={tag.id} onPress={onTagPress(tag.name)}>
+                {tag.name}
+              </Tag>
+            ))}
+        </SearchedTagsRow>
+      );
+    }
+
+    return null;
+  };
+
   const renderFavoriteTrainingCard = ({ item: training }: { item: TrainingType }) => (
     <FavoriteTrainingCard
       training={training}
@@ -92,6 +119,13 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
         <NoTraining />
       ) : (
         <>
+          <Spacer height={1} />
+          <SearchBar
+            value={filter}
+            onChangeText={setFilter}
+            placeholder={t('dashboard.searchPlaceholder')}
+          />
+          {renderSearchedTags()}
           <Spacer height={2} />
           <CategoryTitle>{t('dashboard.favoriteTrainings')}</CategoryTitle>
           <Spacer height={2} />
@@ -99,7 +133,7 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
             <FlatList
               horizontal
               style={{ flex: 0 }}
-              data={store.favoriteTrainings}
+              data={store.favoriteTrainings.filter(filterTrainingByTagOrName)}
               renderItem={renderFavoriteTrainingCard}
             />
           </View>
@@ -109,7 +143,7 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
           <Spacer height={2} />
           <FlatList
             style={{ flex: 1 }}
-            data={store.trainings}
+            data={store.trainings.toJS().filter(filterTrainingByTagOrName)}
             renderItem={renderClassicTrainingCard}
           />
         </>
@@ -163,4 +197,9 @@ const TrainingContainer = styled.TouchableOpacity(({ theme }) => ({
   marginBottom: theme.margin.x2,
   flexDirection: 'row',
   justifyContent: 'space-between',
+}));
+
+const SearchedTagsRow = styled.View(({ theme }) => ({
+  flexDirection: 'row',
+  marginTop: theme.margin.x1,
 }));
