@@ -4,6 +4,9 @@
     "question": "Comment le nommerais-tu ?",
     "placeholder": "Développé couché, squat, curl..."
   },
+  "exerciseMuscleGroups": {
+    "indication": "Choisis au moins un muscle :"
+  },
   "exerciseDescription": {
     "title": "Nouvel Exercice",
     "indication": "Ajoute une description :",

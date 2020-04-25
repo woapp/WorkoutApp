@@ -4,6 +4,9 @@
     "question": "How would you name it?",
     "placeholder": "Bench, squat, curl..."
   },
+  "exerciseMuscleGroups": {
+    "indication": "Choose at least one muscle group:"
+  },
   "exerciseDescription": {
     "title": "New Exercise",
     "indication": "Add a description :",
