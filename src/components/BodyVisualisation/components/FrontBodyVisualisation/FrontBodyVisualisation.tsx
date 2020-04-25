@@ -5,6 +5,7 @@ import { colors } from '@woap/styles/colors';
 import { Ratios, OnPressMuscles } from '../..';
 
 interface Props {
+  width?: number;
   musclesBackgroundColor?: string;
   ratios?: Ratios;
   onPressMuscles?: OnPressMuscles;
@@ -14,9 +15,12 @@ export const FrontBodyVisualisation: FunctionComponent<Props> = ({
   musclesBackgroundColor = colors.greyScale[60],
   ratios = {},
   onPressMuscles = {},
+  width = 105,
 }) => {
+  const height = 197 * (width / 105);
+
   return (
-    <Svg width={105} height={197} viewBox="0 0 105 197" fill="none">
+    <Svg width={width} height={height} viewBox="0 0 105 197" fill="none">
       {/* mollet-2-gauche */}
       <Path
         d="M37 196.5c-1-.5-1.5-1.5-2-3s-.04-2.743 0-4.5c.135-5.886.448-9.208 1.5-15s2.033-10.927 2-18c-.015-3.325-.5-7.5 1-9s2-6 2-6c1 .5 1.5 16.5 1.5 16.5s1.341 9.294 0 15c-.98 4.169-3.298 5.89-4.5 10-1.544 5.277-.5 14.5-1.5 14z"
@@ -113,6 +117,7 @@ export const FrontBodyVisualisation: FunctionComponent<Props> = ({
       <Path
         d="M42.353 84.13c-3.117-2.428-6.212-7.596-7.212-7.096s3.56 7.987 5.667 13.178c1.677 4.13 2.93 6.349 4.121 10.644 1.393 5.019 1.212 14.678 2.06 13.178.85-1.5.679-2.149 1.031-3.548 1.265-5.025 1.308-8.002 1.546-13.178.154-3.362.924-7.46 0-8.617-.925-1.157-4.583-2.514-7.213-4.561z"
         fill="url(#prefix__paint8_linear)"
+        fillOpacity={ratios.ADDUCTORS || 0}
         onPress={onPressMuscles.ADDUCTORS}
       />
       {/* adducteur-droit */}

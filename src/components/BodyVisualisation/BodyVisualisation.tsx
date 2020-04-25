@@ -9,15 +9,37 @@ import { Ratios, OnPressMuscles } from '.';
 interface Props {
   ratios?: Ratios;
   onPressMuscles?: OnPressMuscles;
+  width: number;
+  musclesBackgroundColor?: string;
 }
 
-export const BodyVisualisation: FunctionComponent<Props> = ({ ratios, onPressMuscles }) => {
+export const BodyVisualisation: FunctionComponent<Props> = ({
+  ratios,
+  onPressMuscles,
+  width,
+  musclesBackgroundColor,
+}) => {
   return (
-    <Row>
-      <FrontBodyVisualisation ratios={ratios} onPressMuscles={onPressMuscles} />
-      <BackBodyVisualisation ratios={ratios} onPressMuscles={onPressMuscles} />
+    <Row width={width}>
+      <FrontBodyVisualisation
+        musclesBackgroundColor={musclesBackgroundColor}
+        ratios={ratios}
+        onPressMuscles={onPressMuscles}
+        width={width * 0.45}
+      />
+      <BackBodyVisualisation
+        musclesBackgroundColor={musclesBackgroundColor}
+        ratios={ratios}
+        onPressMuscles={onPressMuscles}
+        width={width * 0.45}
+      />
     </Row>
   );
 };
 
-const Row = styled.View({ flexDirection: 'row', alignItems: 'flex-end' });
+const Row = styled.View<{ width: number }>(({ width }) => ({
+  width,
+  flexDirection: 'row',
+  justifyContent: 'space-around',
+  alignItems: 'flex-end',
+}));

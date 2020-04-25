@@ -8,15 +8,19 @@ interface Props {
   musclesBackgroundColor?: string;
   ratios?: Ratios;
   onPressMuscles?: OnPressMuscles;
+  width?: number;
 }
 
 export const BackBodyVisualisation: FunctionComponent<Props> = ({
   musclesBackgroundColor = colors.greyScale[60],
   ratios = {},
   onPressMuscles = {},
+  width = 105,
 }) => {
+  const height = 212 * (width / 105);
+
   return (
-    <Svg width={104} height={212} viewBox="0 0 104 212" fill="none">
+    <Svg width={width} height={height} viewBox="0 0 104 212" fill="none">
       {/* fessier-gauche */}
       <Path
         d="M36.5 83c1.6-1.068 2.621-2.41 4.5-2 1.29.282 1.917.956 2.725 2 .89 1.15.715 2.157 1.275 3.5.84 2.015 1.55 3.034 2.5 5 1.216 2.517 3.522 3.754 3 6.5-.245 1.287-1.5 3-1.5 3s-1.575 2.665-3 4c-2.104 1.971-3.759 2.607-6.5 3.5-2.076.676-5 1.5-5.5 1s.377-2.125.5-3.5c.209-2.334.69-3.76 0-6-.385-1.252-1.5-3-1.5-3s-1.916-1.591-2.5-3c-.381-.92-.531-1.505-.5-2.5.063-2.01 1.3-2.887 2.5-4.5 1.319-1.772 2.163-2.773 4-4z"
