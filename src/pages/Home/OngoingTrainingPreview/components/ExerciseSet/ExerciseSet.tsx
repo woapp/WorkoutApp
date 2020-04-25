@@ -23,17 +23,22 @@ export const ExerciseSet: FunctionComponent<ExerciseItemProps> = observer(
     const isOngoing = index === currentIndex;
     const isDone = index < currentIndex;
 
-    const transition = useTimingTransition(isOngoing, { duration: 300 });
-    const scale = bInterpolate(transition, 1, 1.3);
-    const translateX = bInterpolate(transition, 0, 45);
-    const opacityTransition = useTimingTransition(isDone, { duration: 300 });
-    const opacity = bInterpolate(opacityTransition, 1, 0);
-    const translateY = bInterpolate(opacityTransition, 0, 8);
+    // Animate Exercise container to make it bigger
+    const isOngoingTransition = useTimingTransition(isOngoing, { duration: 300 });
+    const isOngoingScale = bInterpolate(isOngoingTransition, 1, 1.3);
+    const isOngoingTranslateX = bInterpolate(isOngoingTransition, 0, 45);
+
+    // Animate exercise information to make it fade out when exercise set is done
+    const isDoneTransition = useTimingTransition(isDone, { duration: 300 });
+    const isDoneOpacity = bInterpolate(isDoneTransition, 1, 0);
+    const isDoneTranslateY = bInterpolate(isDoneTransition, 0, 8);
 
     return (
       <>
         {isOngoing && <Spacer height={2} />}
-        <Container style={{ transform: [{ scale, translateX }] }}>
+        <Container
+          style={{ transform: [{ scale: isOngoingScale, translateX: isOngoingTranslateX }] }}
+        >
           <IconContainer isOngoing={isOngoing} isDone={isDone}>
             <MuscleGroupIcon
               muscleGroup={exerciseSet.exercise.mainMuscleGroup}
@@ -42,10 +47,10 @@ export const ExerciseSet: FunctionComponent<ExerciseItemProps> = observer(
             />
           </IconContainer>
           <View>
-            <Title style={{ transform: [{ translateY }] }} isDone={isDone}>
+            <Title style={{ transform: [{ translateY: isDoneTranslateY }] }} isDone={isDone}>
               {exerciseSet.exercise.name}
             </Title>
-            <ExerciseSetInformation style={{ opacity }}>
+            <ExerciseSetInformation style={{ opacity: isDoneOpacity }}>
               {exerciseSet.reps} {t('reps')} / {exerciseSet.weight} {t('kg')}
             </ExerciseSetInformation>
           </View>
@@ -84,6 +89,7 @@ const IconContainer = styled.View<{ isOngoing: boolean; isDone: boolean }>(
 
 const Title = styled(Animated.Text)<{ isDone: boolean }>(({ theme, isDone }) => ({
   fontSize: 18,
+  opacity: isDone ? 0.7 : 1,
   color: isDone ? theme.colors.green : theme.colors.white,
   fontWeight: 'bold',
 }));
