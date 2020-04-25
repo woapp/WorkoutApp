@@ -1,6 +1,7 @@
 {
   "dashboard": {
     "nothingYet": "Nothing yet.",
+    "searchPlaceholder": "Enter tag or training name",
     "createTraining": "Create your first personnalized training!",
     "newTraining": "NEW\nTRAINING",
     "newExercise": "NEW\nEXERCISE",

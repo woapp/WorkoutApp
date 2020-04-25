@@ -14,6 +14,7 @@ import { useStore } from '@woap/utils/hooks/useStore';
 import { ExerciseType } from '@woap/mobx/exercise';
 import { RootNavigatorParamList } from '@woap/navigation';
 import { useTranslation } from 'react-i18next';
+import { useSearch } from '@woap/hooks/useSearch';
 
 import { ExerciseItem } from './components/ExerciseItem';
 import { NewExerciseButton } from './components/NewExerciseButton';
@@ -40,7 +41,7 @@ export const TrainingCreation: FunctionComponent<Props> = observer(({ navigation
 
   if (!store.newFreeWorkout) return null;
 
-  const [filter, setFilter] = useState('');
+  const { filter, setFilter, matchSearch } = useSearch();
   const [displayAddExerciseModal, setDisplayAddExerciseModal] = useState(false);
   const [selectedExercise, setSelectedExercise] = useState<ExerciseType | null>(null);
   const openAddExerciseModal = () => {
@@ -83,9 +84,7 @@ export const TrainingCreation: FunctionComponent<Props> = observer(({ navigation
         <SubTitle>{t('trainingCreation.chooseExercise')}</SubTitle>
         <FlatList
           showsVerticalScrollIndicator={false}
-          data={store.exercises
-            .toJS()
-            .filter(exercise => exercise.name.toLowerCase().includes(filter.toLowerCase()))}
+          data={store.exercises.toJS().filter(exercise => matchSearch(exercise.name))}
           ListHeaderComponent={() => (
             <NewExerciseButton
               onPress={() => {
