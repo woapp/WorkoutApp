@@ -1,6 +1,7 @@
 {
   "exerciseName": {
-    "title": "How would you name it?",
+    "title": "New Exercise",
+    "question": "How would you name it?",
     "placeholder": "Bench, squat, curl..."
   },
   "exerciseDescription": {

@@ -37,9 +37,9 @@ export const ExerciseName: FunctionComponent<Props> = ({ navigation }) => {
   return (
     <Background>
       <Container>
-        <Header title="New Exercise" onClose={closeModal} />
+        <Header title={t('exerciseName.title')} onClose={closeModal} />
         <Spacer height={3} />
-        <Title>{t('exerciseName.title')}</Title>
+        <Question>{t('exerciseName.question')}</Question>
         <Spacer height={2} />
         <NameFormField
           value={name}
@@ -60,7 +60,7 @@ const Container = styled.SafeAreaView(({ theme }) => ({
   flex: 1,
 }));
 
-const Title = styled.Text(({ theme }) => ({
+const Question = styled.Text(({ theme }) => ({
   ...theme.fonts.h3,
   color: theme.colors.white,
   fontWeight: 'bold',
