@@ -20,6 +20,7 @@ export interface Ratios {
 }
 
 export interface OnPressMuscles {
+  [MuscleGroup.Trapezius]?: () => void;
   [MuscleGroup.Shoulders]?: () => void;
   [MuscleGroup.Biceps]?: () => void;
   [MuscleGroup.Triceps]?: () => void;

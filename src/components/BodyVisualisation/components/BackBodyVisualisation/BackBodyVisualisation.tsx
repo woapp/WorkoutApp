@@ -13,6 +13,7 @@ interface Props {
 export const BackBodyVisualisation: FunctionComponent<Props> = ({
   musclesBackgroundColor = colors.greyScale[60],
   ratios = {},
+  onPressMuscles = {},
 }) => {
   return (
     <Svg width={104} height={212} viewBox="0 0 104 212" fill="none">
@@ -25,6 +26,7 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
         d="M36.5 83c1.6-1.068 2.621-2.41 4.5-2 1.29.282 1.917.956 2.725 2 .89 1.15.715 2.157 1.275 3.5.84 2.015 1.55 3.034 2.5 5 1.216 2.517 3.522 3.754 3 6.5-.245 1.287-1.5 3-1.5 3s-1.575 2.665-3 4c-2.104 1.971-3.759 2.607-6.5 3.5-2.076.676-5 1.5-5.5 1s.377-2.125.5-3.5c.209-2.334.69-3.76 0-6-.385-1.252-1.5-3-1.5-3s-1.916-1.591-2.5-3c-.381-.92-.531-1.505-.5-2.5.063-2.01 1.3-2.887 2.5-4.5 1.319-1.772 2.163-2.773 4-4z"
         fill="url(#prefix__paint0_linear)"
         fillOpacity={ratios.BUTTOCK || 0}
+        onPress={onPressMuscles.BUTTOCK}
       />
       {/* fessier-droite */}
       <Path
@@ -35,6 +37,7 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
         d="M66.68 83.095c-1.555-1.078-2.548-2.433-4.374-2.019-1.253.285-1.863.965-2.648 2.02-.865 1.16-.695 2.177-1.24 3.532-.816 2.034-1.506 3.063-2.429 5.047-1.182 2.541-3.423 3.79-2.915 6.562.237 1.299 1.457 3.028 1.457 3.028s1.531 2.69 2.916 4.038c2.044 1.99 3.653 2.631 6.317 3.533 2.017.682 4.859 1.514 5.345 1.009.486-.505-.366-2.145-.486-3.533-.203-2.356-.67-3.796 0-6.057.374-1.263 1.458-3.028 1.458-3.028s1.862-1.606 2.43-3.028c.37-.929.516-1.52.485-2.524-.061-2.028-1.263-2.914-2.43-4.542-1.281-1.79-2.102-2.799-3.887-4.038z"
         fill="url(#prefix__paint1_linear)"
         fillOpacity={ratios.BUTTOCK || 0}
+        onPress={onPressMuscles.BUTTOCK}
       />
       {/* ischio-1-gauche */}
       <Path
@@ -45,6 +48,7 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
         d="M30.97 97.998S29.477 95.5 27.49 95.5s-.763 8.213-.994 13.491c-.343 7.797-1.492 13.49 0 19.986 1.49 6.495 1.805 4.486 2.485 7.495.779 3.446.772 5.467.994 8.994.294 4.673-.994 11.492 0 11.991.994.5 2.691-3.496 3.977-5.996 2.228-4.333 2.57-7.2 3.48-11.991 1.239-6.528.993-16.989.993-16.989s.995-11.492-.497-11.492c-1.49 0-2.38 1.451-3.976 1-1.322-.374-1.491 0-1.989-1.999-.497-1.999.442-3.007.498-4.997.077-2.792-1.492-6.995-1.492-6.995z"
         fill="url(#prefix__paint2_linear)"
         fillOpacity={ratios.ISCHIOS || 0}
+        onPress={onPressMuscles.ISCHIOS}
       />
       {/* ischio-1-droite */}
       <Path
@@ -55,6 +59,7 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
         d="M73.28 98.498S74.773 96 76.76 96c1.989 0 .763 8.213.994 13.491.343 7.797 1.492 13.49 0 19.986-1.49 6.495-1.805 4.486-2.485 7.495-.779 3.446-.773 5.467-.994 8.994-.294 4.673.994 11.492 0 11.991-.994.5-2.691-3.496-3.977-5.996-2.228-4.333-2.57-7.2-3.48-11.991-1.239-6.528-.993-16.989-.993-16.989s-.995-11.492.497-11.492c1.49 0 2.38 1.451 3.976 1 1.322-.374 1.492 0 1.989-1.999.497-1.999-.442-3.007-.498-4.997-.077-2.792 1.492-6.995 1.492-6.995z"
         fill="url(#prefix__paint3_linear)"
         fillOpacity={ratios.ISCHIOS || 0}
+        onPress={onPressMuscles.ISCHIOS}
       />
       {/* ischio-2-droite */}
       <Path
@@ -65,6 +70,7 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
         d="M49.757 114.38c-.16-3.666 1.962-10.864-.49-9.382-2.452 1.481-6.374 3.95-7.355 5.431-.98 1.482-.72 2.382-.98 3.951-.536 3.233.13 5.119 0 8.394-.217 5.426-.68 8.455-1.471 13.827-.63 4.265-1.794 8.888-1.962 10.863-.167 1.976.17 2.865.98 4.444.687 1.339 1.293 2.012 2.453 2.963.865.711 1.693.656 2.451 1.482 1.454 1.582-.49 4.938.98 5.431 1.472.494 3.923-11.357 3.923-11.357s1.666-10.798 1.962-17.777c.301-7.131-.18-11.139-.49-18.27z"
         fill="url(#prefix__paint4_linear)"
         fillOpacity={ratios.ISCHIOS || 0}
+        onPress={onPressMuscles.ISCHIOS}
       />
       {/* ischio-2-gauche */}
       <Path
@@ -75,6 +81,7 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
         d="M53.7 114.58c.16-3.665-1.961-10.863.49-9.382 2.452 1.481 6.375 3.95 7.355 5.432.981 1.481.721 2.382.981 3.95.535 3.234-.13 5.119 0 8.395.216 5.426.678 8.455 1.471 13.826.63 4.265 1.794 8.889 1.961 10.864.168 1.975-.17 2.864-.98 4.444-.687 1.338-1.293 2.011-2.452 2.963-.866.71-1.693.656-2.452 1.481-1.454 1.583.49 4.938-.98 5.432-1.471.494-3.923-11.357-3.923-11.357s-1.666-10.799-1.961-17.777c-.302-7.131.179-11.14.49-18.271z"
         fill="url(#prefix__paint5_linear)"
         fillOpacity={ratios.ISCHIOS || 0}
+        onPress={onPressMuscles.ISCHIOS}
       />
       {/* obliques-gauche */}
       <Path
@@ -85,6 +92,7 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
         d="M37 70.5c-.521-1.202-.874-1.85-1.5-3-1.218-2.236-3-5.5-3.5-5.5s.38 3.99 0 6.5c-.24 1.592-.784 2.404-1 4-.262 1.935.213 3.06 0 5-.264 2.4-1.222 3.6-1.5 6-.247 2.134-.5 5.5 0 5.5s1.5-2 1.5-2 2.41-3.41 4.5-5c1.6-1.217 4-2 4.5-2.5s-.632-1.515-1-2.5c-.929-2.488-.943-4.063-2-6.5z"
         fill="url(#prefix__paint6_linear)"
         fillOpacity={ratios.OBLIQUES || 0}
+        onPress={onPressMuscles.OBLIQUES}
       />
       {/* obliques-droite */}
       <Path
@@ -95,6 +103,7 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
         d="M67.15 70.5c.525-1.202.88-1.85 1.512-3 1.227-2.236 3.024-5.5 3.528-5.5s-.382 3.99 0 6.5c.243 1.592.79 2.404 1.008 4 .264 1.935-.215 3.06 0 5 .266 2.4 1.232 3.6 1.512 6 .249 2.134.504 5.5 0 5.5s-1.512-2-1.512-2-2.428-3.41-4.536-5c-1.613-1.217-4.032-2-4.536-2.5-.504-.5.638-1.515 1.008-2.5.936-2.488.951-4.063 2.016-6.5z"
         fill="url(#prefix__paint7_linear)"
         fillOpacity={ratios.OBLIQUES || 0}
+        onPress={onPressMuscles.OBLIQUES}
       />
       {/* mollet-3-gauche */}
       <Path
@@ -105,6 +114,7 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
         d="M36 159.5s1-5 0-5.5-2.912 3.224-4.5 5.5c-1.054 1.511-1.738 2.323-2.5 4-.92 2.027-1.008 3.329-1.5 5.5-.482 2.129-.5 3.5-1 5.5s-.997 3.597 0 5.5c.64 1.223 1.402 1.663 2.5 2.5.906.69 1.362 1.539 2.5 1.5.873-.03 1.41-.356 2-1 .933-1.018.5-3.5.5-3.5V175l.5-7 1.5-8.5z"
         fill="url(#prefix__paint8_linear)"
         fillOpacity={ratios.CALVES || 0}
+        onPress={onPressMuscles.CALVES}
       />
       {/* mollet-3-droite */}
       <Path
@@ -115,6 +125,7 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
         d="M68.465 159.537s-1.046-4.992 0-5.491c1.045-.5 3.044 3.219 4.705 5.491 1.102 1.508 1.817 2.319 2.614 3.994.962 2.024 1.054 3.323 1.568 5.491.504 2.126.523 3.495 1.046 5.492.523 1.996 1.042 3.591 0 5.491-.67 1.221-1.466 1.661-2.614 2.496-.947.689-1.424 1.536-2.614 1.498-.913-.03-1.474-.356-2.091-.999-.976-1.016-.523-3.494-.523-3.494v-4.493l-.523-6.989-1.568-8.487z"
         fill="url(#prefix__paint9_linear)"
         fillOpacity={ratios.CALVES || 0}
+        onPress={onPressMuscles.CALVES}
       />
       {/* mollet-1-gauche */}
       <Path
@@ -125,6 +136,7 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
         d="M30 186.5c-1.432-.525-2-2.5-3-2.5s.675 5.232 1.5 8.5c1.013 4.012 3.088 5.883 3.5 10 .175 1.749 0 4.5 0 4.5s0 4.5.5 4.5 1.06-2.498 2.5-3c.922-.322 1.554-.241 2.5 0 1.103.281 2 2 2.5 1.5s-.706-3.031-1-5c-.29-1.941-.64-3.043-.5-5 .16-2.221.749-3.404 1.5-5.5.796-2.221 2.5-5 2.5-5.5s-1.5 1-1.5 1-2.257 1.69-3.5 1c-.483-.268-.61-.609-1-1s-.992-2.759-2.5-3.5c-1.402-.689-2.534.538-4 0z"
         fill="url(#prefix__paint10_linear)"
         fillOpacity={ratios.CALVES || 0}
+        onPress={onPressMuscles.CALVES}
       />
       {/* mollet-1-droite */}
       <Path
@@ -135,6 +147,7 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
         d="M73.65 186.455c1.45-.516 2.025-2.455 3.037-2.455s-.683 5.137-1.518 8.345c-1.025 3.939-3.125 5.777-3.542 9.819-.177 1.716 0 4.418 0 4.418s0 4.418-.506 4.418-1.073-2.452-2.53-2.945c-.933-.316-1.573-.237-2.53 0-1.117.275-2.025 1.963-2.53 1.472-.507-.491.714-2.975 1.011-4.909.293-1.905.648-2.987.506-4.909-.161-2.18-.758-3.342-1.518-5.4-.805-2.181-2.53-4.909-2.53-5.4 0-.491 1.518.982 1.518.982s2.285 1.66 3.542.982c.489-.264.617-.599 1.012-.982.396-.384 1.005-2.709 2.53-3.436 1.42-.677 2.565.528 4.049 0z"
         fill="url(#prefix__paint11_linear)"
         fillOpacity={ratios.CALVES || 0}
+        onPress={onPressMuscles.CALVES}
       />
       {/* mollet-2-gauche */}
       <Path
@@ -145,6 +158,7 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
         d="M40 158s.889-.587 1.5-.5c1.222.175 1 .5 1 3s-.534 2.732-.5 4.5c.042 2.183 1 5.5 1 5.5s1.546 2.631 2 4.5c.6 2.467.409 3.995 0 6.5-.328 2.012-.26 3.382-1.5 5-1.022 1.333-1.5 1-3.5 2.5s-2.074-.574-3-1.5c-1.31-1.31-1.169-2.677-1.5-4.5-.42-2.305-.097-3.659 0-6 .097-2.349.305-3.657.5-6s.126-3.679.5-6c.287-1.777.074-2.956 1-4.5.71-1.184 2.5-2.5 2.5-2.5z"
         fill="url(#prefix__paint12_linear)"
         fillOpacity={ratios.CALVES || 0}
+        onPress={onPressMuscles.CALVES}
       />
 
       <Path
@@ -155,6 +169,7 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
         d="M63.866 157.524s-.969-.605-1.635-.515c-1.333.18-1.09.515-1.09 3.09 0 2.575.582 2.814.545 4.635-.046 2.249-1.09 5.666-1.09 5.666s-1.685 2.71-2.18 4.635c-.654 2.541-.446 4.115 0 6.695.358 2.073.283 3.484 1.635 5.15 1.114 1.373 1.635 1.03 3.815 2.575 2.18 1.545 2.26-.591 3.27-1.545 1.428-1.349 1.274-2.758 1.635-4.635.457-2.374.106-3.769 0-6.18-.106-2.42-.332-3.767-.545-6.18-.213-2.414-.137-3.79-.545-6.181-.312-1.83-.08-3.045-1.09-4.635-.774-1.219-2.725-2.575-2.725-2.575z"
         fill="url(#prefix__paint13_linear)"
         fillOpacity={ratios.CALVES || 0}
+        onPress={onPressMuscles.CALVES}
       />
       {/* triceps-1-gauche */}
       <Path
@@ -165,6 +180,7 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
         d="M18 39.5c-2-.5-1.5-.5-2.5-.5s-1.805 1.97-2.5 3.5c-.745 1.639-1.09 2.702-1 4.5.05.994-.275 1.875.5 2.5.76.613 1.551.23 2.5 0 2.285-.556 3.218-2.53 4.5-4.5 1.287-1.977 2.5-5 2-5.5s-1.5.5-3.5 0z"
         fill="url(#prefix__paint14_linear)"
         fillOpacity={ratios.TRICEPS || 0}
+        onPress={onPressMuscles.TRICEPS}
       />
       {/* triceps-1-droite */}
       <Path
@@ -175,6 +191,7 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
         d="M85.375 39.508C87.242 39 86.775 39 87.708 39c.934 0 1.685 2.002 2.334 3.554.695 1.665 1.017 2.745.933 4.57-.046 1.01.257 1.905-.466 2.54-.71.622-1.448.234-2.334 0-2.133-.565-3.004-2.57-4.2-4.57-1.202-2.009-2.334-5.078-1.867-5.586.466-.508 1.4.508 3.267 0z"
         fill="url(#prefix__paint15_linear)"
         fillOpacity={ratios.TRICEPS || 0}
+        onPress={onPressMuscles.TRICEPS}
       />
       {/* triceps-2-gauche */}
       <Path
@@ -185,6 +202,7 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
         d="M27.454 48.133c.473-3.5.946-9.5 0-10s-2.519.502-3.784 1.5c-1.726 1.361-2.837 5-2.837 5s-.733 2.405-.946 4c-.284 2.127-.706 3.486 0 5.5.374 1.067.439 2.027 1.419 2.5 1.28.617 1.892 0 3.31-1.5 1.42-1.5 2.365-3.5 2.838-7z"
         fill="url(#prefix__paint16_linear)"
         fillOpacity={ratios.TRICEPS || 0}
+        onPress={onPressMuscles.TRICEPS}
       />
       {/* triceps-3-gauche */}
       <Path
@@ -195,6 +213,7 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
         d="M18.5 54s0-3.5-1-4-2.678.859-4 2c-1.272 1.097-1.902 1.93-2.5 3.5-.56 1.471-.637 2.432-.5 4 .124 1.416.16 2.353 1 3.5.832 1.136 1.681 1.506 3 2 1.112.417 1.83.708 3 .5 1.772-.316 2-1 3.5-3s5-7 4-6.5-1.596 2.103-3 2c-.87-.064-1.343-.425-2-1-.986-.862-1.5-3-1.5-3z"
         fill="url(#prefix__paint17_linear)"
         fillOpacity={ratios.TRICEPS || 0}
+        onPress={onPressMuscles.TRICEPS}
       />
       {/* triceps-3-droite */}
       <Path
@@ -205,6 +224,7 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
         d="M84.939 54.108s0-3.501 1-4.001c1-.5 2.678.859 4.001 2 1.272 1.098 1.902 1.931 2.5 3.501.561 1.472.638 2.433.5 4.001-.123 1.417-.16 2.354-1 3.501-.832 1.136-1.681 1.507-3 2-1.113.418-1.831.71-3.001.501-1.773-.316-2-1-3.501-3-1.5-2.001-5.001-7.003-4.001-6.503s1.596 2.104 3 2c.872-.063 1.344-.424 2.001-1 .986-.862 1.5-3 1.5-3z"
         fill="url(#prefix__paint18_linear)"
         fillOpacity={ratios.TRICEPS || 0}
+        onPress={onPressMuscles.TRICEPS}
       />
       {/* triceps-2-droite */}
       <Path
@@ -215,6 +235,7 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
         d="M76.546 48.203c-.473-3.525-.946-9.566 0-10.07.946-.503 2.519.507 3.784 1.511 1.726 1.37 2.837 5.034 2.837 5.034s.733 2.423.946 4.028c.284 2.141.706 3.51 0 5.538-.374 1.075-.439 2.041-1.419 2.517-1.28.622-1.892 0-3.31-1.51-1.42-1.51-2.365-3.524-2.838-7.048z"
         fill="url(#prefix__paint19_linear)"
         fillOpacity={ratios.TRICEPS || 0}
+        onPress={onPressMuscles.TRICEPS}
       />
       {/* lombaires-gauche */}
       <Path
@@ -225,6 +246,7 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
         d="M51 93.93V61.005c0 .51-1.103 4.833-2.455 7.652-1.83 3.817-5.4 7.653-6.382 8.673-.982 1.02 2.714 4.962 4.419 8.162C48.33 88.775 51 94.713 51 93.93z"
         fill="url(#prefix__paint20_linear)"
         fillOpacity={ratios.LOMBAR || 0}
+        onPress={onPressMuscles.LOMBAR}
       />
       {/* lombaires-droite */}
       <Path
@@ -235,6 +257,7 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
         d="M52.5 93.93V61.005c0 .51 1.103 4.833 2.455 7.652 1.83 3.817 5.4 7.653 6.382 8.673.982 1.02-2.714 4.962-4.419 8.162-1.748 3.282-4.418 9.22-4.418 8.436z"
         fill="url(#prefix__paint21_linear)"
         fillOpacity={ratios.LOMBAR || 0}
+        onPress={onPressMuscles.LOMBAR}
       />
       {/* dos-2-droite */}
       <Path
@@ -245,6 +268,7 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
         d="M65.715 32.076C66.218 30.538 66.72 29 67.728 29c1.006 0 3.02 2.564 3.02 2.564l2.012 2.563S74.497 36.974 75 38c.503 1.026 0 1 0 1s-1.236.94-2.24 1.28c-1.72.582-2.74.728-4.529 1.026-1.95.324-3.523 1.025-5.032.512-.919-.312-.752-1.29-.504-2.05.504-1.539 1.066-2.204 1.51-3.59.52-1.626 1.007-2.563 1.51-4.102z"
         fill="url(#prefix__paint22_linear)"
         fillOpacity={ratios.BACK || 0}
+        onPress={onPressMuscles.BACK}
       />
       {/* dos-1-droite */}
       <Path
@@ -255,6 +279,7 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
         d="M70.573 18s4.88 0 4.393.498c-.488.498-2.239.629-3.417 1.493-.876.643-1.953 1.992-1.953 1.992s-1.617 2.039-2.44 3.485c-.943 1.656-1.245 2.707-1.953 4.481-.614 1.539-.791 2.47-1.464 3.983-.811 1.823-1.533 2.706-2.44 4.48-.592 1.157-.737 1.916-1.465 2.988-.92 1.357-1.58 2.077-2.929 2.987l-.06.04c-1.206.816-2.877 1.944-3.357 1.454C53 45.383 53 41.898 53 41.898V29.949s0-4.979.488-6.97c.488-1.992 1.953-1.992 2.929-2.49.976-.498 4.881-1.493 4.881-1.493L65.691 18h4.882z"
         fill="url(#prefix__paint23_linear)"
         fillOpacity={ratios.BACK || 0}
+        onPress={onPressMuscles.BACK}
       />
       {/* dos-2-gauche */}
       <Path
@@ -265,6 +290,7 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
         d="M38.785 32.076C38.282 30.538 37.78 29 36.772 29c-1.006 0-3.02 2.564-3.02 2.564l-2.012 2.563s-2.013 3.077-2.516 4.102c-.504 1.026 0 1.026 0 1.026s1.511.685 2.516 1.025c1.72.582 2.74.728 4.529 1.026 1.95.324 3.523 1.025 5.032.512.919-.312.752-1.29.503-2.05-.503-1.539-1.066-2.204-1.51-3.59-.52-1.626-1.006-2.563-1.509-4.102z"
         fill="url(#prefix__paint24_linear)"
         fillOpacity={ratios.BACK || 0}
+        onPress={onPressMuscles.BACK}
       />
       {/* dos-1-gauche */}
       <Path
@@ -275,6 +301,7 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
         d="M33.427 18s-4.88 0-4.393.498c.488.498 2.239.629 3.417 1.493.876.643 1.953 1.992 1.953 1.992s1.617 2.039 2.44 3.485c.943 1.656 1.245 2.707 1.953 4.481.614 1.539.791 2.47 1.464 3.983.811 1.823 1.533 2.706 2.44 4.48.592 1.157.737 1.916 1.465 2.988.92 1.357 1.58 2.077 2.929 2.987l.06.04c1.206.816 2.877 1.944 3.357 1.454.488-.498.488-3.983.488-3.983V29.949s0-4.979-.488-6.97c-.488-1.992-1.953-1.992-2.929-2.49-.976-.498-4.881-1.493-4.881-1.493L38.309 18h-4.882z"
         fill="url(#prefix__paint25_linear)"
         fillOpacity={ratios.BACK || 0}
+        onPress={onPressMuscles.BACK}
       />
       {/* trapeze-gauche */}
       <Path
@@ -285,6 +312,7 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
         d="M44.126 18.792c1.702.509 3.074 1.017 4.612 1.526.808.268 1.537 1.018 2.05.51.512-.51 0-20.862-.497-20.828-.495.034-.62 1.23-.991 2.032-1.684 3.628-.984 6.547-3.472 9.652-1.573 1.964-2.735 2.94-4.959 4.064-1.98 1.001-1.868 1.01-1.868 1.518s3.069.912 5.125 1.526z"
         fill="url(#prefix__paint26_linear)"
         fillOpacity={ratios.TRAPEZIUS || 0}
+        onPress={onPressMuscles.TRAPEZIUS}
       />
       {/* trapeze-droite */}
       <Path
@@ -295,6 +323,7 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
         d="M59.874 18.792c-1.702.509-3.074 1.017-4.612 1.526-.808.268-1.537 1.018-2.05.51-.512-.51 0-20.862.497-20.828.495.034.62 1.23.991 2.032 1.684 3.628.984 6.547 3.472 9.652 1.573 1.964 2.735 2.94 4.959 4.064 1.98 1.001 1.868 1.01 1.868 1.518s-3.068.912-5.125 1.526z"
         fill="url(#prefix__paint27_linear)"
         fillOpacity={ratios.TRAPEZIUS || 0}
+        onPress={onPressMuscles.TRAPEZIUS}
       />
       {/* epaule-droite */}
       <Path
@@ -305,6 +334,7 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
         d="M75.766 19.007c-1.512-.091-2.318.691-3.566 1.577-1.16.822-1.75 1.431-2.548 2.627-.859 1.288-2.038 2.102-1.529 3.678.51 1.576 1.767 2.642 3.057 4.204 1.644 1.987 2.465 3.302 4.586 4.729 1.642 1.104 4.586 2.101 4.586 2.101s5.03 2.423 6.115 0c.5-1.117.584-1.923.51-3.152-.14-2.29 0-3.678-1.02-5.78-1.019-2.102-3.567-4.73-3.567-4.73l-3.566-3.677s-1.725-1.496-3.058-1.577z"
         fill="url(#prefix__paint28_linear)"
         fillOpacity={ratios.SHOULDERS || 0}
+        onPress={onPressMuscles.SHOULDERS}
       />
 
       <Path
@@ -315,6 +345,7 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
         d="M28.234 19.007c1.512-.091 2.318.691 3.566 1.577 1.16.822 1.75 1.431 2.548 2.627.859 1.288 2.038 2.102 1.529 3.678-.51 1.576-1.767 2.642-3.058 4.204-1.643 1.987-2.464 3.302-4.585 4.729-1.642 1.104-4.586 2.101-4.586 2.101s-5.03 2.423-6.115 0c-.5-1.117-.584-1.923-.51-3.152.14-2.29 0-3.678 1.02-5.78 1.019-2.102 3.567-4.73 3.567-4.73l3.566-3.677s1.725-1.496 3.058-1.577z"
         fill="url(#prefix__paint29_linear)"
         fillOpacity={ratios.SHOULDERS || 0}
+        onPress={onPressMuscles.SHOULDERS}
       />
       {/* dos-3-gauche */}
       <Path
@@ -325,6 +356,7 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
         d="M33.272 42.102s-4-1.5-4.5-1-.88 3.084-.744 4.64c.172 1.984.484 3.077 1 5 .48 1.79 1.5 4.5 1.5 4.5l2.5 5 3 5s1.628 2.688 2.5 4.5c.644 1.34 1.004 2.098 1.5 3.5.474 1.34.5 3.5 1 3.5s2.264-2.014 3.5-3.5c1.905-2.292 2.807-3.769 4-6.5 1.137-2.605 1.613-4.183 2-7 .371-2.708 0-7 0-7l-.756-2-2.5-2.64-2.5-3s-1.68-1.507-3-2c-1.558-.582-2.592-.166-4.244-.36-1.67-.196-4.256-.64-4.256-.64z"
         fill="url(#prefix__paint30_linear)"
         fillOpacity={ratios.BACK || 0}
+        onPress={onPressMuscles.BACK}
       />
       {/* dos-3-droite */}
       <Path
@@ -335,6 +367,7 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
         d="M70.656 42.11s4.055-1.51 4.561-1.007c.507.503.892 3.106.755 4.673-.175 1.998-.491 3.1-1.013 5.036-.487 1.803-1.52 4.533-1.52 4.533l-2.535 5.036-3.04 5.036s-1.65 2.708-2.534 4.532c-.653 1.35-1.018 2.114-1.52 3.526-.481 1.35-.507 3.525-1.014 3.525s-2.295-2.028-3.547-3.525c-1.931-2.309-2.846-3.796-4.055-6.547-1.153-2.624-1.635-4.214-2.027-7.05-.376-2.728 0-7.051 0-7.051l.766-2.015 2.534-2.659 2.534-3.021s1.704-1.518 3.04-2.015c1.58-.586 2.628-.167 4.302-.362 1.692-.198 4.313-.645 4.313-.645z"
         fill="url(#prefix__paint31_linear)"
         fillOpacity={ratios.BACK || 0}
+        onPress={onPressMuscles.BACK}
       />
       {/* ab-1-droite */}
       <Path
@@ -345,6 +378,7 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
         d="M86 67c-1.5 0-2.5-2-3-2s-.277 2.162 0 3.5c.408 1.969 1.472 2.772 2.5 4.5 1.8 3.026 2.938 4.647 5 7.5 3.252 4.498 8.5 11.5 9 11s-1.5-4-1.5-4l-3.5-7c-1.172-2.343-1.755-3.695-3-6-1.29-2.387-3-6.5-3.5-7s-.5-.5-2-.5z"
         fill="url(#prefix__paint32_linear)"
         fillOpacity={ratios.FOREARMS || 0}
+        onPress={onPressMuscles.FOREARMS}
       />
       {/* ab-1-gauche */}
       <Path
@@ -355,6 +389,7 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
         d="M91 70c-.606-1.819-1.5-2.5-1.5-3s1.635-.506 2.5-1c1.222-.699 2-2 2.5-3s1.62 2.056 1.62 2.056c.76 1.201.616 2.132 1 3.5.601 2.144.843 3.373 1.5 5.5.856 2.774 2.5 7 2.5 7l2 7.444s.251 2.12 0 2.718c-.252.597-.62 2.282-1.12 2.282-.5 0-1.5-2.5-1.5-2.5l-2.38-4.944-2.5-5.5-3-7S91.5 71.5 91 70z"
         fill="url(#prefix__paint33_linear)"
         fillOpacity={ratios.FOREARMS || 0}
+        onPress={onPressMuscles.FOREARMS}
       />
       {/* ab-2-gauche */}
       <Path
@@ -365,6 +400,7 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
         d="M12.97 70.037c.619-1.778 1.53-2.443 1.53-2.932 0-.489-1.668-.494-2.549-.977-1.246-.683-2.039-1.954-2.549-2.932-.51-.977-1.651 2.01-1.651 2.01-.775 1.173-.628 2.082-1.02 3.42-.613 2.094-.86 3.296-1.53 5.374-.872 2.71-2.548 6.84-2.548 6.84L.614 88.114s-.256 2.072 0 2.656c.256.584.632 2.23 1.142 2.23.51 0 1.529-2.443 1.529-2.443l2.427-4.83 2.549-5.375 3.058-6.84s1.142-2.01 1.652-3.475z"
         fill="url(#prefix__paint34_linear)"
         fillOpacity={ratios.FOREARMS || 0}
+        onPress={onPressMuscles.FOREARMS}
       />
       {/* ab-2-droite */}
       <Path
@@ -375,6 +411,7 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
         d="M17.679 67.036c1.51 0 2.518-2.036 3.022-2.036.503 0 .279 2.2 0 3.563-.411 2.003-1.483 2.821-2.518 4.58-1.813 3.08-2.96 4.73-5.037 7.634-3.275 4.579-8.562 11.706-9.065 11.197-.504-.509 1.51-4.071 1.51-4.071l3.526-7.126c1.18-2.385 1.768-3.76 3.022-6.107 1.299-2.43 3.022-6.616 3.525-7.125.504-.51.504-.51 2.015-.51z"
         fill="url(#prefix__paint35_linear)"
         fillOpacity={ratios.FOREARMS || 0}
+        onPress={onPressMuscles.FOREARMS}
       />
 
       <Defs>
