@@ -92,9 +92,9 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
         <NoTraining />
       ) : (
         <>
-          <Spacer height={2} />
-          <CategoryTitle>{t('dashboard.favoriteTrainings')}</CategoryTitle>
-          <Spacer height={2} />
+          {store.favoriteTrainings.length > 0 && (
+            <CategoryTitle>{t('dashboard.favoriteTrainings')}</CategoryTitle>
+          )}
           <View>
             <FlatList
               horizontal
@@ -149,6 +149,7 @@ const MenuContainer = styled.View(({ theme }) => ({
 
 const CategoryTitle = styled(TextBody)(({ theme }) => ({
   color: theme.colors.white,
+  marginVertical: theme.margin.x2,
 }));
 
 const TrainingName = styled.Text(({ theme }) => ({
