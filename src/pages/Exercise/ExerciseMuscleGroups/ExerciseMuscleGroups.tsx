@@ -12,8 +12,6 @@ import { NextButton } from '@woap/components/NextButton';
 import { RootNavigatorParamList } from '@woap/navigation';
 import { Routes } from '@woap/navigation/routes';
 import { ExerciseNavigatorParamList } from '@woap/navigation/ExerciseNavigator';
-import { createExercise } from '@woap/mobx/exercise/constructor';
-import { useStore } from '@woap/utils/hooks/useStore';
 
 type ExerciseMuscleGroupsScreenNavigationProp = CompositeNavigationProp<
   StackNavigationProp<RootNavigatorParamList, Routes.ExerciseNavigator>,
@@ -31,8 +29,7 @@ interface Props {
 }
 
 export const ExerciseMuscleGroups: FunctionComponent<Props> = observer(({ navigation, route }) => {
-  const { addExercise } = useStore();
-  const exerciseName = route.params.exerciseName;
+  const exercise = route.params.exercise;
 
   const [muscleGroups, setMuscleGroups] = useState(
     Object.values(MuscleGroup).map(muscleGroup => ({ name: muscleGroup, selected: false }))
@@ -43,18 +40,14 @@ export const ExerciseMuscleGroups: FunctionComponent<Props> = observer(({ naviga
     navigation.goBack();
   };
 
-  const createNewExercise = () => {
-    const exercise = createExercise();
-    exercise.setName(exerciseName);
+  const goToExerciseDescriptionScreen = () =>
+    navigation.navigate(Routes.ExerciseDescription, { exercise });
+
+  const onNextButtonPressed = () => {
     exercise.setMuscleGroups(
       muscleGroups.filter(muscleGroup => muscleGroup.selected).map(muscleGroup => muscleGroup.name)
     );
-    addExercise(exercise);
-  };
-
-  const onNextButtonPressed = () => {
-    createNewExercise();
-    closeModale();
+    goToExerciseDescriptionScreen();
   };
 
   const onMuscleGroupPressed = name => () => {

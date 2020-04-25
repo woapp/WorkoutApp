@@ -10,6 +10,7 @@ import { NextButton } from '@woap/components/NextButton';
 import { Routes } from '@woap/navigation/routes';
 import { ExerciseNavigatorParamList } from '@woap/navigation/ExerciseNavigator';
 import { Header } from '@woap/components/Header';
+import { createExercise } from '@woap/mobx/exercise/constructor';
 
 type ExerciseNameScreenNavigationProp = StackNavigationProp<
   ExerciseNavigatorParamList,
@@ -26,7 +27,9 @@ export const ExerciseName: FunctionComponent<Props> = ({ navigation }) => {
   const isNameValid = name.length > 0;
   const goToExerciseMuscleGroupsScreen = () => {
     if (isNameValid) {
-      navigation.navigate(Routes.ExerciseMuscleGroups, { exerciseName: name });
+      const exercise = createExercise();
+      exercise.setName(name);
+      navigation.navigate(Routes.ExerciseMuscleGroups, { exercise });
     }
   };
   const closeModal = () => navigation.goBack();

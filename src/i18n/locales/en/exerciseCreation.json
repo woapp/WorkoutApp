@@ -2,5 +2,10 @@
   "exerciseName": {
     "title": "How would you name it?",
     "placeholder": "Bench, squat, curl..."
+  },
+  "exerciseDescription": {
+    "title": "New Exercise",
+    "indication": "Add a description :",
+    "placeholder": "Description"
   }
 }
