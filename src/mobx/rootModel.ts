@@ -12,5 +12,4 @@ export const RootModel = {
   exercises: types.array(Exercise),
   archivedExercises: types.array(Exercise),
   tags: types.array(Tag),
-  ongoingTraining: types.maybe(Training),
 };
