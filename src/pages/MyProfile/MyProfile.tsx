@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { FunctionComponent, useState } from 'react';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { CompositeNavigationProp } from '@react-navigation/native';
@@ -7,9 +8,9 @@ import styled from '@woap/utils/styled-components';
 import { ProfileNavigatorParamList } from '@woap/navigation/ProfileNavigator';
 import { RootNavigatorParamList } from '@woap/navigation';
 import { TabNavigatorParamList } from '@woap/navigation/TabNavigator';
-import { FrontBodyVisualisation } from '@woap/components/FrontBodyVisualisation';
+import { FrontBodyVisualisation } from '@woap/components/BodyVisualisation/components/FrontBodyVisualisation';
 import { Slider, ScrollView } from 'react-native';
-import { BackBodyVisualisation } from '@woap/components/BackBodyVisualisation';
+import { BackBodyVisualisation } from '@woap/components/BodyVisualisation/components/BackBodyVisualisation';
 
 type MyProfileScreenNavigationProp = CompositeNavigationProp<
   StackNavigationProp<RootNavigatorParamList, Routes.TabNavigator>,
@@ -43,32 +44,8 @@ export const MyProfile: FunctionComponent<Props> = () => {
   return (
     <Container>
       <Row>
-        <FrontBodyVisualisation
-          absRatio={absRatio}
-          adductorsRatio={adductorsRatio}
-          backRatio={backRatio}
-          bicepsRatio={bicepsRatio}
-          calvesRatio={calvesRatio}
-          chestRatio={chestRatio}
-          forearmRatio={forearmRatio}
-          obliquesRatio={obliquesRatio}
-          quadricepsRatio={quadricepsRatio}
-          shouldersRatio={shouldersRatio}
-          trapeziusRatio={trapeziusRatio}
-          tricepsRatio={tricepsRatio}
-        />
-        <BackBodyVisualisation
-          backRatio={backRatio}
-          calvesRatio={calvesRatio}
-          forearmRatio={forearmRatio}
-          obliquesRatio={obliquesRatio}
-          shouldersRatio={shouldersRatio}
-          trapeziusRatio={trapeziusRatio}
-          tricepsRatio={tricepsRatio}
-          buttockRatio={buttockRatio}
-          ischioRatio={ischioRatio}
-          lumbarRatio={lumbarRatio}
-        />
+        <FrontBodyVisualisation />
+        <BackBodyVisualisation />
       </Row>
       <ScrollView>
         <Label>Abs</Label>

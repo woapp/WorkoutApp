@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import Svg, { Path, Defs, LinearGradient, Stop } from 'react-native-svg';
-import { colors } from '@woap/styles/colors';
+
+import { colors } from './node_modules/@woap/styles/colors';
 
 interface Props {
   musclesBackgroundColor?: string;
