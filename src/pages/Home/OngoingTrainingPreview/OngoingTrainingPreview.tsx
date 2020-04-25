@@ -77,7 +77,7 @@ export const OngoingTrainingPreview: FunctionComponent<Props> = observer(
           <TrainingTitle>{training.name}</TrainingTitle>
           {/* eslint-disable-next-line @typescript-eslint/unbound-method */}
           <TouchableOpacity onPress={training.toggleFavorite}>
-            <HeartIcon selected={training.isFavorite} size={35} />
+            <HeartIcon selected={training.isFavorite} size={27} />
           </TouchableOpacity>
         </Row>
         <Spacer height={2} />
