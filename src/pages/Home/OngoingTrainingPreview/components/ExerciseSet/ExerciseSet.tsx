@@ -7,6 +7,7 @@ import { useTimingTransition, bInterpolate } from 'react-native-redash';
 import Animated from 'react-native-reanimated';
 import { Spacer } from '@woap/components/Spacer';
 import { View } from 'react-native';
+import { useTranslation } from 'react-i18next';
 
 type ExerciseItemProps = {
   isOngoing: boolean;
@@ -18,6 +19,7 @@ type ExerciseItemProps = {
 
 export const ExerciseSet: FunctionComponent<ExerciseItemProps> = observer(
   ({ exerciseSet, index, currentIndex }) => {
+    const { t } = useTranslation('common');
     const isOngoing = index === currentIndex;
     const isDone = index < currentIndex;
 
@@ -43,7 +45,9 @@ export const ExerciseSet: FunctionComponent<ExerciseItemProps> = observer(
             <Title style={{ transform: [{ translateY }] }} isDone={isDone}>
               {exerciseSet.exercise.name}
             </Title>
-            <ExerciseSetInformation style={{ opacity }}>12 reps / 15 kg</ExerciseSetInformation>
+            <ExerciseSetInformation style={{ opacity }}>
+              {exerciseSet.reps} {t('reps')} / {exerciseSet.weight} {t('kg')}
+            </ExerciseSetInformation>
           </View>
         </Container>
         {isOngoing && <Spacer height={2} />}
