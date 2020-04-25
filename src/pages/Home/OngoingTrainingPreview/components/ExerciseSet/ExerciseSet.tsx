@@ -3,68 +3,78 @@ import { observer } from 'mobx-react-lite';
 import { ExerciseSetType } from '@woap/mobx/exerciseSet';
 import styled from '@woap/utils/styled-components';
 import { MuscleGroupIcon } from '@woap/components/Icons/MuscleGroupIcon';
+import { useTimingTransition, bInterpolate } from 'react-native-redash';
+import Animated from 'react-native-reanimated';
+import { Spacer } from '@woap/components/Spacer';
 
 type ExerciseItemProps = {
-  isFirst: boolean;
-  isLast: boolean;
+  isOngoing: boolean;
+  isDone: boolean;
   exerciseSet: ExerciseSetType;
+  index: number;
+  currentIndex: number;
 };
 
 export const ExerciseSet: FunctionComponent<ExerciseItemProps> = observer(
-  ({ isFirst, isLast, exerciseSet }) => {
+  ({ exerciseSet, index, currentIndex }) => {
+    const isOngoing = index === currentIndex;
+    const scaleTo = 1.3;
+    const scaleFrom = 1;
+    const translateTo = 45;
+    const translateFrom = 0;
+
+    const transition = useTimingTransition(isOngoing, { duration: 300 });
+    const scale = bInterpolate(transition, scaleFrom, scaleTo);
+    const translateX = bInterpolate(transition, translateFrom, translateTo);
+
     return (
-      <Container>
-        <Column>
-          {!isFirst && <Bar />}
-          <IconContainer>
+      <>
+        {isOngoing && <Spacer height={2} />}
+        <Container style={{ transform: [{ scale, translateX }] }}>
+          <IconContainer isOngoing={isOngoing} isDone={index < currentIndex}>
             <MuscleGroupIcon
               muscleGroup={exerciseSet.exercise.mainMuscleGroup}
               width={40}
               height={40}
             />
           </IconContainer>
-          {!isLast && <Bar />}
-        </Column>
-        <InfosContainer>
-          {!isFirst && <Spacer />}
-          <Title>{exerciseSet.exercise.name}</Title>
-        </InfosContainer>
-      </Container>
+
+          <Title isDone={index < currentIndex}>{exerciseSet.exercise.name}</Title>
+        </Container>
+        {isOngoing && <Spacer height={2} />}
+      </>
     );
   }
 );
 
-const Container = styled.View({
+const Container = styled(Animated.View)(({ theme }) => ({
   flexDirection: 'row',
-});
-
-const Column = styled.View({
+  justifyContent: 'flex-start',
   alignItems: 'center',
-});
-
-const IconContainer = styled.View(({ theme }) => ({
-  backgroundColor: theme.colors.greyScale[80],
-  borderRadius: 10,
+  marginVertical: theme.margin.x1,
 }));
 
-const InfosContainer = styled.View(props => ({
-  marginLeft: props.theme.margin.x2,
-  paddingTop: props.theme.margin.x1,
-}));
+const IconContainer = styled.View<{ isOngoing: boolean; isDone: boolean }>(
+  ({ theme, isOngoing, isDone }) => {
+    let borderColor = theme.colors.greyScale[80];
+    if (isOngoing) {
+      borderColor = theme.colors.green;
+    } else if (isDone) {
+      borderColor = theme.colors.green;
+    }
 
-const Bar = styled.View(props => ({
-  minHeight: 10,
-  flex: 1,
-  width: 4,
-  backgroundColor: props.theme.colors.greyScale[80],
-}));
+    return {
+      borderColor,
+      borderWidth: 2,
+      backgroundColor: theme.colors.greyScale[80],
+      borderRadius: 10,
+      marginRight: theme.margin.x2,
+    };
+  }
+);
 
-const Spacer = styled.View({
-  height: 10,
-});
-
-const Title = styled.Text(props => ({
+const Title = styled.Text<{ isDone: boolean }>(({ theme, isDone }) => ({
   fontSize: 18,
-  color: props.theme.colors.white,
+  color: isDone ? theme.colors.green : theme.colors.white,
   fontWeight: 'bold',
 }));

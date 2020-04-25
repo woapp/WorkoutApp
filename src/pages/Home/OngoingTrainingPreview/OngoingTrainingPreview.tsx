@@ -1,9 +1,9 @@
-import React, { FunctionComponent } from 'react';
-import { TouchableOpacity } from 'react-native';
+import React, { FunctionComponent, useState, useRef } from 'react';
+import { TouchableOpacity, FlatList } from 'react-native';
 import { observer } from 'mobx-react-lite';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { MaterialTopTabNavigationProp } from '@react-navigation/material-top-tabs';
-import { CompositeNavigationProp, RouteProp, useNavigation } from '@react-navigation/native';
+import { CompositeNavigationProp, RouteProp } from '@react-navigation/native';
 import styled from '@woap/utils/styled-components';
 import { Routes } from '@woap/navigation/routes';
 import { RootNavigatorParamList } from '@woap/navigation';
@@ -14,6 +14,7 @@ import { LinearButton } from '@woap/components/LinearButton';
 import { Spacer } from '@woap/components/Spacer';
 import { ArrowBackwardIcon } from '@woap/components/Icons/ArrowBackwardIcon';
 import { theme } from '@woap/styles/theme';
+import { ExerciseSetType } from '@woap/mobx/exerciseSet';
 
 import { ExerciseSet } from './components/ExerciseSet';
 
@@ -35,41 +36,77 @@ interface Props {
   route: OngoingTrainingPreviewScreenRouteProp;
 }
 
-export const OngoingTrainingPreview: FunctionComponent<Props> = observer(({ route }) => {
-  const { training } = route.params;
-  const navigation = useNavigation();
+export const OngoingTrainingPreview: FunctionComponent<Props> = observer(
+  ({ route, navigation }) => {
+    const { training } = route.params;
+    const listRef = useRef<FlatList<ExerciseSetType>>(null);
+    const [currentExerciseSetIndex, setCurrentExerciseSetIndex] = useState<number>(-1);
 
-  return (
-    <Container>
-      <Row>
-        {/* eslint-disable-next-line @typescript-eslint/unbound-method */}
-        <TouchableOpacity onPress={navigation.goBack} hitSlop={theme.hitSlop}>
-          <ArrowBackwardIcon />
-        </TouchableOpacity>
-        <Spacer width={2} />
-        <TrainingTitle>{training.name}</TrainingTitle>
-        {/* eslint-disable-next-line @typescript-eslint/unbound-method */}
-        <TouchableOpacity onPress={training.toggleFavorite}>
-          <HeartIcon selected={training.isFavorite} size={35} />
-        </TouchableOpacity>
-      </Row>
-      <Spacer height={2} />
-      <SetsContainer>
-        {training.exerciseSets.map((exerciseSet, index) => (
-          <ExerciseSet
-            isFirst={index === 0}
-            isLast={index === training.exerciseSets.length - 1}
-            key={exerciseSet.id}
-            exerciseSet={exerciseSet}
-          />
-        ))}
-        <Spacer height={10} />
-      </SetsContainer>
-      {/* eslint-disable-next-line @typescript-eslint/no-empty-function */}
-      <LinearButton onPress={() => {}} title="GO" />
-    </Container>
-  );
-});
+    const onActionPress = () => {
+      setCurrentExerciseSetIndex(prev => prev + 1);
+      if (currentExerciseSetIndex >= 0) {
+        listRef.current &&
+          listRef.current.scrollToIndex({
+            index: currentExerciseSetIndex,
+            viewPosition: 0.5,
+          });
+      }
+      if (currentExerciseSetIndex === training.exerciseSets.length - 1) {
+        navigation.goBack();
+      }
+    };
+
+    const getButtonTitle = () => {
+      if (currentExerciseSetIndex < 0) {
+        return 'GO';
+      } else if (currentExerciseSetIndex < training.exerciseSets.length - 1) {
+        return 'NEXT';
+      } else {
+        return 'FINISH';
+      }
+    };
+
+    return (
+      <Container>
+        <Row>
+          {/* eslint-disable-next-line @typescript-eslint/unbound-method */}
+          <TouchableOpacity onPress={navigation.goBack} hitSlop={theme.hitSlop}>
+            <ArrowBackwardIcon />
+          </TouchableOpacity>
+          <Spacer width={2} />
+          <TrainingTitle>{training.name}</TrainingTitle>
+          {/* eslint-disable-next-line @typescript-eslint/unbound-method */}
+          <TouchableOpacity onPress={training.toggleFavorite}>
+            <HeartIcon selected={training.isFavorite} size={35} />
+          </TouchableOpacity>
+        </Row>
+        <Spacer height={2} />
+
+        <SetsContainer
+          data={training.exerciseSets.toJS()}
+          ListFooterComponent={<Spacer height={4} />}
+          // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+          // @ts-ignore
+          ref={listRef}
+          // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+          // @ts-ignore
+          renderItem={({ item: exerciseSet, index }: { item: ExerciseSetType; index: number }) => (
+            <ExerciseSet
+              key={exerciseSet.id}
+              exerciseSet={exerciseSet}
+              isOngoing={index === currentExerciseSetIndex}
+              isDone={index < currentExerciseSetIndex}
+              index={index}
+              currentIndex={currentExerciseSetIndex}
+            />
+          )}
+        />
+
+        <LinearButton onPress={onActionPress} title={getButtonTitle()} />
+      </Container>
+    );
+  }
+);
 
 const Container = styled.View({
   flex: 1,
@@ -89,4 +126,6 @@ const TrainingTitle = styled.Text({
   flex: 1,
 });
 
-const SetsContainer = styled.ScrollView({ padding: theme.margin.x2 });
+const SetsContainer = styled(FlatList)({
+  padding: theme.margin.x2,
+});
