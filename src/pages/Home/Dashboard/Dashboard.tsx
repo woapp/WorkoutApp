@@ -96,7 +96,11 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
       ) : (
         <>
           <Spacer height={1} />
-          <SearchBar value={filter} onChangeText={setFilter} />
+          <SearchBar
+            value={filter}
+            onChangeText={setFilter}
+            placeholder={t('dashboard.searchPlaceholder')}
+          />
           <Spacer height={3} />
           <CategoryTitle>{t('dashboard.favoriteTrainings')}</CategoryTitle>
           <Spacer height={2} />
