@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Background } from '@woap/components/Background';
 import styled from '@woap/utils/styled-components';
@@ -21,8 +22,13 @@ type Props = {
 
 export const ExerciseName: FunctionComponent<Props> = ({ navigation }) => {
   const [name, setName] = useState('');
-  const goToExerciseMuscleGroupsScreen = () =>
-    navigation.navigate(Routes.ExerciseMuscleGroups, { exerciseName: name });
+  const { t } = useTranslation('exerciseCreation');
+  const isNameValid = name.length > 0;
+  const goToExerciseMuscleGroupsScreen = () => {
+    if (isNameValid) {
+      navigation.navigate(Routes.ExerciseMuscleGroups, { exerciseName: name });
+    }
+  };
   const closeModal = () => navigation.goBack();
 
   return (
@@ -30,16 +36,17 @@ export const ExerciseName: FunctionComponent<Props> = ({ navigation }) => {
       <Container>
         <Header title="New Exercise" onClose={closeModal} />
         <Spacer height={3} />
-        <Title>HOW WOULD YOU NAME IT?</Title>
+        <Title>{t('exerciseName.title')}</Title>
         <Spacer height={2} />
         <NameFormField
           value={name}
           onChangeText={setName}
-          placeholder="Bench, squat, curl..."
+          placeholder={t('exerciseName.placeholder')}
           placeholderTextColor={colors.transparentWhiteScale[60]}
           selectionColor={colors.white}
+          onSubmitEditing={goToExerciseMuscleGroupsScreen}
         />
-        <NextButton onPress={goToExerciseMuscleGroupsScreen} disabled={name.length === 0} />
+        <NextButton onPress={goToExerciseMuscleGroupsScreen} disabled={!isNameValid} />
       </Container>
     </Background>
   );

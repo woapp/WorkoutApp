@@ -1,1 +1,6 @@
-{}
+{
+  "exerciseName": {
+    "title": "How would you name it?",
+    "placeholder": "Bench, squat, curl..."
+  }
+}

@@ -1,1 +1,6 @@
-{}
+{
+  "exerciseName": {
+    "title": "Comment le nommerais-tu ?",
+    "placeholder": "Développé couché, squat, curl..."
+  }
+}
