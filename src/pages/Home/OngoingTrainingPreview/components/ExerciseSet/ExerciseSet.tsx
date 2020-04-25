@@ -6,6 +6,7 @@ import { MuscleGroupIcon } from '@woap/components/Icons/MuscleGroupIcon';
 import { useTimingTransition, bInterpolate } from 'react-native-redash';
 import Animated from 'react-native-reanimated';
 import { Spacer } from '@woap/components/Spacer';
+import { View } from 'react-native';
 
 type ExerciseItemProps = {
   isOngoing: boolean;
@@ -18,28 +19,32 @@ type ExerciseItemProps = {
 export const ExerciseSet: FunctionComponent<ExerciseItemProps> = observer(
   ({ exerciseSet, index, currentIndex }) => {
     const isOngoing = index === currentIndex;
-    const scaleTo = 1.3;
-    const scaleFrom = 1;
-    const translateTo = 45;
-    const translateFrom = 0;
+    const isDone = index < currentIndex;
 
     const transition = useTimingTransition(isOngoing, { duration: 300 });
-    const scale = bInterpolate(transition, scaleFrom, scaleTo);
-    const translateX = bInterpolate(transition, translateFrom, translateTo);
+    const scale = bInterpolate(transition, 1, 1.3);
+    const translateX = bInterpolate(transition, 0, 45);
+    const opacityTransition = useTimingTransition(isDone, { duration: 300 });
+    const opacity = bInterpolate(opacityTransition, 1, 0);
+    const translateY = bInterpolate(opacityTransition, 0, 8);
 
     return (
       <>
         {isOngoing && <Spacer height={2} />}
         <Container style={{ transform: [{ scale, translateX }] }}>
-          <IconContainer isOngoing={isOngoing} isDone={index < currentIndex}>
+          <IconContainer isOngoing={isOngoing} isDone={isDone}>
             <MuscleGroupIcon
               muscleGroup={exerciseSet.exercise.mainMuscleGroup}
               width={40}
               height={40}
             />
           </IconContainer>
-
-          <Title isDone={index < currentIndex}>{exerciseSet.exercise.name}</Title>
+          <View>
+            <Title style={{ transform: [{ translateY }] }} isDone={isDone}>
+              {exerciseSet.exercise.name}
+            </Title>
+            <ExerciseSetInformation style={{ opacity }}>12 reps / 15 kg</ExerciseSetInformation>
+          </View>
         </Container>
         {isOngoing && <Spacer height={2} />}
       </>
@@ -73,8 +78,14 @@ const IconContainer = styled.View<{ isOngoing: boolean; isDone: boolean }>(
   }
 );
 
-const Title = styled.Text<{ isDone: boolean }>(({ theme, isDone }) => ({
+const Title = styled(Animated.Text)<{ isDone: boolean }>(({ theme, isDone }) => ({
   fontSize: 18,
   color: isDone ? theme.colors.green : theme.colors.white,
   fontWeight: 'bold',
+}));
+
+const ExerciseSetInformation = styled(Animated.Text)(({ theme }) => ({
+  color: 'white',
+  fontSize: 14,
+  marginTop: theme.margin.d2,
 }));
