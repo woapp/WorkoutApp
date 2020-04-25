@@ -1,0 +1,1 @@
+export { FrontBodyVisualisation } from './FrontBodyVisualisation';
