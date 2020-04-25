@@ -42,6 +42,10 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
   const { t } = useTranslation('home');
   const { matchSearch, filter, setFilter } = useSearch();
 
+  const filterTrainingByTagOrName = (training: TrainingType) =>
+    matchSearch(training.name) ||
+    (training.tags && training.tags.some(tag => matchSearch(tag.name)));
+
   const onCreateNewTraining = () => {
     store.initializeNewFreeWorkout();
     navigation.navigate(Routes.TrainingNavigator);
@@ -108,7 +112,7 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
             <FlatList
               horizontal
               style={{ flex: 0 }}
-              data={store.favoriteTrainings.filter(training => matchSearch(training.name))}
+              data={store.favoriteTrainings.filter(filterTrainingByTagOrName)}
               renderItem={renderFavoriteTrainingCard}
             />
           </View>
@@ -118,7 +122,7 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
           <Spacer height={2} />
           <FlatList
             style={{ flex: 1 }}
-            data={store.trainings.toJS().filter(training => matchSearch(training.name))}
+            data={store.trainings.toJS().filter(filterTrainingByTagOrName)}
             renderItem={renderClassicTrainingCard}
           />
         </>
