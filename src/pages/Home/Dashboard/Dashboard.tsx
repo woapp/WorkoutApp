@@ -19,6 +19,8 @@ import { Spacer } from '@woap/components/Spacer';
 import { Alert, View } from 'react-native';
 import { TrainingType } from '@woap/mobx/training';
 import { FlatList } from 'react-native-gesture-handler';
+import { useSearch } from '@woap/hooks/useSearch';
+import { SearchBar } from '@woap/components/SearchBar';
 
 import { NoTraining } from './components/NoTraining';
 import { FavoriteTrainingCard } from './components/FavoriteTrainingCard';
@@ -38,6 +40,7 @@ type Props = {
 export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => {
   const store = useStore();
   const { t } = useTranslation('home');
+  const { matchSearch, filter, setFilter } = useSearch();
 
   const onCreateNewTraining = () => {
     store.initializeNewFreeWorkout();
@@ -92,14 +95,16 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
         <NoTraining />
       ) : (
         <>
-          <Spacer height={2} />
+          <Spacer height={1} />
+          <SearchBar value={filter} onChangeText={setFilter} />
+          <Spacer height={3} />
           <CategoryTitle>{t('dashboard.favoriteTrainings')}</CategoryTitle>
           <Spacer height={2} />
           <View>
             <FlatList
               horizontal
               style={{ flex: 0 }}
-              data={store.favoriteTrainings}
+              data={store.favoriteTrainings.filter(training => matchSearch(training.name))}
               renderItem={renderFavoriteTrainingCard}
             />
           </View>
@@ -109,7 +114,7 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
           <Spacer height={2} />
           <FlatList
             style={{ flex: 1 }}
-            data={store.trainings}
+            data={store.trainings.toJS().filter(training => matchSearch(training.name))}
             renderItem={renderClassicTrainingCard}
           />
         </>
