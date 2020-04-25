@@ -1,1 +1,1 @@
-export { FavoriteTrainingCard } from './FavoriteTrainingCard';
+export { FavoriteTrainingCard, Tag } from './FavoriteTrainingCard';

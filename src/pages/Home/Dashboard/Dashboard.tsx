@@ -23,7 +23,7 @@ import { useSearch } from '@woap/hooks/useSearch';
 import { SearchBar } from '@woap/components/SearchBar';
 
 import { NoTraining } from './components/NoTraining';
-import { FavoriteTrainingCard } from './components/FavoriteTrainingCard';
+import { FavoriteTrainingCard, Tag } from './components/FavoriteTrainingCard';
 
 type DashboardScreenNavigationProp = CompositeNavigationProp<
   StackNavigationProp<RootNavigatorParamList, Routes.TabNavigator>,
@@ -45,6 +45,8 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
   const filterTrainingByTagOrName = (training: TrainingType) =>
     matchSearch(training.name) ||
     (training.tags && training.tags.some(tag => matchSearch(tag.name)));
+
+  const onTagPress = (tagName: string) => () => setFilter(tagName);
 
   const onCreateNewTraining = () => {
     store.initializeNewFreeWorkout();
@@ -72,6 +74,24 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
         },
       ]
     );
+  };
+
+  const renderSearchedTags = () => {
+    if (filter.length > 0) {
+      return (
+        <SearchedTagsRow>
+          {store.tags
+            .filter(tag => matchSearch(tag.name))
+            .map(tag => (
+              <Tag key={tag.id} onPress={onTagPress(tag.name)}>
+                {tag.name}
+              </Tag>
+            ))}
+        </SearchedTagsRow>
+      );
+    }
+
+    return null;
   };
 
   const renderFavoriteTrainingCard = ({ item: training }: { item: TrainingType }) => (
@@ -105,7 +125,8 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
             onChangeText={setFilter}
             placeholder={t('dashboard.searchPlaceholder')}
           />
-          <Spacer height={3} />
+          {renderSearchedTags()}
+          <Spacer height={2} />
           <CategoryTitle>{t('dashboard.favoriteTrainings')}</CategoryTitle>
           <Spacer height={2} />
           <View>
@@ -176,4 +197,9 @@ const TrainingContainer = styled.TouchableOpacity(({ theme }) => ({
   marginBottom: theme.margin.x2,
   flexDirection: 'row',
   justifyContent: 'space-between',
+}));
+
+const SearchedTagsRow = styled.View(({ theme }) => ({
+  flexDirection: 'row',
+  marginTop: theme.margin.x1,
 }));

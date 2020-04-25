@@ -50,7 +50,7 @@ const TagRow = styled.View({
   overflow: 'visible',
 });
 
-const Tag = styled.Text(({ theme }) => ({
+export const Tag = styled.Text(({ theme }) => ({
   paddingVertical: theme.margin.x1,
   paddingHorizontal: theme.margin.x2,
   marginRight: theme.margin.x2,
