@@ -15,6 +15,7 @@ import { Spacer } from '@woap/components/Spacer';
 import { ArrowBackwardIcon } from '@woap/components/Icons/ArrowBackwardIcon';
 import { theme } from '@woap/styles/theme';
 import { ExerciseSetType } from '@woap/mobx/exerciseSet';
+import { useTranslation } from 'react-i18next';
 
 import { ExerciseSet } from './components/ExerciseSet';
 
@@ -38,6 +39,7 @@ interface Props {
 
 export const OngoingTrainingPreview: FunctionComponent<Props> = observer(
   ({ route, navigation }) => {
+    const { t } = useTranslation('home');
     const { training } = route.params;
     const listRef = useRef<FlatList<ExerciseSetType>>(null);
     const [currentExerciseSetIndex, setCurrentExerciseSetIndex] = useState<number>(-1);
@@ -58,11 +60,11 @@ export const OngoingTrainingPreview: FunctionComponent<Props> = observer(
 
     const getButtonTitle = () => {
       if (currentExerciseSetIndex < 0) {
-        return 'GO';
+        return t('ongoingTrainingPreview.go');
       } else if (currentExerciseSetIndex < training.exerciseSets.length - 1) {
-        return 'NEXT';
+        return t('ongoingTrainingPreview.next');
       } else {
-        return 'FINISH';
+        return t('ongoingTrainingPreview.finish');
       }
     };
 
