@@ -1,0 +1,1 @@
+export { ExerciseDescription } from './ExerciseDescription';

@@ -10,6 +10,7 @@ import { NextButton } from '@woap/components/NextButton';
 import { Routes } from '@woap/navigation/routes';
 import { ExerciseNavigatorParamList } from '@woap/navigation/ExerciseNavigator';
 import { Header } from '@woap/components/Header';
+import { createExercise } from '@woap/mobx/exercise/constructor';
 
 type ExerciseNameScreenNavigationProp = StackNavigationProp<
   ExerciseNavigatorParamList,
@@ -26,7 +27,9 @@ export const ExerciseName: FunctionComponent<Props> = ({ navigation }) => {
   const isNameValid = name.length > 0;
   const goToExerciseMuscleGroupsScreen = () => {
     if (isNameValid) {
-      navigation.navigate(Routes.ExerciseMuscleGroups, { exerciseName: name });
+      const exercise = createExercise();
+      exercise.setName(name);
+      navigation.navigate(Routes.ExerciseMuscleGroups, { exercise });
     }
   };
   const closeModal = () => navigation.goBack();
@@ -34,9 +37,9 @@ export const ExerciseName: FunctionComponent<Props> = ({ navigation }) => {
   return (
     <Background>
       <Container>
-        <Header title="New Exercise" onClose={closeModal} />
+        <Header title={t('exerciseName.title')} onClose={closeModal} />
         <Spacer height={3} />
-        <Title>{t('exerciseName.title')}</Title>
+        <Question>{t('exerciseName.question')}</Question>
         <Spacer height={2} />
         <NameFormField
           value={name}
@@ -57,7 +60,7 @@ const Container = styled.SafeAreaView(({ theme }) => ({
   flex: 1,
 }));
 
-const Title = styled.Text(({ theme }) => ({
+const Question = styled.Text(({ theme }) => ({
   ...theme.fonts.h3,
   color: theme.colors.white,
   fontWeight: 'bold',

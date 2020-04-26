@@ -21,23 +21,35 @@ export const MuscleGroupIcon: FunctionComponent<MuscleGroupIconProps> = ({
   ...iconProps
 }) => {
   switch (muscleGroup) {
-    case MuscleGroup.Abs:
-      return <AbsIcon {...iconProps} />;
-    case MuscleGroup.Back:
+    case MuscleGroup.Trapezius:
       return <BackIcon {...iconProps} />;
-    case MuscleGroup.Biceps:
-      return <BicepsIcon {...iconProps} />;
-    case MuscleGroup.Calves:
-      return <CalvesIcon {...iconProps} />;
-    case MuscleGroup.Chest:
-      return <ChestIcon {...iconProps} />;
-    case MuscleGroup.Forearms:
-      return <ForearmIcon {...iconProps} />;
-    case MuscleGroup.Legs:
-      return <LegsIcon {...iconProps} />;
     case MuscleGroup.Shoulders:
       return <ShoulderIcon {...iconProps} />;
+    case MuscleGroup.Biceps:
+      return <BicepsIcon {...iconProps} />;
     case MuscleGroup.Triceps:
       return <TricepsIcon {...iconProps} />;
+    case MuscleGroup.Forearms:
+      return <ForearmIcon {...iconProps} />;
+    case MuscleGroup.Chest:
+      return <ChestIcon {...iconProps} />;
+    case MuscleGroup.Back:
+      return <BackIcon {...iconProps} />;
+    case MuscleGroup.Lombar:
+      return <BackIcon {...iconProps} />;
+    case MuscleGroup.Abs:
+      return <AbsIcon {...iconProps} />;
+    case MuscleGroup.Obliques:
+      return <AbsIcon {...iconProps} />;
+    case MuscleGroup.Buttocks:
+      return <LegsIcon {...iconProps} />;
+    case MuscleGroup.Adductors:
+      return <LegsIcon {...iconProps} />;
+    case MuscleGroup.Quadriceps:
+      return <LegsIcon {...iconProps} />;
+    case MuscleGroup.Ischios:
+      return <LegsIcon {...iconProps} />;
+    case MuscleGroup.Calves:
+      return <CalvesIcon {...iconProps} />;
   }
 };
