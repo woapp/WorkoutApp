@@ -1,5 +1,5 @@
-import React, { FunctionComponent } from 'react';
-import { Dimensions, View } from 'react-native';
+import React, { FunctionComponent, useRef } from 'react';
+import { Dimensions, View, ScrollView } from 'react-native';
 import { observer } from 'mobx-react-lite';
 import { CompositeNavigationProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -32,6 +32,8 @@ export const ExerciseMuscleGroups: FunctionComponent<Props> = observer(({ naviga
   const newExercise = store.newExercise;
 
   const { t } = useTranslation(['exerciseCreation', 'common']);
+
+  const selectedMuscleGroupsContainerRef = useRef<ScrollView>(null);
 
   const closeModale = () => {
     navigation.popToTop();
@@ -81,7 +83,13 @@ export const ExerciseMuscleGroups: FunctionComponent<Props> = observer(({ naviga
         )}
         <Spacer height={2} />
         <View>
-          <SelectedMuscleGroupsContainer>
+          <SelectedMuscleGroupsContainer
+            ref={selectedMuscleGroupsContainerRef}
+            onContentSizeChange={() => {
+              selectedMuscleGroupsContainerRef.current &&
+                selectedMuscleGroupsContainerRef.current.scrollToEnd();
+            }}
+          >
             {newExercise.muscleGroups.map(muscleGroup => (
               <Tag name={t(`common:muscleGroups.${muscleGroup}`)} selected key={muscleGroup} />
             ))}
