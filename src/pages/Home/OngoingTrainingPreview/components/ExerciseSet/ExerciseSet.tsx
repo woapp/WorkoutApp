@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 import { ExerciseSetType } from '@woap/mobx/exerciseSet';
 import styled from '@woap/utils/styled-components';
 import { MuscleGroupIcon } from '@woap/components/Icons/MuscleGroupIcon';
-import { useTimingTransition, bInterpolate } from 'react-native-redash';
+import { useTimingTransition, bInterpolate, useSpringTransition } from 'react-native-redash';
 import Animated from 'react-native-reanimated';
 import { Spacer } from '@woap/components/Spacer';
 import { View } from 'react-native';
@@ -24,7 +24,11 @@ export const ExerciseSet: FunctionComponent<ExerciseItemProps> = observer(
     const isDone = index < currentIndex;
 
     // Animate Exercise container to make it bigger
-    const isOngoingTransition = useTimingTransition(isOngoing, { duration: 300 });
+    const isOngoingTransition = useSpringTransition(isOngoing, {
+      damping: 0.88,
+      overshootClamping: 0.9,
+      restSpeedThreshold: 0.7,
+    });
     const isOngoingScale = bInterpolate(isOngoingTransition, 1, 1.3);
     const isOngoingTranslateX = bInterpolate(isOngoingTransition, 0, 45);
 
