@@ -1,5 +1,7 @@
-import React, { FunctionComponent, useState } from 'react';
+/* eslint-disable @typescript-eslint/unbound-method */
+import React, { FunctionComponent } from 'react';
 import { useTranslation } from 'react-i18next';
+import { observer } from 'mobx-react-lite';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Background } from '@woap/components/Background';
 import styled from '@woap/utils/styled-components';
@@ -12,63 +14,64 @@ import { ExerciseNavigatorParamList } from '@woap/navigation/ExerciseNavigator';
 import { Header } from '@woap/components/Header';
 import { useStore } from '@woap/utils/hooks/useStore';
 
-type ExerciseNameScreenNavigationProp = StackNavigationProp<
+type ExerciseDescriptionScreenNavigationProp = StackNavigationProp<
   ExerciseNavigatorParamList,
-  Routes.ExerciseName
+  Routes.ExerciseDescription
 >;
 
 type Props = {
-  navigation: ExerciseNameScreenNavigationProp;
+  navigation: ExerciseDescriptionScreenNavigationProp;
 };
 
-export const ExerciseName: FunctionComponent<Props> = ({ navigation }) => {
+export const ExerciseDescription: FunctionComponent<Props> = observer(({ navigation }) => {
   const store = useStore();
-  const [name, setName] = useState(store.newExercise.name);
+  const newExercise = store.newExercise;
   const { t } = useTranslation('exerciseCreation');
-  const isNameValid = name.length > 0;
-  const goToExerciseMuscleGroupsScreen = () => {
-    if (isNameValid) {
-      store.newExercise.setName(name);
-      navigation.navigate(Routes.ExerciseMuscleGroups);
-    }
+
+  const closeModal = () => {
+    navigation.popToTop();
+    navigation.goBack();
   };
-  const closeModal = () => navigation.goBack();
+
+  const goToExerciseSummary = () => navigation.navigate(Routes.ExerciseSummary);
 
   return (
     <Background>
       <Container>
-        <Header title={t('exerciseName.title')} onClose={closeModal} />
+        <Header title={newExercise.name} onClose={closeModal} />
         <Spacer height={3} />
-        <Question>{t('exerciseName.question')}</Question>
+        <Indication>{t('exerciseDescription.indication')}</Indication>
         <Spacer height={2} />
-        <NameFormField
-          value={name}
-          onChangeText={setName}
-          placeholder={t('exerciseName.placeholder')}
+        <DescriptionFormField
+          value={newExercise.description}
+          onChangeText={newExercise.setDescription}
+          placeholder={t('exerciseDescription.placeholder')}
           placeholderTextColor={colors.transparentWhiteScale[60]}
           selectionColor={colors.white}
-          onSubmitEditing={goToExerciseMuscleGroupsScreen}
+          onSubmitEditing={goToExerciseSummary}
+          multiline
         />
-        <NextButton onPress={goToExerciseMuscleGroupsScreen} disabled={!isNameValid} />
+        <NextButton onPress={goToExerciseSummary} disabled={false} />
       </Container>
     </Background>
   );
-};
+});
 
 const Container = styled.SafeAreaView(({ theme }) => ({
   margin: theme.margin.x2,
   flex: 1,
 }));
 
-const Question = styled.Text(({ theme }) => ({
+const Indication = styled.Text(({ theme }) => ({
   ...theme.fonts.h3,
   color: theme.colors.white,
   fontWeight: 'bold',
 }));
 
-const NameFormField = styled(FormField)(({ theme }) => ({
-  marginVertical: 8,
+const DescriptionFormField = styled(FormField)(({ theme }) => ({
+  marginVertical: theme.margin.x1,
   color: theme.colors.white,
   fontWeight: 'bold',
   ...theme.fonts.h3,
+  maxHeight: 400,
 }));

@@ -8,6 +8,9 @@ export const exerciseActions = (self: ModelInstanceTypeProps<typeof ExerciseMode
   setName(newName: string): void {
     self.name = newName;
   },
+  setDescription(newDescription: string): void {
+    self.description = newDescription;
+  },
   addMuscleGroup(muscleGroup: MuscleGroup): void {
     self.muscleGroups.push(muscleGroup);
   },

@@ -1,94 +1,103 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useRef } from 'react';
+import { Dimensions, View, ScrollView } from 'react-native';
 import { observer } from 'mobx-react-lite';
-import { CompositeNavigationProp, RouteProp } from '@react-navigation/native';
+import { CompositeNavigationProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Background } from '@woap/components/Background';
 import { Header } from '@woap/components/Header';
 import { Spacer } from '@woap/components/Spacer';
 import styled from '@woap/utils/styled-components';
 import { MuscleGroup } from '@woap/mobx/types';
-import { MuscleGroupToggle } from '@woap/pages/Exercise/ExerciseMuscleGroups/components/MuscleGroupToggle';
 import { NextButton } from '@woap/components/NextButton';
 import { RootNavigatorParamList } from '@woap/navigation';
 import { Routes } from '@woap/navigation/routes';
 import { ExerciseNavigatorParamList } from '@woap/navigation/ExerciseNavigator';
-import { createExercise } from '@woap/mobx/exercise/constructor';
+import { useTranslation } from 'react-i18next';
+import { BodyVisualisation } from '@woap/components/BodyVisualisation';
+import { Tag } from '@woap/components/Tag';
 import { useStore } from '@woap/utils/hooks/useStore';
+import { colors } from '@woap/styles/colors';
 
 type ExerciseMuscleGroupsScreenNavigationProp = CompositeNavigationProp<
   StackNavigationProp<RootNavigatorParamList, Routes.ExerciseNavigator>,
   StackNavigationProp<ExerciseNavigatorParamList, Routes.ExerciseMuscleGroups>
 >;
 
-type ExerciseMuscleGroupsScreenRouteProp = RouteProp<
-  ExerciseNavigatorParamList,
-  Routes.ExerciseMuscleGroups
->;
-
 interface Props {
   navigation: ExerciseMuscleGroupsScreenNavigationProp;
-  route: ExerciseMuscleGroupsScreenRouteProp;
 }
 
-export const ExerciseMuscleGroups: FunctionComponent<Props> = observer(({ navigation, route }) => {
-  const { addExercise } = useStore();
-  const exerciseName = route.params.exerciseName;
+export const ExerciseMuscleGroups: FunctionComponent<Props> = observer(({ navigation }) => {
+  const store = useStore();
+  const newExercise = store.newExercise;
 
-  const [muscleGroups, setMuscleGroups] = useState(
-    Object.values(MuscleGroup).map(muscleGroup => ({ name: muscleGroup, selected: false }))
-  );
+  const { t } = useTranslation(['exerciseCreation', 'common']);
+
+  const selectedMuscleGroupsContainerRef = useRef<ScrollView>(null);
 
   const closeModale = () => {
     navigation.popToTop();
     navigation.goBack();
   };
 
-  const createNewExercise = () => {
-    const exercise = createExercise();
-    exercise.setName(exerciseName);
-    exercise.setMuscleGroups(
-      muscleGroups.filter(muscleGroup => muscleGroup.selected).map(muscleGroup => muscleGroup.name)
-    );
-    addExercise(exercise);
-  };
-
-  const onNextButtonPressed = () => {
-    createNewExercise();
-    closeModale();
-  };
+  const goToExerciseDescriptionScreen = () => navigation.navigate(Routes.ExerciseDescription);
 
   const onMuscleGroupPressed = name => () => {
-    setMuscleGroups(previousMuscleGroups =>
-      previousMuscleGroups.map(muscleGroup => ({
-        ...muscleGroup,
-        selected: muscleGroup.name === name ? !muscleGroup.selected : muscleGroup.selected,
-      }))
-    );
+    if (newExercise.muscleGroups.includes(name)) {
+      newExercise.setMuscleGroups(
+        newExercise.muscleGroups.filter(muscleGroup => muscleGroup !== name)
+      );
+    } else {
+      newExercise.setMuscleGroups([...newExercise.muscleGroups, name]);
+    }
   };
+
+  const onPressMuscles = Object.assign(
+    {},
+    ...Object.values(MuscleGroup).map(muscleGroup => ({
+      [muscleGroup]: onMuscleGroupPressed(muscleGroup),
+    }))
+  );
 
   return (
     <Background>
       <Container>
-        <Header title="New Exercise" onClose={closeModale} />
+        <Header title={newExercise.name} onClose={closeModale} />
         <Spacer height={3} />
-        <Title>CHOOSE AT LEAST ONE MUSCLE GROUP</Title>
+        <Indication>{t('exerciseMuscleGroups.indication')}</Indication>
         <Spacer height={2} />
-        <MuscleGroupsRow>
-          {muscleGroups.map((muscleGroup, index) => {
-            return (
-              <MuscleGroupToggle
-                key={index}
-                muscleGroup={muscleGroup.name}
-                title={muscleGroup.name}
-                onPress={onMuscleGroupPressed(muscleGroup.name)}
-                isSelected={muscleGroup.selected}
-              />
-            );
-          })}
-        </MuscleGroupsRow>
+        <BodyContainer>
+          <BodyVisualisation
+            width={Dimensions.get('screen').width * 0.85}
+            onPressMuscles={onPressMuscles}
+            ratios={newExercise.muscleRatios}
+            musclesBackgroundColor={colors.black}
+            selectedMusclesColor={colors.white}
+          />
+        </BodyContainer>
+        <Spacer height={2} />
+        {newExercise.muscleGroups.length > 0 && (
+          <SelectedMuscleGroupsTitle>
+            {t('exerciseMuscleGroups.selectedMusclesTitle')}
+          </SelectedMuscleGroupsTitle>
+        )}
+        <Spacer height={2} />
+        <View>
+          <SelectedMuscleGroupsContainer
+            ref={selectedMuscleGroupsContainerRef}
+            onContentSizeChange={() => {
+              selectedMuscleGroupsContainerRef.current &&
+                selectedMuscleGroupsContainerRef.current.scrollToEnd();
+            }}
+          >
+            {newExercise.muscleGroups.map(muscleGroup => (
+              <Tag name={t(`common:muscleGroups.${muscleGroup}`)} selected key={muscleGroup} />
+            ))}
+          </SelectedMuscleGroupsContainer>
+        </View>
         <NextButton
-          onPress={onNextButtonPressed}
-          disabled={muscleGroups.filter(muscleGroup => muscleGroup.selected).length === 0}
+          onPress={goToExerciseDescriptionScreen}
+          disabled={newExercise.muscleGroups.length === 0}
         />
       </Container>
     </Background>
@@ -100,16 +109,28 @@ const Container = styled.SafeAreaView(({ theme }) => ({
   flex: 1,
 }));
 
-const Title = styled.Text(({ theme }) => ({
+const BodyContainer = styled.View(({ theme }) => ({
+  width: Dimensions.get('window').width,
+  marginLeft: -theme.margin.x2,
+  paddingVertical: theme.margin.x1,
+  justifyContent: 'center',
+  alignItems: 'center',
+}));
+const Indication = styled.Text(({ theme }) => ({
   ...theme.fonts.h3,
   color: theme.colors.white,
   fontWeight: 'bold',
 }));
 
-const MuscleGroupsRow = styled.View(props => ({
-  flexDirection: 'row',
-  flexWrap: 'wrap',
-  justifyContent: 'space-around',
-  paddingVertical: props.theme.margin.x4,
-  paddingHorizontal: props.theme.margin.x4,
+const SelectedMuscleGroupsTitle = styled.Text(({ theme }) => ({
+  ...theme.fonts.h3,
+  color: theme.colors.white,
+  fontWeight: 'bold',
 }));
+
+const SelectedMuscleGroupsContainer = styled.ScrollView.attrs({
+  horizontal: true,
+  showsHorizontalScrollIndicator: false,
+})({
+  flexDirection: 'row',
+});

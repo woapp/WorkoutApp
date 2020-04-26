@@ -1,4 +1,5 @@
 import { ModelInstanceTypeProps, clone, destroy, castToSnapshot } from 'mobx-state-tree';
+import { createExercise } from '@woap/mobx/exercise/constructor';
 
 import { RootModel } from './rootModel';
 import { ExerciseType } from './exercise';
@@ -9,15 +10,20 @@ import { defaultTags } from './tag/defaultTags';
 import { createFinishedTraining } from './finishedTraining/constructor';
 
 export const rootActions = (self: ModelInstanceTypeProps<typeof RootModel>) => ({
-  addExercise(exercise: ExerciseType): void {
-    self.exercises.push(exercise);
-  },
   addTag(tag: TagType): void {
     self.tags.push(tag);
   },
   addDefaultTags() {
     if (self.tags.length === 0) {
       self.tags.replace(defaultTags);
+    }
+  },
+  initializeNewExercise(): void {
+    self.newExercise = createExercise();
+  },
+  saveNewExercise(): void {
+    if (self.newExercise) {
+      self.exercises.push(clone(self.newExercise));
     }
   },
   initializeNewFreeWorkout(): void {

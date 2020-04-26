@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState } from 'react';
 import DraggableFlatList from 'react-native-draggable-flatlist';
-import { getBottomSpace } from 'react-native-iphone-x-helper';
+import { useTranslation } from 'react-i18next';
 import { observer } from 'mobx-react-lite';
 import { StackNavigationProp } from '@react-navigation/stack';
 import styled from '@woap/utils/styled-components';
@@ -12,7 +12,7 @@ import { Header } from '@woap/components/Header';
 import { useStore } from '@woap/utils/hooks/useStore';
 import { ExerciseSetType } from '@woap/mobx/exerciseSet';
 import { PlusIcon } from '@woap/components/Icons/PlusIcon';
-import { useTranslation } from 'react-i18next';
+import { FinalButton } from '@woap/components/FinalButton';
 
 import { SetListItem } from './components/SetListItem';
 
@@ -75,9 +75,7 @@ export const TrainingSets: FunctionComponent<Props> = observer(({ navigation }) 
           <PlusIcon />
         </IconContainer>
       </Container>
-      <FinalizeButton onPress={goToTrainingPageScreen}>
-        <FinalizeTitle>{t('trainingSets.finalize')}</FinalizeTitle>
-      </FinalizeButton>
+      <FinalButton onPress={goToTrainingPageScreen} title={t('trainingSets.finalize')} />
     </Background>
   );
 });
@@ -89,19 +87,6 @@ const Container = styled.SafeAreaView({
 
 const HeaderContainer = styled.View({
   paddingHorizontal: theme.margin.x2,
-});
-
-const FinalizeButton = styled.TouchableOpacity({
-  paddingTop: theme.margin.x2,
-  paddingBottom: getBottomSpace() + theme.margin.x2,
-  backgroundColor: theme.colors.black,
-});
-
-const FinalizeTitle = styled.Text({
-  ...theme.fonts.h3,
-  color: theme.colors.white,
-  fontWeight: 'bold',
-  textAlign: 'center',
 });
 
 const IconContainer = styled.TouchableOpacity({

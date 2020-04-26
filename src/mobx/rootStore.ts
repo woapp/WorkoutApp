@@ -1,3 +1,4 @@
+import { createExercise } from '@woap/mobx/exercise/constructor';
 import { types } from 'mobx-state-tree';
 import makeInspectable from 'mobx-devtools-mst';
 
@@ -14,6 +15,7 @@ export const RootStore = types
   .views(RootViews);
 
 export const rootStore = RootStore.create({
+  newExercise: createExercise(),
   trainings: trainingSeeds,
   exercises: exerciseSeeds,
   archivedExercises: [],
