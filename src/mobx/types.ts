@@ -17,7 +17,7 @@ export enum MuscleGroup {
   Lombar = 'LOMBAR',
   Abs = 'ABS',
   Obliques = 'OBLIQUES',
-  Buttock = 'BUTTOCK',
+  Buttocks = 'BUTTOCKS',
   Adductors = 'ADDUCTORS',
   Quadriceps = 'QUADRICEPS',
   Ischios = 'ISCHIOS',

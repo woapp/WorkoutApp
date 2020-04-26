@@ -41,7 +41,7 @@ export const MuscleGroupIcon: FunctionComponent<MuscleGroupIconProps> = ({
       return <AbsIcon {...iconProps} />;
     case MuscleGroup.Obliques:
       return <AbsIcon {...iconProps} />;
-    case MuscleGroup.Buttock:
+    case MuscleGroup.Buttocks:
       return <LegsIcon {...iconProps} />;
     case MuscleGroup.Adductors:
       return <LegsIcon {...iconProps} />;

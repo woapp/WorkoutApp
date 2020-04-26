@@ -12,7 +12,7 @@ export interface Ratios {
   [MuscleGroup.Lombar]?: number;
   [MuscleGroup.Abs]?: number;
   [MuscleGroup.Obliques]?: number;
-  [MuscleGroup.Buttock]?: number;
+  [MuscleGroup.Buttocks]?: number;
   [MuscleGroup.Adductors]?: number;
   [MuscleGroup.Quadriceps]?: number;
   [MuscleGroup.Ischios]?: number;
@@ -30,7 +30,7 @@ export interface OnPressMuscles {
   [MuscleGroup.Lombar]?: () => void;
   [MuscleGroup.Abs]?: () => void;
   [MuscleGroup.Obliques]?: () => void;
-  [MuscleGroup.Buttock]?: () => void;
+  [MuscleGroup.Buttocks]?: () => void;
   [MuscleGroup.Adductors]?: () => void;
   [MuscleGroup.Quadriceps]?: () => void;
   [MuscleGroup.Ischios]?: () => void;

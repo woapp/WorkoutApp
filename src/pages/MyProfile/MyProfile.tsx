@@ -37,7 +37,7 @@ export const MyProfile: FunctionComponent<Props> = () => {
   const [shouldersRatio, setShouldersRatio] = useState(0);
   const [trapeziusRatio, setTrapeziusRatio] = useState(0);
   const [tricepsRatio, setTricepsRatio] = useState(0);
-  const [buttockRatio, setButtockRatio] = useState(0);
+  const [buttocksRatio, setButtocksRatio] = useState(0);
   const [ischioRatio, setIschioRatio] = useState(0);
   const [lumbarRatio, setLumbarRatio] = useState(0);
 
@@ -72,8 +72,8 @@ export const MyProfile: FunctionComponent<Props> = () => {
         <Slider onValueChange={setTrapeziusRatio} />
         <Label>tricepsRatio</Label>
         <Slider onValueChange={setTricepsRatio} />
-        <Label>buttockRatio</Label>
-        <Slider onValueChange={setButtockRatio} />
+        <Label>buttocskRatio</Label>
+        <Slider onValueChange={setButtocksRatio} />
         <Label>ischioRatio </Label>
         <Slider onValueChange={setIschioRatio} />
         <Label>lumbarRatio </Label>

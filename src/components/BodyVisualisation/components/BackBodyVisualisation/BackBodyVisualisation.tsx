@@ -29,8 +29,8 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
       <Path
         d="M36.5 83c1.6-1.068 2.621-2.41 4.5-2 1.29.282 1.917.956 2.725 2 .89 1.15.715 2.157 1.275 3.5.84 2.015 1.55 3.034 2.5 5 1.216 2.517 3.522 3.754 3 6.5-.245 1.287-1.5 3-1.5 3s-1.575 2.665-3 4c-2.104 1.971-3.759 2.607-6.5 3.5-2.076.676-5 1.5-5.5 1s.377-2.125.5-3.5c.209-2.334.69-3.76 0-6-.385-1.252-1.5-3-1.5-3s-1.916-1.591-2.5-3c-.381-.92-.531-1.505-.5-2.5.063-2.01 1.3-2.887 2.5-4.5 1.319-1.772 2.163-2.773 4-4z"
         fill="url(#prefix__paint0_linear)"
-        fillOpacity={ratios.BUTTOCK || 0}
-        onPress={onPressMuscles.BUTTOCK}
+        fillOpacity={ratios.BUTTOCKS || 0}
+        onPress={onPressMuscles.BUTTOCKS}
       />
       {/* fessier-droite */}
       <Path
@@ -40,8 +40,8 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
       <Path
         d="M66.68 83.095c-1.555-1.078-2.548-2.433-4.374-2.019-1.253.285-1.863.965-2.648 2.02-.865 1.16-.695 2.177-1.24 3.532-.816 2.034-1.506 3.063-2.429 5.047-1.182 2.541-3.423 3.79-2.915 6.562.237 1.299 1.457 3.028 1.457 3.028s1.531 2.69 2.916 4.038c2.044 1.99 3.653 2.631 6.317 3.533 2.017.682 4.859 1.514 5.345 1.009.486-.505-.366-2.145-.486-3.533-.203-2.356-.67-3.796 0-6.057.374-1.263 1.458-3.028 1.458-3.028s1.862-1.606 2.43-3.028c.37-.929.516-1.52.485-2.524-.061-2.028-1.263-2.914-2.43-4.542-1.281-1.79-2.102-2.799-3.887-4.038z"
         fill="url(#prefix__paint1_linear)"
-        fillOpacity={ratios.BUTTOCK || 0}
-        onPress={onPressMuscles.BUTTOCK}
+        fillOpacity={ratios.BUTTOCKS || 0}
+        onPress={onPressMuscles.BUTTOCKS}
       />
       {/* ischio-1-gauche */}
       <Path
