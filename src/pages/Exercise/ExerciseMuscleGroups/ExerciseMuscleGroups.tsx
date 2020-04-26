@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
-import { Dimensions } from 'react-native';
+import { Dimensions, View } from 'react-native';
 import { CompositeNavigationProp, RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Background } from '@woap/components/Background';
@@ -13,6 +13,7 @@ import { Routes } from '@woap/navigation/routes';
 import { ExerciseNavigatorParamList } from '@woap/navigation/ExerciseNavigator';
 import { useTranslation } from 'react-i18next';
 import { BodyVisualisation } from '@woap/components/BodyVisualisation';
+import { Tag } from '@woap/components/Tag';
 
 type ExerciseMuscleGroupsScreenNavigationProp = CompositeNavigationProp<
   StackNavigationProp<RootNavigatorParamList, Routes.ExerciseNavigator>,
@@ -88,6 +89,18 @@ export const ExerciseMuscleGroups: FunctionComponent<Props> = ({ navigation, rou
             ratios={ratios}
           />
         </BodyContainer>
+        <Spacer height={2} />
+        <SelectedMuscleGroupsTitle>Groupes de muscles selectionnés :</SelectedMuscleGroupsTitle>
+        <Spacer height={2} />
+        <View>
+          <SelectedMuscleGroupsContainer>
+            {muscleGroups
+              .filter(muscleGroup => muscleGroup.selected)
+              .map(({ name }) => (
+                <Tag name={name} selected key={name} />
+              ))}
+          </SelectedMuscleGroupsContainer>
+        </View>
         <NextButton
           onPress={onNextButtonPressed}
           disabled={muscleGroups.filter(muscleGroup => muscleGroup.selected).length === 0}
@@ -113,3 +126,13 @@ const Indication = styled.Text(({ theme }) => ({
   color: theme.colors.white,
   fontWeight: 'bold',
 }));
+
+const SelectedMuscleGroupsTitle = styled.Text(({ theme }) => ({
+  ...theme.fonts.h3,
+  color: theme.colors.white,
+  fontWeight: 'bold',
+}));
+
+const SelectedMuscleGroupsContainer = styled.ScrollView.attrs({ horizontal: true })({
+  flexDirection: 'row',
+});

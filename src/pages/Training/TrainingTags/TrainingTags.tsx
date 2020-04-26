@@ -12,8 +12,8 @@ import { Routes } from '@woap/navigation/routes';
 import { Header } from '@woap/components/Header';
 import { useStore } from '@woap/utils/hooks/useStore';
 import { createTag } from '@woap/mobx/tag/constructor';
+import { Tag } from '@woap/components/Tag';
 
-import { Tag } from './components/Tag';
 import { NewTagModal } from './components/NewTagModal';
 
 type TrainingTagsScreenNavigationProp = CompositeNavigationProp<
