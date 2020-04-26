@@ -1,13 +1,13 @@
+import { ModelInstanceTypeProps, clone, destroy, castToSnapshot } from 'mobx-state-tree';
 import { createExercise } from '@woap/mobx/exercise/constructor';
-import { ModelInstanceTypeProps, clone, destroy, getType, castToSnapshot } from 'mobx-state-tree';
 
 import { RootModel } from './rootModel';
 import { ExerciseType } from './exercise';
 import { createFreeWorkout } from './freeWorkout/constructor';
 import { TagType } from './tag';
 import { TrainingType } from './training';
-import { FreeWorkout } from './freeWorkout';
 import { defaultTags } from './tag/defaultTags';
+import { createFinishedTraining } from './finishedTraining/constructor';
 
 export const rootActions = (self: ModelInstanceTypeProps<typeof RootModel>) => ({
   addTag(tag: TagType): void {
@@ -54,10 +54,8 @@ export const rootActions = (self: ModelInstanceTypeProps<typeof RootModel>) => (
       destroy(exercise);
     }
   },
-  startTraining(training: TrainingType): void {
-    const trainingType = getType(training);
-    if (trainingType === FreeWorkout) {
-      self.ongoingTraining = createFreeWorkout(castToSnapshot(training));
-    }
+  finishTraining(training: TrainingType): void {
+    const finishedTraining = createFinishedTraining(castToSnapshot(clone(training)));
+    self.finishedTrainings.push(finishedTraining);
   },
 });

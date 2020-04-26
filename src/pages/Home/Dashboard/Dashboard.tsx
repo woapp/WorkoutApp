@@ -129,9 +129,9 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
             placeholder={t('dashboard.searchPlaceholder')}
           />
           {renderSearchedTags()}
-          <Spacer height={2} />
-          <CategoryTitle>{t('dashboard.favoriteTrainings')}</CategoryTitle>
-          <Spacer height={2} />
+          {store.favoriteTrainings.filter(filterTrainingByTagOrName).length > 0 && (
+            <CategoryTitle>{t('dashboard.favoriteTrainings')}</CategoryTitle>
+          )}
           <View>
             <FlatList
               horizontal
@@ -140,10 +140,7 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
               renderItem={renderFavoriteTrainingCard}
             />
           </View>
-
-          <Spacer height={3} />
           <CategoryTitle>{t('dashboard.allTrainings')}</CategoryTitle>
-          <Spacer height={2} />
           <FlatList
             style={{ flex: 1 }}
             data={store.trainings.toJS().filter(filterTrainingByTagOrName)}
@@ -186,6 +183,8 @@ const MenuContainer = styled.View(({ theme }) => ({
 
 const CategoryTitle = styled(TextBody)(({ theme }) => ({
   color: theme.colors.white,
+  marginTop: theme.margin.x3,
+  marginBottom: theme.margin.x2,
 }));
 
 const TrainingName = styled.Text(({ theme }) => ({

@@ -29,7 +29,7 @@ export const SetListItem: FunctionComponent<Props> = ({
   selected,
 }) => {
   const { name, reps, weight } = set;
-  const { t } = useTranslation('trainingCreation');
+  const { t } = useTranslation('common');
   const transition = useTimingTransition(selected, { duration: 200 });
   const translateY = bInterpolate(transition, -48, 0);
   const height = bInterpolate(transition, 0, 48);
@@ -42,11 +42,11 @@ export const SetListItem: FunctionComponent<Props> = ({
         <FiguresContainer>
           <Data>
             <Figure>{reps}</Figure>
-            <Label> {t('trainingSets.reps')}</Label>
+            <Label> {t('reps')}</Label>
           </Data>
           <Data>
             <Figure>{weight}</Figure>
-            <Label> {t('trainingSets.kg')}</Label>
+            <Label> {t('kg')}</Label>
           </Data>
         </FiguresContainer>
       </ItemContainer>

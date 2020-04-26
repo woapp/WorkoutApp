@@ -1,4 +1,6 @@
 {
+  "reps": "reps",
+  "kg": "kg",
   "muscleGroups": {
     "TRAPEZIUS": "Trapèzes",
     "SHOULDERS": "Epaules",

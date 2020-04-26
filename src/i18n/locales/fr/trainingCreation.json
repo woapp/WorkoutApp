@@ -16,8 +16,6 @@
   },
   "trainingSets": {
     "title": "New training",
-    "reps": "reps",
-    "kg": "kg",
     "finalize": "Finaliser"
   },
   "trainingName": {
