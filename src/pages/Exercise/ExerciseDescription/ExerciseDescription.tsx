@@ -1,5 +1,7 @@
-import React, { FunctionComponent, useState } from 'react';
+/* eslint-disable @typescript-eslint/unbound-method */
+import React, { FunctionComponent } from 'react';
 import { useTranslation } from 'react-i18next';
+import { observer } from 'mobx-react-lite';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Background } from '@woap/components/Background';
 import styled from '@woap/utils/styled-components';
@@ -21,9 +23,9 @@ type Props = {
   navigation: ExerciseDescriptionScreenNavigationProp;
 };
 
-export const ExerciseDescription: FunctionComponent<Props> = ({ navigation }) => {
-  const { newExercise } = useStore();
-  const [description, setDescription] = useState('');
+export const ExerciseDescription: FunctionComponent<Props> = observer(({ navigation }) => {
+  const store = useStore();
+  const newExercise = store.newExercise;
   const { t } = useTranslation('exerciseCreation');
 
   const closeModal = () => {
@@ -33,11 +35,6 @@ export const ExerciseDescription: FunctionComponent<Props> = ({ navigation }) =>
 
   const goToExerciseSummary = () => navigation.navigate(Routes.ExerciseSummary);
 
-  const onNextButtonPressed = () => {
-    newExercise.setDescription(description);
-    goToExerciseSummary();
-  };
-
   return (
     <Background>
       <Container>
@@ -46,19 +43,19 @@ export const ExerciseDescription: FunctionComponent<Props> = ({ navigation }) =>
         <Indication>{t('exerciseDescription.indication')}</Indication>
         <Spacer height={2} />
         <DescriptionFormField
-          value={description}
-          onChangeText={setDescription}
+          value={newExercise.description}
+          onChangeText={newExercise.setDescription}
           placeholder={t('exerciseDescription.placeholder')}
           placeholderTextColor={colors.transparentWhiteScale[60]}
           selectionColor={colors.white}
-          onSubmitEditing={onNextButtonPressed}
+          onSubmitEditing={goToExerciseSummary}
           multiline
         />
-        <NextButton onPress={onNextButtonPressed} disabled={false} />
+        <NextButton onPress={goToExerciseSummary} disabled={false} />
       </Container>
     </Background>
   );
-};
+});
 
 const Container = styled.SafeAreaView(({ theme }) => ({
   margin: theme.margin.x2,

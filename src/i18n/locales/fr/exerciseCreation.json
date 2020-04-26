@@ -5,8 +5,8 @@
     "placeholder": "Développé couché, squat, curl..."
   },
   "exerciseMuscleGroups": {
-    "indication": "Choisis au moins un groupe de muscle :",
-    "selectedMusclesTitle": "Groupes de muscles selectionnés :"
+    "indication": "Choisis au moins un groupe musculaire :",
+    "selectedMusclesTitle": "Groupes musculaires selectionnés :"
   },
   "exerciseDescription": {
     "title": "Nouvel Exercice",

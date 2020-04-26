@@ -16,12 +16,14 @@ export const ExercisePreview: FunctionComponent<Props> = ({ exercise, width }) =
     <Container>
       <Title>{exercise.name}</Title>
       <Spacer height={2} />
-      <BodyVisualisation
-        width={width}
-        ratios={exercise.muscleRatios}
-        selectedMusclesColor={colors.white}
-        musclesBackgroundColor={colors.black}
-      />
+      <BodyVisualisationContainer>
+        <BodyVisualisation
+          width={width}
+          ratios={exercise.muscleRatios}
+          selectedMusclesColor={colors.white}
+          musclesBackgroundColor={colors.black}
+        />
+      </BodyVisualisationContainer>
       <Spacer height={2} />
       <DescriptionTitle>Description :</DescriptionTitle>
       <Spacer height={1} />
@@ -47,3 +49,5 @@ const Description = styled.Text(({ theme }) => ({
   ...theme.fonts.h4,
   color: theme.colors.white,
 }));
+
+const BodyVisualisationContainer = styled.View({ alignItems: 'center' });
