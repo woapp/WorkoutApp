@@ -22,7 +22,7 @@ type Props = {
 };
 
 export const ExerciseDescription: FunctionComponent<Props> = ({ navigation }) => {
-  const { saveNewExercise, newExercise } = useStore();
+  const { newExercise } = useStore();
   const [description, setDescription] = useState('');
   const { t } = useTranslation('exerciseCreation');
 
@@ -30,10 +30,12 @@ export const ExerciseDescription: FunctionComponent<Props> = ({ navigation }) =>
     navigation.popToTop();
     navigation.goBack();
   };
+
+  const goToExerciseSummary = () => navigation.navigate(Routes.ExerciseSummary);
+
   const onNextButtonPressed = () => {
     newExercise.setDescription(description);
-    saveNewExercise();
-    closeModal();
+    goToExerciseSummary();
   };
 
   return (

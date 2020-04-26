@@ -12,5 +12,9 @@
     "title": "Nouvel Exercice",
     "indication": "Ajoute une description :",
     "placeholder": "Description"
+  },
+  "exerciseSummary": {
+    "title": "Résumé",
+    "create": "Créer"
   }
 }

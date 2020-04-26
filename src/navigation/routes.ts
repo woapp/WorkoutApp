@@ -25,4 +25,5 @@ export enum Routes {
   ExerciseName = 'ExerciseName',
   ExerciseMuscleGroups = 'ExerciseMuscleGroups',
   ExerciseDescription = 'ExerciseDescription',
+  ExerciseSummary = 'ExerciseSummary',
 }
