@@ -5,7 +5,8 @@
     "placeholder": "Bench, squat, curl..."
   },
   "exerciseMuscleGroups": {
-    "indication": "Choose at least one muscle group:"
+    "indication": "Choose at least one muscle group:",
+    "selectedMusclesTitle": "Selected muscle groups:"
   },
   "exerciseDescription": {
     "title": "New Exercise",

@@ -81,13 +81,15 @@ export const ExerciseMuscleGroups: FunctionComponent<Props> = ({ navigation }) =
         <Spacer height={2} />
         <BodyContainer>
           <BodyVisualisation
-            width={Dimensions.get('screen').width}
+            width={Dimensions.get('screen').width * 0.85}
             onPressMuscles={onPressMuscles}
             ratios={ratios}
           />
         </BodyContainer>
         <Spacer height={2} />
-        <SelectedMuscleGroupsTitle>Groupes de muscles selectionnés :</SelectedMuscleGroupsTitle>
+        <SelectedMuscleGroupsTitle>
+          {t('exerciseMuscleGroups.selectedMusclesTitle')}
+        </SelectedMuscleGroupsTitle>
         <Spacer height={2} />
         <View>
           <SelectedMuscleGroupsContainer>
@@ -117,6 +119,8 @@ const BodyContainer = styled.View(({ theme }) => ({
   marginLeft: -theme.margin.x2,
   backgroundColor: theme.colors.white,
   paddingVertical: theme.margin.x1,
+  justifyContent: 'center',
+  alignItems: 'center',
 }));
 const Indication = styled.Text(({ theme }) => ({
   ...theme.fonts.h3,
@@ -130,6 +134,9 @@ const SelectedMuscleGroupsTitle = styled.Text(({ theme }) => ({
   fontWeight: 'bold',
 }));
 
-const SelectedMuscleGroupsContainer = styled.ScrollView.attrs({ horizontal: true })({
+const SelectedMuscleGroupsContainer = styled.ScrollView.attrs({
+  horizontal: true,
+  showsHorizontalScrollIndicator: false,
+})({
   flexDirection: 'row',
 });
