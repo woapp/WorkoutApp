@@ -1,5 +1,6 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent } from 'react';
 import { Dimensions, View } from 'react-native';
+import { observer } from 'mobx-react-lite';
 import { CompositeNavigationProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Background } from '@woap/components/Background';
@@ -26,17 +27,9 @@ interface Props {
   navigation: ExerciseMuscleGroupsScreenNavigationProp;
 }
 
-export const ExerciseMuscleGroups: FunctionComponent<Props> = ({ navigation }) => {
+export const ExerciseMuscleGroups: FunctionComponent<Props> = observer(({ navigation }) => {
   const store = useStore();
-
-  const [muscleGroups, setMuscleGroups] = useState(
-    Object.values(MuscleGroup).map(muscleGroup => ({
-      name: muscleGroup,
-      selected: store.newExercise.muscleGroups.includes(muscleGroup),
-    }))
-  );
-
-  const muscleGroupsSelected = muscleGroups.filter(muscleGroup => muscleGroup.selected);
+  const newExercise = store.newExercise;
 
   const { t } = useTranslation(['exerciseCreation', 'common']);
 
@@ -47,20 +40,14 @@ export const ExerciseMuscleGroups: FunctionComponent<Props> = ({ navigation }) =
 
   const goToExerciseDescriptionScreen = () => navigation.navigate(Routes.ExerciseDescription);
 
-  const onNextButtonPressed = () => {
-    store.newExercise.setMuscleGroups(
-      muscleGroups.filter(muscleGroup => muscleGroup.selected).map(muscleGroup => muscleGroup.name)
-    );
-    goToExerciseDescriptionScreen();
-  };
-
   const onMuscleGroupPressed = name => () => {
-    setMuscleGroups(previousMuscleGroups =>
-      previousMuscleGroups.map(muscleGroup => ({
-        ...muscleGroup,
-        selected: muscleGroup.name === name ? !muscleGroup.selected : muscleGroup.selected,
-      }))
-    );
+    if (newExercise.muscleGroups.includes(name)) {
+      newExercise.setMuscleGroups(
+        newExercise.muscleGroups.filter(muscleGroup => muscleGroup !== name)
+      );
+    } else {
+      newExercise.setMuscleGroups([...newExercise.muscleGroups, name]);
+    }
   };
 
   const onPressMuscles = Object.assign(
@@ -70,15 +57,10 @@ export const ExerciseMuscleGroups: FunctionComponent<Props> = ({ navigation }) =
     }))
   );
 
-  const ratios = Object.assign(
-    {},
-    ...muscleGroups.map(({ name, selected }) => ({ [name]: selected ? 1 : 0 }))
-  );
-
   return (
     <Background>
       <Container>
-        <Header title={store.newExercise.name} onClose={closeModale} />
+        <Header title={newExercise.name} onClose={closeModale} />
         <Spacer height={3} />
         <Indication>{t('exerciseMuscleGroups.indication')}</Indication>
         <Spacer height={2} />
@@ -86,13 +68,13 @@ export const ExerciseMuscleGroups: FunctionComponent<Props> = ({ navigation }) =
           <BodyVisualisation
             width={Dimensions.get('screen').width * 0.85}
             onPressMuscles={onPressMuscles}
-            ratios={ratios}
+            ratios={newExercise.muscleRatios}
             musclesBackgroundColor={colors.black}
             selectedMusclesColor={colors.white}
           />
         </BodyContainer>
         <Spacer height={2} />
-        {muscleGroupsSelected.length > 0 && (
+        {newExercise.muscleGroups.length > 0 && (
           <SelectedMuscleGroupsTitle>
             {t('exerciseMuscleGroups.selectedMusclesTitle')}
           </SelectedMuscleGroupsTitle>
@@ -100,19 +82,19 @@ export const ExerciseMuscleGroups: FunctionComponent<Props> = ({ navigation }) =
         <Spacer height={2} />
         <View>
           <SelectedMuscleGroupsContainer>
-            {muscleGroupsSelected.map(({ name }) => (
-              <Tag name={t(`common:muscleGroups.${name}`)} selected key={name} />
+            {newExercise.muscleGroups.map(muscleGroup => (
+              <Tag name={t(`common:muscleGroups.${muscleGroup}`)} selected key={muscleGroup} />
             ))}
           </SelectedMuscleGroupsContainer>
         </View>
         <NextButton
-          onPress={onNextButtonPressed}
-          disabled={muscleGroups.filter(muscleGroup => muscleGroup.selected).length === 0}
+          onPress={goToExerciseDescriptionScreen}
+          disabled={newExercise.muscleGroups.length === 0}
         />
       </Container>
     </Background>
   );
-};
+});
 
 const Container = styled.SafeAreaView(({ theme }) => ({
   margin: theme.margin.x2,
