@@ -16,6 +16,7 @@ import { ArrowBackwardIcon } from '@woap/components/Icons/ArrowBackwardIcon';
 import { theme } from '@woap/styles/theme';
 import { ExerciseSetType } from '@woap/mobx/exerciseSet';
 import { useTranslation } from 'react-i18next';
+import { useStore } from '@woap/utils/hooks/useStore';
 
 import { ExerciseSet } from './components/ExerciseSet';
 
@@ -40,6 +41,7 @@ interface Props {
 export const OngoingTrainingPreview: FunctionComponent<Props> = observer(
   ({ route, navigation }) => {
     const { t } = useTranslation('home');
+    const { finishTraining } = useStore();
     const { training } = route.params;
     const listRef = useRef<FlatList<ExerciseSetType>>(null);
     const [currentExerciseSetIndex, setCurrentExerciseSetIndex] = useState<number>(-1);
@@ -54,7 +56,8 @@ export const OngoingTrainingPreview: FunctionComponent<Props> = observer(
           });
       }
       if (currentExerciseSetIndex === training.exerciseSets.length - 1) {
-        navigation.goBack();
+        navigation.navigate(Routes.HistoryNavigator);
+        finishTraining(training);
       }
     };
 

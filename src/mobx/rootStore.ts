@@ -18,6 +18,7 @@ export const rootStore = RootStore.create({
   exercises: exerciseSeeds,
   archivedExercises: [],
   tags: defaultTags,
+  finishedTrainings: [],
 });
 
 // TODO: reactivate persistence
