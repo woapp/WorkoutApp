@@ -1,7 +1,6 @@
 import React, { FunctionComponent, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { RouteProp } from '@react-navigation/native';
 import { Background } from '@woap/components/Background';
 import styled from '@woap/utils/styled-components';
 import { FormField } from '@woap/components/FormField';
@@ -18,36 +17,29 @@ type ExerciseDescriptionScreenNavigationProp = StackNavigationProp<
   Routes.ExerciseDescription
 >;
 
-type ExerciseDescriptionScreenRouteProp = RouteProp<
-  ExerciseNavigatorParamList,
-  Routes.ExerciseDescription
->;
-
 type Props = {
   navigation: ExerciseDescriptionScreenNavigationProp;
-  route: ExerciseDescriptionScreenRouteProp;
 };
 
-export const ExerciseDescription: FunctionComponent<Props> = ({ navigation, route }) => {
-  const { addExercise } = useStore();
+export const ExerciseDescription: FunctionComponent<Props> = ({ navigation }) => {
+  const { saveNewExercise, newExercise } = useStore();
   const [description, setDescription] = useState('');
   const { t } = useTranslation('exerciseCreation');
-  const exercise = route.params.exercise;
 
   const closeModal = () => {
     navigation.popToTop();
     navigation.goBack();
   };
   const onNextButtonPressed = () => {
-    exercise.setDescription(description);
-    addExercise(exercise);
+    newExercise.setDescription(description);
+    saveNewExercise();
     closeModal();
   };
 
   return (
     <Background>
       <Container>
-        <Header title={t('exerciseDescription.title')} onClose={closeModal} />
+        <Header title={newExercise.name} onClose={closeModal} />
         <Spacer height={3} />
         <Indication>{t('exerciseDescription.indication')}</Indication>
         <Spacer height={2} />

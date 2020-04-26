@@ -3,14 +3,13 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { ExerciseName } from '@woap/pages/Exercise/ExerciseName';
 import { ExerciseMuscleGroups } from '@woap/pages/Exercise/ExerciseMuscleGroups';
 import { ExerciseDescription } from '@woap/pages/Exercise/ExerciseDescription';
-import { ExerciseType } from '@woap/mobx/exercise';
 
 import { Routes } from './routes';
 
 export type ExerciseNavigatorParamList = {
   [Routes.ExerciseName]: undefined;
-  [Routes.ExerciseMuscleGroups]: { exercise: ExerciseType };
-  [Routes.ExerciseDescription]: { exercise: ExerciseType };
+  [Routes.ExerciseMuscleGroups]: undefined;
+  [Routes.ExerciseDescription]: undefined;
 };
 
 const Stack = createStackNavigator<ExerciseNavigatorParamList>();

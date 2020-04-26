@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState } from 'react';
 import { Dimensions, View } from 'react-native';
-import { CompositeNavigationProp, RouteProp } from '@react-navigation/native';
+import { CompositeNavigationProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Background } from '@woap/components/Background';
 import { Header } from '@woap/components/Header';
@@ -14,27 +14,25 @@ import { ExerciseNavigatorParamList } from '@woap/navigation/ExerciseNavigator';
 import { useTranslation } from 'react-i18next';
 import { BodyVisualisation } from '@woap/components/BodyVisualisation';
 import { Tag } from '@woap/components/Tag';
+import { useStore } from '@woap/utils/hooks/useStore';
 
 type ExerciseMuscleGroupsScreenNavigationProp = CompositeNavigationProp<
   StackNavigationProp<RootNavigatorParamList, Routes.ExerciseNavigator>,
   StackNavigationProp<ExerciseNavigatorParamList, Routes.ExerciseMuscleGroups>
 >;
 
-type ExerciseMuscleGroupsScreenRouteProp = RouteProp<
-  ExerciseNavigatorParamList,
-  Routes.ExerciseMuscleGroups
->;
-
 interface Props {
   navigation: ExerciseMuscleGroupsScreenNavigationProp;
-  route: ExerciseMuscleGroupsScreenRouteProp;
 }
 
-export const ExerciseMuscleGroups: FunctionComponent<Props> = ({ navigation, route }) => {
-  const exercise = route.params.exercise;
+export const ExerciseMuscleGroups: FunctionComponent<Props> = ({ navigation }) => {
+  const store = useStore();
 
   const [muscleGroups, setMuscleGroups] = useState(
-    Object.values(MuscleGroup).map(muscleGroup => ({ name: muscleGroup, selected: false }))
+    Object.values(MuscleGroup).map(muscleGroup => ({
+      name: muscleGroup,
+      selected: store.newExercise.muscleGroups.includes(muscleGroup),
+    }))
   );
 
   const { t } = useTranslation(['exerciseCreation', 'common']);
@@ -44,11 +42,10 @@ export const ExerciseMuscleGroups: FunctionComponent<Props> = ({ navigation, rou
     navigation.goBack();
   };
 
-  const goToExerciseDescriptionScreen = () =>
-    navigation.navigate(Routes.ExerciseDescription, { exercise });
+  const goToExerciseDescriptionScreen = () => navigation.navigate(Routes.ExerciseDescription);
 
   const onNextButtonPressed = () => {
-    exercise.setMuscleGroups(
+    store.newExercise.setMuscleGroups(
       muscleGroups.filter(muscleGroup => muscleGroup.selected).map(muscleGroup => muscleGroup.name)
     );
     goToExerciseDescriptionScreen();
@@ -78,7 +75,7 @@ export const ExerciseMuscleGroups: FunctionComponent<Props> = ({ navigation, rou
   return (
     <Background>
       <Container>
-        <Header title={exercise.name} onClose={closeModale} />
+        <Header title={store.newExercise.name} onClose={closeModale} />
         <Spacer height={3} />
         <Indication>{t('exerciseMuscleGroups.indication')}</Indication>
         <Spacer height={2} />
