@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useState } from 'react';
 import { FlatList, Alert } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { observer } from 'mobx-react-lite';
 import { StackNavigationProp } from '@react-navigation/stack';
 import styled from '@woap/utils/styled-components';
@@ -13,7 +14,6 @@ import { Header } from '@woap/components/Header';
 import { useStore } from '@woap/utils/hooks/useStore';
 import { ExerciseType } from '@woap/mobx/exercise';
 import { RootNavigatorParamList } from '@woap/navigation';
-import { useTranslation } from 'react-i18next';
 import { useSearch } from '@woap/hooks/useSearch';
 
 import { ExerciseItem } from './components/ExerciseItem';
@@ -55,7 +55,10 @@ export const TrainingCreation: FunctionComponent<Props> = observer(({ navigation
     setTimeout(() => navigation.push(Routes.TrainingSets), 500);
   };
 
-  const goToExerciseNavigator = () => navigation.navigate(Routes.ExerciseNavigator);
+  const goToExerciseNavigator = () => {
+    store.initializeNewExercise();
+    navigation.navigate(Routes.ExerciseNavigator);
+  };
 
   const archiveExercise = (exercise: ExerciseType) => () => {
     Alert.alert(

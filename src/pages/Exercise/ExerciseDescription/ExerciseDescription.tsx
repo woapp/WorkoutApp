@@ -1,7 +1,8 @@
-import React, { FunctionComponent, useState } from 'react';
+/* eslint-disable @typescript-eslint/unbound-method */
+import React, { FunctionComponent } from 'react';
 import { useTranslation } from 'react-i18next';
+import { observer } from 'mobx-react-lite';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { RouteProp } from '@react-navigation/native';
 import { Background } from '@woap/components/Background';
 import styled from '@woap/utils/styled-components';
 import { FormField } from '@woap/components/FormField';
@@ -18,53 +19,43 @@ type ExerciseDescriptionScreenNavigationProp = StackNavigationProp<
   Routes.ExerciseDescription
 >;
 
-type ExerciseDescriptionScreenRouteProp = RouteProp<
-  ExerciseNavigatorParamList,
-  Routes.ExerciseDescription
->;
-
 type Props = {
   navigation: ExerciseDescriptionScreenNavigationProp;
-  route: ExerciseDescriptionScreenRouteProp;
 };
 
-export const ExerciseDescription: FunctionComponent<Props> = ({ navigation, route }) => {
-  const { addExercise } = useStore();
-  const [description, setDescription] = useState('');
+export const ExerciseDescription: FunctionComponent<Props> = observer(({ navigation }) => {
+  const store = useStore();
+  const newExercise = store.newExercise;
   const { t } = useTranslation('exerciseCreation');
-  const exercise = route.params.exercise;
 
   const closeModal = () => {
     navigation.popToTop();
     navigation.goBack();
   };
-  const onNextButtonPressed = () => {
-    exercise.setDescription(description);
-    addExercise(exercise);
-    closeModal();
-  };
+
+  const goToExerciseSummary = () => navigation.navigate(Routes.ExerciseSummary);
 
   return (
     <Background>
       <Container>
-        <Header title={t('exerciseDescription.title')} onClose={closeModal} />
+        <Header title={newExercise.name} onClose={closeModal} />
         <Spacer height={3} />
         <Indication>{t('exerciseDescription.indication')}</Indication>
         <Spacer height={2} />
         <DescriptionFormField
-          value={description}
-          onChangeText={setDescription}
+          value={newExercise.description}
+          onChangeText={newExercise.setDescription}
           placeholder={t('exerciseDescription.placeholder')}
           placeholderTextColor={colors.transparentWhiteScale[60]}
           selectionColor={colors.white}
-          onSubmitEditing={onNextButtonPressed}
+          onSubmitEditing={goToExerciseSummary}
           multiline
         />
-        <NextButton onPress={onNextButtonPressed} disabled={false} />
+        <NextButton onPress={goToExerciseSummary} disabled={false} />
       </Container>
     </Background>
   );
-};
+});
 
 const Container = styled.SafeAreaView(({ theme }) => ({
   margin: theme.margin.x2,

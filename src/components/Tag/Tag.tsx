@@ -5,10 +5,10 @@ interface Props {
   dashed?: boolean;
   selected: boolean;
   name: string;
-  onPress: () => void;
+  onPress?: () => void;
 }
 export const Tag: FunctionComponent<Props> = ({ name, selected, onPress, dashed = false }) => (
-  <Container selected={selected} onPress={onPress} dashed={dashed}>
+  <Container selected={selected} onPress={onPress} dashed={dashed} disabled={!onPress}>
     <Name selected={selected}>{name}</Name>
   </Container>
 );

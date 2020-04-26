@@ -11,6 +11,7 @@ interface Props {
   onPressMuscles?: OnPressMuscles;
   width: number;
   musclesBackgroundColor?: string;
+  selectedMusclesColor?: string;
 }
 
 export const BodyVisualisation: FunctionComponent<Props> = ({
@@ -18,17 +19,20 @@ export const BodyVisualisation: FunctionComponent<Props> = ({
   onPressMuscles,
   width,
   musclesBackgroundColor,
+  selectedMusclesColor,
 }) => {
   return (
     <Row width={width}>
       <FrontBodyVisualisation
         musclesBackgroundColor={musclesBackgroundColor}
+        selectedMusclesColor={selectedMusclesColor}
         ratios={ratios}
         onPressMuscles={onPressMuscles}
         width={width * 0.45}
       />
       <BackBodyVisualisation
         musclesBackgroundColor={musclesBackgroundColor}
+        selectedMusclesColor={selectedMusclesColor}
         ratios={ratios}
         onPressMuscles={onPressMuscles}
         width={width * 0.45}

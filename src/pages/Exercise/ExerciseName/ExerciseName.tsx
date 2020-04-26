@@ -10,7 +10,7 @@ import { NextButton } from '@woap/components/NextButton';
 import { Routes } from '@woap/navigation/routes';
 import { ExerciseNavigatorParamList } from '@woap/navigation/ExerciseNavigator';
 import { Header } from '@woap/components/Header';
-import { createExercise } from '@woap/mobx/exercise/constructor';
+import { useStore } from '@woap/utils/hooks/useStore';
 
 type ExerciseNameScreenNavigationProp = StackNavigationProp<
   ExerciseNavigatorParamList,
@@ -22,14 +22,14 @@ type Props = {
 };
 
 export const ExerciseName: FunctionComponent<Props> = ({ navigation }) => {
-  const [name, setName] = useState('');
+  const store = useStore();
+  const [name, setName] = useState(store.newExercise.name);
   const { t } = useTranslation('exerciseCreation');
   const isNameValid = name.length > 0;
   const goToExerciseMuscleGroupsScreen = () => {
     if (isNameValid) {
-      const exercise = createExercise();
-      exercise.setName(name);
-      navigation.navigate(Routes.ExerciseMuscleGroups, { exercise });
+      store.newExercise.setName(name);
+      navigation.navigate(Routes.ExerciseMuscleGroups);
     }
   };
   const closeModal = () => navigation.goBack();

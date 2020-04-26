@@ -1,1 +1,0 @@
-export { MuscleGroupToggle } from './MuscleGroupToggle';

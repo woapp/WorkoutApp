@@ -8,6 +8,7 @@ import { Training } from './training';
 
 export const RootModel = {
   newFreeWorkout: types.maybe(FreeWorkout),
+  newExercise: Exercise,
   trainings: types.array(Training),
   exercises: types.array(Exercise),
   archivedExercises: types.array(Exercise),
