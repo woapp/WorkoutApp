@@ -51,8 +51,8 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
       <Path
         d="M30.97 97.998S29.477 95.5 27.49 95.5s-.763 8.213-.994 13.491c-.343 7.797-1.492 13.49 0 19.986 1.49 6.495 1.805 4.486 2.485 7.495.779 3.446.772 5.467.994 8.994.294 4.673-.994 11.492 0 11.991.994.5 2.691-3.496 3.977-5.996 2.228-4.333 2.57-7.2 3.48-11.991 1.239-6.528.993-16.989.993-16.989s.995-11.492-.497-11.492c-1.49 0-2.38 1.451-3.976 1-1.322-.374-1.491 0-1.989-1.999-.497-1.999.442-3.007.498-4.997.077-2.792-1.492-6.995-1.492-6.995z"
         fill="url(#prefix__paint2_linear)"
-        fillOpacity={ratios.ISCHIOS || 0}
-        onPress={onPressMuscles.ISCHIOS}
+        fillOpacity={ratios.HAMSTRING || 0}
+        onPress={onPressMuscles.HAMSTRING}
       />
       {/* ischio-1-droite */}
       <Path
@@ -62,8 +62,8 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
       <Path
         d="M73.28 98.498S74.773 96 76.76 96c1.989 0 .763 8.213.994 13.491.343 7.797 1.492 13.49 0 19.986-1.49 6.495-1.805 4.486-2.485 7.495-.779 3.446-.773 5.467-.994 8.994-.294 4.673.994 11.492 0 11.991-.994.5-2.691-3.496-3.977-5.996-2.228-4.333-2.57-7.2-3.48-11.991-1.239-6.528-.993-16.989-.993-16.989s-.995-11.492.497-11.492c1.49 0 2.38 1.451 3.976 1 1.322-.374 1.492 0 1.989-1.999.497-1.999-.442-3.007-.498-4.997-.077-2.792 1.492-6.995 1.492-6.995z"
         fill="url(#prefix__paint3_linear)"
-        fillOpacity={ratios.ISCHIOS || 0}
-        onPress={onPressMuscles.ISCHIOS}
+        fillOpacity={ratios.HAMSTRING || 0}
+        onPress={onPressMuscles.HAMSTRING}
       />
       {/* ischio-2-droite */}
       <Path
@@ -73,8 +73,8 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
       <Path
         d="M49.757 114.38c-.16-3.666 1.962-10.864-.49-9.382-2.452 1.481-6.374 3.95-7.355 5.431-.98 1.482-.72 2.382-.98 3.951-.536 3.233.13 5.119 0 8.394-.217 5.426-.68 8.455-1.471 13.827-.63 4.265-1.794 8.888-1.962 10.863-.167 1.976.17 2.865.98 4.444.687 1.339 1.293 2.012 2.453 2.963.865.711 1.693.656 2.451 1.482 1.454 1.582-.49 4.938.98 5.431 1.472.494 3.923-11.357 3.923-11.357s1.666-10.798 1.962-17.777c.301-7.131-.18-11.139-.49-18.27z"
         fill="url(#prefix__paint4_linear)"
-        fillOpacity={ratios.ISCHIOS || 0}
-        onPress={onPressMuscles.ISCHIOS}
+        fillOpacity={ratios.HAMSTRING || 0}
+        onPress={onPressMuscles.HAMSTRING}
       />
       {/* ischio-2-gauche */}
       <Path
@@ -84,8 +84,8 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
       <Path
         d="M53.7 114.58c.16-3.665-1.961-10.863.49-9.382 2.452 1.481 6.375 3.95 7.355 5.432.981 1.481.721 2.382.981 3.95.535 3.234-.13 5.119 0 8.395.216 5.426.678 8.455 1.471 13.826.63 4.265 1.794 8.889 1.961 10.864.168 1.975-.17 2.864-.98 4.444-.687 1.338-1.293 2.011-2.452 2.963-.866.71-1.693.656-2.452 1.481-1.454 1.583.49 4.938-.98 5.432-1.471.494-3.923-11.357-3.923-11.357s-1.666-10.799-1.961-17.777c-.302-7.131.179-11.14.49-18.271z"
         fill="url(#prefix__paint5_linear)"
-        fillOpacity={ratios.ISCHIOS || 0}
-        onPress={onPressMuscles.ISCHIOS}
+        fillOpacity={ratios.HAMSTRING || 0}
+        onPress={onPressMuscles.HAMSTRING}
       />
       {/* obliques-gauche */}
       <Path
@@ -249,8 +249,8 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
       <Path
         d="M51 93.93V61.005c0 .51-1.103 4.833-2.455 7.652-1.83 3.817-5.4 7.653-6.382 8.673-.982 1.02 2.714 4.962 4.419 8.162C48.33 88.775 51 94.713 51 93.93z"
         fill="url(#prefix__paint20_linear)"
-        fillOpacity={ratios.LOMBAR || 0}
-        onPress={onPressMuscles.LOMBAR}
+        fillOpacity={ratios.LUMBAR || 0}
+        onPress={onPressMuscles.LUMBAR}
       />
       {/* lombaires-droite */}
       <Path
@@ -260,8 +260,8 @@ export const BackBodyVisualisation: FunctionComponent<Props> = ({
       <Path
         d="M52.5 93.93V61.005c0 .51 1.103 4.833 2.455 7.652 1.83 3.817 5.4 7.653 6.382 8.673.982 1.02-2.714 4.962-4.419 8.162-1.748 3.282-4.418 9.22-4.418 8.436z"
         fill="url(#prefix__paint21_linear)"
-        fillOpacity={ratios.LOMBAR || 0}
-        onPress={onPressMuscles.LOMBAR}
+        fillOpacity={ratios.LUMBAR || 0}
+        onPress={onPressMuscles.LUMBAR}
       />
       {/* dos-2-droite */}
       <Path

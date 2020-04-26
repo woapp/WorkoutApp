@@ -1,1 +1,19 @@
-{}
+{
+  "muscleGroups": {
+    "TRAPEZIUS": "Trapzius",
+    "SHOULDERS": "Shoulders",
+    "BICEPS": "Biceps",
+    "TRICEPS": "Triceps",
+    "FOREARMS": "Forearms",
+    "CHEST": "Chest",
+    "BACK": "Back",
+    "LUMBAR": "Lumbar",
+    "ABS": "Abs",
+    "OBLIQUES": "Obliques",
+    "BUTTOCKS": "Buttocks",
+    "ADDUCTORS": "Adductors",
+    "QUADRICEPS": "Quadriceps",
+    "Hamstring": "Hamstring Muscle",
+    "CALVES": "Calves"
+  }
+}

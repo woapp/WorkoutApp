@@ -37,7 +37,7 @@ export const ExerciseMuscleGroups: FunctionComponent<Props> = ({ navigation, rou
     Object.values(MuscleGroup).map(muscleGroup => ({ name: muscleGroup, selected: false }))
   );
 
-  const { t } = useTranslation('exerciseCreation');
+  const { t } = useTranslation(['exerciseCreation', 'common']);
 
   const closeModale = () => {
     navigation.popToTop();
@@ -97,7 +97,7 @@ export const ExerciseMuscleGroups: FunctionComponent<Props> = ({ navigation, rou
             {muscleGroups
               .filter(muscleGroup => muscleGroup.selected)
               .map(({ name }) => (
-                <Tag name={name} selected key={name} />
+                <Tag name={t(`common:muscleGroups.${name}`)} selected key={name} />
               ))}
           </SelectedMuscleGroupsContainer>
         </View>

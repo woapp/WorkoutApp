@@ -38,7 +38,7 @@ export const MyProfile: FunctionComponent<Props> = () => {
   const [trapeziusRatio, setTrapeziusRatio] = useState(0);
   const [tricepsRatio, setTricepsRatio] = useState(0);
   const [buttocksRatio, setButtocksRatio] = useState(0);
-  const [ischioRatio, setIschioRatio] = useState(0);
+  const [hamstringRatio, setHamstringRatio] = useState(0);
   const [lumbarRatio, setLumbarRatio] = useState(0);
 
   return (
@@ -74,8 +74,8 @@ export const MyProfile: FunctionComponent<Props> = () => {
         <Slider onValueChange={setTricepsRatio} />
         <Label>buttocskRatio</Label>
         <Slider onValueChange={setButtocksRatio} />
-        <Label>ischioRatio </Label>
-        <Slider onValueChange={setIschioRatio} />
+        <Label>hamstringRatio </Label>
+        <Slider onValueChange={setHamstringRatio} />
         <Label>lumbarRatio </Label>
         <Slider onValueChange={setLumbarRatio} />
       </ScrollView>
