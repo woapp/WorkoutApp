@@ -13,7 +13,6 @@ import { Routes } from '@woap/navigation/routes';
 import { ExerciseNavigatorParamList } from '@woap/navigation/ExerciseNavigator';
 import { useTranslation } from 'react-i18next';
 import { BodyVisualisation } from '@woap/components/BodyVisualisation';
-import { colors } from '@woap/styles/colors';
 
 type ExerciseMuscleGroupsScreenNavigationProp = CompositeNavigationProp<
   StackNavigationProp<RootNavigatorParamList, Routes.ExerciseNavigator>,
@@ -84,7 +83,6 @@ export const ExerciseMuscleGroups: FunctionComponent<Props> = ({ navigation, rou
         <Spacer height={2} />
         <BodyContainer>
           <BodyVisualisation
-            musclesBackgroundColor={colors.black}
             width={Dimensions.get('screen').width}
             onPressMuscles={onPressMuscles}
             ratios={ratios}
