@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react';
+import { Dimensions } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Background } from '@woap/components/Background';
@@ -38,7 +39,7 @@ export const ExerciseSummary: FunctionComponent<Props> = ({ navigation }) => {
       <Container>
         <Header title={t('exerciseSummary.title')} onClose={closeModal} />
         <Spacer height={3} />
-        <ExercisePreview exercise={newExercise} />
+        <ExercisePreview exercise={newExercise} width={Dimensions.get('window').width * 0.85} />
       </Container>
       <FinalButton onPress={createExercise} title={t('exerciseSummary.create')} />
     </Background>

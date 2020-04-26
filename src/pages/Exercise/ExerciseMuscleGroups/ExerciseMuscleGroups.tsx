@@ -15,6 +15,7 @@ import { useTranslation } from 'react-i18next';
 import { BodyVisualisation } from '@woap/components/BodyVisualisation';
 import { Tag } from '@woap/components/Tag';
 import { useStore } from '@woap/utils/hooks/useStore';
+import { colors } from '@woap/styles/colors';
 
 type ExerciseMuscleGroupsScreenNavigationProp = CompositeNavigationProp<
   StackNavigationProp<RootNavigatorParamList, Routes.ExerciseNavigator>,
@@ -34,6 +35,8 @@ export const ExerciseMuscleGroups: FunctionComponent<Props> = ({ navigation }) =
       selected: store.newExercise.muscleGroups.includes(muscleGroup),
     }))
   );
+
+  const muscleGroupsSelected = muscleGroups.filter(muscleGroup => muscleGroup.selected);
 
   const { t } = useTranslation(['exerciseCreation', 'common']);
 
@@ -84,20 +87,22 @@ export const ExerciseMuscleGroups: FunctionComponent<Props> = ({ navigation }) =
             width={Dimensions.get('screen').width * 0.85}
             onPressMuscles={onPressMuscles}
             ratios={ratios}
+            musclesBackgroundColor={colors.black}
+            selectedMusclesColor={colors.white}
           />
         </BodyContainer>
         <Spacer height={2} />
-        <SelectedMuscleGroupsTitle>
-          {t('exerciseMuscleGroups.selectedMusclesTitle')}
-        </SelectedMuscleGroupsTitle>
+        {muscleGroupsSelected.length > 0 && (
+          <SelectedMuscleGroupsTitle>
+            {t('exerciseMuscleGroups.selectedMusclesTitle')}
+          </SelectedMuscleGroupsTitle>
+        )}
         <Spacer height={2} />
         <View>
           <SelectedMuscleGroupsContainer>
-            {muscleGroups
-              .filter(muscleGroup => muscleGroup.selected)
-              .map(({ name }) => (
-                <Tag name={t(`common:muscleGroups.${name}`)} selected key={name} />
-              ))}
+            {muscleGroupsSelected.map(({ name }) => (
+              <Tag name={t(`common:muscleGroups.${name}`)} selected key={name} />
+            ))}
           </SelectedMuscleGroupsContainer>
         </View>
         <NextButton
@@ -117,7 +122,6 @@ const Container = styled.SafeAreaView(({ theme }) => ({
 const BodyContainer = styled.View(({ theme }) => ({
   width: Dimensions.get('window').width,
   marginLeft: -theme.margin.x2,
-  backgroundColor: theme.colors.white,
   paddingVertical: theme.margin.x1,
   justifyContent: 'center',
   alignItems: 'center',
