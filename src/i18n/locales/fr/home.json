@@ -8,7 +8,7 @@
     "allTrainings": "TOUS LES ENTRAINEMENTS",
     "favoriteTrainings": "TES ENTRAÎNEMENTS FAVORIS"
   },
-  "ongoingTrainingPreview": {
+  "ongoingTraining": {
     "deleteAlert": {
       "title": "Supprimer l'entraînement",
       "content": "Êtes-vous sûr de vouloir le supprimer ?",

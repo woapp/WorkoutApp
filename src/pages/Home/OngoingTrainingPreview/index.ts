@@ -1,1 +1,0 @@
-export { OngoingTrainingPreview } from './OngoingTrainingPreview';

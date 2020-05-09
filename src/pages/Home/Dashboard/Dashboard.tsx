@@ -59,24 +59,23 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
   };
 
   const onPressTraining = (training: TrainingType) => () => {
-    navigation.navigate(Routes.OngoingTrainingPreview, { training });
+    navigation.navigate(Routes.OngoingTraining, {
+      screen: Routes.OngoingTraining,
+      params: { training },
+    });
   };
 
   const onDeleteTraining = (training: TrainingType) => () => {
-    Alert.alert(
-      t('ongoingTrainingPreview.deleteAlert.title'),
-      t('ongoingTrainingPreview.deleteAlert.content'),
-      [
-        { text: t('ongoingTrainingPreview.deleteAlert.cancel'), style: 'cancel' },
-        {
-          text: t('ongoingTrainingPreview.deleteAlert.delete'),
-          style: 'destructive',
-          onPress: () => {
-            store.deleteTraining(training);
-          },
+    Alert.alert(t('ongoingTraining.deleteAlert.title'), t('ongoingTraining.deleteAlert.content'), [
+      { text: t('ongoingTraining.deleteAlert.cancel'), style: 'cancel' },
+      {
+        text: t('ongoingTraining.deleteAlert.delete'),
+        style: 'destructive',
+        onPress: () => {
+          store.deleteTraining(training);
         },
-      ]
-    );
+      },
+    ]);
   };
 
   const renderSearchedTags = () => {
