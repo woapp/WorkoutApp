@@ -12,6 +12,11 @@ import { StatisticsIcon } from '@woap/components/Icons/StatisticsIcon';
 
 import { Routes } from './routes';
 
+type HistoryNavigatorRouteList =
+  | Routes.HistoryOverview
+  | Routes.HistoryCalendar
+  | Routes.HistoryStatistics;
+
 export type HistoryNavigatorParamList = {
   [Routes.HistoryOverview]: undefined;
   [Routes.HistoryCalendar]: undefined;
@@ -22,9 +27,7 @@ const Stack = createStackNavigator<HistoryNavigatorParamList>();
 
 export const HistoryNavigator = () => {
   const { t } = useTranslation('history');
-  const [activeRoute, setActiveRoute] = useState<
-    Routes.HistoryOverview | Routes.HistoryCalendar | Routes.HistoryStatistics
-  >(Routes.HistoryOverview);
+  const [activeRoute, setActiveRoute] = useState<HistoryNavigatorRouteList>(Routes.HistoryOverview);
 
   return (
     <>
