@@ -1,1 +1,11 @@
-{}
+{
+  "historyOverview": {
+    "menuTitle": "TOUS TES\nENTRAINEMENTS"
+  },
+  "historyCalendar": {
+    "menuTitle": "CALENDRIER"
+  },
+  "historyStatistics": {
+    "menuTitle": "STATISTIQUES"
+  }
+}

@@ -2,17 +2,13 @@ import React, { FunctionComponent } from 'react';
 import { observer } from 'mobx-react-lite';
 import { TextTitle } from '@woap/components/Texts';
 import styled from '@woap/utils/styled-components';
-import { Routes } from '@woap/navigation/routes';
-import { useNavigation } from '@react-navigation/native';
-
+import { Alert } from 'react-native';
 interface Props {
   // workout: WorkoutDoneType;
 }
 
 export const WorkoutItem: FunctionComponent<Props> = observer(() => {
-  const navigation = useNavigation();
-
-  const onWorkoutPress = () => navigation.navigate(Routes.HistoryDetails);
+  const onWorkoutPress = () => Alert.alert('item pressed');
 
   return (
     <Container onPress={onWorkoutPress}>
