@@ -1,6 +1,7 @@
 {
   "historyOverview": {
-    "menuTitle": "TOUS TES\nENTRAINEMENTS"
+    "menuTitle": "TOUS TES\nENTRAINEMENTS",
+    "noData": "Aucune donnée.\nTermine ton premier entrainement !"
   },
   "historyCalendar": {
     "menuTitle": "CALENDRIER"
