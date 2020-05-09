@@ -14,7 +14,7 @@ import { Routes } from '@woap/navigation/routes';
 import { ExerciseNavigatorParamList } from '@woap/navigation/ExerciseNavigator';
 import { useTranslation } from 'react-i18next';
 import { BodyVisualisation } from '@woap/components/BodyVisualisation';
-import { Tag } from '@woap/components/Tag';
+import { SelectableTag } from '@woap/components/SelectableTag';
 import { useStore } from '@woap/utils/hooks/useStore';
 import { colors } from '@woap/styles/colors';
 
@@ -91,7 +91,11 @@ export const ExerciseMuscleGroups: FunctionComponent<Props> = observer(({ naviga
             }}
           >
             {newExercise.muscleGroups.map(muscleGroup => (
-              <Tag name={t(`common:muscleGroups.${muscleGroup}`)} selected key={muscleGroup} />
+              <SelectableTag
+                name={t(`common:muscleGroups.${muscleGroup}`)}
+                selected
+                key={muscleGroup}
+              />
             ))}
           </SelectedMuscleGroupsContainer>
         </View>

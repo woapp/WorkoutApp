@@ -12,7 +12,7 @@ import { Routes } from '@woap/navigation/routes';
 import { Header } from '@woap/components/Header';
 import { useStore } from '@woap/utils/hooks/useStore';
 import { createTag } from '@woap/mobx/tag/constructor';
-import { Tag } from '@woap/components/Tag';
+import { SelectableTag } from '@woap/components/SelectableTag';
 
 import { NewTagModal } from './components/NewTagModal';
 
@@ -63,14 +63,14 @@ export const TrainingTags: FunctionComponent<Props> = observer(({ navigation }) 
         <Spacer height={2} />
         <TagsContainer>
           {tags.map(tag => (
-            <Tag
+            <SelectableTag
               selected={selectedTags.includes(tag.id)}
               name={tag.name}
               key={tag.id}
               onPress={onTagPressed(tag.id)}
             />
           ))}
-          <Tag dashed onPress={openNewTagModal} name="+ new tag" selected={false} />
+          <SelectableTag dashed onPress={openNewTagModal} name="+ new tag" selected={false} />
         </TagsContainer>
         <NextButton onPress={goToDashBoardScreen} disabled={selectedTags.length === 0} />
       </Container>
