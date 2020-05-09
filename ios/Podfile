@@ -41,6 +41,9 @@ target 'WorkoutApp' do
 
   pod 'RNLocalize', :path => '../node_modules/react-native-localize'
 
+  pod 'lottie-react-native', :path => '../node_modules/lottie-react-native'
+
+
   target 'WorkoutAppTests' do
     inherit! :search_paths
     # Pods for testing
