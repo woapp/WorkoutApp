@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState, useRef } from 'react';
-import { TouchableOpacity, FlatList } from 'react-native';
+import { FlatList } from 'react-native';
 import { observer } from 'mobx-react-lite';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RouteProp } from '@react-navigation/native';
@@ -9,11 +9,10 @@ import { RootNavigatorParamList } from '@woap/navigation';
 import { HeartIcon } from '@woap/components/Icons/HeartIcon';
 import { LinearButton } from '@woap/components/LinearButton';
 import { Spacer } from '@woap/components/Spacer';
-import { ArrowBackwardIcon } from '@woap/components/Icons/ArrowBackwardIcon';
-import { theme } from '@woap/styles/theme';
 import { ExerciseSetType } from '@woap/mobx/exerciseSet';
 import { useTranslation } from 'react-i18next';
 import { useStore } from '@woap/utils/hooks/useStore';
+import { CrossIcon } from '@woap/components/Icons/CrossIcon';
 
 import { ExerciseSet } from './components/ExerciseSet';
 
@@ -28,6 +27,8 @@ interface Props {
   navigation: OngoingTrainingScreenNavigationProp;
   route: OngoingTrainingScreenRouteProp;
 }
+
+const CROSS_BUTTON_SIZE = 35;
 
 export const OngoingTraining: FunctionComponent<Props> = observer(({ route, navigation }) => {
   const { t } = useTranslation('home');
@@ -62,64 +63,83 @@ export const OngoingTraining: FunctionComponent<Props> = observer(({ route, navi
   };
 
   return (
-    <Container>
-      <Row>
-        {/* eslint-disable-next-line @typescript-eslint/unbound-method */}
-        <TouchableOpacity onPress={navigation.goBack} hitSlop={theme.hitSlop}>
-          <ArrowBackwardIcon />
-        </TouchableOpacity>
-        <Spacer width={2} />
-        <TrainingTitle>{training.name}</TrainingTitle>
-        {/* eslint-disable-next-line @typescript-eslint/unbound-method */}
-        <TouchableOpacity onPress={training.toggleFavorite}>
-          <HeartIcon selected={training.isFavorite} size={27} />
-        </TouchableOpacity>
-      </Row>
-      <Spacer height={2} />
+    <SafeAreaWapper>
+      <Container>
+        <CrossButtonRow>
+          {/* eslint-disable-next-line @typescript-eslint/unbound-method */}
+          <IconButton onPress={navigation.goBack}>
+            <CrossIcon height={CROSS_BUTTON_SIZE} width={CROSS_BUTTON_SIZE} />
+          </IconButton>
+        </CrossButtonRow>
+        <Row>
+          <Spacer width={2} />
+          <TrainingTitle>{training.name}</TrainingTitle>
+          {/* eslint-disable-next-line @typescript-eslint/unbound-method */}
+          <IconButton onPress={training.toggleFavorite}>
+            <HeartIcon selected={training.isFavorite} size={27} />
+          </IconButton>
+        </Row>
+        <Spacer height={2} />
 
-      <SetsContainer
-        data={training.exerciseSets.toJS()}
-        ListFooterComponent={<Spacer height={4} />}
-        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-        // @ts-ignore
-        ref={listRef}
-        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-        // @ts-ignore
-        renderItem={({ item: exerciseSet, index }: { item: ExerciseSetType; index: number }) => (
-          <ExerciseSet
-            key={exerciseSet.id}
-            exerciseSet={exerciseSet}
-            isOngoing={index === currentExerciseSetIndex}
-            isDone={index < currentExerciseSetIndex}
-            index={index}
-            currentIndex={currentExerciseSetIndex}
-          />
-        )}
-      />
+        <SetsContainer
+          data={training.exerciseSets.toJS()}
+          ListFooterComponent={<Spacer height={4} />}
+          // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+          // @ts-ignore
+          ref={listRef}
+          // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+          // @ts-ignore
+          renderItem={({ item: exerciseSet, index }: { item: ExerciseSetType; index: number }) => (
+            <ExerciseSet
+              key={exerciseSet.id}
+              exerciseSet={exerciseSet}
+              isOngoing={index === currentExerciseSetIndex}
+              isDone={index < currentExerciseSetIndex}
+              index={index}
+              currentIndex={currentExerciseSetIndex}
+            />
+          )}
+        />
 
-      <LinearButton onPress={onActionPress} title={getButtonTitle()} />
-    </Container>
+        <LinearButton onPress={onActionPress} title={getButtonTitle()} />
+      </Container>
+    </SafeAreaWapper>
   );
 });
 
-const Container = styled.View({
+const CrossButtonRow = styled.View(({ theme }) => ({
+  flexDirection: 'row',
+  flex: 1,
+  justifyContent: 'flex-end',
+  paddingRight: theme.margin.x2,
+  paddingBottom: theme.margin.x1,
+}));
+
+const SafeAreaWapper = styled.SafeAreaView(({ theme }) => ({
   flex: 1,
   backgroundColor: theme.colors.background.black,
+}));
+
+const Container = styled.View(({ theme }) => ({
   padding: theme.margin.x2,
-});
+  flex: 1,
+}));
+
+const IconButton = styled.TouchableOpacity.attrs(({ theme }) => ({
+  hitSlop: theme.hitSlop,
+}))({});
 
 const Row = styled.View({
   flexDirection: 'row',
-  alignItems: 'center',
 });
 
-const TrainingTitle = styled.Text({
+const TrainingTitle = styled.Text(({ theme }) => ({
   ...theme.fonts.h1,
   color: theme.colors.white,
   fontWeight: 'bold',
-  flex: 1,
-});
+  paddingRight: theme.margin.x2,
+}));
 
-const SetsContainer = styled(FlatList)({
+const SetsContainer = styled(FlatList)(({ theme }) => ({
   padding: theme.margin.x2,
-});
+}));
