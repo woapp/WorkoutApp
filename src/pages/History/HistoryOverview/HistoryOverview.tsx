@@ -14,7 +14,7 @@ import { EmptyDataPlaceholder } from './components/EmptyDataPlaceholder';
 export const HistoryOverview: FunctionComponent = observer(() => {
   const store = useStore();
   const { t } = useTranslation('history');
-  const finishedTrainings = store.finishedTrainings;
+  const finishedTrainings = store.finishedTrainingsSorted;
   console.log(finishedTrainings);
 
   if (finishedTrainings.length === 0) {
@@ -26,7 +26,7 @@ export const HistoryOverview: FunctionComponent = observer(() => {
       <Title>{t('historyOverview.title')}</Title>
       <Spacer height={2} />
       <FlatList
-        data={finishedTrainings.toJS()}
+        data={finishedTrainings}
         renderItem={({ item }: { item: FinishedTrainingType }) => (
           <FinishedTrainingItem training={item} key={item.id} />
         )}
