@@ -22,7 +22,6 @@ export type RootNavigatorParamList = {
     };
   };
   [Routes.OngoingTraining]: { screen: Routes; params: { training: TrainingType } };
-  [Routes.OngoingWorkout]: undefined;
   [Routes.TrainingNavigator]: undefined;
   [Routes.ExerciseNavigator]: undefined;
 };
