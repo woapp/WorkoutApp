@@ -3,6 +3,7 @@ import { TrainingType } from '@woap/mobx/training';
 import styled from '@woap/utils/styled-components';
 import { Dimensions } from 'react-native';
 import { MuscleGroup } from '@woap/mobx/types';
+import { Tag } from '@woap/components/Tag';
 
 import { MuscleGroupCard } from '../MuscleGroupCard';
 
@@ -28,7 +29,7 @@ export const FavoriteTrainingCard: FunctionComponent<Props> = ({
     <FavoriteTrainingName>{training.name}</FavoriteTrainingName>
     <TagRow>
       {training.tags.map(tag => (
-        <Tag key={tag.id}>{tag.name}</Tag>
+        <Tag tag={tag} key={tag.id} />
       ))}
     </TagRow>
   </Container>
@@ -49,17 +50,6 @@ const TagRow = styled.View({
   flexWrap: 'nowrap',
   overflow: 'visible',
 });
-
-export const Tag = styled.Text(({ theme }) => ({
-  paddingVertical: theme.margin.x1,
-  paddingHorizontal: theme.margin.x2,
-  marginRight: theme.margin.x2,
-  marginVertical: theme.margin.x1,
-  borderColor: theme.colors.greyScale[10],
-  borderWidth: theme.border.width.s,
-  borderRadius: theme.border.radius.m,
-  color: theme.colors.greyScale[10],
-}));
 
 const FavoriteTrainingName = styled.Text(({ theme }) => ({
   color: theme.colors.white,
