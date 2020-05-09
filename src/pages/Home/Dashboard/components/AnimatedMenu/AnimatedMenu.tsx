@@ -6,7 +6,6 @@ import LinearGradient from 'react-native-linear-gradient';
 import styled from '@woap/utils/styled-components';
 import { colors } from '@woap/styles/colors';
 import { BlackVeil } from '@woap/pages/Home/Dashboard/components/BlackVeil';
-import { PlusIcon } from '@woap/components/Icons/PlusIcon';
 
 import { ITEM_HEIGHT, MenuItem } from '../MenuItem/MenuItem';
 
@@ -20,13 +19,19 @@ export interface MenuItem {
 
 interface Props {
   items: MenuItem[];
+  Icon: FunctionComponent;
+  rotationAngle?: number;
 }
 
-export const AnimatedMenu: FunctionComponent<Props> = ({ items }) => {
+export const AnimatedMenu: FunctionComponent<Props> = ({
+  items,
+  Icon,
+  rotationAngle = Math.PI / 4,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const transition = useTransition(isOpen, { duration: 300 });
   const opacity = interpolate(transition, { inputRange: [0, 0.33, 1], outputRange: [0, 0, 1] });
-  const rotate = bInterpolate(transition, 0, Math.PI / 4);
+  const rotate = bInterpolate(transition, 0, rotationAngle);
   const toggleMenu = () => setIsOpen(!isOpen);
   const hideMenuOnItemPress = (onItemPress: Function) => () => {
     onItemPress();
@@ -58,7 +63,7 @@ export const AnimatedMenu: FunctionComponent<Props> = ({ items }) => {
         })}
         <TouchableWithoutFeedback style={{ ...StyleSheet.absoluteFillObject }} onPress={toggleMenu}>
           <IconContainer style={{ transform: [{ rotate }] }}>
-            <PlusIcon />
+            <Icon />
           </IconContainer>
         </TouchableWithoutFeedback>
       </Container>

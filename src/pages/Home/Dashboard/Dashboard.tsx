@@ -22,6 +22,7 @@ import { FlatList } from 'react-native-gesture-handler';
 import { useSearch } from '@woap/hooks/useSearch';
 import { SearchBar } from '@woap/components/SearchBar';
 import { Tag } from '@woap/components/Tag';
+import { PlusIcon } from '@woap/components/Icons/PlusIcon';
 
 import { NoTraining } from './components/NoTraining';
 import { FavoriteTrainingCard } from './components/FavoriteTrainingCard';
@@ -149,6 +150,7 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
 
       <MenuContainer>
         <AnimatedMenu
+          Icon={PlusIcon}
           items={[
             {
               title: t('dashboard.newTraining'),

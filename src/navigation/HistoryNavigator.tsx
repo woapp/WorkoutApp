@@ -9,6 +9,7 @@ import styled from '@woap/utils/styled-components';
 import { WhistleIcon } from '@woap/components/Icons/WhistleIcon';
 import { CalendarIcon } from '@woap/components/Icons/CalendarIcon';
 import { StatisticsIcon } from '@woap/components/Icons/StatisticsIcon';
+import { HamburgerIcon } from '@woap/components/Icons/HamburgerIcon';
 
 import { Routes } from './routes';
 
@@ -48,6 +49,8 @@ export const HistoryNavigator = () => {
       </Stack.Navigator>
       <MenuContainer>
         <AnimatedMenu
+          rotationAngle={Math.PI / 2}
+          Icon={HamburgerIcon}
           items={[
             {
               title: t('historyOverview.menuTitle'),
