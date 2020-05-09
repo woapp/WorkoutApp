@@ -1,0 +1,1 @@
+export { FinishedTrainingItem } from './FinishedTrainingItem';
