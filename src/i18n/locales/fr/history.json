@@ -1,1 +1,11 @@
-{}
+{
+  "historyOverview": {
+    "menuTitle": "ALL\nTRAININGS"
+  },
+  "historyCalendar": {
+    "menuTitle": "CALENDAR"
+  },
+  "historyStatistics": {
+    "menuTitle": "STATISTICS"
+  }
+}
