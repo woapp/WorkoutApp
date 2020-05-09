@@ -54,11 +54,11 @@ export const OngoingTraining: FunctionComponent<Props> = observer(({ route, navi
 
   const getButtonTitle = () => {
     if (currentExerciseSetIndex < 0) {
-      return t('ongoingTrainingPreview.go');
+      return t('ongoingTraining.go');
     } else if (currentExerciseSetIndex < training.exerciseSets.length - 1) {
-      return t('ongoingTrainingPreview.next');
+      return t('ongoingTraining.next');
     } else {
-      return t('ongoingTrainingPreview.finish');
+      return t('ongoingTraining.finish');
     }
   };
 

@@ -8,7 +8,7 @@
     "allTrainings": "ALL TRAININGS",
     "favoriteTrainings": "YOUR FAVORITE TRAININGS"
   },
-  "ongoingTrainingPreview": {
+  "ongoingTraining": {
     "deleteAlert": {
       "title": "Delete training",
       "content": "Are you sure you want to delete this training?",
