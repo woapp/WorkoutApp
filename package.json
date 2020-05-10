@@ -45,6 +45,7 @@
     "react-i18next": "11.3.4",
     "react-native": "0.61.2",
     "react-native-animated-pagination-dot": "^0.1.5",
+    "react-native-calendars": "^1.265.0",
     "react-native-code-push": "^6.1.0",
     "react-native-draggable-flatlist": "2.2.0",
     "react-native-gesture-handler": "^1.6.1",
