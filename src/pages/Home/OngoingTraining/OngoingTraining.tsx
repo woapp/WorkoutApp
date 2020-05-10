@@ -15,6 +15,7 @@ import { useStore } from '@woap/utils/hooks/useStore';
 import { CrossIcon } from '@woap/components/Icons/CrossIcon';
 
 import { ExerciseSet } from './components/ExerciseSet';
+import { TrainingCompleteAnimation } from './components/TrainingCompleteAnimation';
 
 type OngoingTrainingScreenNavigationProp = StackNavigationProp<
   RootNavigatorParamList,
@@ -47,7 +48,10 @@ export const OngoingTraining: FunctionComponent<Props> = observer(({ route, navi
         });
     }
     if (currentExerciseSetIndex === training.exerciseSets.length - 1) {
-      navigation.navigate(Routes.TabNavigator, { screen: Routes.HistoryNavigator });
+      setTimeout(
+        () => navigation.navigate(Routes.TabNavigator, { screen: Routes.HistoryNavigator }),
+        2700
+      );
       finishTraining(training);
     }
   };
@@ -103,6 +107,8 @@ export const OngoingTraining: FunctionComponent<Props> = observer(({ route, navi
 
         <LinearButton onPress={onActionPress} title={getButtonTitle()} />
       </Container>
+
+      {currentExerciseSetIndex === training.exerciseSets.length && <TrainingCompleteAnimation />}
     </SafeAreaWapper>
   );
 });
