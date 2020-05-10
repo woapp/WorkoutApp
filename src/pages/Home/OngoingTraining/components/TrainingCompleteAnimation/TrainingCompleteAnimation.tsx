@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useRef, useEffect, useState } from 'react';
 import LottieView from 'lottie-react-native';
-import { Animated, Easing } from 'react-native';
+import { Animated, Easing, StyleSheet } from 'react-native';
 import styled from '@woap/utils/styled-components';
 import { useTranslation } from 'react-i18next';
 
@@ -35,22 +35,14 @@ export const TrainingCompleteAnimation: FunctionComponent<Props> = () => {
 };
 
 const Container = styled.View({
-  position: 'absolute',
+  ...StyleSheet.absoluteFillObject,
   alignItems: 'center',
-  bottom: 0,
-  left: 0,
-  right: 0,
-  top: 0,
   height: '100%',
   width: '100%',
 });
 
 const BlackVeil = styled.View(({ theme }) => ({
-  position: 'absolute',
-  bottom: 0,
-  left: 0,
-  right: 0,
-  top: 0,
+  ...StyleSheet.absoluteFillObject,
   height: '120%',
   width: '100%',
   backgroundColor: theme.colors.black,
