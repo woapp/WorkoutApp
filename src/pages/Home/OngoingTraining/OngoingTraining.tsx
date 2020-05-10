@@ -66,6 +66,17 @@ export const OngoingTraining: FunctionComponent<Props> = observer(({ route, navi
     }
   };
 
+  const renderSet = ({ item: exerciseSet, index }: { item: ExerciseSetType; index: number }) => (
+    <ExerciseSet
+      key={exerciseSet.id}
+      exerciseSet={exerciseSet}
+      isOngoing={index === currentExerciseSetIndex}
+      isDone={index < currentExerciseSetIndex}
+      index={index}
+      currentIndex={currentExerciseSetIndex}
+    />
+  );
+
   return (
     <SafeAreaWapper>
       <Container>
@@ -76,7 +87,7 @@ export const OngoingTraining: FunctionComponent<Props> = observer(({ route, navi
           </IconButton>
         </CrossButtonRow>
         <Row>
-          <Spacer width={2} />
+          <Spacer width={1} />
           <TrainingTitle>{training.name}</TrainingTitle>
           {/* eslint-disable-next-line @typescript-eslint/unbound-method */}
           <IconButton onPress={training.toggleFavorite}>
@@ -93,16 +104,7 @@ export const OngoingTraining: FunctionComponent<Props> = observer(({ route, navi
           ref={listRef}
           // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
           // @ts-ignore
-          renderItem={({ item: exerciseSet, index }: { item: ExerciseSetType; index: number }) => (
-            <ExerciseSet
-              key={exerciseSet.id}
-              exerciseSet={exerciseSet}
-              isOngoing={index === currentExerciseSetIndex}
-              isDone={index < currentExerciseSetIndex}
-              index={index}
-              currentIndex={currentExerciseSetIndex}
-            />
-          )}
+          renderItem={renderSet}
         />
 
         <LinearButton onPress={onActionPress} title={getButtonTitle()} />
@@ -115,10 +117,9 @@ export const OngoingTraining: FunctionComponent<Props> = observer(({ route, navi
 
 const CrossButtonRow = styled.View(({ theme }) => ({
   flexDirection: 'row',
-  flex: 1,
   justifyContent: 'flex-end',
-  paddingRight: theme.margin.x2,
-  paddingBottom: theme.margin.x1,
+  paddingRight: theme.margin.x1,
+  paddingBottom: theme.margin.x2,
 }));
 
 const SafeAreaWapper = styled.SafeAreaView(({ theme }) => ({

@@ -61,7 +61,8 @@ const TrainingComplete = styled.Text(({ theme }) => ({
   color: theme.colors.white,
   position: 'absolute',
   bottom: '15%',
-  ...theme.fonts.h1,
+  ...theme.fonts.h2,
+  fontWeight: 'bold',
 }));
 
 const CheckAnimation = styled(LottieView)({ opacity: 1, flex: 1 });
