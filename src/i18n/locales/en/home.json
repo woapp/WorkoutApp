@@ -17,6 +17,7 @@
     },
     "go": "LET'S GO!",
     "next": "NEXT",
-    "finish": "FINISH"
+    "finish": "FINISH",
+    "trainingCompleted": "TRAINING COMPLETED"
   }
 }
