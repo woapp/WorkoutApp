@@ -1,4 +1,5 @@
 import { ModelInstanceTypeProps } from 'mobx-state-tree';
+import { isSameDay } from 'date-fns';
 
 import { FinishedTrainingType } from './finishedTraining/index';
 import { RootModel } from './rootModel';
@@ -15,5 +16,10 @@ export const RootViews = (self: ModelInstanceTypeProps<typeof RootModel>) => ({
         (training1: FinishedTrainingType, training2: FinishedTrainingType) =>
           training1.date.getMilliseconds() - training2.date.getMilliseconds()
       );
+  },
+  getFinishedTrainingsForAGivenDate(date: Date) {
+    return this.sortedFinishedTrainings.filter((finishedTraining: FinishedTrainingType) =>
+      isSameDay(finishedTraining.date, date)
+    );
   },
 });
