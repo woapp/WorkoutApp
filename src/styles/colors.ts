@@ -1,6 +1,7 @@
 export const colors = {
   background: {
     black: '#0A0D21',
+    grey: '#3D3D55',
   },
   transparentBlackScale: {
     20: '#00000033',

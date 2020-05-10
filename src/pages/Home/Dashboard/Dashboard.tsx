@@ -21,9 +21,11 @@ import { TrainingType } from '@woap/mobx/training';
 import { FlatList } from 'react-native-gesture-handler';
 import { useSearch } from '@woap/hooks/useSearch';
 import { SearchBar } from '@woap/components/SearchBar';
+import { Tag } from '@woap/components/Tag';
+import { PlusIcon } from '@woap/components/Icons/PlusIcon';
 
 import { NoTraining } from './components/NoTraining';
-import { FavoriteTrainingCard, Tag } from './components/FavoriteTrainingCard';
+import { FavoriteTrainingCard } from './components/FavoriteTrainingCard';
 
 type DashboardScreenNavigationProp = CompositeNavigationProp<
   StackNavigationProp<RootNavigatorParamList, Routes.TabNavigator>,
@@ -85,9 +87,7 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
           {store.tags
             .filter(tag => matchSearch(tag.name))
             .map(tag => (
-              <Tag key={tag.id} onPress={onTagPress(tag.name)}>
-                {tag.name}
-              </Tag>
+              <Tag key={tag.id} onPress={onTagPress(tag.name)} tag={tag} />
             ))}
         </SearchedTagsRow>
       );
@@ -150,6 +150,7 @@ export const Dashboard: FunctionComponent<Props> = observer(({ navigation }) => 
 
       <MenuContainer>
         <AnimatedMenu
+          Icon={PlusIcon}
           items={[
             {
               title: t('dashboard.newTraining'),

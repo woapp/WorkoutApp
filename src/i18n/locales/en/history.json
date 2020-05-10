@@ -1,11 +1,15 @@
 {
   "historyOverview": {
-    "menuTitle": "ALL\nTRAININGS"
+    "menuTitle": "ALL YOUR\nTRAININGS",
+    "noData": "No data.\nComplete your first training !",
+    "title": "All your trainings"
   },
   "historyCalendar": {
-    "menuTitle": "CALENDAR"
+    "menuTitle": "CALENDAR",
+    "title": "Calendar"
   },
   "historyStatistics": {
-    "menuTitle": "STATISTICS"
+    "menuTitle": "STATISTICS",
+    "title": "Statistics"
   }
 }

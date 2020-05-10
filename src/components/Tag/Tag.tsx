@@ -1,34 +1,23 @@
 import React, { FunctionComponent } from 'react';
 import styled from '@woap/utils/styled-components';
+import { TagType } from '@woap/mobx/tag';
 
 interface Props {
-  dashed?: boolean;
-  selected: boolean;
-  name: string;
+  tag: TagType;
   onPress?: () => void;
 }
-export const Tag: FunctionComponent<Props> = ({ name, selected, onPress, dashed = false }) => (
-  <Container selected={selected} onPress={onPress} dashed={dashed} disabled={!onPress}>
-    <Name selected={selected}>{name}</Name>
-  </Container>
+
+export const Tag: FunctionComponent<Props> = ({ tag, onPress }) => (
+  <Container onPress={onPress}>{tag.name}</Container>
 );
 
-const Container = styled.TouchableOpacity<{ selected: boolean; dashed: boolean }>(
-  ({ theme, selected, dashed }) => ({
-    borderStyle: dashed ? 'dashed' : undefined,
-    marginRight: theme.margin.x1,
-    marginBottom: theme.margin.x1,
-    borderWidth: 2,
-    borderColor: theme.colors.black,
-    paddingHorizontal: theme.margin.x2,
-    paddingVertical: theme.margin.x1,
-    backgroundColor: selected ? theme.colors.black : theme.colors.transparentWhiteScale[60],
-    borderRadius: theme.border.radius.m,
-  })
-);
-
-const Name = styled.Text<{ selected: boolean }>(({ theme, selected }) => ({
-  ...theme.fonts.h4,
-  color: selected ? theme.colors.white : theme.colors.black,
-  fontWeight: 'bold',
+const Container = styled.Text(({ theme }) => ({
+  paddingVertical: theme.margin.x1,
+  paddingHorizontal: theme.margin.x2,
+  marginRight: theme.margin.x2,
+  marginVertical: theme.margin.x1,
+  borderColor: theme.colors.greyScale[10],
+  borderWidth: theme.border.width.s,
+  borderRadius: theme.border.radius.m,
+  color: theme.colors.greyScale[10],
 }));
