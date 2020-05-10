@@ -8,7 +8,7 @@ export const RootViews = (self: ModelInstanceTypeProps<typeof RootModel>) => ({
   get favoriteTrainings() {
     return self.trainings.filter((training: TrainingType) => training.isFavorite);
   },
-  get finishedTrainingsSorted() {
+  get sortedFinishedTrainings() {
     return self.finishedTrainings
       .slice()
       .sort(

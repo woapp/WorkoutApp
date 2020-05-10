@@ -14,8 +14,7 @@ import { EmptyDataPlaceholder } from './components/EmptyDataPlaceholder';
 export const HistoryOverview: FunctionComponent = observer(() => {
   const store = useStore();
   const { t } = useTranslation('history');
-  const finishedTrainings = store.finishedTrainingsSorted;
-  console.log(finishedTrainings);
+  const finishedTrainings = store.sortedFinishedTrainings;
 
   if (finishedTrainings.length === 0) {
     return <EmptyDataPlaceholder />;
