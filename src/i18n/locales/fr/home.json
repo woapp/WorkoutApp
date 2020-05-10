@@ -17,6 +17,7 @@
     },
     "go": "C'EST PARTI !",
     "next": "SUIVANT",
-    "finish": "TERMINER"
+    "finish": "TERMINER",
+    "trainingCompleted": "ENTRAINEMENT TERMINÉ"
   }
 }

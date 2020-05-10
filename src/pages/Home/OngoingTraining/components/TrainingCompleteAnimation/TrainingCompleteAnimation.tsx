@@ -2,11 +2,13 @@ import React, { FunctionComponent, useRef, useEffect, useState } from 'react';
 import LottieView from 'lottie-react-native';
 import { Animated, Easing } from 'react-native';
 import styled from '@woap/utils/styled-components';
+import { useTranslation } from 'react-i18next';
 
 interface Props {}
 
 export const TrainingCompleteAnimation: FunctionComponent<Props> = () => {
   const animationRef = useRef<LottieView>(null);
+  const { t } = useTranslation('home');
   const [progress] = useState(new Animated.Value(0));
 
   useEffect(() => {
@@ -27,7 +29,7 @@ export const TrainingCompleteAnimation: FunctionComponent<Props> = () => {
         resizeMode="contain"
         progress={progress}
       />
-      <TrainingComplete>TRAINING COMPLETED</TrainingComplete>
+      <TrainingComplete>{t('ongoingTraining.trainingCompleted')}</TrainingComplete>
     </Container>
   );
 };
