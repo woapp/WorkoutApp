@@ -10,6 +10,7 @@
   },
   "historyStatistics": {
     "menuTitle": "STATISTIQUES",
-    "title": "Statistiques"
+    "title": "Statistiques",
+    "since": "Depuis {{numberOfDays}} jour(s)"
   }
 }
