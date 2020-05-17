@@ -1,1 +1,1 @@
-export const EMAIL_SUPPORT = 'woapp.support@gmail.com';
+export const EMAIL_SUPPORT = 'woapp.team@gmail.com';

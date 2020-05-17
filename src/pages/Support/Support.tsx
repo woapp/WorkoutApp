@@ -1,4 +1,6 @@
 import React, { FunctionComponent, useState } from 'react';
+import DeviceInfo from 'react-native-device-info';
+import { Dimensions } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import styled from '@woap/utils/styled-components';
 import { RadioButton } from '@woap/components/RadioButton';
@@ -13,6 +15,21 @@ enum RepportingType {
   IMPROVEMENT,
 }
 
+const getDeviceInfos = async () => {
+  let deviceInfos = '###################\n';
+  const os = await DeviceInfo.getBaseOs();
+  deviceInfos += `os : ${os}\n`;
+  const osVersion = DeviceInfo.getSystemVersion();
+  deviceInfos += `osVersion : ${osVersion}\n`;
+  const appVersion = DeviceInfo.getVersion();
+  deviceInfos += `appVersion : ${appVersion}\n`;
+  const screen = Dimensions.get('screen');
+  deviceInfos += `screen : w${Math.floor(screen.width)} * h${Math.floor(screen.height)}\n`;
+  deviceInfos += '###################\n';
+
+  return deviceInfos;
+};
+
 const generateEmailId = () =>
   Math.random()
     .toString()
@@ -26,8 +43,10 @@ export const Support: FunctionComponent = () => {
     const subject = `${
       repportingType === RepportingType.IMPROVEMENT ? 'Improvement' : 'Bug'
     } #${generateEmailId()}`;
+    const deviceInfos = await getDeviceInfos();
+    const emailBody = `${body}\n\n${deviceInfos}`;
     try {
-      await EmailService.sendEmail({ subject, body });
+      await EmailService.sendEmail({ subject, body: emailBody });
     } catch (error) {
       console.warn(error);
     }
@@ -59,7 +78,7 @@ export const Support: FunctionComponent = () => {
         multiline
       />
       <ButtonContainer>
-        <LinearButton title={'send'} onPress={sendEmail} />
+        <LinearButton title={t('send')} onPress={sendEmail} />
       </ButtonContainer>
     </Container>
   );
