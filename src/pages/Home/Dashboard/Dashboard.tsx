@@ -30,7 +30,7 @@ import { FavoriteTrainingCard } from './components/FavoriteTrainingCard';
 type DashboardScreenNavigationProp = CompositeNavigationProp<
   StackNavigationProp<RootNavigatorParamList, Routes.TabNavigator>,
   CompositeNavigationProp<
-    MaterialTopTabNavigationProp<TabNavigatorParamList, Routes.ProfileNavigator>,
+    MaterialTopTabNavigationProp<TabNavigatorParamList, Routes.HomeNavigator>,
     StackNavigationProp<HomeNavigatorParamList, Routes.Dashboard>
   >
 >;
