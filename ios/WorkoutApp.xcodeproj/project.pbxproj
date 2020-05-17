@@ -16,17 +16,17 @@
 		0878A6F423F8B5C200947597 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0878A6F123F8B5C200947597 /* GoogleService-Info.plist */; };
 		0878A6F523F8B5C200947597 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0878A6F123F8B5C200947597 /* GoogleService-Info.plist */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
-		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		17A3319AC346CFC17366662A /* libPods-WorkoutApp-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EF6ACD4C9698416CB233C20 /* libPods-WorkoutApp-tvOSTests.a */; };
 		2AFB84A3D36FAFA96EE28FCD /* libPods-WorkoutAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D64DC9877ACF82B13A7BCB77 /* libPods-WorkoutAppTests.a */; };
-		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
+    2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* WorkoutAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* WorkoutAppTests.m */; };
 		5504BFA7DEBD6CE88C48081F /* libPods-WorkoutApp-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E237AB6A150D1EF3B1EF343 /* libPods-WorkoutApp-tvOS.a */; };
 		8673793F2051E8952CFD2221 /* libPods-WorkoutApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F018A69A90840CD1C1BE7DCC /* libPods-WorkoutApp.a */; };
+		F16AF89B2470950700DEE48F /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F16AF89A2470950700DEE48F /* SplashScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,7 +122,6 @@
 		13B07F961A680F5B00A75B9A /* WorkoutApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkoutApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = WorkoutApp/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = WorkoutApp/AppDelegate.m; sourceTree = "<group>"; };
-		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = WorkoutApp/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = WorkoutApp/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = WorkoutApp/main.m; sourceTree = "<group>"; };
@@ -142,6 +141,8 @@
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		F018A69A90840CD1C1BE7DCC /* libPods-WorkoutApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WorkoutApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F15C168C240458320083C3A1 /* AppCenter-Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "AppCenter-Config.xcconfig"; sourceTree = "<group>"; };
+		F16AF89A2470950700DEE48F /* SplashScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SplashScreen.storyboard; sourceTree = "<group>"; };
+		F8BFCE8E0E9C105508ED244B /* libPods-WorkoutApp-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WorkoutApp-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,7 +220,6 @@
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
-				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				F15C168C240458320083C3A1 /* AppCenter-Config.xcconfig */,
 				0853E6BF246703D700984A31 /* Lottie.swift */,
@@ -271,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				0853E6C1246705C500984A31 /* WorkoutApp-Bridging-Header.h */,
+				F16AF89A2470950700DEE48F /* SplashScreen.storyboard */,
 				13B07FAE1A68108700A75B9A /* WorkoutApp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* WorkoutAppTests */,
@@ -486,7 +487,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				F16AF89B2470950700DEE48F /* SplashScreen.storyboard in Resources */,
 				0878A6F223F8B5C200947597 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -777,18 +778,6 @@
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		13B07FB11A68108700A75B9A /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				13B07FB21A68108700A75B9A /* Base */,
-			);
-			name = LaunchScreen.xib;
-			path = WorkoutApp;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
