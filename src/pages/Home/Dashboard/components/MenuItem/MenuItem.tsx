@@ -1,7 +1,9 @@
 import React, { FunctionComponent } from 'react';
+import { Dimensions } from 'react-native';
 import styled from '@woap/utils/styled-components';
 import { theme } from '@woap/styles/theme';
 export const ITEM_HEIGHT = 48;
+export const ITEM_WIDTH = Dimensions.get('window').width * 0.5;
 
 interface Props {
   title: string;
@@ -22,8 +24,10 @@ export const MenuItem: FunctionComponent<Props> = ({ title, Icon, onPress }) => 
 
 const ItemContainer = styled.TouchableOpacity({
   height: ITEM_HEIGHT,
+  width: ITEM_WIDTH,
   flexDirection: 'row',
   alignItems: 'center',
+  justifyContent: 'flex-end',
 });
 
 const IconContainer = styled.View({

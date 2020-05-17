@@ -10,6 +10,8 @@
   },
   "historyStatistics": {
     "menuTitle": "STATISTICS",
-    "title": "Statistics"
+    "title": "Statistics",
+    "since": "Since yesterday",
+    "since_plural": "Since the last {{count}} days"
   }
 }
