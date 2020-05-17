@@ -13,7 +13,6 @@ import { ProfileNavigator } from './ProfileNavigator';
 
 export type TabNavigatorParamList = {
   [Routes.HomeNavigator]: undefined;
-  [Routes.WorkoutsNavigator]: undefined;
   [Routes.HistoryNavigator]: undefined;
   [Routes.ProfileNavigator]: undefined;
 };
