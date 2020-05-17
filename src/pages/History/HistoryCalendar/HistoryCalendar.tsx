@@ -16,6 +16,27 @@ interface Props {}
 
 const extractDayKeyFromDate = (date: Date) => date.toISOString().split('T')[0];
 
+const markedDateStyle = {
+  container: {
+    backgroundColor: colors.white,
+  },
+  text: {
+    color: colors.background.black,
+  },
+};
+
+const calendarTheme = {
+  todayTextColor: 'red',
+  dayTextColor: colors.white,
+  calendarBackground: colors.background.black,
+  textDisabledColor: colors.greyScale[50],
+  monthTextColor: colors.white,
+  indicatorColor: colors.green,
+  textDayFontWeight: 'bold',
+  textMonthFontWeight: 'bold',
+  textMonthFontSize: 20,
+};
+
 export const HistoryCalendar: FunctionComponent<Props> = observer(() => {
   const { t } = useTranslation('history');
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -47,27 +68,10 @@ export const HistoryCalendar: FunctionComponent<Props> = observer(() => {
         markedDates={{
           ...markedTrainingDays,
           [extractDayKeyFromDate(selectedDate)]: {
-            customStyles: {
-              container: {
-                backgroundColor: colors.white,
-              },
-              text: {
-                color: colors.background.black,
-              },
-            },
+            customStyles: markedDateStyle,
           },
         }}
-        theme={{
-          todayTextColor: 'red',
-          dayTextColor: colors.white,
-          calendarBackground: colors.background.black,
-          textDisabledColor: colors.greyScale[50],
-          monthTextColor: colors.white,
-          indicatorColor: colors.green,
-          textDayFontWeight: 'bold',
-          textMonthFontWeight: 'bold',
-          textMonthFontSize: 20,
-        }}
+        theme={calendarTheme}
       />
       <Spacer height={1} />
       <FlatList

@@ -11,6 +11,7 @@
   "historyStatistics": {
     "menuTitle": "STATISTIQUES",
     "title": "Statistiques",
-    "since": "Depuis {{numberOfDays}} jour(s)"
+    "since": "Depuis hier",
+    "since_plural": "Depuis les {{count}} derniers jours"
   }
 }

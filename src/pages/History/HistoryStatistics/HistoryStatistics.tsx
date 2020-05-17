@@ -10,6 +10,8 @@ import { BodyVisualisation } from '@woap/components/BodyVisualisation';
 import { Spacer } from '@woap/components/Spacer';
 import { colors } from '@woap/styles/colors';
 
+const bodyVisualisationWidth = Dimensions.get('window').width * 0.85;
+
 export const HistoryStatistics: FunctionComponent = observer(() => {
   const { t } = useTranslation('history');
   const store = useStore();
@@ -21,14 +23,13 @@ export const HistoryStatistics: FunctionComponent = observer(() => {
     <Container>
       <Title>{t('historyStatistics.title')}</Title>
       <Spacer height={2} />
-      <Since>{t('historyStatistics.since', { numberOfDays })}</Since>
+      <Since>{t('historyStatistics.since', { count: numberOfDays })}</Since>
       <Spacer height={5} />
-      <BodyVisualisation width={Dimensions.get('window').width * 0.85} ratios={bodyRatios} />
+      <BodyVisualisation width={bodyVisualisationWidth} ratios={bodyRatios} />
       <Spacer height={2} />
-      <Slider
+      <StyledSlider
         value={numberOfDays}
-        onValueChange={value => setNumberOfDays(value)}
-        style={{ width: '80%' }}
+        onValueChange={setNumberOfDays}
         step={1}
         minimumValue={1}
         maximumValue={30}
@@ -59,3 +60,7 @@ const Since = styled.Text(({ theme }) => ({
   color: theme.colors.white,
   width: '100%',
 }));
+
+const StyledSlider = styled(Slider)({
+  width: '80%',
+});

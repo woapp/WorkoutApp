@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
-import { TouchableWithoutFeedback, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import Animated, { interpolate } from 'react-native-reanimated';
 import { useTransition, bInterpolate } from 'react-native-redash';
 import LinearGradient from 'react-native-linear-gradient';
@@ -77,16 +77,11 @@ export const AnimatedMenu: FunctionComponent<Props> = ({
             );
           })}
         </Animated.View>
-        <TouchableWithoutFeedback
-          style={{
-            ...StyleSheet.absoluteFillObject,
-          }}
-          onPress={toggleMenu}
-        >
+        <TouchableIcon onPress={toggleMenu}>
           <IconContainer style={{ transform: [{ rotate }] }}>
             <Icon />
           </IconContainer>
-        </TouchableWithoutFeedback>
+        </TouchableIcon>
       </Container>
     </>
   );
@@ -114,3 +109,7 @@ const IconContainer = styled(AnimatedLinearGradient).attrs({
   justifyContent: 'center',
   borderRadius: theme.iconSize / 2,
 }));
+
+const TouchableIcon = styled.TouchableWithoutFeedback({
+  ...StyleSheet.absoluteFillObject,
+});
