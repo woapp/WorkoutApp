@@ -43,6 +43,7 @@ target 'WorkoutApp' do
 
   pod 'lottie-react-native', :path => '../node_modules/lottie-react-native'
 
+  pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
 
   target 'WorkoutAppTests' do
     inherit! :search_paths
