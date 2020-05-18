@@ -25,6 +25,8 @@ export const ExerciseSummary: FunctionComponent<Props> = ({ navigation }) => {
   const { saveNewExercise, newExercise } = useStore();
   const { t } = useTranslation('exerciseCreation');
 
+  if (!newExercise) return null;
+
   const closeModal = () => {
     navigation.popToTop();
     navigation.goBack();

@@ -22,13 +22,16 @@ type Props = {
 };
 
 export const ExerciseName: FunctionComponent<Props> = ({ navigation }) => {
-  const store = useStore();
-  const [name, setName] = useState(store.newExercise.name);
   const { t } = useTranslation('exerciseCreation');
+  const store = useStore();
+  const newExercise = store.newExercise;
+  const [name, setName] = useState((newExercise && newExercise.name) || '');
   const isNameValid = name.length > 0;
+
+  if (!newExercise) return null;
   const goToExerciseMuscleGroupsScreen = () => {
     if (isNameValid) {
-      store.newExercise.setName(name);
+      newExercise.setName(name);
       navigation.navigate(Routes.ExerciseMuscleGroups);
     }
   };

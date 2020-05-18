@@ -35,6 +35,8 @@ export const ExerciseMuscleGroups: FunctionComponent<Props> = observer(({ naviga
 
   const selectedMuscleGroupsContainerRef = useRef<ScrollView>(null);
 
+  if (!newExercise) return null;
+
   const closeModale = () => {
     navigation.popToTop();
     navigation.goBack();

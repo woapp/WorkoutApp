@@ -28,6 +28,8 @@ export const ExerciseDescription: FunctionComponent<Props> = observer(({ navigat
   const newExercise = store.newExercise;
   const { t } = useTranslation('exerciseCreation');
 
+  if (!newExercise) return null;
+
   const closeModal = () => {
     navigation.popToTop();
     navigation.goBack();
