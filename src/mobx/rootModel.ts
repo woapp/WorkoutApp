@@ -9,7 +9,7 @@ import { FinishedTraining } from './finishedTraining';
 
 export const RootModel = {
   newFreeWorkout: types.maybe(FreeWorkout),
-  newExercise: Exercise,
+  newExercise: types.maybe(Exercise),
   trainings: types.array(Training),
   finishedTrainings: types.array(FinishedTraining),
   exercises: types.array(Exercise),

@@ -24,6 +24,7 @@ export const rootActions = (self: ModelInstanceTypeProps<typeof RootModel>) => (
   saveNewExercise(): void {
     if (self.newExercise) {
       self.exercises.push(clone(self.newExercise));
+      self.newExercise = undefined;
     }
   },
   initializeNewFreeWorkout(): void {
@@ -32,6 +33,7 @@ export const rootActions = (self: ModelInstanceTypeProps<typeof RootModel>) => (
   saveNewFreeWorkout(): void {
     if (self.newFreeWorkout) {
       self.trainings.push(clone(self.newFreeWorkout));
+      self.newFreeWorkout = undefined;
     }
   },
   deleteTraining(training: TrainingType): void {
