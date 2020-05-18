@@ -52,6 +52,7 @@ export const ExerciseDescription: FunctionComponent<Props> = observer(({ navigat
           selectionColor={colors.white}
           onSubmitEditing={goToExerciseSummary}
           multiline
+          textAlignVertical={'top'}
         />
 
         <NextButton onPress={goToExerciseSummary} disabled={false} />
