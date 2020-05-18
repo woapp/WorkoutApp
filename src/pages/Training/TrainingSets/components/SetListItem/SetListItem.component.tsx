@@ -17,6 +17,7 @@ interface Props {
   onPress: () => void;
   onRemove: () => void;
   onDuplicate: () => void;
+  onUpdate: () => void;
 }
 
 const ICON_CONTAINER_SIZE = 32;
@@ -27,6 +28,7 @@ export const SetListItem: FunctionComponent<Props> = ({
   onPress,
   onRemove,
   onDuplicate,
+  onUpdate,
   selected,
 }) => {
   const { name, reps, weight } = set;
@@ -58,7 +60,7 @@ export const SetListItem: FunctionComponent<Props> = ({
           <CopyIcon />
         </IconContainer>
         <Spacer width={2} />
-        <IconContainer>
+        <IconContainer onPress={onUpdate}>
           <EditIcon />
         </IconContainer>
         <Separator />

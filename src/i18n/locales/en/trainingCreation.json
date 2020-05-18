@@ -16,7 +16,10 @@
   },
   "trainingSets": {
     "title": "Nouvel entraînement",
-    "finalize": "Finalize"
+    "finalize": "Finalize",
+    "repetitions": "Repetitions",
+    "kilograms": "Kilograms",
+    "update": "Update"
   },
   "trainingName": {
     "title": "New training",

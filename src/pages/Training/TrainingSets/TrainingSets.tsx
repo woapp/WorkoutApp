@@ -15,6 +15,7 @@ import { PlusIcon } from '@woap/components/Icons/PlusIcon';
 import { FinalButton } from '@woap/components/FinalButton';
 
 import { SetListItem } from './components/SetListItem';
+import { UpdateSetModal } from './components/UpdateSetModal';
 
 type TrainingSetsScreenNavigationProp = StackNavigationProp<
   TrainingNavigatorParamList,
@@ -30,6 +31,7 @@ export const TrainingSets: FunctionComponent<Props> = observer(({ navigation }) 
   const { t } = useTranslation('trainingCreation');
 
   const [selectedSet, setSelectedSet] = useState<ExerciseSetType | null>();
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   if (!newFreeWorkout) return null;
 
@@ -48,10 +50,14 @@ export const TrainingSets: FunctionComponent<Props> = observer(({ navigation }) 
         );
       }}
       onRemove={() => {
+        setSelectedSet(null);
         newFreeWorkout.removeExerciseSet(item);
       }}
       onDuplicate={() => {
         newFreeWorkout.duplicateExerciseSet(item);
+      }}
+      onUpdate={() => {
+        setIsModalVisible(true);
       }}
     />
   );
@@ -78,6 +84,13 @@ export const TrainingSets: FunctionComponent<Props> = observer(({ navigation }) 
         </IconContainer>
       </Container>
       <FinalButton onPress={goToTrainingPageScreen} title={t('trainingSets.finalize')} />
+      {selectedSet && (
+        <UpdateSetModal
+          isVisible={isModalVisible}
+          onPressClose={() => setIsModalVisible(false)}
+          exerciseSet={selectedSet}
+        />
+      )}
     </Background>
   );
 });
