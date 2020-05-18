@@ -29,8 +29,10 @@ export const TrainingSets: FunctionComponent<Props> = observer(({ navigation }) 
   const { newFreeWorkout } = useStore();
   const { t } = useTranslation('trainingCreation');
 
-  if (!newFreeWorkout) return null;
   const [selectedSet, setSelectedSet] = useState<ExerciseSetType | null>();
+
+  if (!newFreeWorkout) return null;
+
   const goToTrainingPageScreen = () => navigation.navigate(Routes.TrainingName);
   const onReorderSets = ({ data }) => {
     newFreeWorkout.replaceExerciseSets(data);

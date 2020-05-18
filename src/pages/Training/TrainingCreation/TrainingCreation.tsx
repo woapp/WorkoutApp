@@ -38,12 +38,12 @@ type Props = {
 export const TrainingCreation: FunctionComponent<Props> = observer(({ navigation }) => {
   const store = useStore();
   const { t } = useTranslation('trainingCreation');
-
-  if (!store.newFreeWorkout) return null;
-
   const { filter, setFilter, matchSearch } = useSearch();
   const [displayAddExerciseModal, setDisplayAddExerciseModal] = useState(false);
   const [selectedExercise, setSelectedExercise] = useState<ExerciseType | null>(null);
+
+  if (!store.newFreeWorkout) return null;
+
   const openAddExerciseModal = () => {
     setDisplayAddExerciseModal(true);
   };

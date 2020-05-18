@@ -23,8 +23,10 @@ type Props = {
 
 export const TrainingName: FunctionComponent<Props> = observer(({ navigation }) => {
   const { newFreeWorkout } = useStore();
-  if (!newFreeWorkout) return null;
   const [name, setName] = useState('');
+
+  if (!newFreeWorkout) return null;
+
   const goToTrainingTagsScreen = () => {
     newFreeWorkout.setName(name);
     navigation.navigate(Routes.TrainingTags);

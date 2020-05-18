@@ -29,9 +29,11 @@ export const TrainingTags: FunctionComponent<Props> = observer(({ navigation }) 
   const { tags, newFreeWorkout, saveNewFreeWorkout, addTag, addDefaultTags } = useStore();
   addDefaultTags();
 
-  if (!newFreeWorkout) return null;
   const [isNewTagModalVisible, setIsNewTagModalVisible] = useState(false);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
+
+  if (!newFreeWorkout) return null;
+
   const goToDashBoardScreen = () => {
     newFreeWorkout.setTags(tags.filter(tag => selectedTags.includes(tag.id)));
     saveNewFreeWorkout();
