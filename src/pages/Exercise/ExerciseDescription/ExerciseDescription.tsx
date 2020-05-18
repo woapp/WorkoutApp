@@ -51,6 +51,7 @@ export const ExerciseDescription: FunctionComponent<Props> = observer(({ navigat
           onSubmitEditing={goToExerciseSummary}
           multiline
         />
+
         <NextButton onPress={goToExerciseSummary} disabled={false} />
       </Container>
     </Background>
@@ -73,5 +74,5 @@ const DescriptionFormField = styled(FormField)(({ theme }) => ({
   color: theme.colors.white,
   fontWeight: 'bold',
   ...theme.fonts.h3,
-  maxHeight: 400,
+  height: 150,
 }));
