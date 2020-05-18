@@ -96,7 +96,7 @@ export const TrainingCreation: FunctionComponent<Props> = observer(({ navigation
               title={t('trainingCreation.createExercise')}
             />
           )}
-          renderItem={({ item, index }) => (
+          renderItem={({ item }) => (
             <ExerciseItem
               title={item.name || ''}
               onPress={() => {
@@ -108,7 +108,6 @@ export const TrainingCreation: FunctionComponent<Props> = observer(({ navigation
                 store.newFreeWorkout ? store.newFreeWorkout.exercisesId.includes(item.id) : false
               }
               key={`${item.id}`}
-              index={index}
             />
           )}
         />
