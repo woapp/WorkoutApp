@@ -16,7 +16,7 @@ import { useStore } from '@woap/utils/hooks/useStore';
 import { TextBody } from '@woap/components/Texts';
 import { ArrowForwardIcon } from '@woap/components/Icons/ArrowForwardIcon';
 import { Spacer } from '@woap/components/Spacer';
-import { Alert, View } from 'react-native';
+import { Alert, View, YellowBox } from 'react-native';
 import { TrainingType } from '@woap/mobx/training';
 import { FlatList } from 'react-native-gesture-handler';
 import { useSearch } from '@woap/hooks/useSearch';
@@ -26,6 +26,10 @@ import { PlusIcon } from '@woap/components/Icons/PlusIcon';
 
 import { NoTraining } from './components/NoTraining';
 import { FavoriteTrainingCard } from './components/FavoriteTrainingCard';
+
+YellowBox.ignoreWarnings([
+  'VirtualizedLists should never be nested', // TODO: Remove when fixed
+]);
 
 type DashboardScreenNavigationProp = CompositeNavigationProp<
   StackNavigationProp<RootNavigatorParamList, Routes.TabNavigator>,
