@@ -63,13 +63,13 @@ export const TrainingSets: FunctionComponent<Props> = observer(({ navigation }) 
           <Header title={t('trainingSets.title')} />
         </HeaderContainer>
         <DraggableFlatList
+          showsVerticalScrollIndicator={false}
           data={newFreeWorkout.exerciseSets.toJS()}
           renderItem={renderExercise}
           keyExtractor={item => item.id}
           onDragEnd={onReorderSets}
           contentContainerStyle={{
             paddingTop: theme.margin.x2,
-            paddingHorizontal: theme.margin.x2,
             paddingBottom: 250,
           }} // TODO: remove and find find a way for scrollview to be aware of keyboard
         />
@@ -84,6 +84,7 @@ export const TrainingSets: FunctionComponent<Props> = observer(({ navigation }) 
 
 const Container = styled.SafeAreaView({
   marginTop: theme.margin.x2,
+  marginHorizontal: theme.margin.x2,
   flex: 1,
 });
 
