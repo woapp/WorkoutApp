@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import Svg, { Defs, LinearGradient, Stop, Path, G, Circle } from 'react-native-svg';
+import Svg, { Path, G, Circle } from 'react-native-svg';
 /* SVGR has dropped some elements not supported by react-native-svg: title */
 
 interface Props {
@@ -8,40 +8,6 @@ interface Props {
 
 export const EmptyData: FunctionComponent<Props> = ({ size }) => (
   <Svg data-name="Layer 1" width={size} height={size} viewBox="0 0 820.16 780.81">
-    <Defs>
-      <LinearGradient
-        id="prefix__a"
-        x1={539.63}
-        y1={734.6}
-        x2={539.63}
-        y2={151.19}
-        gradientTransform="translate(-3.62 1.57)"
-        gradientUnits="userSpaceOnUse"
-      >
-        <Stop offset={0} stopColor="gray" stopOpacity={0.25} />
-        <Stop offset={0.54} stopColor="gray" stopOpacity={0.12} />
-        <Stop offset={1} stopColor="gray" stopOpacity={0.1} />
-      </LinearGradient>
-      <LinearGradient
-        id="prefix__b"
-        x1={540.17}
-        y1={180.2}
-        x2={540.17}
-        y2={130.75}
-        gradientTransform="translate(-63.92 7.85)"
-      />
-      <LinearGradient
-        id="prefix__c"
-        x1={540.17}
-        y1={140.86}
-        x2={540.17}
-        y2={82.43}
-        gradientTransform="rotate(-12.11 545.066 460.65)"
-      />
-      <LinearGradient id="prefix__d" x1={476.4} y1={710.53} x2={476.4} y2={127.12} />
-      <LinearGradient id="prefix__e" x1={476.94} y1={156.13} x2={476.94} y2={106.68} />
-      <LinearGradient id="prefix__f" x1={666.86} y1={176.39} x2={666.86} y2={117.95} />
-    </Defs>
     <Path fill="#e0e0e0" d="M69.12 135.49l427.295-91.682L623.09 634.19l-427.295 91.682z" />
     <Path
       transform="rotate(-12.11 160.03 1309.797)"

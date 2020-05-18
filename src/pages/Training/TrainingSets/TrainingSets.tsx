@@ -15,6 +15,7 @@ import { PlusIcon } from '@woap/components/Icons/PlusIcon';
 import { FinalButton } from '@woap/components/FinalButton';
 
 import { SetListItem } from './components/SetListItem';
+import { UpdateSetModal } from './components/UpdateSetModal';
 
 type TrainingSetsScreenNavigationProp = StackNavigationProp<
   TrainingNavigatorParamList,
@@ -29,8 +30,11 @@ export const TrainingSets: FunctionComponent<Props> = observer(({ navigation }) 
   const { newFreeWorkout } = useStore();
   const { t } = useTranslation('trainingCreation');
 
-  if (!newFreeWorkout) return null;
   const [selectedSet, setSelectedSet] = useState<ExerciseSetType | null>();
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  if (!newFreeWorkout) return null;
+
   const goToTrainingPageScreen = () => navigation.navigate(Routes.TrainingName);
   const onReorderSets = ({ data }) => {
     newFreeWorkout.replaceExerciseSets(data);
@@ -46,10 +50,14 @@ export const TrainingSets: FunctionComponent<Props> = observer(({ navigation }) 
         );
       }}
       onRemove={() => {
+        setSelectedSet(null);
         newFreeWorkout.removeExerciseSet(item);
       }}
       onDuplicate={() => {
         newFreeWorkout.duplicateExerciseSet(item);
+      }}
+      onUpdate={() => {
+        setIsModalVisible(true);
       }}
     />
   );
@@ -61,13 +69,13 @@ export const TrainingSets: FunctionComponent<Props> = observer(({ navigation }) 
           <Header title={t('trainingSets.title')} />
         </HeaderContainer>
         <DraggableFlatList
+          showsVerticalScrollIndicator={false}
           data={newFreeWorkout.exerciseSets.toJS()}
           renderItem={renderExercise}
           keyExtractor={item => item.id}
           onDragEnd={onReorderSets}
           contentContainerStyle={{
             paddingTop: theme.margin.x2,
-            paddingHorizontal: theme.margin.x2,
             paddingBottom: 250,
           }} // TODO: remove and find find a way for scrollview to be aware of keyboard
         />
@@ -76,12 +84,20 @@ export const TrainingSets: FunctionComponent<Props> = observer(({ navigation }) 
         </IconContainer>
       </Container>
       <FinalButton onPress={goToTrainingPageScreen} title={t('trainingSets.finalize')} />
+      {selectedSet && (
+        <UpdateSetModal
+          isVisible={isModalVisible}
+          onPressClose={() => setIsModalVisible(false)}
+          exerciseSet={selectedSet}
+        />
+      )}
     </Background>
   );
 });
 
 const Container = styled.SafeAreaView({
   marginTop: theme.margin.x2,
+  marginHorizontal: theme.margin.x2,
   flex: 1,
 });
 

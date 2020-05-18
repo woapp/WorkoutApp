@@ -1,3 +1,5 @@
+import { Platform } from 'react-native';
+
 import { colors } from './colors';
 import { fonts } from './fonts';
 
@@ -29,16 +31,21 @@ export const theme = {
       s: 1,
     },
   },
-  shadow: {
-    shadowColor: '#000',
+  iconSize: 48,
+  hitSlop: { top: 20, bottom: 20, left: 20, right: 20 },
+};
+
+export const shadow = Platform.select({
+  ios: {
+    shadowColor: '#000000',
     shadowOffset: {
       width: 0,
       height: 5,
     },
-    shadowOpacity: 0.34,
     shadowRadius: 6.27,
+    shadowOpacity: 0.34,
+  },
+  android: {
     elevation: 10,
   },
-  iconSize: 48,
-  hitSlop: { top: 20, bottom: 20, left: 20, right: 20 },
-};
+});

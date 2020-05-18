@@ -28,6 +28,8 @@ export const ExerciseDescription: FunctionComponent<Props> = observer(({ navigat
   const newExercise = store.newExercise;
   const { t } = useTranslation('exerciseCreation');
 
+  if (!newExercise) return null;
+
   const closeModal = () => {
     navigation.popToTop();
     navigation.goBack();
@@ -50,7 +52,9 @@ export const ExerciseDescription: FunctionComponent<Props> = observer(({ navigat
           selectionColor={colors.white}
           onSubmitEditing={goToExerciseSummary}
           multiline
+          textAlignVertical={'top'}
         />
+
         <NextButton onPress={goToExerciseSummary} disabled={false} />
       </Container>
     </Background>
@@ -73,5 +77,5 @@ const DescriptionFormField = styled(FormField)(({ theme }) => ({
   color: theme.colors.white,
   fontWeight: 'bold',
   ...theme.fonts.h3,
-  maxHeight: 400,
+  height: 150,
 }));

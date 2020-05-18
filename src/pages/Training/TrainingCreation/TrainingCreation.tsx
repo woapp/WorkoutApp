@@ -38,12 +38,12 @@ type Props = {
 export const TrainingCreation: FunctionComponent<Props> = observer(({ navigation }) => {
   const store = useStore();
   const { t } = useTranslation('trainingCreation');
-
-  if (!store.newFreeWorkout) return null;
-
   const { filter, setFilter, matchSearch } = useSearch();
   const [displayAddExerciseModal, setDisplayAddExerciseModal] = useState(false);
   const [selectedExercise, setSelectedExercise] = useState<ExerciseType | null>(null);
+
+  if (!store.newFreeWorkout) return null;
+
   const openAddExerciseModal = () => {
     setDisplayAddExerciseModal(true);
   };
@@ -96,7 +96,7 @@ export const TrainingCreation: FunctionComponent<Props> = observer(({ navigation
               title={t('trainingCreation.createExercise')}
             />
           )}
-          renderItem={({ item, index }) => (
+          renderItem={({ item }) => (
             <ExerciseItem
               title={item.name || ''}
               onPress={() => {
@@ -108,7 +108,6 @@ export const TrainingCreation: FunctionComponent<Props> = observer(({ navigation
                 store.newFreeWorkout ? store.newFreeWorkout.exercisesId.includes(item.id) : false
               }
               key={`${item.id}`}
-              index={index}
             />
           )}
         />

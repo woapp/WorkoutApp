@@ -1,6 +1,6 @@
 {
   "trainingCreation": {
-    "title": "Mon nouvel entraînement",
+    "title": "Nouvel entraînement",
     "chooseExercise": "Choisis un exercice",
     "createExercise": "Crée un nouvel exercice",
     "repetitions": "Répétitions",
@@ -9,14 +9,17 @@
     "add": "Ajouter",
     "deleteAlert": {
       "title": "Supprimer l'exercice",
-      "content": "Êtes-vous sûr de vouloir le supprimer ?\nIl restera dans les entraînements qui l'utilisent",
+      "content": "Es-tu sûr de vouloir le supprimer ?\nIl restera dans les entraînements qui l'utilisent",
       "cancel": "Annuler",
       "delete": "Supprimer"
     }
   },
   "trainingSets": {
-    "title": "New training",
-    "finalize": "Finaliser"
+    "title": "Nouvel entraînement",
+    "finalize": "Finaliser",
+    "repetitions": "Répétitions",
+    "kilograms": "Kilogrammes",
+    "update": "Modifier"
   },
   "trainingName": {
     "title": "Nouvel entraînement",

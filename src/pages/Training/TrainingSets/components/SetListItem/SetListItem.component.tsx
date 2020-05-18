@@ -1,13 +1,14 @@
 import React, { FunctionComponent } from 'react';
 import { useTimingTransition, bInterpolate } from 'react-native-redash';
 import Animated, { interpolate } from 'react-native-reanimated';
+import { useTranslation } from 'react-i18next';
 import styled from '@woap/utils/styled-components';
 import { CopyIcon } from '@woap/components/Icons/CopyIcon';
 import { TrashIcon } from '@woap/components/Icons/TrashIcon';
 import { EditIcon } from '@woap/components/Icons/EditIcon';
 import { Spacer } from '@woap/components/Spacer';
 import { ExerciseSetType } from '@woap/mobx/exerciseSet';
-import { useTranslation } from 'react-i18next';
+import { ViewWithShadow } from '@woap/components/ViewWithShadow';
 
 interface Props {
   selected: boolean;
@@ -16,6 +17,7 @@ interface Props {
   onPress: () => void;
   onRemove: () => void;
   onDuplicate: () => void;
+  onUpdate: () => void;
 }
 
 const ICON_CONTAINER_SIZE = 32;
@@ -26,6 +28,7 @@ export const SetListItem: FunctionComponent<Props> = ({
   onPress,
   onRemove,
   onDuplicate,
+  onUpdate,
   selected,
 }) => {
   const { name, reps, weight } = set;
@@ -37,25 +40,27 @@ export const SetListItem: FunctionComponent<Props> = ({
 
   return (
     <>
-      <ItemContainer selected={selected} onLongPress={onDrag} onPress={onPress}>
-        <Title>{name}</Title>
-        <FiguresContainer>
-          <Data>
-            <Figure>{reps}</Figure>
-            <Label> {t('reps')}</Label>
-          </Data>
-          <Data>
-            <Figure>{weight}</Figure>
-            <Label> {t('kg')}</Label>
-          </Data>
-        </FiguresContainer>
-      </ItemContainer>
+      <Shadow>
+        <ItemContainer selected={selected} onLongPress={onDrag} onPress={onPress}>
+          <Title>{name}</Title>
+          <FiguresContainer>
+            <Data>
+              <Figure>{reps}</Figure>
+              <Label> {t('reps')}</Label>
+            </Data>
+            <Data>
+              <Figure>{weight}</Figure>
+              <Label> {t('kg')}</Label>
+            </Data>
+          </FiguresContainer>
+        </ItemContainer>
+      </Shadow>
       <OptionsContainer style={{ height, transform: [{ translateY }], opacity }}>
         <IconContainer onPress={onDuplicate}>
           <CopyIcon />
         </IconContainer>
         <Spacer width={2} />
-        <IconContainer>
+        <IconContainer onPress={onUpdate}>
           <EditIcon />
         </IconContainer>
         <Separator />
@@ -71,11 +76,12 @@ const ItemContainer = styled.TouchableOpacity<{ selected: boolean }>(({ theme, s
   flex: 1,
   borderRadius: theme.border.radius.s,
   padding: theme.margin.x1,
-  ...theme.shadow,
   backgroundColor: theme.colors.white,
   zIndex: 1,
   borderWidth: selected ? 2 : 0,
 }));
+
+const Shadow = styled(ViewWithShadow)({ flex: 1 });
 
 const OptionsContainer = styled(Animated.View)(({ theme }) => ({
   flexDirection: 'row',
