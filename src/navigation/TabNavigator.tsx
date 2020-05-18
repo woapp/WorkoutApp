@@ -4,18 +4,17 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import { colors } from '@woap/styles/colors';
 import { HistoryIcon } from '@woap/components/Icons/HistoryIcon';
 import { HomeIcon } from '@woap/components/Icons/HomeIcon';
-import { ProfileIcon } from '@woap/components/Icons/ProfileIcon';
+import { BuildIcon } from '@woap/components/Icons/BuildIcon';
 
 import { Routes } from './routes';
 import { HistoryNavigator } from './HistoryNavigator';
 import { HomeNavigator } from './HomeNavigator';
-import { ProfileNavigator } from './ProfileNavigator';
+import { SupportNavigator } from './SupportNavigator';
 
 export type TabNavigatorParamList = {
   [Routes.HomeNavigator]: undefined;
-  [Routes.WorkoutsNavigator]: undefined;
   [Routes.HistoryNavigator]: undefined;
-  [Routes.ProfileNavigator]: undefined;
+  [Routes.SupportNavigator]: undefined;
 };
 
 const ICON_SIZE = 32;
@@ -51,10 +50,10 @@ export const TabNavigator = () => (
         }}
       />
       <Tab.Screen
-        name={Routes.ProfileNavigator}
-        component={ProfileNavigator}
+        name={Routes.SupportNavigator}
+        component={SupportNavigator}
         options={{
-          tabBarIcon: ({ focused }) => <ProfileIcon focused={focused} />,
+          tabBarIcon: ({ focused }) => <BuildIcon focused={focused} />,
         }}
       />
     </Tab.Navigator>

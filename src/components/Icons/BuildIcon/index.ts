@@ -1,0 +1,1 @@
+export { BuildIcon } from './BuildIcon';

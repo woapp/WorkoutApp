@@ -3,11 +3,11 @@ import { initReactI18next } from 'react-i18next';
 
 import homeEn from './locales/en/home.json';
 import commonEn from './locales/en/common.json';
-import profileEn from './locales/en/profile.json';
+import supportEn from './locales/en/support.json';
 import historyEn from './locales/en/history.json';
 import trainingCreationEn from './locales/en/trainingCreation.json';
 import commonFr from './locales/fr/common.json';
-import profileFr from './locales/fr/profile.json';
+import supportFr from './locales/fr/support.json';
 import historyFr from './locales/fr/history.json';
 import trainingCreationFr from './locales/fr/trainingCreation.json';
 import homeFr from './locales/fr/home.json';
@@ -19,7 +19,7 @@ const resources = {
   en: {
     home: homeEn,
     history: historyEn,
-    profile: profileEn,
+    support: supportEn,
     common: commonEn,
     trainingCreation: trainingCreationEn,
     exerciseCreation: exerciseCreationEn,
@@ -27,7 +27,7 @@ const resources = {
   fr: {
     home: homeFr,
     history: historyFr,
-    profile: profileFr,
+    support: supportFr,
     common: commonFr,
     trainingCreation: trainingCreationFr,
     exerciseCreation: exerciseCreationFr,
