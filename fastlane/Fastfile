@@ -1,0 +1,80 @@
+fastlane_version "2.137.0"
+
+desc "Deploy app to appCenter"
+lane :pushToAppCenter do |options|
+  appcenter_upload(
+    api_token: "cb59f319567a9dee49b27c051f716cf606edd090",
+    owner_name: "cyrilb-bam.tech",
+    owner_type: "user",
+    app_name: options[:app_name],
+    file: options[:file],
+    notify_testers: true # Set to false if you don't want to notify testers of your new release (default: `false`)
+  )
+end
+
+platform :ios do
+   # iOS Lanes
+
+  desc "Clean ios project"
+  private_lane :clean do
+    clean_build_artifacts
+    clear_derived_data
+  end
+
+  before_all do
+    # certificates
+    xcversion(version: "~> 11.0")
+    clean
+    update_project_team(
+      path: "./ios/WorkoutApp.xcodeproj",
+      teamid: "348FF6TNV9"
+    )
+    cocoapods(
+      podfile: "./ios/Podfile",
+      use_bundle_exec: false,
+    )
+  end
+
+  desc 'Build the iOS application in production environment.'
+  lane :prod do
+    match(app_identifier: 'com.myca.woapp', type: 'adhoc', readonly: true)
+    increment_build_number(xcodeproj: './ios/WorkoutApp.xcodeproj')
+    gym(
+      scheme: 'WorkoutApp',
+      configuration: "Release",
+      workspace: './ios/WorkoutApp.xcworkspace',
+      clean: true,
+      output_directory: "build/ios/prod",
+      export_xcargs: "-allowProvisioningUpdates",
+      export_options: {
+        method: "app-store",
+        compileBitcode: false
+      })
+    upload_to_app_store
+  end
+
+  desc 'Build the iOS application in staging environment.'
+  lane :staging do
+    match(app_identifier: 'com.myca.woapp.staging', type: 'adhoc', readonly: true)
+    increment_build_number(xcodeproj: './ios/WorkoutApp.xcodeproj')
+    gym(
+      scheme: 'WorkoutApp',
+      configuration: "Release",
+      workspace: './ios/WorkoutApp.xcworkspace',
+      clean: true,
+      output_directory: "build/ios/staging",
+      export_xcargs: "-allowProvisioningUpdates",
+      export_options: {
+        method: "ad-hoc",
+        compileBitcode: false
+    })
+    pushToAppCenter(
+      app_name: "WorkoutApp-iOS",
+      file: "./build/ios/staging/WorkoutApp.ipa"
+    )
+  end
+end
+
+platform :android do
+  # Android Lanes
+end
