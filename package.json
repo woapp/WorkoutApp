@@ -1,6 +1,6 @@
 {
   "name": "WorkoutApp",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "private": true,
   "license": "MIT",
   "scripts": {
@@ -16,7 +16,7 @@
     "ts:check": "tsc",
     "generate": "plop",
     "lint-staged": "lint-staged",
-    "release": "dotenv release-it"
+    "release:staging": "dotenv release-it --config='release-it.staging.json'"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.7",
