@@ -17,11 +17,5 @@
   },
   "npm": {
     "publish": false
-  },
-  "github": {
-    "release": true,
-    "releaseName": "app-v${version}-",
-    "releaseNotes": null,
-    "tokenRef": "GITHUB_TOKEN"
   }
 }
