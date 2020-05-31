@@ -2,6 +2,7 @@
   "title": "WorkoutApp is currently under development. Help us improving it by reporting potential bugs or ideas for improvement.",
   "bug": "bug",
   "improvement": "improvement",
-  "bodyPlaceholder": "...",
+  "improvementPlaceholder": "Enter your improvement idea",
+  "bugPlaceholder": "Explain the bug you found",
   "send": "SEND"
 }

@@ -1,1 +1,0 @@
-export { UpdateSetModal } from './UpdateSetModal';

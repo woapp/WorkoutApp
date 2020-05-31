@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { ExerciseSetType } from '@woap/mobx/exerciseSet';
 import styled from '@woap/utils/styled-components';
@@ -8,6 +8,7 @@ import Animated from 'react-native-reanimated';
 import { Spacer } from '@woap/components/Spacer';
 import { View } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import { EditExerciseSetModal } from '@woap/components/EditExerciseModal';
 
 type ExerciseItemProps = {
   isOngoing: boolean;
@@ -20,6 +21,8 @@ type ExerciseItemProps = {
 export const ExerciseSet: FunctionComponent<ExerciseItemProps> = observer(
   ({ exerciseSet, index, currentIndex }) => {
     const { t } = useTranslation('common');
+    const [isEditExerciseModalVisible, setIsEditExerciseModalVisible] = useState(false);
+    const [exerciseSetToEdit, setExerciseSetToEdit] = useState<ExerciseSetType | null>(null);
     const isOngoing = index === currentIndex;
     const isDone = index < currentIndex;
 
@@ -33,35 +36,51 @@ export const ExerciseSet: FunctionComponent<ExerciseItemProps> = observer(
     const isDoneOpacity = bInterpolate(isDoneTransition, 1, 0);
     const isDoneTranslateY = bInterpolate(isDoneTransition, 0, 8);
 
+    const onEditExercise = () => {
+      setExerciseSetToEdit(exerciseSet);
+      setIsEditExerciseModalVisible(true);
+    };
+
+    const onEditExerciseModalClose = () => setIsEditExerciseModalVisible(false);
+
     return (
       <>
         {isOngoing && <Spacer height={2} />}
-        <Container
+        <Animated.View
           style={{ transform: [{ scale: isOngoingScale, translateX: isOngoingTranslateX }] }}
         >
-          <IconContainer isOngoing={isOngoing} isDone={isDone}>
-            <MuscleGroupIcon
-              muscleGroup={exerciseSet.exercise.mainMuscleGroup}
-              width={40}
-              height={40}
-            />
-          </IconContainer>
-          <View>
-            <Title style={{ transform: [{ translateY: isDoneTranslateY }] }} isDone={isDone}>
-              {exerciseSet.exercise.name}
-            </Title>
-            <ExerciseSetInformation style={{ opacity: isDoneOpacity }}>
-              {exerciseSet.reps} {t('reps')} / {exerciseSet.weight} {t('kg')}
-            </ExerciseSetInformation>
-          </View>
-        </Container>
+          <Container onPress={onEditExercise}>
+            <IconContainer isOngoing={isOngoing} isDone={isDone}>
+              <MuscleGroupIcon
+                muscleGroup={exerciseSet.exercise.mainMuscleGroup}
+                width={40}
+                height={40}
+              />
+            </IconContainer>
+            <View>
+              <Title style={{ transform: [{ translateY: isDoneTranslateY }] }} isDone={isDone}>
+                {exerciseSet.exercise.name}
+              </Title>
+              <ExerciseSetInformation style={{ opacity: isDoneOpacity }}>
+                {exerciseSet.reps} {t('reps')} / {exerciseSet.weight} {t('kg')}
+              </ExerciseSetInformation>
+            </View>
+          </Container>
+        </Animated.View>
         {isOngoing && <Spacer height={2} />}
+        {exerciseSetToEdit && (
+          <EditExerciseSetModal
+            isVisible={isEditExerciseModalVisible}
+            onPressClose={onEditExerciseModalClose}
+            exerciseSet={exerciseSetToEdit}
+          />
+        )}
       </>
     );
   }
 );
 
-const Container = styled(Animated.View)(({ theme }) => ({
+const Container = styled.TouchableOpacity(({ theme }) => ({
   flexDirection: 'row',
   justifyContent: 'flex-start',
   alignItems: 'center',

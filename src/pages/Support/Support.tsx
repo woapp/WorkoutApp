@@ -10,7 +10,7 @@ import { colors } from '@woap/styles/colors';
 import { LinearButton } from '@woap/components/LinearButton';
 import { EmailService } from '@woap/services/email';
 
-enum RepportingType {
+enum ReportingType {
   BUG,
   IMPROVEMENT,
 }
@@ -37,11 +37,11 @@ const generateEmailId = () =>
 
 export const Support: FunctionComponent = () => {
   const { t } = useTranslation('support');
-  const [repportingType, setRepportingType] = useState(RepportingType.IMPROVEMENT);
+  const [reportingType, setReportingType] = useState(ReportingType.IMPROVEMENT);
   const [body, setBody] = useState('');
   const sendEmail = async () => {
     const subject = `${
-      repportingType === RepportingType.IMPROVEMENT ? 'Improvement' : 'Bug'
+      reportingType === ReportingType.IMPROVEMENT ? 'Improvement' : 'Bug'
     } #${generateEmailId()}`;
     const deviceInfos = await getDeviceInfos();
     const emailBody = `${body}\n\n${deviceInfos}`;
@@ -52,6 +52,9 @@ export const Support: FunctionComponent = () => {
     }
   };
 
+  const getInputPlaceholder = () =>
+    reportingType === ReportingType.IMPROVEMENT ? t('improvementPlaceholder') : t('bugPlaceholder');
+
   return (
     <Container>
       <Title>{t('title')}</Title>
@@ -59,20 +62,20 @@ export const Support: FunctionComponent = () => {
       <Row>
         <RadioButton
           label={t('improvement')}
-          onSelect={() => setRepportingType(RepportingType.IMPROVEMENT)}
-          selected={repportingType === RepportingType.IMPROVEMENT}
+          onSelect={() => setReportingType(ReportingType.IMPROVEMENT)}
+          selected={reportingType === ReportingType.IMPROVEMENT}
         />
         <RadioButton
           label={t('bug')}
-          onSelect={() => setRepportingType(RepportingType.BUG)}
-          selected={repportingType === RepportingType.BUG}
+          onSelect={() => setReportingType(ReportingType.BUG)}
+          selected={reportingType === ReportingType.BUG}
         />
       </Row>
       <Spacer height={2} />
       <BodyField
         value={body}
         onChangeText={setBody}
-        placeholder={t('bodyPlaceholder')}
+        placeholder={getInputPlaceholder()}
         placeholderTextColor={colors.transparentWhiteScale[60]}
         selectionColor={colors.white}
         multiline

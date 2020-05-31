@@ -13,6 +13,7 @@ import { Header } from '@woap/components/Header';
 import { useStore } from '@woap/utils/hooks/useStore';
 import { createTag } from '@woap/mobx/tag/constructor';
 import { SelectableTag } from '@woap/components/SelectableTag';
+import { useTranslation } from 'react-i18next';
 
 import { NewTagModal } from './components/NewTagModal';
 
@@ -27,6 +28,7 @@ type Props = {
 
 export const TrainingTags: FunctionComponent<Props> = observer(({ navigation }) => {
   const { tags, newFreeWorkout, saveNewFreeWorkout, addTag } = useStore();
+  const { t } = useTranslation('trainingCreation');
 
   const [isNewTagModalVisible, setIsNewTagModalVisible] = useState(false);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
@@ -58,9 +60,9 @@ export const TrainingTags: FunctionComponent<Props> = observer(({ navigation }) 
   return (
     <Background>
       <Container>
-        <Header title="New Training" />
+        <Header title={t('trainingTags.title')} />
         <Spacer height={3} />
-        <Title>Choose at least one tag</Title>
+        <Title>{t('trainingTags.chooseTag')}</Title>
         <Spacer height={2} />
         <TagsContainer>
           {tags.map(tag => (
@@ -71,7 +73,12 @@ export const TrainingTags: FunctionComponent<Props> = observer(({ navigation }) 
               onPress={onTagPressed(tag.id)}
             />
           ))}
-          <SelectableTag dashed onPress={openNewTagModal} name="+ new tag" selected={false} />
+          <SelectableTag
+            dashed
+            onPress={openNewTagModal}
+            name={t('trainingTags.addNewTag')}
+            selected={false}
+          />
         </TagsContainer>
         <NextButton onPress={goToDashBoardScreen} disabled={selectedTags.length === 0} />
       </Container>

@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useState, useEffect } from 'react';
 import DraggableFlatList from 'react-native-draggable-flatlist';
 import { useTranslation } from 'react-i18next';
 import { observer } from 'mobx-react-lite';
@@ -13,9 +13,9 @@ import { useStore } from '@woap/utils/hooks/useStore';
 import { ExerciseSetType } from '@woap/mobx/exerciseSet';
 import { PlusIcon } from '@woap/components/Icons/PlusIcon';
 import { FinalButton } from '@woap/components/FinalButton';
+import { EditExerciseSetModal } from '@woap/components/EditExerciseModal';
 
 import { SetListItem } from './components/SetListItem';
-import { UpdateSetModal } from './components/UpdateSetModal';
 
 type TrainingSetsScreenNavigationProp = StackNavigationProp<
   TrainingNavigatorParamList,
@@ -32,6 +32,14 @@ export const TrainingSets: FunctionComponent<Props> = observer(({ navigation }) 
 
   const [selectedSet, setSelectedSet] = useState<ExerciseSetType | null>();
   const [isModalVisible, setIsModalVisible] = useState(false);
+
+  useEffect(() => {
+    const exerciseSets = newFreeWorkout ? newFreeWorkout.exerciseSets : null;
+    if (exerciseSets && exerciseSets.length > 0) {
+      const lastExerciseSet = exerciseSets[exerciseSets.length - 1];
+      setSelectedSet(lastExerciseSet);
+    }
+  }, [newFreeWorkout]);
 
   if (!newFreeWorkout) return null;
 
@@ -85,7 +93,7 @@ export const TrainingSets: FunctionComponent<Props> = observer(({ navigation }) 
       </Container>
       <FinalButton onPress={goToTrainingPageScreen} title={t('trainingSets.finalize')} />
       {selectedSet && (
-        <UpdateSetModal
+        <EditExerciseSetModal
           isVisible={isModalVisible}
           onPressClose={() => setIsModalVisible(false)}
           exerciseSet={selectedSet}

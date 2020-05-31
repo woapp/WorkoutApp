@@ -24,11 +24,11 @@ const Container = styled.TouchableOpacity<{ selected: boolean; dashed: boolean }
     marginRight: theme.margin.x1,
     marginBottom: theme.margin.x1,
     borderWidth: 2,
-    borderColor: theme.colors.black,
+    borderColor: dashed ? theme.colors.white : theme.colors.black,
     paddingHorizontal: theme.margin.x2,
     paddingVertical: theme.margin.x1,
-    backgroundColor: selected ? theme.colors.black : theme.colors.transparentWhiteScale[60],
     borderRadius: theme.border.radius.m,
+    backgroundColor: selected ? theme.colors.black : theme.colors.transparentWhiteScale[60],
   })
 );
 
