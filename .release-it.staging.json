@@ -14,5 +14,17 @@
     "release": true,
     "tokenRef": "GITHUB_TOKEN",
     "releaseName": "Release staging ${version}"
+  },
+  "plugins": {
+    "@release-it/bumper": {
+      "in": {
+        "file": ".env.staging",
+        "type": "text/plain"
+      },
+      "out": {
+        "file": ".env.staging",
+        "type": "text/plain"
+      }
+    }
   }
 }
