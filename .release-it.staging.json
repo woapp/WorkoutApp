@@ -19,11 +19,13 @@
     "@release-it/bumper": {
       "in": {
         "file": ".env.staging",
-        "type": "text/plain"
+        "type": "text/plain",
+        "path": "VERSION"
       },
       "out": {
         "file": ".env.staging",
-        "type": "text/plain"
+        "type": "text/plain",
+        "path": "VERSION"
       }
     }
   }
