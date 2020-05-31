@@ -11,6 +11,7 @@
     "publish": false
   },
   "github": {
-    "release": true
+    "release": true,
+    "tokenRef": "GITHUB_TOKEN"
   }
 }
