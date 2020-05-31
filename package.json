@@ -17,7 +17,7 @@
     "generate": "plop",
     "lint-staged": "lint-staged",
     "release-no-env:staging": "release-it --config '.release-it.staging.json'",
-    "release:staging": "dotenv yarn release-no-env:staging",
+    "release:staging": "yarn dotenv yarn release-no-env:staging",
     "release-no-env:prod": "release-it --config '.release-it.prod.json'",
     "release:prod": "dotenv yarn release-no-env:prod"
   },
