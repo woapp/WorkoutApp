@@ -3,7 +3,7 @@
     "commitMessage": "Release ${version}",
     "tag": true,
     "tagName": "app-v${version}-staging",
-    "tagAnnotation": "Release ${version}",
+    "tagAnnotation": "Release staging ${version}",
     "pushArgs": ["--follow-tags"],
     "pushRepo": ""
   },
@@ -12,6 +12,7 @@
   },
   "github": {
     "release": true,
-    "tokenRef": "GITHUB_TOKEN"
+    "tokenRef": "GITHUB_TOKEN",
+    "releaseName": "Release staging ${version}"
   }
 }

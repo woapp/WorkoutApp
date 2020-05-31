@@ -3,11 +3,16 @@
     "commitMessage": "Release ${version}",
     "tag": true,
     "tagName": "app-v${version}-prod",
-    "tagAnnotation": "Release ${version}",
+    "tagAnnotation": "Release prod ${version}",
     "pushArgs": ["--follow-tags"],
     "pushRepo": ""
   },
   "npm": {
     "publish": false
+  },
+  "github": {
+    "release": true,
+    "tokenRef": "GITHUB_TOKEN",
+    "releaseName": "Release prod ${version}"
   }
 }
