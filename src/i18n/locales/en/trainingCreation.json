@@ -28,7 +28,8 @@
   },
   "trainingTags": {
     "title": "New training",
-    "chooseTage": "Choose at least 1 tag",
+    "chooseTag": "Choose at least 1 tag",
+    "addNewTag": "+ new tag",
     "newTag": "New tag",
     "create": "Create"
   }
