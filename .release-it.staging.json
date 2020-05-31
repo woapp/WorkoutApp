@@ -9,8 +9,5 @@
   },
   "npm": {
     "publish": false
-  },
-  "github": {
-    "release": true
   }
 }
