@@ -1,6 +1,6 @@
 {
   "name": "WorkoutApp",
-  "version": "0.1.8",
+  "version": "0.0.2",
   "private": true,
   "license": "MIT",
   "scripts": {
@@ -20,7 +20,7 @@
     "release:staging": "dotenv yarn release-no-env:staging",
     "release-no-env:prod": "release-it --config '.release-it.prod.json'",
     "release:prod": "dotenv yarn release-no-env:prod",
-    "deploy": "scripts/deploy.sh",  
+    "deploy": "scripts/deploy.sh",
     "deploy:prod": "scripts/deploy.prod.sh",
     "deploy:staging:hard": "yarn deploy -e staging -o ios -t hard && yarn deploy -e staging -o android -t hard",
     "deploy:staging:soft": "yarn deploy -e staging -o ios -t soft && yarn deploy -e staging -o android -t soft",
