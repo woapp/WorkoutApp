@@ -19,7 +19,13 @@
     "release-no-env:staging": "release-it --config '.release-it.staging.json'",
     "release:staging": "dotenv yarn release-no-env:staging",
     "release-no-env:prod": "release-it --config '.release-it.prod.json'",
-    "release:prod": "dotenv yarn release-no-env:prod"
+    "release:prod": "dotenv yarn release-no-env:prod",
+    "deploy": "scripts/deploy.sh",  
+    "deploy:prod": "scripts/deploy.prod.sh",
+    "deploy:staging:hard": "yarn deploy -e staging -o ios -t hard && yarn deploy -e staging -o android -t hard",
+    "deploy:staging:soft": "yarn deploy -e staging -o ios -t soft && yarn deploy -e staging -o android -t soft",
+    "deploy:prod:hard": "yarn deploy -e prod -o ios -t hard && yarn deploy -e prod -o android -t hard",
+    "deploy:prod:soft": "yarn deploy -e prod -o ios -t soft && yarn deploy -e prod -o android -t soft"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.7",
