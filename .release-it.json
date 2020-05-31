@@ -8,9 +8,9 @@
     "commitMessage": "Release ${version}",
     "commitArgs": [],
     "tag": true,
-    "tagName": "app-v${version}-",
+    "tagName": "app-v${version}-${env}",
     "tagAnnotation": "Release ${version}",
-    "tagArgs": [],
+    "tagArgs": ["env"],
     "push": true,
     "pushArgs": ["--follow-tags"],
     "pushRepo": ""
