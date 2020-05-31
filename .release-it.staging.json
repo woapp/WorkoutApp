@@ -2,7 +2,7 @@
   "git": {
     "commitMessage": "Release ${version}",
     "tag": true,
-    "tagName": "app-v${version}-prod",
+    "tagName": "app-v${version}-staging",
     "tagAnnotation": "Release ${version}",
     "pushArgs": ["--follow-tags"],
     "pushRepo": ""

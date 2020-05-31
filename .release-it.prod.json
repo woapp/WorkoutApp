@@ -1,0 +1,13 @@
+{
+  "git": {
+    "commitMessage": "Release ${version}",
+    "tag": true,
+    "tagName": "app-v${version}-prod",
+    "tagAnnotation": "Release ${version}",
+    "pushArgs": ["--follow-tags"],
+    "pushRepo": ""
+  },
+  "npm": {
+    "publish": false
+  }
+}
