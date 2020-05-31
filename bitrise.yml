@@ -3,10 +3,16 @@ format_version: '8'
 default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 project_type: react-native
 trigger_map:
-  - push_branch: '*'
-    workflow: StagingAppCenter
+  - push_branch: master
+    workflow: StagingCodePush
+  - push_branch: release/v*
+    workflow: ProdCodePush
   - pull_request_source_branch: '*'
     workflow: StagingAppCenter
+  - tag: app-v*-staging
+    workflow: StagingAppCenter
+  - tag: app-v*-prod
+    workflow: ProdStore
 workflows:
   StagingAppCenter:
     steps:
