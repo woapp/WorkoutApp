@@ -16,7 +16,8 @@
     "ts:check": "tsc",
     "generate": "plop",
     "lint-staged": "lint-staged",
-    "release:staging": "dotenv release-it -- --config '.release-it.staging.json'"
+    "release-no-env:staging": "release-it -- --config '.release-it.staging.json'",
+    "release:staging": "dotenv yarn release-no-env:staging"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.7",
