@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useState, useEffect } from 'react';
 import DraggableFlatList from 'react-native-draggable-flatlist';
 import { useTranslation } from 'react-i18next';
 import { observer } from 'mobx-react-lite';
@@ -32,6 +32,14 @@ export const TrainingSets: FunctionComponent<Props> = observer(({ navigation }) 
 
   const [selectedSet, setSelectedSet] = useState<ExerciseSetType | null>();
   const [isModalVisible, setIsModalVisible] = useState(false);
+
+  useEffect(() => {
+    const exerciseSets = newFreeWorkout ? newFreeWorkout.exerciseSets : null;
+    if (exerciseSets && exerciseSets.length > 0) {
+      const lastExerciseSet = exerciseSets[exerciseSets.length - 1];
+      setSelectedSet(lastExerciseSet);
+    }
+  }, [newFreeWorkout]);
 
   if (!newFreeWorkout) return null;
 
