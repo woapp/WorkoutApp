@@ -4,8 +4,6 @@
     "requireCleanWorkingDir": true,
     "requireBranch": false,
     "requireUpstream": true,
-    "requireCommits": false,
-    "addUntrackedFiles": false,
     "commit": true,
     "commitMessage": "Release ${version}",
     "commitArgs": [],
@@ -22,15 +20,8 @@
   },
   "github": {
     "release": true,
-    "releaseName": "Release ${version}",
+    "releaseName": "app-",
     "releaseNotes": null,
-    "preRelease": false,
-    "draft": false,
-    "tokenRef": "GITHUB_TOKEN",
-    "assets": null,
-    "host": null,
-    "timeout": 0,
-    "proxy": null,
-    "skipChecks": false
+    "tokenRef": "28ab57573fa38f3d703a344148366736e3941dea"
   }
 }
