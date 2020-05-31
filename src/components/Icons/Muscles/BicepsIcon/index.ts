@@ -1,0 +1,1 @@
+export { BicepsIcon } from './BicepsIcon';

@@ -1,0 +1,1 @@
+export { TrainingTags } from './TrainingTags';

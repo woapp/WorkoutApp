@@ -1,10 +1,13 @@
 import { useContext } from 'react';
+import { RootStoreType } from '@woap/mobx/types';
+import { StoreContext } from '@woap/mobx/provider';
 
-import { SelectorFunction } from '../../modules/types';
-import { StoreContext } from '../../modules/provider';
-
-export const useStore = <T>(selector: SelectorFunction<T>): T => {
+export const useStore = (): RootStoreType => {
   const store = useContext(StoreContext);
 
-  return selector(store);
+  if (!store) {
+    throw Error('Store is null or undefined');
+  }
+
+  return store as RootStoreType;
 };

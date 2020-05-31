@@ -1,0 +1,1 @@
+export { FavoriteTrainingCard } from './FavoriteTrainingCard';

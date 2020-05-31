@@ -1,0 +1,1 @@
+export { TrainingName } from './TrainingName';

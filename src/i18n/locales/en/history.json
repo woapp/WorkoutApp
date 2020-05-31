@@ -1,0 +1,17 @@
+{
+  "historyOverview": {
+    "menuTitle": "ALL YOUR\nTRAININGS",
+    "noData": "No data.\nComplete your first training !",
+    "title": "All your trainings"
+  },
+  "historyCalendar": {
+    "menuTitle": "CALENDAR",
+    "title": "Calendar"
+  },
+  "historyStatistics": {
+    "menuTitle": "STATISTICS",
+    "title": "Statistics",
+    "since": "Since yesterday",
+    "since_plural": "Since the last {{count}} days"
+  }
+}

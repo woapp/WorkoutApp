@@ -1,0 +1,47 @@
+{
+  "useTranslation": {
+    "prefix": "utrans",
+    "body": [
+      "const { t } = useTranslation('${1|home,history,profile,common,trainingCreation, exerciseCreation|}');"
+    ],
+    "description": "useTranslation"
+  },
+  "react jsx translation": {
+    "prefix": "rtrans",
+    "body": ["{t('$1.$2')}"],
+    "description": "react jsx translation"
+  },
+  "ts translation": {
+    "prefix": "ttrans",
+    "body": ["t('$1.$2')"],
+    "description": "ts translation"
+  },
+  "useStore": {
+    "prefix": "ustore",
+    "body": ["const store = useStore()"],
+    "description": "useStore"
+  },
+  "Native Styled Component": {
+    "prefix": "nsc",
+    "body": ["const $1 = styled.$2(({ theme }) => ({", "  $3", "}));"],
+    "description": "Native Styled Component"
+  },
+  "Custom Styled Component": {
+    "prefix": "csc",
+    "body": ["const $1 = styled($2)(({ theme }) => ({", "  $3", "}));"],
+    "description": "Custom Styled Component"
+  },
+  "Typescript component ": {
+    "prefix": "tc",
+    "body": [
+      "import React, { FunctionComponent } from 'react';",
+      "",
+      "interface Props {}",
+      "",
+      "export const ${1:$TM_FILENAME_BASE}: FunctionComponent<Props> = () => {",
+      "  return ($2);",
+      "};"
+    ],
+    "description": "Typescript component "
+  }
+}

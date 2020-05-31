@@ -1,0 +1,36 @@
+{
+  "trainingCreation": {
+    "title": "Nouvel entraînement",
+    "chooseExercise": "Choisis un exercice",
+    "createExercise": "Crée un nouvel exercice",
+    "repetitions": "Répétitions",
+    "kilograms": "Kilogrammes",
+    "nbSets": "Nombre de séries",
+    "add": "Ajouter",
+    "deleteAlert": {
+      "title": "Supprimer l'exercice",
+      "content": "Es-tu sûr de vouloir le supprimer ?\nIl restera dans les entraînements qui l'utilisent",
+      "cancel": "Annuler",
+      "delete": "Supprimer"
+    }
+  },
+  "trainingSets": {
+    "title": "Nouvel entraînement",
+    "finalize": "Finaliser",
+    "repetitions": "Répétitions",
+    "kilograms": "Kilogrammes",
+    "update": "Modifier"
+  },
+  "trainingName": {
+    "title": "Nouvel entraînement",
+    "whatName": "Comment le nommerais-tu ?",
+    "placeholder": "Full body, routine matinale"
+  },
+  "trainingTags": {
+    "title": "Nouvel entraînement",
+    "chooseTag": "Choisis au moins un tag",
+    "addNewTag": "+ nouveau tag",
+    "newTag": "Nouveau tag",
+    "create": "Créer"
+  }
+}

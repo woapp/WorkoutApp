@@ -1,0 +1,1 @@
+export { EmptyData } from './EmptyData';

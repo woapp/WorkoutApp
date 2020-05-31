@@ -1,0 +1,23 @@
+{
+  "dashboard": {
+    "nothingYet": "Rien pour l'instant.",
+    "searchPlaceholder": "Entrez un tag ou un nom d'entraînement",
+    "createTraining": "Crée ton premier entraînement personnalisé !",
+    "newTraining": "NOUVEL\nENTRAINEMENT",
+    "newExercise": "NOUVEL\nEXERCICE",
+    "allTrainings": "TOUS LES ENTRAINEMENTS",
+    "favoriteTrainings": "TES ENTRAÎNEMENTS FAVORIS"
+  },
+  "ongoingTraining": {
+    "deleteAlert": {
+      "title": "Supprimer l'entraînement",
+      "content": "Êtes-vous sûr de vouloir le supprimer ?",
+      "cancel": "Annuler",
+      "delete": "Supprimer"
+    },
+    "go": "C'EST PARTI !",
+    "next": "SUIVANT",
+    "finish": "TERMINER",
+    "trainingCompleted": "ENTRAINEMENT TERMINÉ"
+  }
+}

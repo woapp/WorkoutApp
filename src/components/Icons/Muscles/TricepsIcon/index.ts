@@ -1,0 +1,1 @@
+export { TricepsIcon } from './TricepsIcon';

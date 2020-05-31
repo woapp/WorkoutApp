@@ -1,0 +1,19 @@
+//
+//  AppCenter-Config.xcconfig
+//  WorkoutApp
+//
+//  Created by Cyril Bonaccini on 24/02/2020.
+//  Copyright © 2020 Facebook. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "https://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+    <key>AppSecret</key>
+    <string>a52869b8-37a7-4423-89b6-310583814796</string>
+    </dict>
+</plist>

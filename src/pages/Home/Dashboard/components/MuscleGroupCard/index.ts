@@ -1,0 +1,1 @@
+export { MuscleGroupCard } from './MuscleGroupCard';

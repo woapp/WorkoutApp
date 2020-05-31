@@ -1,0 +1,30 @@
+{
+  "git": {
+    "commitMessage": "Release ${version}",
+    "tag": true,
+    "tagName": "app-v${version}-staging",
+    "tagAnnotation": "Release staging ${version}",
+    "pushArgs": ["--follow-tags"],
+    "pushRepo": ""
+  },
+  "npm": {
+    "publish": false
+  },
+  "github": {
+    "release": true,
+    "tokenRef": "GITHUB_TOKEN",
+    "releaseName": "Release staging ${version}"
+  },
+  "plugins": {
+    "@release-it/bumper": {
+      "in": {
+        "file": ".env.staging",
+        "type": "text/plain"
+      },
+      "out": {
+        "file": ".env.staging",
+        "type": "text/plain"
+      }
+    }
+  }
+}

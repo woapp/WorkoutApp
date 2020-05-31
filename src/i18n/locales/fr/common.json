@@ -1,0 +1,21 @@
+{
+  "reps": "reps",
+  "kg": "kg",
+  "muscleGroups": {
+    "TRAPEZIUS": "Trapèzes",
+    "SHOULDERS": "Epaules",
+    "BICEPS": "Biceps",
+    "TRICEPS": "Triceps",
+    "FOREARMS": "Avant-bras",
+    "CHEST": "Pectoraux",
+    "BACK": "Dos",
+    "LUMBAR": "Lombaires",
+    "ABS": "Abdominaux",
+    "OBLIQUES": "Obliques",
+    "BUTTOCKS": "Fessiers",
+    "ADDUCTORS": "Adducteurs",
+    "QUADRICEPS": "Quadriceps",
+    "HAMSTRING": "Ischios",
+    "CALVES": "Mollets"
+  }
+}

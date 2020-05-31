@@ -1,0 +1,36 @@
+{
+  "trainingCreation": {
+    "title": "My new training",
+    "chooseExercise": "Choose an exercise",
+    "createExercise": "Create a new exercise",
+    "repetitions": "Repetitions",
+    "kilograms": "Kilograms",
+    "nbSets": "How many sets",
+    "add": "Add",
+    "deleteAlert": {
+      "title": "Delete exercise",
+      "content": "Are you sure you want to delete this exercise? \nIt will remain in the trainings using it.",
+      "cancel": "Cancel",
+      "delete": "Delete"
+    }
+  },
+  "trainingSets": {
+    "title": "Nouvel entraînement",
+    "finalize": "Finalize",
+    "repetitions": "Repetitions",
+    "kilograms": "Kilograms",
+    "update": "Update"
+  },
+  "trainingName": {
+    "title": "New training",
+    "whatName": "How would you name it?",
+    "placeholder": "Full body, morning routine"
+  },
+  "trainingTags": {
+    "title": "New training",
+    "chooseTag": "Choose at least 1 tag",
+    "addNewTag": "+ new tag",
+    "newTag": "New tag",
+    "create": "Create"
+  }
+}

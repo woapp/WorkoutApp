@@ -1,0 +1,23 @@
+{
+  "dashboard": {
+    "nothingYet": "Nothing yet.",
+    "searchPlaceholder": "Enter tag or training name",
+    "createTraining": "Create your first personnalized training!",
+    "newTraining": "NEW\nTRAINING",
+    "newExercise": "NEW\nEXERCISE",
+    "allTrainings": "ALL TRAININGS",
+    "favoriteTrainings": "YOUR FAVORITE TRAININGS"
+  },
+  "ongoingTraining": {
+    "deleteAlert": {
+      "title": "Delete training",
+      "content": "Are you sure you want to delete this training?",
+      "cancel": "Cancel",
+      "delete": "Delete"
+    },
+    "go": "LET'S GO!",
+    "next": "NEXT",
+    "finish": "FINISH",
+    "trainingCompleted": "TRAINING COMPLETED"
+  }
+}
