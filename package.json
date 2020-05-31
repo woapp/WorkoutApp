@@ -15,7 +15,8 @@
     "eslint:check": "eslint .",
     "ts:check": "tsc",
     "generate": "plop",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "release": "release-it"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.7",
@@ -101,6 +102,7 @@
     "prettier": "^1.18.2",
     "react-native-testing-library": "^1.11.1",
     "react-test-renderer": "16.9.0",
+    "release-it": "13.6.1",
     "typescript": "3.6.3"
   },
   "jest": {
@@ -113,5 +115,8 @@
       "json",
       "node"
     ]
-  }
+  },
+  "main": "index.js",
+  "repository": "git@github.com:woapp/WorkoutApp.git",
+  "author": "MattAgn <matthieua@bam.tech>"
 }
