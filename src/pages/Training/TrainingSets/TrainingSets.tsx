@@ -13,9 +13,9 @@ import { useStore } from '@woap/utils/hooks/useStore';
 import { ExerciseSetType } from '@woap/mobx/exerciseSet';
 import { PlusIcon } from '@woap/components/Icons/PlusIcon';
 import { FinalButton } from '@woap/components/FinalButton';
+import { EditExerciseSetModal } from '@woap/components/EditExerciseModal';
 
 import { SetListItem } from './components/SetListItem';
-import { UpdateSetModal } from './components/UpdateSetModal';
 
 type TrainingSetsScreenNavigationProp = StackNavigationProp<
   TrainingNavigatorParamList,
@@ -93,7 +93,7 @@ export const TrainingSets: FunctionComponent<Props> = observer(({ navigation }) 
       </Container>
       <FinalButton onPress={goToTrainingPageScreen} title={t('trainingSets.finalize')} />
       {selectedSet && (
-        <UpdateSetModal
+        <EditExerciseSetModal
           isVisible={isModalVisible}
           onPressClose={() => setIsModalVisible(false)}
           exerciseSet={selectedSet}

@@ -12,7 +12,7 @@ interface Props {
   exerciseSet: ExerciseSetType;
 }
 
-export const UpdateSetModal: FunctionComponent<Props> = observer(
+export const EditExerciseSetModal: FunctionComponent<Props> = observer(
   ({ onPressClose, exerciseSet, isVisible }) => {
     const { t } = useTranslation('trainingCreation');
     const [repetitionsValue, setRepetitionsValue] = useState('10');
@@ -42,11 +42,10 @@ export const UpdateSetModal: FunctionComponent<Props> = observer(
           <NumberInput
             value={repetitionsValue}
             onChangeText={setRepetitionsValue}
+            // number pad --> dot is unavailable
             keyboardType="number-pad"
             maxLength={3}
-            returnKeyType="next"
             onSubmitEditing={onSubmitEditingRepetitionInput}
-            blurOnSubmit={false}
           />
         </Row>
         <Separator />
@@ -56,11 +55,10 @@ export const UpdateSetModal: FunctionComponent<Props> = observer(
             ref={weightInput}
             value={weightValue}
             onChangeText={setWeightValue}
+            // numeric --> dot is available
             keyboardType="numeric"
             maxLength={8}
-            returnKeyType="next"
             onSubmitEditing={updateSet}
-            blurOnSubmit={false}
           />
         </Row>
       </Modal>
@@ -68,7 +66,10 @@ export const UpdateSetModal: FunctionComponent<Props> = observer(
   }
 );
 
-const NumberInput = styled.TextInput(({ theme }) => ({
+const NumberInput = styled.TextInput.attrs({
+  returnKeyType: 'next',
+  blurOnSubmit: false,
+})(({ theme }) => ({
   ...theme.fonts.h2,
   fontWeight: 'bold',
   color: theme.colors.black,
