@@ -8,7 +8,7 @@
     "commitMessage": "Release ${version}",
     "commitArgs": [],
     "tag": true,
-    "tagName": null,
+    "tagName": "app-v${version}-",
     "tagAnnotation": "Release ${version}",
     "tagArgs": [],
     "push": true,
@@ -20,8 +20,8 @@
   },
   "github": {
     "release": true,
-    "releaseName": "app-",
+    "releaseName": "app-v${version}-",
     "releaseNotes": null,
-    "tokenRef": "28ab57573fa38f3d703a344148366736e3941dea"
+    "tokenRef": "GITHUB_TOKEN"
   }
 }

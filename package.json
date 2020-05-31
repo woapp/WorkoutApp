@@ -16,7 +16,7 @@
     "ts:check": "tsc",
     "generate": "plop",
     "lint-staged": "lint-staged",
-    "release": "release-it"
+    "release": "dotenv release-it"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.7",
@@ -89,6 +89,7 @@
     "@typescript-eslint/eslint-plugin": "^2.27.0",
     "@typescript-eslint/parser": "^2.3.3",
     "babel-jest": "^24.9.0",
+    "dotenv-cli": "3.1.0",
     "eslint": "^6.5.1",
     "eslint-config-prettier": "^6.4.0",
     "eslint-plugin-import": "^2.18.2",
