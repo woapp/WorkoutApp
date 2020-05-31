@@ -8,7 +8,7 @@
     "commitMessage": "Release ${version}",
     "commitArgs": [],
     "tag": true,
-    "tagName": "app-v${version}-${ENV}",
+    "tagName": "app-v${version}-staging",
     "tagAnnotation": "Release ${version}",
     "tagArgs": ["staging", "prod"],
     "push": true,
