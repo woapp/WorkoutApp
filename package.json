@@ -1,6 +1,5 @@
 {
   "name": "WorkoutApp",
-  "version": "0.0.12",
   "private": true,
   "license": "MIT",
   "scripts": {
