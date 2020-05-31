@@ -1,2 +1,2 @@
 *.pbxproj -text
-.env filter=crypt diff=crypt
+.env filter=crypt diff=crypt merge=crypt
