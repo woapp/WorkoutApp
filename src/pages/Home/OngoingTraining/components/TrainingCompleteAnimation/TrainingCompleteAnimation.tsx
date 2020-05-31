@@ -45,7 +45,7 @@ const BlackVeil = styled.View(({ theme }) => ({
   ...StyleSheet.absoluteFillObject,
   height: '120%',
   width: '100%',
-  backgroundColor: theme.colors.black,
+  backgroundColor: theme.colors.background.black,
   opacity: 0.9,
 }));
 
