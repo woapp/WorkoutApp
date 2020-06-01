@@ -77,4 +77,16 @@ end
 
 platform :android do
   # Android Lanes
+  
+  desc 'Build the Android application in staging environment.'
+  lane :staging do
+    gradle(
+      task: "assembleRelease",
+      project_dir: "android"
+    )
+    pushToAppCenter(
+      app_name: "WorkoutApp-android",
+      file: "./android/app/build/outputs/apk/release/app-release.apk"
+    )
+  end
 end
