@@ -14,17 +14,5 @@
     "release": true,
     "tokenRef": "GITHUB_TOKEN",
     "releaseName": "Release prod ${version}"
-  },
-  "plugins": {
-    "@release-it/bumper": {
-      "in": {
-        "file": ".env.prod",
-        "type": "text/plain"
-      },
-      "out": {
-        "file": ".env.prod",
-        "type": "text/plain"
-      }
-    }
   }
 }
