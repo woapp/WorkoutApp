@@ -1,0 +1,15 @@
+fastlane_require 'dotenv'
+
+private_lane :check_env_exists do |options|
+  if !File.file?("../.env.#{options[:env]}")
+    UI.user_error!("Env #{options[:env]} does not exist")
+  end
+end
+
+private_lane :load_env_file do |options|
+  check_env_exists(
+    env: options[:env],
+  )
+  Dotenv.overload("../.env.#{options[:env]}")
+  UI.message("Reading env from : .env.#{options[:env]}")
+end

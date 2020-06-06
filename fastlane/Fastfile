@@ -1,5 +1,8 @@
 fastlane_version "2.137.0"
 
+import('./FastfileEnvironment')
+import('./FastfileBump')
+
 desc "Deploy app to appCenter"
 lane :pushToAppCenter do |options|
   appcenter_upload(
@@ -57,6 +60,7 @@ platform :ios do
   lane :staging do
     match(app_identifier: 'com.myca.woapp.staging', type: 'adhoc', readonly: true)
     increment_build_number(xcodeproj: './ios/WorkoutApp.xcodeproj')
+    bump(env: "staging")
     gym(
       scheme: 'WorkoutApp',
       configuration: "Release",
@@ -80,6 +84,7 @@ platform :android do
   
   desc 'Build the Android application in staging environment.'
   lane :staging do
+    bump(env: "staging")
     gradle(
       task: "assembleRelease",
       project_dir: "android"
@@ -90,3 +95,7 @@ platform :android do
     )
   end
 end
+
+
+
+
