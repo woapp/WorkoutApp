@@ -1,3 +1,5 @@
 *.pbxproj -text
 .env.example filter=crypt diff=crypt merge=crypt
 .env filter=crypt diff=crypt merge=crypt
+fastlane/.env.prod.secret filter=crypt diff=crypt merge=crypt
+fastlane/.env.staging.secret filter=crypt diff=crypt merge=crypt

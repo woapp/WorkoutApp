@@ -3,6 +3,10 @@ fastlane_version "2.137.0"
 import('./FastfileEnvironment')
 import('./FastfileBump')
 
+before_all do |lane, options|
+  Dotenv.load(".env.#{options[:env]}.secret")
+end
+
 desc "Deploy app to appCenter"
 lane :pushToAppCenter do |options|
   appcenter_upload(
@@ -40,6 +44,7 @@ platform :ios do
 
   desc 'Build the iOS application in production environment.'
   lane :prod do
+    Dotenv.load(".env.prod.secret")
     match(app_identifier: 'com.myca.woapp', type: 'adhoc', readonly: true)
     increment_build_number(xcodeproj: './ios/WorkoutApp.xcodeproj')
     gym(
@@ -58,6 +63,7 @@ platform :ios do
 
   desc 'Build the iOS application in staging environment.'
   lane :staging do
+    Dotenv.load(".env.staging.secret")
     match(app_identifier: 'com.myca.woapp.staging', type: 'adhoc', readonly: true)
     increment_build_number(xcodeproj: './ios/WorkoutApp.xcodeproj')
     bump(env: "staging")
