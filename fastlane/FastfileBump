@@ -1,0 +1,34 @@
+private_lane :load_current_version do |options|
+  file = open("../package.json")
+  json = file.read
+  parsed = JSON.parse(json)
+  ENV["VERSION"] = parsed["version"]
+end
+
+private_lane :load_current_build do |options|
+  file = open("../package.json")
+  json = file.read
+  parsed = JSON.parse(json)
+  ENV["BUILD"] = parsed["build"].to_s
+end
+
+private_lane :bump_build_number do |options|
+  load_current_build
+  ENV["BUILD"] = (ENV["BUILD"].to_i + 1).to_s
+  sh "sed -i '' -e 's/\"build\":.*/\"build\": #{ENV["BUILD"]},/g' ../package.json"
+end
+
+private_lane :bump_env_file do |options|
+  load_env_file(env: options[:env])
+  load_current_version
+  load_current_build
+  sh "sed -i '' -e 's/VERSION=.*/VERSION=\'#{ENV["VERSION"]}\'/g' ../.env.#{options[:env]}"
+  sh "sed -i '' -e 's/BUILD=.*/BUILD=#{ENV["BUILD"]}/g' ../.env.#{options[:env]}"
+end
+
+lane :bump do |options|
+  bump_build_number
+  bump_env_file(
+    env: options[:env],
+  )
+end
