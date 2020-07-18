@@ -46,7 +46,7 @@
     "dotenv-cli": "3.1.0",
     "i18next": "19.4.1",
     "lint-staged": "10.1.2",
-    "lodash": "4.17.15",
+    "lodash": "4.17.19",
     "lottie-ios": "3.1.3",
     "lottie-react-native": "3.3.2",
     "mobx": "^5.15.4",
