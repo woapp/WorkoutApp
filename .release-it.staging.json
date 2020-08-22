@@ -20,5 +20,8 @@
       "in": "app-version.staging",
       "out": "app-version.staging"
     }
+  },
+  "hooks": {
+    "after:bump": "./scripts/bump.staging"
   }
 }

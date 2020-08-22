@@ -10,5 +10,6 @@ echo "version : $version"
 sed -i '' -e "s/VERSION=.*/VERSION=$version/g" .env.staging
 
 ## Git 
-git add .
-git commit -m "Bump version and build"
+# git add .
+# git commit -m "Bump version and build"
+# git push
