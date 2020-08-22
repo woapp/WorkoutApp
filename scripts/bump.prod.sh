@@ -8,4 +8,3 @@ sed -i '' -e "s/BUILD=.*/BUILD=$incremented_build/g" .env.prod
 version=$(cat app-version.prod)
 echo "version : $version"
 sed -i '' -e "s/VERSION=.*/VERSION=$version/g" .env.prod
-
