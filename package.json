@@ -20,7 +20,8 @@
     "release-no-env:prod": "release-it --config '.release-it.prod.json'",
     "release:prod": "dotenv yarn release-no-env:prod",
     "deploy": "scripts/deploy.sh",
-    "deploy:staging:hard": "yarn deploy -e staging -o ios -t hard && yarn deploy -e staging -o android -t hard",
+    "deploy:staging:hard:ios": "yarn deploy -e staging -t hard -o ios",
+    "deploy:staging:hard:android": "yarn deploy -e staging -t hard -o android",
     "deploy:staging:soft": "yarn deploy -e staging -o android && yarn deploy ./scripts/deploy.sh -e dev -o ios",
     "deploy:prod:hard": "yarn deploy -e prod -o ios -t hard && yarn deploy -e prod -o android -t hard",
     "deploy:prod:soft": "yarn deploy -e prod -o ios -t soft && yarn deploy -e prod -o android -t soft"
