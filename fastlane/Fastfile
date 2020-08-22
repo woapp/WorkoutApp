@@ -17,7 +17,7 @@ platform :ios do
       output_directory: "#{ENV['IOS_IPA_DIRECTORY']}",
       output_name: "#{ENV['IOS_IPA_NAME']}",
       silent: true,
-      workspace: "#{ENV['IOS_PROJECT_PATH']}/ChantierTroisCentSoixante.xcworkspace")
+      workspace: "#{ENV['IOS_PROJECT_PATH']}/WorkoutApp.xcworkspace")
   end
 
   lane :deploy_appCenter do |options|
