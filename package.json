@@ -112,7 +112,7 @@
     "prettier": "^1.18.2",
     "react-native-testing-library": "^1.11.1",
     "react-test-renderer": "16.9.0",
-    "release-it": "13.6.1",
+    "release-it": "13.6.8",
     "typescript": "3.6.3"
   },
   "jest": {
