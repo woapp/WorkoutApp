@@ -152,7 +152,7 @@ workflows:
               - name: yarn
           inputs:
             - workdir: '$BITRISE_SOURCE_DIR'
-            - command: deploy
+            - command: deploy:staging:soft
             - args: ''
           title: yarn deploy
       - cache-push@2.2.3: {}
