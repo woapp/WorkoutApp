@@ -14,5 +14,11 @@
     "release": true,
     "tokenRef": "GITHUB_TOKEN",
     "releaseName": "Release staging ${version}"
+  },
+  "plugins": {
+    "@release-it/bumper": {
+      "in": "app-version.staging",
+      "out": "app-version.staging"
+    }
   }
 }

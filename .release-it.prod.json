@@ -14,5 +14,11 @@
     "release": true,
     "tokenRef": "GITHUB_TOKEN",
     "releaseName": "Release prod ${version}"
+  },
+  "plugins": {
+    "@release-it/bumper": {
+      "in": "app-version.prod",
+      "out": "app-version.prod"
+    }
   }
 }
