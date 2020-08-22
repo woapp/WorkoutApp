@@ -8,8 +8,3 @@ sed -i '' -e "s/BUILD=.*/BUILD=$incremented_build/g" .env.staging
 version=$(cat app-version.staging)
 echo "version : $version"
 sed -i '' -e "s/VERSION=.*/VERSION=$version/g" .env.staging
-
-## Git 
-# git add .
-# git commit -m "Bump version and build"
-# git push
