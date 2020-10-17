@@ -1,4 +1,4 @@
-git_url("git@github.com:woapp/certificates.git")
+git_url("https://github.com/woapp/certificates.git")
 storage_mode("git")
 git_branch("master")
 verbose(true)
