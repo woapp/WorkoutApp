@@ -4,3 +4,7 @@ git_branch("master")
 verbose(true)
 username("cyril.bonaccini@gmail.com")
 
+if(ENV['CI']) then
+  keychain_name("fastlane_fitly")
+  keychain_password("temppassword")
+end
