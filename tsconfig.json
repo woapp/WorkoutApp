@@ -28,7 +28,7 @@
     "noImplicitReturns": true,
     "noUnusedLocals": true
   },
-  "include": ["src/**/*.ts", "src /**/*.tsx", "src/*.ts", "src/*.tsx"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/*.ts", "src/*.tsx"],
   "exclude": [
     "node_modules",
     "babel.config.js",
@@ -37,7 +37,5 @@
     "rn-cli.config.js",
     "src/**/*.test.ts",
     "src/**/*.test.tsx",
-    "old/**/*.ts",
-    "old/**/*.tsx"
   ]
 }
