@@ -9,6 +9,12 @@ import { FormField } from '@woap/components/FormField';
 import { colors } from '@woap/styles/colors';
 import { LinearButton } from '@woap/components/LinearButton';
 import { EmailService } from '@woap/services/email';
+import { Button } from '@woap/components/Button';
+import { CompositeNavigationProp } from '@react-navigation/core';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootNavigatorParamList } from '@woap/navigation';
+import { Routes } from '@woap/navigation/routes';
+import { SupportNavigatorParamList } from '@woap/navigation/SupportNavigator';
 
 enum ReportingType {
   BUG,
@@ -30,12 +36,18 @@ const getDeviceInfos = async () => {
   return deviceInfos;
 };
 
-const generateEmailId = () =>
-  Math.random()
-    .toString()
-    .substring(2, 10);
+const generateEmailId = () => Math.random().toString().substring(2, 10);
 
-export const Support: FunctionComponent = () => {
+type SupportScreenNavigationProp = CompositeNavigationProp<
+  StackNavigationProp<RootNavigatorParamList, Routes.TabNavigator>,
+  StackNavigationProp<SupportNavigatorParamList, Routes.Support>
+>;
+
+type Props = {
+  navigation: SupportScreenNavigationProp;
+};
+
+export const Support: FunctionComponent<Props> = ({ navigation }) => {
   const { t } = useTranslation('support');
   const [reportingType, setReportingType] = useState(ReportingType.IMPROVEMENT);
   const [body, setBody] = useState('');
@@ -57,6 +69,8 @@ export const Support: FunctionComponent = () => {
 
   return (
     <Container>
+      <Button title="CheatCodes" onPress={() => navigation.navigate(Routes.CheatCodes)} />
+      <Spacer height={2} />
       <Title>{t('title')}</Title>
       <Spacer height={2} />
       <Row>

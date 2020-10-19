@@ -10,7 +10,7 @@ import { theme } from '@woap/styles/theme';
 
 import './i18n';
 
-const codePushOptions = { checkFrequency: codePush.CheckFrequency.ON_APP_START };
+const codePushOptions = { checkFrequency: codePush.CheckFrequency.MANUAL };
 
 const WorkoutApp: FunctionComponent = () => {
   useEffect(() => {
