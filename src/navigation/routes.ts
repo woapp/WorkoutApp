@@ -1,4 +1,5 @@
 export enum Routes {
+  CheatCodes = 'CheatCodes',
   Dashboard = 'Dashboard',
   MyWorkouts = 'MyWorkouts',
   WorkoutEditor = 'WorkoutEditor',

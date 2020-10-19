@@ -1,13 +1,14 @@
-import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { colors } from '@woap/styles/colors';
-import { OngoingTraining } from '@woap/pages/Home/OngoingTraining';
 import { TrainingType } from '@woap/mobx/training';
+import { CheatCodes } from '@woap/pages/CheatCodes/CheatCodes.page';
+import { OngoingTraining } from '@woap/pages/Home/OngoingTraining';
+import { colors } from '@woap/styles/colors';
+import React from 'react';
 
+import { ExerciseNavigator } from './ExerciseNavigator';
 import { Routes } from './routes';
 import { TabNavigator } from './TabNavigator';
-import { ExerciseNavigator } from './ExerciseNavigator';
 import { TrainingNavigator } from './TrainingNavigator';
 
 export type RootNavigatorParamList = {
@@ -24,6 +25,7 @@ export type RootNavigatorParamList = {
   [Routes.OngoingTraining]: { screen: Routes; params: { training: TrainingType } };
   [Routes.TrainingNavigator]: undefined;
   [Routes.ExerciseNavigator]: undefined;
+  [Routes.CheatCodes]: undefined;
 };
 
 const Stack = createStackNavigator<RootNavigatorParamList>();
@@ -57,6 +59,13 @@ const RootNavigator = () => (
     <Stack.Screen
       name={Routes.ExerciseNavigator}
       component={ExerciseNavigator}
+      options={{
+        headerShown: false,
+      }}
+    />
+    <Stack.Screen
+      name={Routes.CheatCodes}
+      component={CheatCodes}
       options={{
         headerShown: false,
       }}
